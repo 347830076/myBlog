@@ -1,6 +1,19 @@
+// 不要忘了安装 moment
+const moment = require('moment')
+moment.locale('zh-cn')
 module.exports = {
     title: '阿离王-前端分享',
     description: '阿离王-前端分享笔记',
+    plugins: [
+        [
+            '@vuepress/last-updated',
+            {
+                transformer: (timestamp) => {
+                    return moment(timestamp).format('LLLL')
+                }
+            }
+        ]
+    ],
     themeConfig: {
         logo: '/assets/img/logo.jpg',
         head: [
