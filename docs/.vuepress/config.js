@@ -2,6 +2,7 @@
 const moment = require('moment')
 moment.locale('zh-cn')
 module.exports = {
+    base: '/myBlog/',
     title: '阿离王-前端分享',
     description: '阿离王-前端分享笔记',
     plugins: [
