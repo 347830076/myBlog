@@ -27,11 +27,11 @@ self.addEventListener('message', (event) => {
 self.__precacheManifest = [
   {
     "url": "404.html",
-    "revision": "8b9365bcddf4843df298b91af5a1d925"
+    "revision": "84e4422d5a9ddb9e3104dfeeeaf7628c"
   },
   {
     "url": "about.html",
-    "revision": "a3034e59c447fe49ee5ac6ac431ebd68"
+    "revision": "bdc2e0372beb74e999c0b00cc1c828d5"
   },
   {
     "url": "assets/css/0.styles.b0b555f9.css",
@@ -50,16 +50,16 @@ self.__precacheManifest = [
     "revision": "83621669651b9a3d4bf64d1a670ad856"
   },
   {
-    "url": "assets/js/10.46f8fa50.js",
-    "revision": "888bde9b6f588f165e83c771610ff9ec"
+    "url": "assets/js/10.1f0a17d6.js",
+    "revision": "28b6009597bca9b902d179976ab12ed4"
   },
   {
     "url": "assets/js/11.57b7c73a.js",
     "revision": "108b77d5d3056e567c062d4f7bd84833"
   },
   {
-    "url": "assets/js/12.3e2e0772.js",
-    "revision": "013ee117d0aa79b02671f803fbfccb27"
+    "url": "assets/js/12.7393c807.js",
+    "revision": "5d81d3140bcd946485af2f2177d1027f"
   },
   {
     "url": "assets/js/13.2cf049be.js",
@@ -90,24 +90,24 @@ self.__precacheManifest = [
     "revision": "e34402115251898109804693f7979295"
   },
   {
-    "url": "assets/js/8.7cbd02f9.js",
-    "revision": "30a7573af525f4c401aea0d36413b9ae"
+    "url": "assets/js/8.5c2d5177.js",
+    "revision": "62188eec300fe1810746209fba031a52"
   },
   {
-    "url": "assets/js/9.57e8aa50.js",
-    "revision": "ad02c3f12e05efa0f1fa12ff49309fe0"
+    "url": "assets/js/9.03a87dc7.js",
+    "revision": "9667a9eb646cb06903d454d7c1d258d3"
   },
   {
-    "url": "assets/js/app.3ac2b1fd.js",
-    "revision": "5403f5b51c7b82cc9999bad8bd08c86f"
+    "url": "assets/js/app.ad76ff8b.js",
+    "revision": "4ee8afbdfec4545e90a61eafb74f1860"
   },
   {
     "url": "css/index.html",
-    "revision": "885286731b1c9af141af613d9e2b3962"
+    "revision": "dbc57d4e9647b661cd9caa2474ca8ffc"
   },
   {
     "url": "css/one.html",
-    "revision": "563d6dfddc5ee93dc22a4a2a5a73a73c"
+    "revision": "05fe36bedee57d1807f4ab7d2be9df51"
   },
   {
     "url": "icons/lufei.jpg",
@@ -115,7 +115,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "2951563895bf48764ebf4f9fb82ab3f8"
+    "revision": "70074293732dd87f9cf3955e8f3d70e1"
   },
   {
     "url": "logo.jpg",
@@ -123,11 +123,11 @@ self.__precacheManifest = [
   },
   {
     "url": "tool/index.html",
-    "revision": "48b50dd6fc53fa815d3f148ff8aea327"
+    "revision": "0a5e9f1ed0801ba9013e028d665c7e8a"
   },
   {
     "url": "tool/nvm.html",
-    "revision": "11120622e6aa859550ba1112546302a8"
+    "revision": "d2af648ea9819bc5da7dac33ab59bc29"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});

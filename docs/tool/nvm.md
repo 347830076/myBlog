@@ -23,7 +23,7 @@ nvm是让你在同一台机器上安装和切换不同版本的node的工具
 
 <a href="https://github.com/coreybutler/nvm-windows/releases" target="_brank">https://github.com/coreybutler/nvm-windows/releases</a>
 
-<img src="/assets/img/nvm.jpg" />
+<img :src="$withBase('/assets/img/nvm.jpg')" alt="foo">
 
 
 mac 苹果电脑下载， 打开终端，执行下面代码
