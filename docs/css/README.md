@@ -12,4 +12,4 @@ css 部分
 ## 一级标题2
 ## 一级标题3
 
-<Vssue />
+<Vssue :options="{ locale: 'zh' }"  />

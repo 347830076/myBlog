@@ -2,4 +2,4 @@
 
 热爱代码，喜欢分享。
 
-<Vssue />
+<Vssue :options="{ locale: 'zh' }"  />
