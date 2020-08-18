@@ -40,18 +40,12 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | b
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 ```
 
-<style>
-    div{
-       margin-bottom: 20px;
-    }
-</style>
-
-<div>此时nvm就被安装在了/.nvm下啦</div>
-<div>命令：</div>
-<div>nvm install v10.4.0：安装指定版本号的node</div>
-<div>nvm use v10.3.0：切换node的版本，这个是全局的</div>
-<div>nvm current：当前node版本</div>
-<div>nvm ls：列出所有已经安装的node版本</div>
+<p>此时nvm就被安装在了/.nvm下啦</p>
+<p>命令：</p>
+<p>nvm install v10.4.0：安装指定版本号的node</p>
+<p>nvm use v10.3.0：切换node的版本，这个是全局的</p>
+<p>nvm current：当前node版本</p>
+<p>nvm ls：列出所有已经安装的node版本</p>
 
 <Vssue />
 
