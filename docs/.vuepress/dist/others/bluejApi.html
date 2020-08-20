@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>蓝景购物平台接口说明 | 阿离王-前端分享</title>
+    <meta name="generator" content="VuePress 1.5.3">
+    <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+    <meta name="description" content="阿离王-前端分享笔记">
+    <link rel="preload" href="/myBlog/assets/css/0.styles.f8b31db8.css" as="style"><link rel="preload" href="/myBlog/assets/js/app.fade69da.js" as="script"><link rel="preload" href="/myBlog/assets/js/4.cb807ce8.js" as="script"><link rel="preload" href="/myBlog/assets/js/2.b77ee233.js" as="script"><link rel="preload" href="/myBlog/assets/js/11.ffbb69b1.js" as="script"><link rel="prefetch" href="/myBlog/assets/js/10.594c80d8.js"><link rel="prefetch" href="/myBlog/assets/js/12.c84841d2.js"><link rel="prefetch" href="/myBlog/assets/js/13.8d04b9af.js"><link rel="prefetch" href="/myBlog/assets/js/14.c68fdac1.js"><link rel="prefetch" href="/myBlog/assets/js/15.56913af7.js"><link rel="prefetch" href="/myBlog/assets/js/3.d75fd78f.js"><link rel="prefetch" href="/myBlog/assets/js/5.16c37ec6.js"><link rel="prefetch" href="/myBlog/assets/js/6.3f9fea0f.js"><link rel="prefetch" href="/myBlog/assets/js/7.06d3f5ab.js"><link rel="prefetch" href="/myBlog/assets/js/8.738a93cb.js"><link rel="prefetch" href="/myBlog/assets/js/9.b0de26a6.js">
+    <link rel="stylesheet" href="/myBlog/assets/css/0.styles.f8b31db8.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myBlog/" class="home-link router-link-active"><img src="/myBlog/assets/img/logo.jpg" alt="阿离王-前端分享" class="logo"> <span class="site-name can-hide">阿离王-前端分享</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/myBlog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/myBlog/about.html" class="nav-link">
+  关于我
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多功能" class="dropdown-title"><span class="title">更多功能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分组一
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myBlog/css/" class="nav-link">
+  css
+</a></li></ul></li><li class="dropdown-item"><h4>
+          分组二
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myBlog/tool/" class="nav-link">
+  工具类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="https://google.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  谷歌搜索
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <a href="https://github.com/347830076/myBlog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/myBlog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/myBlog/about.html" class="nav-link">
+  关于我
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多功能" class="dropdown-title"><span class="title">更多功能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分组一
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myBlog/css/" class="nav-link">
+  css
+</a></li></ul></li><li class="dropdown-item"><h4>
+          分组二
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myBlog/tool/" class="nav-link">
+  工具类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="https://google.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  谷歌搜索
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <a href="https://github.com/347830076/myBlog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><a href="/myBlog/" class="sidebar-heading clickable router-link-active"><span>首页</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/myBlog/about.html" class="sidebar-link">关于我</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/myBlog/css/" class="sidebar-heading clickable"><span>css</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/myBlog/css/" class="sidebar-link">css各种布局</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/myBlog/tool/" class="sidebar-heading clickable"><span>工具栏</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/myBlog/tool/nvm.html" class="sidebar-link">nvm 安装教程</a></li><li><a href="/myBlog/tool/nrm.html" class="sidebar-link">nrm 安装使用教程</a></li><li><a href="/myBlog/tool/sshkey.html" class="sidebar-link">如何生成SSH key</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/myBlog/others/" class="sidebar-heading clickable router-link-active open"><span>杂类</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/myBlog/others/bluejApi.html" aria-current="page" class="active sidebar-link">蓝景购物平台接口说明</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myBlog/others/bluejApi.html#接口地址" class="sidebar-link">接口地址</a></li><li class="sidebar-sub-header"><a href="/myBlog/others/bluejApi.html#接口文档地址" class="sidebar-link">接口文档地址</a></li><li class="sidebar-sub-header"><a href="/myBlog/others/bluejApi.html#接口地址使用说明" class="sidebar-link">接口地址使用说明</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="蓝景购物平台接口说明"><a href="#蓝景购物平台接口说明" class="header-anchor">#</a> 蓝景购物平台接口说明</h1> <h2 id="接口地址"><a href="#接口地址" class="header-anchor">#</a> 接口地址</h2> <div class="language-js extra-class"><pre class="language-js"><code>http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>api<span class="token punctuation">.</span>wanggege<span class="token punctuation">.</span>cn<span class="token operator">/</span>api<span class="token operator">/</span>
+</code></pre></div><h2 id="接口文档地址"><a href="#接口文档地址" class="header-anchor">#</a> 接口文档地址</h2> <p><a href="http://apidoc.wanggege.cn/" target="_blank">http://apidoc.wanggege.cn/</a></p> <h2 id="接口地址使用说明"><a href="#接口地址使用说明" class="header-anchor">#</a> 接口地址使用说明</h2> <ol><li>vue 项目的vue.config.js文件的devServer修改下代理源 &quot;target&quot;: &quot;http://api.wanggege.cn/api/&quot;,</li></ol> <div class="language-js extra-class"><pre class="language-js"><code>devServer<span class="token operator">:</span> <span class="token punctuation">{</span>
+    port<span class="token operator">:</span> <span class="token number">8080</span><span class="token punctuation">,</span>
+    <span class="token comment">// host: 'localhost',</span>
+    https<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// https:{type:Boolean}</span>
+    open<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">//配置自动启动浏览器</span>
+    disableHostCheck<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;proxy&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">&quot;/*&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">&quot;target&quot;</span><span class="token operator">:</span> <span class="token string">&quot;http://api.wanggege.cn/api/&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;changeOrigin&quot;</span><span class="token operator">:</span><span class="token boolean">true</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre></div><p>axios 默认的基础地址设置</p> <div class="language-js extra-class"><pre class="language-js"><code>axios<span class="token punctuation">.</span>defaults<span class="token punctuation">.</span>baseURL <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'development'</span> <span class="token operator">?</span> <span class="token string">'/'</span> <span class="token operator">:</span> <span class="token string">'http://api.wanggege.cn/api/'</span><span class="token punctuation">;</span>
+</code></pre></div><p><font style="color:red;">本地开发要使用vue 的devServer代理服务，否则直接请求接口会存在跨域问题</font></p> <!----></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">更新时间:</span> <span class="time">2020年8月20日星期四上午10点56分</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/myBlog/tool/sshkey.html" class="prev">
+        如何生成SSH key
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/myBlog/assets/js/app.fade69da.js" defer></script><script src="/myBlog/assets/js/4.cb807ce8.js" defer></script><script src="/myBlog/assets/js/2.b77ee233.js" defer></script><script src="/myBlog/assets/js/11.ffbb69b1.js" defer></script>
+  </body>
+</html>

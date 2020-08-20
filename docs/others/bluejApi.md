@@ -1,16 +1,14 @@
 # 蓝景购物平台接口说明
 
-# 接口地址
+## 接口地址
 ```js
 http://api.wanggege.cn/api/
 ```
 
-# 接口文档地址
-```js
-http://apidoc.wanggege.cn/
-```
+## 接口文档地址
+<a href="http://apidoc.wanggege.cn/" target="_blank">http://apidoc.wanggege.cn/</a>
 
-# 接口地址使用说明
+## 接口地址使用说明
 
 <!-- <b>1. 先配置电脑的系统文件  hosts文件，添加一行</b>
 ```js
@@ -50,3 +48,7 @@ axios 默认的基础地址设置
 ```js
 axios.defaults.baseURL = process.env.NODE_ENV === 'development' ? '/' : 'http://api.wanggege.cn/api/';
 ```
+
+<font style="color:red">本地开发要使用vue 的devServer代理服务，否则直接请求接口会存在跨域问题</font>
+
+<Vssue :options="{ locale: 'zh' }"  />

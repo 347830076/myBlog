@@ -36,14 +36,13 @@ module.exports = {
         }
         ,
 
-        '@vuepress/pwa': {
-            serviceWorker: true,
-            updatePopup: {
-                message: "发现新内容可用",
-                buttonText: "刷新"
-            }
-        }
-
+        // '@vuepress/pwa': {
+        //     serviceWorker: true,
+        //     updatePopup: {
+        //         message: "发现新内容可用",
+        //         buttonText: "刷新"
+        //     }
+        // }
     },
     themeConfig: {
         // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL

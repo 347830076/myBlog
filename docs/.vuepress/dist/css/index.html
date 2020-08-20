@@ -3,12 +3,15 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>css | 阿离王-前端分享</title>
+    <title>css各种布局 | 阿离王-前端分享</title>
     <meta name="generator" content="VuePress 1.5.3">
-    
+    <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
     <meta name="description" content="阿离王-前端分享笔记">
-    <link rel="preload" href="/myBlog/assets/css/0.styles.b0b555f9.css" as="style"><link rel="preload" href="/myBlog/assets/js/app.a6457ad2.js" as="script"><link rel="preload" href="/myBlog/assets/js/5.85b3d15c.js" as="script"><link rel="preload" href="/myBlog/assets/js/2.207249c7.js" as="script"><link rel="preload" href="/myBlog/assets/js/9.03a87dc7.js" as="script"><link rel="preload" href="/myBlog/assets/js/3.30840aa6.js" as="script"><link rel="prefetch" href="/myBlog/assets/js/10.1f0a17d6.js"><link rel="prefetch" href="/myBlog/assets/js/11.57b7c73a.js"><link rel="prefetch" href="/myBlog/assets/js/12.7393c807.js"><link rel="prefetch" href="/myBlog/assets/js/13.6a656e7f.js"><link rel="prefetch" href="/myBlog/assets/js/14.514540ee.js"><link rel="prefetch" href="/myBlog/assets/js/4.fe415adb.js"><link rel="prefetch" href="/myBlog/assets/js/6.ba12ce18.js"><link rel="prefetch" href="/myBlog/assets/js/7.cf15739c.js"><link rel="prefetch" href="/myBlog/assets/js/8.5c2d5177.js">
-    <link rel="stylesheet" href="/myBlog/assets/css/0.styles.b0b555f9.css">
+    <link rel="preload" href="/myBlog/assets/css/0.styles.f8b31db8.css" as="style"><link rel="preload" href="/myBlog/assets/js/app.fade69da.js" as="script"><link rel="preload" href="/myBlog/assets/js/4.cb807ce8.js" as="script"><link rel="preload" href="/myBlog/assets/js/2.b77ee233.js" as="script"><link rel="preload" href="/myBlog/assets/js/8.738a93cb.js" as="script"><link rel="prefetch" href="/myBlog/assets/js/10.594c80d8.js"><link rel="prefetch" href="/myBlog/assets/js/11.ffbb69b1.js"><link rel="prefetch" href="/myBlog/assets/js/12.c84841d2.js"><link rel="prefetch" href="/myBlog/assets/js/13.8d04b9af.js"><link rel="prefetch" href="/myBlog/assets/js/14.c68fdac1.js"><link rel="prefetch" href="/myBlog/assets/js/15.56913af7.js"><link rel="prefetch" href="/myBlog/assets/js/3.d75fd78f.js"><link rel="prefetch" href="/myBlog/assets/js/5.16c37ec6.js"><link rel="prefetch" href="/myBlog/assets/js/6.3f9fea0f.js"><link rel="prefetch" href="/myBlog/assets/js/7.06d3f5ab.js"><link rel="prefetch" href="/myBlog/assets/js/9.b0de26a6.js">
+    <link rel="stylesheet" href="/myBlog/assets/css/0.styles.f8b31db8.css">
   </head>
   <body>
     <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myBlog/" class="home-link router-link-active"><img src="/myBlog/assets/img/logo.jpg" alt="阿离王-前端分享" class="logo"> <span class="site-name can-hide">阿离王-前端分享</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/myBlog/" class="nav-link">
@@ -43,11 +46,276 @@
   谷歌搜索
   <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <a href="https://github.com/347830076/myBlog" target="_blank" rel="noopener noreferrer" class="repo-link">
     GitHub
-    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><a href="/myBlog/" class="sidebar-heading clickable router-link-active"><span>首页</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/myBlog/about.html" class="sidebar-link">关于我</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/myBlog/tool/" class="sidebar-heading clickable"><span>工具栏</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/myBlog/tool/nvm.html" class="sidebar-link">nvm 安装教程</a></li><li><a href="/myBlog/tool/sshkey.html" class="sidebar-link">如何生成SSH key</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/myBlog/css/" aria-current="page" class="sidebar-heading clickable router-link-exact-active router-link-active open active"><span>美丽的css</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/myBlog/css/" aria-current="page" class="active sidebar-link">css</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myBlog/css/#一级标题" class="sidebar-link">一级标题</a></li><li class="sidebar-sub-header"><a href="/myBlog/css/#一级标题1" class="sidebar-link">一级标题1</a></li><li class="sidebar-sub-header"><a href="/myBlog/css/#一级标题2" class="sidebar-link">一级标题2</a></li><li class="sidebar-sub-header"><a href="/myBlog/css/#一级标题3" class="sidebar-link">一级标题3</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="css"><a href="#css" class="header-anchor">#</a> css</h1> <p>css 部分</p> <h2 id="一级标题"><a href="#一级标题" class="header-anchor">#</a> 一级标题</h2> <h3 id="_1-二级标题"><a href="#_1-二级标题" class="header-anchor">#</a> 1. 二级标题</h3> <h2 id="一级标题1"><a href="#一级标题1" class="header-anchor">#</a> 一级标题1</h2> <h2 id="一级标题2"><a href="#一级标题2" class="header-anchor">#</a> 一级标题2</h2> <h2 id="一级标题3"><a href="#一级标题3" class="header-anchor">#</a> 一级标题3</h2> <!----></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">更新时间:</span> <span class="time">2020年8月18日星期二下午4点12分</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><a href="/myBlog/" class="sidebar-heading clickable router-link-active"><span>首页</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/myBlog/about.html" class="sidebar-link">关于我</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/myBlog/css/" aria-current="page" class="sidebar-heading clickable router-link-exact-active router-link-active open active"><span>css</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/myBlog/css/" aria-current="page" class="active sidebar-link">css各种布局</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myBlog/css/#圣杯布局" class="sidebar-link">圣杯布局</a></li></ul></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/myBlog/tool/" class="sidebar-heading clickable"><span>工具栏</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/myBlog/tool/nvm.html" class="sidebar-link">nvm 安装教程</a></li><li><a href="/myBlog/tool/nrm.html" class="sidebar-link">nrm 安装使用教程</a></li><li><a href="/myBlog/tool/sshkey.html" class="sidebar-link">如何生成SSH key</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/myBlog/others/" class="sidebar-heading clickable"><span>杂类</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/myBlog/others/bluejApi.html" class="sidebar-link">蓝景购物平台接口说明</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="css各种布局"><a href="#css各种布局" class="header-anchor">#</a> css各种布局</h1> <h2 id="圣杯布局"><a href="#圣杯布局" class="header-anchor">#</a> 圣杯布局</h2> <div data-config="" data-type="vanilla" data-code="%3C!DOCTYPE%20html%3E%0A%3Chtml%3E%0A%0A%09%3Chead%3E%0A%09%09%3Cmeta%20charset%3D%22utf-8%22%3E%0A%09%09%3Cmeta%20http-equiv%3D%22X-UA-Compatible%22%20content%3D%22IE%3Dedge%2Cchrome%3D1%22%3E%0A%09%09%3Ctitle%3E%E5%9C%A3%E6%9D%AF%E5%B8%83%E5%B1%80%3C%2Ftitle%3E%0A%0A%09%09%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%09%09%09body%20%7B%0A%09%09%09%09background-color%3A%20%23ffffff%3B%0A%09%09%09%09font-size%3A%2014px%3B%0A%09%09%09%7D%0A%09%09%09%0A%09%09%09%23hd%2C%0A%09%09%09%23ft%20%7B%0A%09%09%09%09padding%3A%2020px%203px%3B%0A%09%09%09%09background-color%3A%20%2303a9f4%3B%0A%09%09%09%09text-align%3A%20center%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20color%3A%20%23ffffff%3B%0A%09%09%09%7D%0A%09%09%09%0A%09%09%09.bd-lft%2C%0A%09%09%09.bd-rgt%2C%0A%09%09%09.bd-3-lr%2C%0A%09%09%09.bd-3-ll%2C%0A%09%09%09.bd-3-rr%20%7B%0A%09%09%09%09margin%3A%2010px%200%3B%0A%09%09%09%09min-width%3A%20400px%3B%0A%09%09%09%7D%0A%09%09%09%0A%09%09%09.main%20%7B%0A%09%09%09%09background-color%3A%20%2303a9f4%3B%0A%09%09%09%09color%3A%20%23ffffff%3B%0A%09%09%09%7D%0A%09%09%09%0A%09%09%09.aside%2C%0A%09%09%09.aside-1%2C%0A%09%09%09.aside-2%20%7B%0A%09%09%09%09background-color%3A%20%2300bcd4%3B%0A%09%09%09%09color%3A%20%23ffffff%3B%0A%09%09%09%7D%0A%09%09%09%0A%09%09%09p%20%7B%0A%09%09%09%09margin%3A%200%3B%0A%09%09%09%09padding%3A%2020px%3B%0A%09%09%09%09text-align%3A%20center%3B%0A%09%09%09%7D%0A%09%09%09%2F*%20%E5%B7%A6%E4%BE%A7%E6%A0%8F%E5%9B%BA%E5%AE%9A%E5%AE%BD%E5%BA%A6%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%20*%2F%0A%09%09%09%0A%09%09%09.bd-lft%20%7B%0A%09%09%09%09zoom%3A%201%3B%0A%09%09%09%09overflow%3A%20hidden%3B%0A%09%09%09%09padding-left%3A%20210px%3B%0A%09%09%09%7D%0A%09%09%09%0A%09%09%09.bd-lft%20.aside%20%7B%0A%09%09%09%09float%3A%20left%3B%0A%09%09%09%09width%3A%20200px%3B%0A%09%09%09%09margin-left%3A%20-100%25%3B%0A%09%09%09%09%2F*%3D%20-100%25*%2F%0A%09%09%09%09position%3A%20relative%3B%0A%09%09%09%09left%3A%20-210px%3B%0A%09%09%09%09%2F*%20%3D%20-parantNode.paddingLeft%20*%2F%0A%09%09%09%09_left%3A%200%3B%0A%09%09%09%09%2F*IE6%20hack*%2F%0A%09%09%09%7D%0A%09%09%09%0A%09%09%09.bd-lft%20.main%20%7B%0A%09%09%09%09float%3A%20left%3B%0A%09%09%09%09width%3A%20100%25%3B%0A%09%09%09%7D%0A%09%09%09%2F*%20%E5%8F%B3%E4%BE%A7%E6%A0%8F%E5%9B%BA%E5%AE%9A%E5%AE%BD%E5%BA%A6%EF%BC%8C%E5%B7%A6%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%20*%2F%0A%09%09%09%0A%09%09%09.bd-rgt%20%7B%0A%09%09%09%09zoom%3A%201%3B%0A%09%09%09%09overflow%3A%20hidden%3B%0A%09%09%09%09padding-right%3A%20210px%3B%0A%09%09%09%7D%0A%09%09%09%0A%09%09%09.bd-rgt%20.aside%20%7B%0A%09%09%09%09float%3A%20left%3B%0A%09%09%09%09width%3A%20200px%3B%0A%09%09%09%09margin-left%3A%20-200px%3B%0A%09%09%09%09%2F*%20%3D%20-this.width%20*%2F%0A%09%09%09%09position%3A%20relative%3B%0A%09%09%09%09right%3A%20-210px%3B%0A%09%09%09%09%2F*%20%3D%20-parantNode.paddingRight%20*%2F%0A%09%09%09%7D%0A%09%09%09%0A%09%09%09.bd-rgt%20.main%20%7B%0A%09%09%09%09float%3A%20left%3B%0A%09%09%09%09width%3A%20100%25%3B%0A%09%09%09%7D%0A%09%09%09%2F*%20%E5%B7%A6%E4%B8%AD%E5%8F%B3%20%E4%B8%89%E6%A0%8F%E8%87%AA%E9%80%82%E5%BA%94%20*%2F%0A%09%09%09%0A%09%09%09.bd-3-lr%20%7B%0A%09%09%09%09zoom%3A%201%3B%0A%09%09%09%09overflow%3A%20hidden%3B%0A%09%09%09%09padding-left%3A%20210px%3B%0A%09%09%09%09padding-right%3A%20210px%3B%0A%09%09%09%7D%0A%09%09%09%0A%09%09%09.bd-3-lr%20.main%20%7B%0A%09%09%09%09float%3A%20left%3B%0A%09%09%09%09width%3A%20100%25%3B%0A%09%09%09%7D%0A%09%09%09%0A%09%09%09.bd-3-lr%20.aside-1%20%7B%0A%09%09%09%09float%3A%20left%3B%0A%09%09%09%09width%3A%20200px%3B%0A%09%09%09%09margin-left%3A%20-100%25%3B%0A%09%09%09%09position%3A%20relative%3B%0A%09%09%09%09left%3A%20-210px%3B%0A%09%09%09%09_left%3A%20210px%3B%0A%09%09%09%09%2F*IE6%20hack*%2F%0A%09%09%09%7D%0A%09%09%09%0A%09%09%09.bd-3-lr%20.aside-2%20%7B%0A%09%09%09%09float%3A%20left%3B%0A%09%09%09%09width%3A%20200px%3B%0A%09%09%09%09margin-left%3A%20-200px%3B%0A%09%09%09%09position%3A%20relative%3B%0A%09%09%09%09right%3A%20-210px%3B%0A%09%09%09%7D%0A%09%09%09%2F*%20%E9%83%BD%E5%9C%A8%E5%B7%A6%E8%BE%B9%EF%BC%8C%E5%8F%B3%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%20*%2F%0A%09%09%09%0A%09%09%09.bd-3-ll%20%7B%0A%09%09%09%09zoom%3A%201%3B%0A%09%09%09%09overflow%3A%20hidden%3B%0A%09%09%09%09padding-left%3A%20420px%3B%0A%09%09%09%7D%0A%09%09%09%0A%09%09%09.bd-3-ll%20.main%20%7B%0A%09%09%09%09float%3A%20left%3B%0A%09%09%09%09width%3A%20100%25%3B%0A%09%09%09%7D%0A%09%09%09%0A%09%09%09.bd-3-ll%20.aside-1%20%7B%0A%09%09%09%09float%3A%20left%3B%0A%09%09%09%09width%3A%20200px%3B%0A%09%09%09%09margin-left%3A%20-100%25%3B%0A%09%09%09%09position%3A%20relative%3B%0A%09%09%09%09left%3A%20-420px%3B%0A%09%09%09%09_left%3A%200px%3B%0A%09%09%09%09%2F*IE6%20hack*%2F%0A%09%09%09%7D%0A%09%09%09%0A%09%09%09.bd-3-ll%20.aside-2%20%7B%0A%09%09%09%09float%3A%20left%3B%0A%09%09%09%09width%3A%20200px%3B%0A%09%09%09%09margin-left%3A%20-100%25%3B%0A%09%09%09%09position%3A%20relative%3B%0A%09%09%09%09left%3A%20-210px%3B%0A%09%09%09%09_left%3A%20210px%3B%0A%09%09%09%09%2F*IE6%20hack*%2F%0A%09%09%09%7D%0A%09%09%09%2F*%20%E9%83%BD%E5%9C%A8%E5%8F%B3%E8%BE%B9%EF%BC%8C%E5%B7%A6%E4%BE%A7%E8%87%AA%E9%80%82%E5%BA%94%20*%2F%0A%09%09%09%0A%09%09%09.bd-3-rr%20%7B%0A%09%09%09%09zoom%3A%201%3B%0A%09%09%09%09overflow%3A%20hidden%3B%0A%09%09%09%09padding-right%3A%20420px%3B%0A%09%09%09%7D%0A%09%09%09%0A%09%09%09.bd-3-rr%20.main%20%7B%0A%09%09%09%09float%3A%20left%3B%0A%09%09%09%09width%3A%20100%25%3B%0A%09%09%09%7D%0A%09%09%09%0A%09%09%09.bd-3-rr%20.aside-1%20%7B%0A%09%09%09%09float%3A%20left%3B%0A%09%09%09%09width%3A%20200px%3B%0A%09%09%09%09margin-left%3A%20-200px%3B%0A%09%09%09%09position%3A%20relative%3B%0A%09%09%09%09right%3A%20-210px%3B%0A%09%09%09%7D%0A%09%09%09%0A%09%09%09.bd-3-rr%20.aside-2%20%7B%0A%09%09%09%09float%3A%20left%3B%0A%09%09%09%09width%3A%20200px%3B%0A%09%09%09%09margin-left%3A%20-200px%3B%0A%09%09%09%09position%3A%20relative%3B%0A%09%09%09%09right%3A%20-420px%3B%0A%09%09%09%7D%0A%09%09%3C%2Fstyle%3E%0A%0A%09%3C%2Fhead%3E%0A%0A%09%3Cbody%3E%0A%0A%09%09%3Cdiv%20id%3D%22hd%22%3E%E5%A4%B4%E9%83%A8%3C%2Fdiv%3E%0A%0A%09%09%3Cdiv%20class%3D%22bd-lft%22%3E%0A%09%09%09%3Cdiv%20class%3D%22main%22%3E%0A%09%09%09%09%3Cp%3E%E4%B8%BB%E5%86%85%E5%AE%B9%E6%A0%8F%E8%87%AA%E9%80%82%E5%BA%94%E5%AE%BD%E5%BA%A6%3C%2Fp%3E%0A%09%09%09%3C%2Fdiv%3E%0A%0A%09%09%09%3Cdiv%20class%3D%22aside%22%3E%0A%09%09%09%09%3Cp%3E%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%9B%BA%E5%AE%9A%E5%AE%BD%E5%BA%A6%3C%2Fp%3E%0A%09%09%09%3C%2Fdiv%3E%0A%09%09%3C%2Fdiv%3E%0A%0A%09%09%3Cdiv%20class%3D%22bd-rgt%22%3E%0A%09%09%09%3Cdiv%20class%3D%22main%22%3E%0A%09%09%09%09%3Cp%3E%E4%B8%BB%E5%86%85%E5%AE%B9%E6%A0%8F%E8%87%AA%E9%80%82%E5%BA%94%E5%AE%BD%E5%BA%A6%3C%2Fp%3E%0A%09%09%09%3C%2Fdiv%3E%0A%0A%09%09%09%3Cdiv%20class%3D%22aside%22%3E%0A%09%09%09%09%3Cp%3E%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%9B%BA%E5%AE%9A%E5%AE%BD%E5%BA%A6%3C%2Fp%3E%0A%09%09%09%3C%2Fdiv%3E%0A%09%09%3C%2Fdiv%3E%0A%0A%09%09%3Cdiv%20class%3D%22bd-3-lr%22%3E%0A%09%09%09%3Cdiv%20class%3D%22main%22%3E%0A%09%09%09%09%3Cp%3E%E4%B8%BB%E5%86%85%E5%AE%B9%E6%A0%8F%E8%87%AA%E9%80%82%E5%BA%94%E5%AE%BD%E5%BA%A6%3C%2Fp%3E%0A%09%09%09%3C%2Fdiv%3E%0A%0A%09%09%09%3Cdiv%20class%3D%22aside-1%22%3E%0A%09%09%09%09%3Cp%3E%E4%BE%A7%E8%BE%B9%E6%A0%8F1%E5%9B%BA%E5%AE%9A%E5%AE%BD%E5%BA%A6%3C%2Fp%3E%0A%09%09%09%3C%2Fdiv%3E%0A%0A%09%09%09%3Cdiv%20class%3D%22aside-2%22%3E%0A%09%09%09%09%3Cp%3E%E4%BE%A7%E8%BE%B9%E6%A0%8F2%E5%9B%BA%E5%AE%9A%E5%AE%BD%E5%BA%A6%3C%2Fp%3E%0A%09%09%09%3C%2Fdiv%3E%0A%09%09%3C%2Fdiv%3E%0A%0A%09%09%3Cdiv%20class%3D%22bd-3-ll%22%3E%0A%09%09%09%3Cdiv%20class%3D%22main%22%3E%0A%09%09%09%09%3Cp%3E%E4%B8%BB%E5%86%85%E5%AE%B9%E6%A0%8F%E8%87%AA%E9%80%82%E5%BA%94%E5%AE%BD%E5%BA%A6%3C%2Fp%3E%0A%09%09%09%3C%2Fdiv%3E%0A%0A%09%09%09%3Cdiv%20class%3D%22aside-1%22%3E%0A%09%09%09%09%3Cp%3E%E4%BE%A7%E8%BE%B9%E6%A0%8F1%E5%9B%BA%E5%AE%9A%E5%AE%BD%E5%BA%A6%3C%2Fp%3E%0A%09%09%09%3C%2Fdiv%3E%0A%0A%09%09%09%3Cdiv%20class%3D%22aside-2%22%3E%0A%09%09%09%09%3Cp%3E%E4%BE%A7%E8%BE%B9%E6%A0%8F2%E5%9B%BA%E5%AE%9A%E5%AE%BD%E5%BA%A6%3C%2Fp%3E%0A%09%09%09%3C%2Fdiv%3E%0A%09%09%3C%2Fdiv%3E%0A%0A%09%09%3Cdiv%20class%3D%22bd-3-rr%22%3E%0A%09%09%09%3Cdiv%20class%3D%22main%22%3E%0A%09%09%09%09%3Cp%3E%E4%B8%BB%E5%86%85%E5%AE%B9%E6%A0%8F%E8%87%AA%E9%80%82%E5%BA%94%E5%AE%BD%E5%BA%A6%3C%2Fp%3E%0A%09%09%09%3C%2Fdiv%3E%0A%0A%09%09%09%3Cdiv%20class%3D%22aside-1%22%3E%0A%09%09%09%09%3Cp%3E%E4%BE%A7%E8%BE%B9%E6%A0%8F1%E5%9B%BA%E5%AE%9A%E5%AE%BD%E5%BA%A6%3C%2Fp%3E%0A%09%09%09%3C%2Fdiv%3E%0A%0A%09%09%09%3Cdiv%20class%3D%22aside-2%22%3E%0A%09%09%09%09%3Cp%3E%E4%BE%A7%E8%BE%B9%E6%A0%8F2%E5%9B%BA%E5%AE%9A%E5%AE%BD%E5%BA%A6%3C%2Fp%3E%0A%09%09%09%3C%2Fdiv%3E%0A%09%09%3C%2Fdiv%3E%0A%09%09%3Cdiv%20id%3D%22ft%22%3E%E5%BA%95%E9%83%A8%3C%2Fdiv%3E%0A%09%3C%2Fbody%3E%0A%3C%2Fhtml%3E%0A%3Cscript%3E%0A%3C%2Fscript%3E%0A%3Cstyle%3E%0A%3C%2Fstyle%3E%0A" class="vuepress-plugin-demo-block__wrapper" style="display:none;"><div class="vuepress-plugin-demo-block__display"><div class="vuepress-plugin-demo-block__app"></div></div> <div class="vuepress-plugin-demo-block__code"><div class="language-html extra-class"><pre class="language-html"><code><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>utf-8<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>X-UA-Compatible<span class="token punctuation">&quot;</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>IE=edge,chrome=1<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>圣杯布局<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>text/css<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+			<span class="token selector">body</span> <span class="token punctuation">{</span>
+				<span class="token property">background-color</span><span class="token punctuation">:</span> #ffffff<span class="token punctuation">;</span>
+				<span class="token property">font-size</span><span class="token punctuation">:</span> 14px<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			
+			<span class="token selector">#hd,
+			#ft</span> <span class="token punctuation">{</span>
+				<span class="token property">padding</span><span class="token punctuation">:</span> 20px 3px<span class="token punctuation">;</span>
+				<span class="token property">background-color</span><span class="token punctuation">:</span> #03a9f4<span class="token punctuation">;</span>
+				<span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+                <span class="token property">color</span><span class="token punctuation">:</span> #ffffff<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			
+			<span class="token selector">.bd-lft,
+			.bd-rgt,
+			.bd-3-lr,
+			.bd-3-ll,
+			.bd-3-rr</span> <span class="token punctuation">{</span>
+				<span class="token property">margin</span><span class="token punctuation">:</span> 10px 0<span class="token punctuation">;</span>
+				<span class="token property">min-width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			
+			<span class="token selector">.main</span> <span class="token punctuation">{</span>
+				<span class="token property">background-color</span><span class="token punctuation">:</span> #03a9f4<span class="token punctuation">;</span>
+				<span class="token property">color</span><span class="token punctuation">:</span> #ffffff<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			
+			<span class="token selector">.aside,
+			.aside-1,
+			.aside-2</span> <span class="token punctuation">{</span>
+				<span class="token property">background-color</span><span class="token punctuation">:</span> #00bcd4<span class="token punctuation">;</span>
+				<span class="token property">color</span><span class="token punctuation">:</span> #ffffff<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			
+			<span class="token selector">p</span> <span class="token punctuation">{</span>
+				<span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+				<span class="token property">padding</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
+				<span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token comment">/* 左侧栏固定宽度，右侧自适应 */</span>
+			
+			<span class="token selector">.bd-lft</span> <span class="token punctuation">{</span>
+				<span class="token property">zoom</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+				<span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+				<span class="token property">padding-left</span><span class="token punctuation">:</span> 210px<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			
+			<span class="token selector">.bd-lft .aside</span> <span class="token punctuation">{</span>
+				<span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+				<span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+				<span class="token property">margin-left</span><span class="token punctuation">:</span> -100%<span class="token punctuation">;</span>
+				<span class="token comment">/*= -100%*/</span>
+				<span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+				<span class="token property">left</span><span class="token punctuation">:</span> -210px<span class="token punctuation">;</span>
+				<span class="token comment">/* = -parantNode.paddingLeft */</span>
+				<span class="token property">_left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+				<span class="token comment">/*IE6 hack*/</span>
+			<span class="token punctuation">}</span>
+			
+			<span class="token selector">.bd-lft .main</span> <span class="token punctuation">{</span>
+				<span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+				<span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token comment">/* 右侧栏固定宽度，左侧自适应 */</span>
+			
+			<span class="token selector">.bd-rgt</span> <span class="token punctuation">{</span>
+				<span class="token property">zoom</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+				<span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+				<span class="token property">padding-right</span><span class="token punctuation">:</span> 210px<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			
+			<span class="token selector">.bd-rgt .aside</span> <span class="token punctuation">{</span>
+				<span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+				<span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+				<span class="token property">margin-left</span><span class="token punctuation">:</span> -200px<span class="token punctuation">;</span>
+				<span class="token comment">/* = -this.width */</span>
+				<span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+				<span class="token property">right</span><span class="token punctuation">:</span> -210px<span class="token punctuation">;</span>
+				<span class="token comment">/* = -parantNode.paddingRight */</span>
+			<span class="token punctuation">}</span>
+			
+			<span class="token selector">.bd-rgt .main</span> <span class="token punctuation">{</span>
+				<span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+				<span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token comment">/* 左中右 三栏自适应 */</span>
+			
+			<span class="token selector">.bd-3-lr</span> <span class="token punctuation">{</span>
+				<span class="token property">zoom</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+				<span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+				<span class="token property">padding-left</span><span class="token punctuation">:</span> 210px<span class="token punctuation">;</span>
+				<span class="token property">padding-right</span><span class="token punctuation">:</span> 210px<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			
+			<span class="token selector">.bd-3-lr .main</span> <span class="token punctuation">{</span>
+				<span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+				<span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			
+			<span class="token selector">.bd-3-lr .aside-1</span> <span class="token punctuation">{</span>
+				<span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+				<span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+				<span class="token property">margin-left</span><span class="token punctuation">:</span> -100%<span class="token punctuation">;</span>
+				<span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+				<span class="token property">left</span><span class="token punctuation">:</span> -210px<span class="token punctuation">;</span>
+				<span class="token property">_left</span><span class="token punctuation">:</span> 210px<span class="token punctuation">;</span>
+				<span class="token comment">/*IE6 hack*/</span>
+			<span class="token punctuation">}</span>
+			
+			<span class="token selector">.bd-3-lr .aside-2</span> <span class="token punctuation">{</span>
+				<span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+				<span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+				<span class="token property">margin-left</span><span class="token punctuation">:</span> -200px<span class="token punctuation">;</span>
+				<span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+				<span class="token property">right</span><span class="token punctuation">:</span> -210px<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token comment">/* 都在左边，右侧自适应 */</span>
+			
+			<span class="token selector">.bd-3-ll</span> <span class="token punctuation">{</span>
+				<span class="token property">zoom</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+				<span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+				<span class="token property">padding-left</span><span class="token punctuation">:</span> 420px<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			
+			<span class="token selector">.bd-3-ll .main</span> <span class="token punctuation">{</span>
+				<span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+				<span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			
+			<span class="token selector">.bd-3-ll .aside-1</span> <span class="token punctuation">{</span>
+				<span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+				<span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+				<span class="token property">margin-left</span><span class="token punctuation">:</span> -100%<span class="token punctuation">;</span>
+				<span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+				<span class="token property">left</span><span class="token punctuation">:</span> -420px<span class="token punctuation">;</span>
+				<span class="token property">_left</span><span class="token punctuation">:</span> 0px<span class="token punctuation">;</span>
+				<span class="token comment">/*IE6 hack*/</span>
+			<span class="token punctuation">}</span>
+			
+			<span class="token selector">.bd-3-ll .aside-2</span> <span class="token punctuation">{</span>
+				<span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+				<span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+				<span class="token property">margin-left</span><span class="token punctuation">:</span> -100%<span class="token punctuation">;</span>
+				<span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+				<span class="token property">left</span><span class="token punctuation">:</span> -210px<span class="token punctuation">;</span>
+				<span class="token property">_left</span><span class="token punctuation">:</span> 210px<span class="token punctuation">;</span>
+				<span class="token comment">/*IE6 hack*/</span>
+			<span class="token punctuation">}</span>
+			<span class="token comment">/* 都在右边，左侧自适应 */</span>
+			
+			<span class="token selector">.bd-3-rr</span> <span class="token punctuation">{</span>
+				<span class="token property">zoom</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+				<span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+				<span class="token property">padding-right</span><span class="token punctuation">:</span> 420px<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			
+			<span class="token selector">.bd-3-rr .main</span> <span class="token punctuation">{</span>
+				<span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+				<span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			
+			<span class="token selector">.bd-3-rr .aside-1</span> <span class="token punctuation">{</span>
+				<span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+				<span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+				<span class="token property">margin-left</span><span class="token punctuation">:</span> -200px<span class="token punctuation">;</span>
+				<span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+				<span class="token property">right</span><span class="token punctuation">:</span> -210px<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			
+			<span class="token selector">.bd-3-rr .aside-2</span> <span class="token punctuation">{</span>
+				<span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+				<span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+				<span class="token property">margin-left</span><span class="token punctuation">:</span> -200px<span class="token punctuation">;</span>
+				<span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+				<span class="token property">right</span><span class="token punctuation">:</span> -420px<span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>hd<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>头部<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>bd-lft<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>main<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>主内容栏自适应宽度<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>aside<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>侧边栏固定宽度<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>bd-rgt<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>main<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>主内容栏自适应宽度<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>aside<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>侧边栏固定宽度<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>bd-3-lr<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>main<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>主内容栏自适应宽度<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>aside-1<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>侧边栏1固定宽度<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>aside-2<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>侧边栏2固定宽度<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>bd-3-ll<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>main<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>主内容栏自适应宽度<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>aside-1<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>侧边栏1固定宽度<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>aside-2<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>侧边栏2固定宽度<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>bd-3-rr<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>main<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>主内容栏自适应宽度<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>aside-1<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>侧边栏1固定宽度<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>aside-2<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>侧边栏2固定宽度<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+			<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>ft<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>底部<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div></div> <div class="vuepress-plugin-demo-block__footer"></div></div> <!----></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">更新时间:</span> <span class="time">2020年8月20日星期四上午10点56分</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
       ←
-      <a href="/myBlog/tool/sshkey.html" class="prev">
-        如何生成SSH key
-      </a></span> <!----></p></div> </main></div><div class="global-ui"><!----></div></div>
-    <script src="/myBlog/assets/js/app.a6457ad2.js" defer></script><script src="/myBlog/assets/js/5.85b3d15c.js" defer></script><script src="/myBlog/assets/js/2.207249c7.js" defer></script><script src="/myBlog/assets/js/9.03a87dc7.js" defer></script><script src="/myBlog/assets/js/3.30840aa6.js" defer></script>
+      <a href="/myBlog/about.html" class="prev">
+        关于我
+      </a></span> <span class="next"><a href="/myBlog/tool/nvm.html">
+        nvm 安装教程
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/myBlog/assets/js/app.fade69da.js" defer></script><script src="/myBlog/assets/js/4.cb807ce8.js" defer></script><script src="/myBlog/assets/js/2.b77ee233.js" defer></script><script src="/myBlog/assets/js/8.738a93cb.js" defer></script>
   </body>
 </html>
