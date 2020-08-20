@@ -5,7 +5,17 @@ module.exports = {
     base: '/myBlog/',
     title: '阿离王-前端分享',
     description: '阿离王-前端分享笔记',
+    head: [
+        ['script', { src: 'https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js' }],
+        ['script', { src: 'https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js' }],
+        ['script', { src: 'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js' }],
+        ['script', { src: 'https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js' }],
+    ],
     plugins: {
+        'demo-block': {
+            settings: {
+            }
+        },
         '@vssue/vuepress-plugin-vssue': {
             // 设置 `platform` 而不是 `api`
             platform: 'github-v4',
@@ -83,6 +93,15 @@ module.exports = {
                 ]
             },
             {
+                title: 'css',   // 必要的
+                path: '/css/',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
+                collapsable: false, // 可选的, 默认值是 true,
+                sidebarDepth: 1,    // 可选的, 默认值是 1
+                children: [
+                    '/css/'
+                ]
+            },
+            {
                 title: '工具栏',   // 必要的
                 path: '/tool/',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
                 collapsable: false, // 可选的, 默认值是 true,
@@ -94,12 +113,12 @@ module.exports = {
                 ]
             },
             {
-                title: '美丽的css',   // 必要的
-                path: '/css/',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
+                title: '杂类',   // 必要的
+                path: '/others/',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
                 collapsable: false, // 可选的, 默认值是 true,
                 sidebarDepth: 1,    // 可选的, 默认值是 1
                 children: [
-                    '/css/'
+                    '/others/bluejApi',
                 ]
             },
         ],

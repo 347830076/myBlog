@@ -1,9 +1,10 @@
 ---
 home: true
-# heroImage: /hero.png
+heroImage: '/assets/img/logo.jpg'
+repo: 'https://github.com/347830076/myBlog'
 heroText: 前端分享
 tagline: 热爱代码
-actionText: 快速上手 →
+actionText: 立即查看 →
 actionLink: /about
 features:
 - title: 简洁至上
