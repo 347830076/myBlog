@@ -6,6 +6,11 @@ set -e
 # 生成静态文件
 npm run docs:build
 
+# 先提交代码到master分支
+git add -A
+git commit -m 'deploy'
+git push -f origin master
+
 # 进入生成的文件夹
 cd docs/.vuepress/dist
 

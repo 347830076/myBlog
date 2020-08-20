@@ -47,7 +47,7 @@ wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | 
 <p>nvm current：当前node版本</p>
 <p>nvm ls：列出所有已经安装的node版本</p>
 
-<Vssue />
+<Vssue :options="{ locale: 'zh' }"  />
 
 
 

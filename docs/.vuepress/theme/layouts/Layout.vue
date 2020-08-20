@@ -150,3 +150,8 @@ export default {
   }
 }
 </script>
+<style>
+  h2{
+    border-bottom: none;
+  }
+</style>

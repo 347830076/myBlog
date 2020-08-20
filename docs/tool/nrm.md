@@ -38,3 +38,5 @@ nrm current
 <p>nrm add cpm http://192.168.22.11:8888/repository/npm-public/</p>
 <p>nrm del [registry] --- 删除使用源。</p>
 <p>nrm test [registry] --- 测试使用源速度。</p>
+
+<Vssue :options="{ locale: 'zh' }"  />
