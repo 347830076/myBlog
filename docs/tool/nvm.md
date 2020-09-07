@@ -47,6 +47,63 @@ wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | 
 <p>nvm current：当前node版本</p>
 <p>nvm ls：列出所有已经安装的node版本</p>
 
+## macOS 安装 nvm 踩坑小记
+
+### 卸载 node 相关模块
+
+如果你已经全局安装了 node，最好先将此删除，避免以后出现不必要的冲突。
+
+```sh
+# 查看已经安装在全局的模块
+npm ls -g --depth=0
+# 删除全局 node_modules 目录
+sudo rm -rf /usr/local/lib/node_modules
+# 删除 node
+sudo rm /usr/local/bin/node 
+# 删除全局 node 模块注册的软链
+cd /usr/local/bin && ls -l | grep "../lib/node_modules/" | awk '{print $9}'| xargs rm
+```
+
+### 安装 nvm
+
+在下载 nvm 之前先检查当前用户的 home 目录下是否存在 .bash_profile 文件，没有的话要先创建。
+
+创建完毕之后是不用对文件进行任何写入操作的，因为后面下载 nvm 的时候，它会自动找到我们新建的这个文件并写入相应内容。
+
+我看到网上很多教程都要求主动往 .bash_profile 文件写入内容，其实并不需要。
+
+```sh
+# 1.创建 .bash_profile 文件
+touch ～/.bash_profile
+# 2.运行下载/更新脚本
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+```
+
+### <a href="https://github.com/nvm-sh/nvm/blob/master/README.md" target="_blank">查看最新nvm版本</a>
+
+### nvm: command not found
+
+很不幸，我跟着网上的 n 篇教程，下载完毕之后试过大家给出的 n 种方法，包括什么重启终端、在 nvm 文件夹里也复制一份 .bash_profile 文件、手动修改配置文件啥啥啥的，结果还是提示 nvm: command not found。
+
+后来我发现每次执行 source ~/.bash_profile 之后会生效（我之前新建的配置文件），但是只生效一次。
+
+后来总算找到解决方法，大致是因为我的系统是最新更新的 macOS Catalina 系统，默认的 shell 是 zsh，所以找不到配置文件啥的。
+
+解决方法如下：
+
+```sh
+# 1.新建一个 .zshrc 文件（如果没有的话）
+touch ~/.zshrc
+# 2.在 ~/.zshrc文件最后，增加一行 
+source ~/.bash_profile
+```
+
+重新打开终端, 运行
+
+```sh
+nvm version
+```
+
 <Vssue :options="{ locale: 'zh' }"  />
 
 
