@@ -8,7 +8,7 @@ npm run build
 
 # 先提交代码到master分支
 git add -A
-git commit -m '函数'
+git commit -m 'deploy'
 git push -f origin master
 
 # 进入生成的文件夹
@@ -19,7 +19,7 @@ cd docs/.vuepress/dist
 
 git init
 git add -A
-git commit -m '函数'
+git commit -m 'deploy'
 
 # 如果发布到 https://<USERNAME>.github.io
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
