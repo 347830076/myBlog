@@ -108,6 +108,7 @@ module.exports = {
                 sidebarDepth: 1,    // 可选的, 默认值是 1
                 children: [
                     '/javascript/函数',
+                    '/javascript/setTimeout',
                 ]
             },
             {

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>setTimeout 和 setInterval 的定时时间深入研究 | 阿离王-前端分享</title>
+    <meta name="generator" content="VuePress 1.5.3">
+    <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+    <meta name="description" content="阿离王-前端分享笔记">
+    <link rel="preload" href="/myBlog/assets/css/0.styles.173aa06c.css" as="style"><link rel="preload" href="/myBlog/assets/js/app.18d8b5a3.js" as="script"><link rel="preload" href="/myBlog/assets/js/3.32b116b4.js" as="script"><link rel="preload" href="/myBlog/assets/js/2.c43bf905.js" as="script"><link rel="preload" href="/myBlog/assets/js/11.6e67973f.js" as="script"><link rel="prefetch" href="/myBlog/assets/js/10.3d5e91e1.js"><link rel="prefetch" href="/myBlog/assets/js/12.1df4710d.js"><link rel="prefetch" href="/myBlog/assets/js/13.06005a71.js"><link rel="prefetch" href="/myBlog/assets/js/14.8cf4dc38.js"><link rel="prefetch" href="/myBlog/assets/js/15.41b51500.js"><link rel="prefetch" href="/myBlog/assets/js/16.316e0773.js"><link rel="prefetch" href="/myBlog/assets/js/17.783210fa.js"><link rel="prefetch" href="/myBlog/assets/js/18.f197839c.js"><link rel="prefetch" href="/myBlog/assets/js/19.1358bb43.js"><link rel="prefetch" href="/myBlog/assets/js/4.4dc3f7ba.js"><link rel="prefetch" href="/myBlog/assets/js/5.238b8a8b.js"><link rel="prefetch" href="/myBlog/assets/js/6.3e7ad3ed.js"><link rel="prefetch" href="/myBlog/assets/js/7.5f6cac02.js"><link rel="prefetch" href="/myBlog/assets/js/8.ff2c321c.js"><link rel="prefetch" href="/myBlog/assets/js/9.a9721da1.js">
+    <link rel="stylesheet" href="/myBlog/assets/css/0.styles.173aa06c.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myBlog/" class="home-link router-link-active"><img src="/myBlog/assets/img/logo.jpg" alt="阿离王-前端分享" class="logo"> <span class="site-name can-hide">阿离王-前端分享</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/myBlog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/myBlog/about.html" class="nav-link">
+  关于我
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多功能" class="dropdown-title"><span class="title">更多功能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分组一
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myBlog/css/" class="nav-link">
+  css
+</a></li></ul></li><li class="dropdown-item"><h4>
+          分组二
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myBlog/tool/" class="nav-link">
+  工具类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="https://google.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  谷歌搜索
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <a href="https://github.com/347830076/myBlog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/myBlog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/myBlog/about.html" class="nav-link">
+  关于我
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多功能" class="dropdown-title"><span class="title">更多功能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分组一
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myBlog/css/" class="nav-link">
+  css
+</a></li></ul></li><li class="dropdown-item"><h4>
+          分组二
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myBlog/tool/" class="nav-link">
+  工具类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="https://google.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  谷歌搜索
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <a href="https://github.com/347830076/myBlog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><a href="/myBlog/" class="sidebar-heading clickable router-link-active"><span>首页</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/myBlog/about.html" class="sidebar-link">关于我</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/myBlog/css/" class="sidebar-heading clickable"><span>css</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/myBlog/css/" class="sidebar-link">css各种布局</a></li><li><a href="/myBlog/css/隐藏元素.html" class="sidebar-link">隐藏元素</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/myBlog/javascript/" class="sidebar-heading clickable router-link-active open"><span>javascript</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/myBlog/javascript/函数.html" class="sidebar-link">函数的深入浅出</a></li><li><a href="/myBlog/javascript/setTimeout.html" aria-current="page" class="active sidebar-link">setTimeout 和 setInterval 的定时时间深入研究</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/myBlog/tool/" class="sidebar-heading clickable"><span>工具栏</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/myBlog/tool/nvm.html" class="sidebar-link">nvm 安装教程</a></li><li><a href="/myBlog/tool/nrm.html" class="sidebar-link">nrm 安装使用教程</a></li><li><a href="/myBlog/tool/sshkey.html" class="sidebar-link">如何生成SSH key</a></li><li><a href="/myBlog/tool/githook.html" class="sidebar-link">git hook 自动部署</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="settimeout-和-setinterval-的定时时间深入研究"><a href="#settimeout-和-setinterval-的定时时间深入研究" class="header-anchor">#</a> setTimeout 和 setInterval 的定时时间深入研究</h1> <p><code>setInterval()</code> - 间隔指定的毫秒数不停地执行指定的代码（一直执行）。</p> <p><code>setTimeout()</code> - 在指定的毫秒数后执行指定代码(只执行一次)。</p> <p>使用setInterVal：</p> <div class="language-js extra-class"><pre class="language-js"><code>    <span class="token keyword">function</span> <span class="token function">doStuff</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">// 此处为需要执行一段时间T的代码</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">setInterVal</span><span class="token punctuation">(</span>doStuff<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>下来用使用setTimeout模拟setInterval：</p> <div class="language-js extra-class"><pre class="language-js"><code>    <span class="token keyword">function</span> <span class="token function">tick</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">doStuff</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">setTimeout</span><span class="token punctuation">(</span>tick<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">tick</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>看下正常情况下两者的区别：</p> <img src="/myBlog/assets/img/js/setTime.png" alt="time"> <p><strong>setInterval</strong>每个定时器之间的间隔是<strong>100ms</strong>，而<strong>setTimeout</strong>每隔<code>100ms执行一次doStuff</code>,所以每个定时器之间的间隔是<strong>100 + T</strong>(doStuff执行时间为T);这个T就是本文的关键了。</p> <ul><li>如果T可以忽略的话，两者的效果是基本相同的。</li> <li>T &lt;= 100时，setInterval定时器间隔100，setTimeout定时器间隔100+T。</li> <li>如果T &gt; 100，setTimeout依然如上图，两个定时器之间间隔100+T。 那么setInterval呢？</li></ul> <p>先看下图：</p> <img src="/myBlog/assets/img/js/setTime2.png" alt="time2"> <p>在0ms时，定时器1开始进入宏任务队列；100ms时，定时器1开始执行doStuff1，队列为空，定时器2进入队列；200ms时，因为定时器2(doStuff1还没执行完)在队列中，所以定时器3被跳过。<strong>浏览器不会同时创建两个相同的间隔计时器</strong>。 300ms时，定时器2已经开始执行，队列为空，定时器4进入队列。以此类推~</p> <p>下面我们用代码验证下。T设置为140ms。 我们让定时器运行5次，按照上述理解，总运行时间应该是：<strong>100+5*140 = 800ms</strong>。 代码如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token string">&quot;总时间&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">doStuff</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;delay&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">dead</span><span class="token punctuation">(</span><span class="token number">140</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">timeEnd</span><span class="token punctuation">(</span><span class="token string">&quot;测试&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">dead</span><span class="token punctuation">(</span><span class="token parameter">delay</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> start <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> start <span class="token operator">+</span> delay<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> timer <span class="token operator">=</span> <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    i<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&gt;</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">clearInterval</span><span class="token punctuation">(</span>timer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">timeEnd</span><span class="token punctuation">(</span><span class="token string">&quot;总时间&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;interval start&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token string">&quot;测试&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">doStuff</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+consle
+</code></pre></div><img src="/myBlog/assets/img/js/setTime3.png" alt="time3"> <p>可以看出定时器运行了5次，总时间的确为 <strong>100 + 140*5 = 800ms</strong>。</p> <p>如果我们设置dead(250), 经过测试总时间为 <strong>100 + 250 * 5 = 1350</strong>;</p> <img src="/myBlog/assets/img/js/setTime4.png" alt="time4"> <p>如果doStuff中的代码是异步的呢？比如像我们常用promise。140ms返回结果。代码如下：</p> <div class="language-js extra-class"><pre class="language-js"><code>    <span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token string">&quot;总时间&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">function</span> <span class="token function">delay</span><span class="token punctuation">(</span><span class="token parameter">i</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">promise</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">function</span> <span class="token function">promise</span><span class="token punctuation">(</span><span class="token parameter">i</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resole<span class="token punctuation">,</span>reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token function">resole</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">140</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;res&quot;</span><span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">let</span> timer <span class="token operator">=</span> <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        i<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&gt;</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">clearInterval</span><span class="token punctuation">(</span>timer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">timeEnd</span><span class="token punctuation">(</span><span class="token string">&quot;总时间&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">delay</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><img src="/myBlog/assets/img/js/setTime5.png" alt="time5"> <p>可以看出总时间是500ms，请求接口的异步代码并不会阻塞定时器。这个也很好理解，定时器中的同步代码会直接进入队列，异步代码注册事件，完成后进入队列；所以当异步代码注册事件后，这个定时器就执行完了，并不是等异步代码回来后这个定时器才算结束，不然5次定时器的总时间就是800ms了。</p> <h3 id="根据以上代码效果总结"><a href="#根据以上代码效果总结" class="header-anchor">#</a> 根据以上代码效果总结</h3> <p><code>setInterval</code>只是在特定时间点将代码推入队列，如果已有定时器在队列中，则会跳过。<strong>浏览器不会同时创建两个相同的间隔计时器</strong>。</p> <p><code>setInterval</code>设置定时时间小于函数体内的执行时间时候，则第一次执行定时时间后面的真正的定时时间应该是执行函数体的总时间。</p> <p><code>setInterval</code>中的异步代码不会阻塞创建新的定时器。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/myBlog/javascript/函数.html" class="prev">
+        函数的深入浅出
+      </a></span> <span class="next"><a href="/myBlog/tool/nvm.html">
+        nvm 安装教程
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/myBlog/assets/js/app.18d8b5a3.js" defer></script><script src="/myBlog/assets/js/3.32b116b4.js" defer></script><script src="/myBlog/assets/js/2.c43bf905.js" defer></script><script src="/myBlog/assets/js/11.6e67973f.js" defer></script>
+  </body>
+</html>
