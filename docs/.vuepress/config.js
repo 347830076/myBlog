@@ -108,7 +108,9 @@ module.exports = {
                 sidebarDepth: 1,    // 可选的, 默认值是 1
                 children: [
                     '/javascript/函数',
-                    '/javascript/setTimeout',
+                    '/javascript/作用域',
+                    '/javascript/闭包原理',
+                    '/javascript/定时器',
                 ]
             },
             {
