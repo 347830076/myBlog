@@ -107,6 +107,7 @@ module.exports = {
                 collapsable: false, // 可选的, 默认值是 true,
                 sidebarDepth: 1,    // 可选的, 默认值是 1
                 children: [
+                    '/javascript/浏览器渲染原理流程',
                     '/javascript/函数',
                     '/javascript/内存管理',
                     '/javascript/作用域',
