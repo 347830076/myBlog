@@ -114,6 +114,7 @@ module.exports = {
                     '/javascript/作用域',
                     '/javascript/闭包原理',
                     '/javascript/定时器',
+                    '/javascript/九种跨域方式实现原理',
                 ]
             },
             {
