@@ -126,6 +126,7 @@ module.exports = {
                 children: [
                     '/tool/nvm',
                     '/tool/nrm',
+                    '/tool/git',
                     '/tool/sshkey',
                     '/tool/githook'
                 ]

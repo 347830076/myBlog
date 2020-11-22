@@ -13,7 +13,7 @@
 		<title>圣杯布局</title>
 
 		<style type="text/css">
-			body {
+			.grail {
 				background-color: #ffffff;
 				font-size: 14px;
 			}
@@ -35,7 +35,7 @@
 				min-width: 400px;
 			}
 			
-			.main {
+		  .grail	.main {
 				background-color: #03a9f4;
 				color: #ffffff;
 			}
@@ -47,7 +47,7 @@
 				color: #ffffff;
 			}
 			
-			p {
+			.grail p {
 				margin: 0;
 				padding: 20px;
 				text-align: center;
@@ -194,71 +194,72 @@
 	</head>
 
 	<body>
+    <div  class="grail">
+      <div id="hd">头部</div>
 
-		<div id="hd">头部</div>
+      <div class="bd-lft">
+        <div class="main">
+          <p>主内容栏自适应宽度</p>
+        </div>
 
-		<div class="bd-lft">
-			<div class="main">
-				<p>主内容栏自适应宽度</p>
-			</div>
+        <div class="aside">
+          <p>侧边栏固定宽度</p>
+        </div>
+      </div>
 
-			<div class="aside">
-				<p>侧边栏固定宽度</p>
-			</div>
-		</div>
+      <div class="bd-rgt">
+        <div class="main">
+          <p>主内容栏自适应宽度</p>
+        </div>
 
-		<div class="bd-rgt">
-			<div class="main">
-				<p>主内容栏自适应宽度</p>
-			</div>
+        <div class="aside">
+          <p>侧边栏固定宽度</p>
+        </div>
+      </div>
 
-			<div class="aside">
-				<p>侧边栏固定宽度</p>
-			</div>
-		</div>
+      <div class="bd-3-lr">
+        <div class="main">
+          <p>主内容栏自适应宽度</p>
+        </div>
 
-		<div class="bd-3-lr">
-			<div class="main">
-				<p>主内容栏自适应宽度</p>
-			</div>
+        <div class="aside-1">
+          <p>侧边栏1固定宽度</p>
+        </div>
 
-			<div class="aside-1">
-				<p>侧边栏1固定宽度</p>
-			</div>
+        <div class="aside-2">
+          <p>侧边栏2固定宽度</p>
+        </div>
+      </div>
 
-			<div class="aside-2">
-				<p>侧边栏2固定宽度</p>
-			</div>
-		</div>
+      <div class="bd-3-ll">
+        <div class="main">
+          <p>主内容栏自适应宽度</p>
+        </div>
 
-		<div class="bd-3-ll">
-			<div class="main">
-				<p>主内容栏自适应宽度</p>
-			</div>
+        <div class="aside-1">
+          <p>侧边栏1固定宽度</p>
+        </div>
 
-			<div class="aside-1">
-				<p>侧边栏1固定宽度</p>
-			</div>
+        <div class="aside-2">
+          <p>侧边栏2固定宽度</p>
+        </div>
+      </div>
 
-			<div class="aside-2">
-				<p>侧边栏2固定宽度</p>
-			</div>
-		</div>
+      <div class="bd-3-rr">
+        <div class="main">
+          <p>主内容栏自适应宽度</p>
+        </div>
 
-		<div class="bd-3-rr">
-			<div class="main">
-				<p>主内容栏自适应宽度</p>
-			</div>
+        <div class="aside-1">
+          <p>侧边栏1固定宽度</p>
+        </div>
 
-			<div class="aside-1">
-				<p>侧边栏1固定宽度</p>
-			</div>
-
-			<div class="aside-2">
-				<p>侧边栏2固定宽度</p>
-			</div>
-		</div>
-		<div id="ft">底部</div>
+        <div class="aside-2">
+          <p>侧边栏2固定宽度</p>
+        </div>
+      </div>
+      <div id="ft">底部</div>
+    </div>
 	</body>
 </html>
 <script>
@@ -268,12 +269,11 @@
 ```
 :::
 
-## 1.单列布局
+## 单列布局
 
 ### 1.1 水平居中
 
-#### 父元素 text-align:center;子元素：inline-block;
-
+**父元素 text-align:center; 子元素：inline-block;**
 - 优点：兼容性好；
 - 不足：需要同时设置子元素和父元素
 
@@ -282,21 +282,23 @@
   <div class="child"></div>
 </div>
 ```
-
 ```css
 .parent {
   width: 500px;
   height: 200px;
-  background: red;
   text-align: center;
+  border:1px solid #ccc;
+  background-color: #fff;
 }
 .child {
   display: inline-block;
   width: 300px;
   height: 100px;
-  background: blue;
+  background-color: red;
 }
 ```
+
+<iframe width="100%" height="300" src="//jsrun.net/wPwKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 #### 子元素 margin:0 auto;
 
@@ -1060,6 +1062,6 @@
   display: table-cell;
 }
 ```
-
+<iframe width="100%" height="300" src="//jsrun.net/fPwKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 <Vssue :options="{ locale: 'zh' }"  />
