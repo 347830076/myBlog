@@ -113,6 +113,7 @@ module.exports = {
                     '/javascript/内存管理',
                     '/javascript/作用域',
                     '/javascript/闭包原理',
+                    '/javascript/this详解',
                     '/javascript/定时器',
                     '/javascript/九种跨域方式实现原理',
                 ]
