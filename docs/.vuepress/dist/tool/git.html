@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>git常用命令 | 阿离王-前端分享</title>
+    <meta name="generator" content="VuePress 1.5.3">
+    <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+    <meta name="description" content="阿离王-前端分享笔记">
+    <link rel="preload" href="/myBlog/assets/css/0.styles.3f32dfcf.css" as="style"><link rel="preload" href="/myBlog/assets/js/app.03a4d72a.js" as="script"><link rel="preload" href="/myBlog/assets/js/3.633c0c43.js" as="script"><link rel="preload" href="/myBlog/assets/js/2.78a5d267.js" as="script"><link rel="preload" href="/myBlog/assets/js/23.af1e876c.js" as="script"><link rel="prefetch" href="/myBlog/assets/js/10.4eff26c8.js"><link rel="prefetch" href="/myBlog/assets/js/11.fbe903d2.js"><link rel="prefetch" href="/myBlog/assets/js/12.e7a5aa79.js"><link rel="prefetch" href="/myBlog/assets/js/13.755675f8.js"><link rel="prefetch" href="/myBlog/assets/js/14.b599eaa9.js"><link rel="prefetch" href="/myBlog/assets/js/15.8964d4db.js"><link rel="prefetch" href="/myBlog/assets/js/16.16713f45.js"><link rel="prefetch" href="/myBlog/assets/js/17.7ede9601.js"><link rel="prefetch" href="/myBlog/assets/js/18.85c58cea.js"><link rel="prefetch" href="/myBlog/assets/js/19.3ae9ee2a.js"><link rel="prefetch" href="/myBlog/assets/js/20.05c4b620.js"><link rel="prefetch" href="/myBlog/assets/js/21.ac7dc714.js"><link rel="prefetch" href="/myBlog/assets/js/22.0b1b02ff.js"><link rel="prefetch" href="/myBlog/assets/js/24.9cefae93.js"><link rel="prefetch" href="/myBlog/assets/js/25.7f53191f.js"><link rel="prefetch" href="/myBlog/assets/js/26.c7211c3e.js"><link rel="prefetch" href="/myBlog/assets/js/27.a52cf7b5.js"><link rel="prefetch" href="/myBlog/assets/js/4.4a1cae05.js"><link rel="prefetch" href="/myBlog/assets/js/5.9d990e90.js"><link rel="prefetch" href="/myBlog/assets/js/6.957ec907.js"><link rel="prefetch" href="/myBlog/assets/js/7.bb3f2118.js"><link rel="prefetch" href="/myBlog/assets/js/8.0b93fc30.js"><link rel="prefetch" href="/myBlog/assets/js/9.c8b2b10e.js">
+    <link rel="stylesheet" href="/myBlog/assets/css/0.styles.3f32dfcf.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myBlog/" class="home-link router-link-active"><img src="/myBlog/assets/img/logo.jpg" alt="阿离王-前端分享" class="logo"> <span class="site-name can-hide">阿离王-前端分享</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/myBlog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/myBlog/about.html" class="nav-link">
+  关于我
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多功能" class="dropdown-title"><span class="title">更多功能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分组一
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myBlog/css/" class="nav-link">
+  css
+</a></li></ul></li><li class="dropdown-item"><h4>
+          分组二
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myBlog/tool/" class="nav-link router-link-active">
+  工具类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="https://google.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  谷歌搜索
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <a href="https://github.com/347830076/myBlog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/myBlog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/myBlog/about.html" class="nav-link">
+  关于我
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多功能" class="dropdown-title"><span class="title">更多功能</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          分组一
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myBlog/css/" class="nav-link">
+  css
+</a></li></ul></li><li class="dropdown-item"><h4>
+          分组二
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/myBlog/tool/" class="nav-link router-link-active">
+  工具类
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="https://google.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  谷歌搜索
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <a href="https://github.com/347830076/myBlog" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><a href="/myBlog/" class="sidebar-heading clickable router-link-active"><span>首页</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/myBlog/about.html" class="sidebar-link">关于我</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/myBlog/css/" class="sidebar-heading clickable"><span>css</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/myBlog/css/" class="sidebar-link">css各种布局</a></li><li><a href="/myBlog/css/viewport.html" class="sidebar-link">viewport详解</a></li><li><a href="/myBlog/css/隐藏元素.html" class="sidebar-link">隐藏元素</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/myBlog/javascript/" class="sidebar-heading clickable"><span>javascript</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/myBlog/javascript/浏览器渲染原理流程.html" class="sidebar-link">浏览器渲染原理流程</a></li><li><a href="/myBlog/javascript/函数.html" class="sidebar-link">函数的深入浅出</a></li><li><a href="/myBlog/javascript/内存管理.html" class="sidebar-link">内存管理</a></li><li><a href="/myBlog/javascript/作用域.html" class="sidebar-link">作用域</a></li><li><a href="/myBlog/javascript/闭包原理.html" class="sidebar-link">闭包原理以及使用场景</a></li><li><a href="/myBlog/javascript/this详解.html" class="sidebar-link">this的学习</a></li><li><a href="/myBlog/javascript/定时器.html" class="sidebar-link">定时器</a></li><li><a href="/myBlog/javascript/九种跨域方式实现原理.html" class="sidebar-link">九种跨域方式实现原理</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/myBlog/tool/" class="sidebar-heading clickable router-link-active open"><span>工具栏</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/myBlog/tool/nvm.html" class="sidebar-link">nvm 安装教程</a></li><li><a href="/myBlog/tool/nrm.html" class="sidebar-link">nrm 安装使用教程</a></li><li><a href="/myBlog/tool/git.html" aria-current="page" class="active sidebar-link">git常用命令</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myBlog/tool/git.html#安装" class="sidebar-link">安装</a></li><li class="sidebar-sub-header"><a href="/myBlog/tool/git.html#创建项目有两种情况" class="sidebar-link">创建项目有两种情况</a></li><li class="sidebar-sub-header"><a href="/myBlog/tool/git.html#常用的提交操作" class="sidebar-link">常用的提交操作</a></li><li class="sidebar-sub-header"><a href="/myBlog/tool/git.html#解决冲突" class="sidebar-link">解决冲突</a></li><li class="sidebar-sub-header"><a href="/myBlog/tool/git.html#提交时老是提示输入用户名密码" class="sidebar-link">提交时老是提示输入用户名密码</a></li><li class="sidebar-sub-header"><a href="/myBlog/tool/git.html#查看git库的当前状态" class="sidebar-link">查看git库的当前状态</a></li><li class="sidebar-sub-header"><a href="/myBlog/tool/git.html#还原修改git-checkout" class="sidebar-link">还原修改git checkout</a></li><li class="sidebar-sub-header"><a href="/myBlog/tool/git.html#git-pull-失败-提示：fatal-refusing-to-merge-unrelated-histories" class="sidebar-link">git pull 失败 ,提示：fatal: refusing to merge unrelated histories</a></li><li class="sidebar-sub-header"><a href="/myBlog/tool/git.html#fatal-multiple-stage-entries-for-merged-file" class="sidebar-link">fatal:multiple stage entries for merged file</a></li><li class="sidebar-sub-header"><a href="/myBlog/tool/git.html#时光穿梭" class="sidebar-link">时光穿梭</a></li><li class="sidebar-sub-header"><a href="/myBlog/tool/git.html#如果git远程地址更改了，怎么办" class="sidebar-link">如果git远程地址更改了，怎么办</a></li><li class="sidebar-sub-header"><a href="/myBlog/tool/git.html#win10用户提交代码一直提示fatal-authentication-failed" class="sidebar-link">win10用户提交代码一直提示fatal: Authentication failed</a></li></ul></li><li><a href="/myBlog/tool/sshkey.html" class="sidebar-link">如何生成SSH key</a></li><li><a href="/myBlog/tool/githook.html" class="sidebar-link">git hook 自动部署</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="git常用命令"><a href="#git常用命令" class="header-anchor">#</a> git常用命令</h1> <h2 id="安装"><a href="#安装" class="header-anchor">#</a> 安装</h2> <p>请到官网 <a href="http://git-scm.com" target="_blank" rel="noopener noreferrer">git-scm.com<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> 或国内的下载站，下载安装包。</p> <h2 id="创建项目有两种情况"><a href="#创建项目有两种情况" class="header-anchor">#</a> 创建项目有两种情况</h2> <ol><li>本地无项目，克隆远程库的文件到本地
+例如在github或gitee上已有的项目，可以将其拉取到本地上</li></ol> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> clone  https://github.com/347830076/myBlog.git  my-projName
+<span class="token builtin class-name">cd</span> my-projName
+</code></pre></div><p>注意：上面的git clone命令需要传入第一个参数是远端git库的地址，第二个参数是本地的项目名字（也就是本地的文件夹名称）</p> <ol start="2"><li>本地有项目，合并远程库的文件到本地
+例如我本地开发好一个程序应用，并且在github或gitee上创建好一个空的库，需要把代码上传到该库</li> <li>首先,你需要执行下面两条命令,作为git的基础配置,作用是告诉git你是谁,你输入的信息将出现在你创建的提交中.</li></ol> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> config --global user.name <span class="token string">&quot;你的名字或昵称&quot;</span>
+<span class="token function">git</span> config --global user.email <span class="token string">&quot;你的邮箱&quot;</span>
+</code></pre></div><ol><li>那我们第一步可以初始化本地库先</li></ol> <div class="language-sh extra-class"><pre class="language-sh"><code>//进入到本地程序所在根目录
+<span class="token function">git</span> init				//git的初始化
+</code></pre></div><ol start="2"><li>给该本地库添加远程库地址</li></ol> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> remote <span class="token function">add</span> origin <span class="token operator">&lt;</span>repo-address<span class="token operator">&gt;</span>		//把远程库的地址填入到<span class="token operator">&lt;</span>repo-address<span class="token operator">&gt;</span>
+</code></pre></div><ol start="3"><li>把本地库文件和远程库文件进行合并</li></ol> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> pull origin master
+</code></pre></div><ol start="4"><li>添加文件到本地库</li></ol> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>			                //添加本地队列
+<span class="token function">git</span> commit -m <span class="token string">&quot;第一次提交&quot;</span>		    //把队列中的文件提交到本地库
+</code></pre></div><ol start="5"><li>合并后提交代码</li></ol> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> push origin master			//把本地库的文件推送到远程库的master主线
+</code></pre></div><p>如果需要账号密码的话就输入账号密码，这样就完成了一次提交。</p> <ol start="6"><li>设置操作的默认库和分支</li></ol> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> branch --set-upstream-to<span class="token operator">=</span>origin/master
+</code></pre></div><h2 id="常用的提交操作"><a href="#常用的提交操作" class="header-anchor">#</a> 常用的提交操作</h2> <ol><li>修改或添加好自己的文件后，需要把文件添加到git队列中</li></ol> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>    //把当前所有改动后的文件添加到git队列中    .是代表所有文件，  也可以使用 <span class="token function">git</span> <span class="token function">add</span> <span class="token operator">&lt;</span>对应文件的路径<span class="token operator">&gt;</span>
+</code></pre></div><ol start="2"><li>把队列中的文件提交到本地库</li></ol> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> commit -m <span class="token string">&quot;提交说明&quot;</span>
+</code></pre></div><p>尤其注意参数-m ,是必须的，表示提交时的说明文字
+3. 如果该项目存在多人协作，这一步必不可少，有效防止文件冲突</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> pull origin master  //表示拉取所设源地址的主线分支代码
+</code></pre></div><p>这一步会把远程库的文件拉取到本地库，会对有冲突的文件进行自动合并(尽量不要让多人同时改动一个文件，否则自动合并失效，需要手动合并)</p> <ol start="4"><li>最后保证上面几步没问题后，把本地库文件推送到远端库</li></ol> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> push origin master  //表示推送到所设源地址的主线分支
+</code></pre></div><h2 id="解决冲突"><a href="#解决冲突" class="header-anchor">#</a> 解决冲突</h2> <p>在提交时可能会存在冲突，所谓的冲突，就是你跟你的基友在修改同一个文件的同一行的内容时，系统无法判断用谁的代码。</p> <p>当你使用<code>git pull</code>的时候，会有冲突提示</p> <img src="/myBlog/assets/img/git/git冲突1.png" alt="git冲突1"> <p>这个时候，我们的git会自动把冲突位置显示在相关文件里</p> <img src="/myBlog/assets/img/git/git冲突2.png" alt="git冲突2"> <p>二选一，要么留自己的代码，要么留别人的代码，编辑完成后，再重新四步走。</p> <p>当然，某些特殊情况，需要强制推送的话，执行下面的命令</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> push origin master -f
+</code></pre></div><p>如果您选择保留线上的readme文件,则需要在提交前先执行</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> pull origin master
+</code></pre></div><p>拉取的时候，Git自动合并，并产生了一次提交。<br>
+如果不能够自动合并，那么会提示</p> <h2 id="提交时老是提示输入用户名密码"><a href="#提交时老是提示输入用户名密码" class="header-anchor">#</a> 提交时老是提示输入用户名密码</h2> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> config --global credential.helper store
+</code></pre></div><p>执行完后，下次提交再次输入账号密码，即可以自动存储了</p> <h2 id="查看git库的当前状态"><a href="#查看git库的当前状态" class="header-anchor">#</a> 查看git库的当前状态</h2> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> status
+</code></pre></div><h2 id="还原修改git-checkout"><a href="#还原修改git-checkout" class="header-anchor">#</a> 还原修改git checkout</h2> <p>让文件回到最近一次git commit或git add时的状态</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> checkout -- index.html
+</code></pre></div><p>##如果遇到以下情况，无法add和commit</p> <div class="language- extra-class"><pre class="language-text"><code>On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes not staged for commit:
+        modified:   ../index.html
+
+no changes added to commit
+</code></pre></div><p>上面这种情况，其实是因为你改变了index文件，但并没有有效的add到<strong>暂存区</strong>中，需要检查自己是否有把该文件有效的<code>git add</code>。</p> <blockquote><p><strong>根据多年经验，其实往往可能是因为我们cd到了子目录，然后再执行<code>git add ./</code>，从而导致修改的文件，并没有真正的添加进去)</strong></p></blockquote> <h2 id="git-pull-失败-提示：fatal-refusing-to-merge-unrelated-histories"><a href="#git-pull-失败-提示：fatal-refusing-to-merge-unrelated-histories" class="header-anchor">#</a> git pull 失败 ,提示：fatal: refusing to merge unrelated histories</h2> <p>在进行git pull 时，添加一个可选项</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> pull origin master --allow-unrelated-histories
+</code></pre></div><h2 id="fatal-multiple-stage-entries-for-merged-file"><a href="#fatal-multiple-stage-entries-for-merged-file" class="header-anchor">#</a> fatal:multiple stage entries for merged file</h2> <div class="language- extra-class"><pre class="language-text"><code>解决办法如下：
+1.执行rm .git/index，回车
+2.执行git add -A，回车
+3.git commit -m &quot;您的修改说明&quot; 
+</code></pre></div><h2 id="时光穿梭"><a href="#时光穿梭" class="header-anchor">#</a> 时光穿梭</h2> <ol><li>先查看要回退的时间点</li></ol> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> log
+</code></pre></div><img src="/myBlog/assets/img/git/时光机.png" alt="时光机"> <ol start="2"><li>根据ID回退到历史的某一个时间</li></ol> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> reset --hard d48bf2fcd99
+</code></pre></div><p><code>hard</code>的参数值就是第一步所获取到的id(不需要全部，可以截取其中一截就可以了)、</p> <p>##.gitignore规则不生效的解决办法</p> <p>把某些目录或文件加入忽略规则，按照上述方法定义后发现并未生效，原因是.gitignore只能忽略那些原来没有被追踪的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。那么解决方法就是先把本地缓存删除（改变成未被追踪状态），然后再提交：</p> <div class="language- extra-class"><pre class="language-text"><code>git rm -r --cached .
+git add .
+git commit -m '更新.gitignore'
+git pull
+git push
+</code></pre></div><p>这样就可以了！</p> <h2 id="如果git远程地址更改了，怎么办"><a href="#如果git远程地址更改了，怎么办" class="header-anchor">#</a> 如果git远程地址更改了，怎么办</h2> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> remote remove origin                //删除原来的git地址
+<span class="token function">git</span> remote <span class="token function">add</span> origin <span class="token punctuation">{</span>新的git地址<span class="token punctuation">}</span>      //换成新的git地址
+</code></pre></div><p>这样，当你的git地址变了，但又不想重新克隆，用它吧<br>
+并且记得设置操作的默认库和分支</p> <div class="language- extra-class"><pre class="language-text"><code>git branch --set-upstream-to=origin/master
+</code></pre></div><blockquote><p>其中origin是你的远程库地址的代号名字，可以改任意名字</p></blockquote> <h2 id="win10用户提交代码一直提示fatal-authentication-failed"><a href="#win10用户提交代码一直提示fatal-authentication-failed" class="header-anchor">#</a> win10用户提交代码一直提示fatal: Authentication failed</h2> <p><strong>排除掉用户的设置正确之后，依然不行</strong>
+后来发现这是一个win10的系统，原来有如下操作：</p> <p>Win10 的用户凭据里保存了git的本地用户信息，找到它，删掉就好了!</p> <p>具体的：
+控制面板 &gt; 用户帐户 &gt; 管理你的凭据 &gt; 选择 [Windows 凭据]
+git 保存的用户信息在[普通凭据]列表里</p> <p>操作完成后，再正常的git clone下来，4步走即可</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">更新时间:</span> <span class="time">2020年11月22日星期日下午3点05分</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/myBlog/tool/nrm.html" class="prev">
+        nrm 安装使用教程
+      </a></span> <span class="next"><a href="/myBlog/tool/sshkey.html">
+        如何生成SSH key
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/myBlog/assets/js/app.03a4d72a.js" defer></script><script src="/myBlog/assets/js/3.633c0c43.js" defer></script><script src="/myBlog/assets/js/2.78a5d267.js" defer></script><script src="/myBlog/assets/js/23.af1e876c.js" defer></script>
+  </body>
+</html>
