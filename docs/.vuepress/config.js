@@ -17,6 +17,7 @@ module.exports = {
             settings: {
             }
         },
+        'vuepress-plugin-element-tabs': true,
         //代码块复制功能
         'vuepress-plugin-code-copy': true,
         //github留言
