@@ -165,3 +165,5 @@ maximum-scale用于指定用户能够放大的比例。
 ```html
  <meta name="viewport" content="width=640,  user-scalable=no">
 ```
+
+<Vssue :options="{ locale: 'zh' }"  />

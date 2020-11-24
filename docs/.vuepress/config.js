@@ -64,21 +64,21 @@ module.exports = {
         nav: [
             { text: '首页', link: '/' },
             { text: '关于我', link: '/about' },
-            {
-                text: '更多功能',
-                items: [
-                    {
-                        text: '分组一', items: [
-                            { text: 'css', link: '/css/' },
-                        ]
-                    },
-                    {
-                        text: '分组二', items: [
-                            { text: '工具类', link: '/tool/' },
-                        ]
-                    }
-                ]
-            },
+            // {
+            //     text: '更多功能',
+            //     items: [
+            //         {
+            //             text: '分组一', items: [
+            //                 { text: 'css', link: '/css/' },
+            //             ]
+            //         },
+            //         {
+            //             text: '分组二', items: [
+            //                 { text: '工具类', link: '/tool/' },
+            //             ]
+            //         }
+            //     ]
+            // },
             { text: '谷歌搜索', link: 'https://google.com' },
         ],
         sidebar: [
@@ -115,6 +115,7 @@ module.exports = {
                     '/javascript/闭包原理',
                     '/javascript/this详解',
                     '/javascript/定时器',
+                    '/javascript/深浅拷贝',
                     '/javascript/九种跨域方式实现原理',
                 ]
             },

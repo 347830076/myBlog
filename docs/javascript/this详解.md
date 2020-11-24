@@ -189,3 +189,7 @@ a.func2();       //yu
 ```
 
 <a href="https://juejin.im/post/6844903496253177863" target="_blank" style="color: red"> 点击参考 this call() apply() bind()的详细介绍 </a>
+
+感谢大家耐心看完，以上纯属个人见解，各位小伙伴有什么想法，更好的办法，欢迎留言交流
+
+<Vssue :options="{ locale: 'zh' }"  />
