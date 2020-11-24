@@ -12,10 +12,14 @@ module.exports = {
         ['script', { src: 'https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js' }],
     ],
     plugins: {
+        //代码实时展示效果
         'demo-block': {
             settings: {
             }
         },
+        //代码块复制功能
+        'vuepress-plugin-code-copy': true,
+        //github留言
         '@vssue/vuepress-plugin-vssue': {
             // 设置 `platform` 而不是 `api`
             platform: 'github-v4',
@@ -27,7 +31,7 @@ module.exports = {
             clientSecret: 'd2f0d31963661c1366e388b2c54dde210e70dc86',
             autoCreateIssue: true
         },
-
+        //最后更新时间
         '@vuepress/last-updated':
         {
             transformer: (timestamp) => {
