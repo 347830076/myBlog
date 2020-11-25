@@ -119,6 +119,7 @@ module.exports = {
                     '/javascript/作用域',
                     '/javascript/闭包原理',
                     '/javascript/this详解',
+                    '/javascript/事件详解',
                     '/javascript/定时器',
                     '/javascript/深浅拷贝',
                     '/javascript/九种跨域方式实现原理',
