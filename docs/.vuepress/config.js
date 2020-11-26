@@ -122,6 +122,7 @@ module.exports = {
                     '/javascript/事件详解',
                     '/javascript/定时器',
                     '/javascript/深浅拷贝',
+                    '/javascript/防抖节流',
                     '/javascript/九种跨域方式实现原理',
                 ]
             },
