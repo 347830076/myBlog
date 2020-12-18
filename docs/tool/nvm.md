@@ -83,6 +83,8 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
 ### nvm: command not found
 
+### 解决方案一
+
 很不幸，我跟着网上的 n 篇教程，下载完毕之后试过大家给出的 n 种方法，包括什么重启终端、在 nvm 文件夹里也复制一份 .bash_profile 文件、手动修改配置文件啥啥啥的，结果还是提示 nvm: command not found。
 
 后来我发现每次执行 source ~/.bash_profile 之后会生效（我之前新建的配置文件），但是只生效一次。
@@ -98,11 +100,28 @@ touch ~/.zshrc
 source ~/.bash_profile
 ```
 
+### 解决方法二
+
+由于没有.bash_profile这一文件，将.bashrc中关于node的配置copy到.zshrc里边。
+
+```sh
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+```
+copy上面代码到~.zshrc下就可以啦。
+
+```sh
+vim ~/.zshrc
+```
+
 重新打开终端, 运行
 
 ```sh
 nvm version
 ```
+
+
 
 <Vssue :options="{ locale: 'zh' }"  />
 
