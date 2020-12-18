@@ -101,7 +101,6 @@ source ~/.bash_profile
 ```
 
 ### 解决方法二
-
 由于没有.bash_profile这一文件，将.bashrc中关于node的配置copy到.zshrc里边。
 
 ```sh
