@@ -120,6 +120,29 @@ vim ~/.zshrc
 nvm version
 ```
 
+### 解决类似 curl: (7) Failed to connect to raw.githubusercontent.com port 443: Connection refused 的问题
+
+需要到 raw.githubusercontent.com 上拉取代码。
+
+网上搜索了一下，发现是 github 的一些域名的 DNS 解析被污染，导致DNS 解析过程无法通过域名取得正确的IP地址。
+
+在本机的 host 文件中添加，建议使用 switchhosts 方便 host 管理
+
+```js
+199.232.68.133 raw.githubusercontent.com
+199.232.68.133 user-images.githubusercontent.com
+199.232.68.133 avatars2.githubusercontent.com
+199.232.68.133 avatars1.githubusercontent.com
+```
+添加以上几条 host 配置，就可以下载nvm了
+
+### CentOS修改hosts文件及生效命令
+
+```sh
+vim /etc/hosts
+```
+
+
 
 
 <Vssue :options="{ locale: 'zh' }"  />
