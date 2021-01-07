@@ -126,6 +126,7 @@ module.exports = {
                     '/javascript/深浅拷贝',
                     '/javascript/防抖节流',
                     '/javascript/九种跨域方式实现原理',
+                    '/javascript/实用API',
                 ]
             },
             {
