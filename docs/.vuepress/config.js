@@ -103,6 +103,7 @@ module.exports = {
                 sidebarDepth: 1,    // 可选的, 默认值是 1
                 children: [
                     '/css/',
+                    '/css/resetCss',
                     '/css/viewport',
                     '/css/隐藏元素'
                 ]
