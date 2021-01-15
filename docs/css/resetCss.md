@@ -45,24 +45,6 @@ html, body {
 	  display: block
   }
   
-  /*  设置标签行内块分类 */
-  a,
-  button,
-  cite,
-  code,
-  del,
-  em,
-  img,
-  label,
-  mark,
-  small,
-  strong,
-  textarea,
-  time,
-  var {
-	  display: inline-block
-  }
-  
   /* 去除input标签的默认样式 */
   button, input, textarea {
 	-webkit-appearance: none;
