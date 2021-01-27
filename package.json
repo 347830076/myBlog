@@ -1,12 +1,13 @@
 {
-  "name": "myBlog",
+  "name": "my-blog",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "vuepress dev docs",
-    "build": "vuepress build docs",
-    "deploy": "bash deploy.sh"
+    "dev": "npm run compress && vuepress dev docs",
+    "build": "npm run compress && vuepress build docs",
+    "deploy": "npm run compress && bash deploy.sh",
+    "compress": "node ./mtp.js"
   },
   "keywords": [],
   "author": "",

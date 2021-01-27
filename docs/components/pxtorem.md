@@ -162,6 +162,29 @@ propList 表示匹配的属性 *(表示匹配所有属性) 可以在里面用 !b
 以上只是一个例子， 移动端你就可以不用设置了，  pc端，你想在什么范围，根据你的项目页面调就好了
 
 
+### 踩坑以及解决
+
+当你使用webpack打包的时候，如果你在样式里写了 `/*no*/`, 就是不想px转换成rem的时候， 例如上面说过的代码
+
+```css
+/* 屏幕大于1800px的时候写死html的font-size值为200px */
+@media screen and (min-width: 1800px) {
+    html {
+        font-size: 200px !important;
+        /*no*/
+    }
+}
+```
+这个px不转rem是依赖注释的，可是生产环境打包的时候就会把注释去掉，这样导致你写了 `/*no*/`不转这条css属性，也没效果，打包删除了注释，它就会自动帮你转了。
+
+##### 解决方法一. 可以把样式写到index.html文件的style标签中
+
+这样打包不会删除index.html的css注释，如果你的webpack也把index.html的注释给删除了，那么你可以通过webpack把index.html不删除注释， 这个自行谷歌搜索很多不打包压缩index.html文件，我项目不会删除index.html的注释
+##### 解决方法二. 通过配置sass-loader，使得打包时不删除所有的css注释
+
+参考文章： [webpack 中 postcss-px2rem 生产环境中注释失效](https://github.com/neilgao000/blog/issues/15)
+
+
 参考文章
 
 [前端中使用amfe-flexible和postcss-pxtorem](https://www.jianshu.com/p/f4093192e8d8)
