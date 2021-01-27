@@ -51,6 +51,14 @@ module.exports = [
         ]
     },
     {
+        title: 'taro',
+        path: '/taro/',
+        children: [
+            '/taro/实战经验',
+            '/taro/编译配置'
+        ]
+    },
+    {
         title: '工具栏',   // 必要的
         path: '/tool/',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
         // collapsable: false, // 可选的, 默认值是 true,
