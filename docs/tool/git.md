@@ -150,6 +150,21 @@ git pull origin master --allow-unrelated-histories
 3.git commit -m "您的修改说明" 
 ```
 
+### 拉取线上所有分支下来
+
+```
+git fetch
+```
+### 创建新分支的命令
+
+```bash
+# 在本地创建新分支
+git checkout -b <分支名>
+# 第一次提交到远程分支，需要跟远程分支关联起来
+git push -u origin <分支名>
+# 执行过上一条命令后，以后在新分支就可以直接通过 `git push` 提交代码了
+```
+
 ## 时光穿梭
 
 1. 先查看要回退的时间点
@@ -200,3 +215,4 @@ Win10 的用户凭据里保存了git的本地用户信息，找到它，删掉�
 git 保存的用户信息在[普通凭据]列表里
    
 操作完成后，再正常的git clone下来，4步走即可
+
