@@ -68,7 +68,21 @@ module.exports = [
             '/tool/nrm',
             '/tool/git',
             '/tool/sshkey',
-            '/tool/githook'
+            '/tool/githook',
         ]
-    }
+    },
+    {
+        title: '规范',
+        children: [
+          '/standard/html',
+          '/standard/css',
+          '/standard/js',
+          '/standard/eslint',
+          '/standard/file',
+        //   '/standard/git',
+        //   '/standard/project-readme',
+        //   '/standard/publish',
+        //   '/standard/templates',
+        ],
+    },
 ]
