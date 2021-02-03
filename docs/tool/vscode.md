@@ -109,5 +109,8 @@ vue语法提示
 
 EditorConfig 有助于为跨越各种编辑器和 IDE 的同一项目的多个开发人员维护一致的编码样式。
 
+参考文章
+
+[用了这22个功能最强大的插件，前端工作效率提高了一倍！](https://mp.weixin.qq.com/s/HsBEyzDDmptI7WaZhm58wQ)
 
 
