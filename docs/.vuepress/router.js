@@ -69,6 +69,7 @@ module.exports = [
             '/tool/git',
             '/tool/sshkey',
             '/tool/githook',
+            '/tool/vscode',
         ]
     },
     {
