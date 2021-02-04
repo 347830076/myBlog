@@ -109,6 +109,28 @@ vue语法提示
 
 EditorConfig 有助于为跨越各种编辑器和 IDE 的同一项目的多个开发人员维护一致的编码样式。
 
+### Remote - SSH  本地VSCode编辑远程服务器文件
+
+安装完Remote - SSH插件之后，
+- 在编辑器按F1， 
+- 输入 Remote-ssh , 
+- 选择 Remote-ssh: Connect to Host, 
+- 然后输入你的 ip, 密码即可， 
+- 例子：root@192.182.2.2   回车  输入密码 
+- ip 是你服务器的ip
+- 链接完成了就会打开一个新的编辑器，点击open folder 就可以看到你服务器上面的文件目录了，选择你自己想要编辑的项目文件，点击OK就可以了
+- 大功告成，就可以本地很愉快的编辑服务器文件了，相当于本地可视化界面远程链接控制服务器
+
+下面你也可以配置下， 在编辑器按F1，输入 Remote-ssh , 选择Remote-ssh: Open Configuration File, 选择第一个， 把下面的配置格式写上保存就好，下面代码ip改成你自己服务器的ip
+
+```js
+Host 42.192.230.88
+    HostName 42.192.230.88
+    User root
+```
+
+[本地VSCode编辑远程服务器文件 - 鲲逸鹏 - 博客园](https://www.cnblogs.com/dotnetcrazy/p/11254225.html)
+
 参考文章
 
 [用了这22个功能最强大的插件，前端工作效率提高了一倍！](https://mp.weixin.qq.com/s/HsBEyzDDmptI7WaZhm58wQ)
