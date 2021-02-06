@@ -56,10 +56,10 @@ xclip -sel clip < ~/.ssh/id_rsa.pub
 
 # 4. 将ssh key添加到GitHub中
 
-<img :src="$withBase('/assets/img/github1.jpg')">
+<img class="zoom-custom-imgs" :src="$withBase('/assets/img/github1.jpg')">
 
-<img :src="$withBase('/assets/img/github2.jpg')">
+<img class="zoom-custom-imgs" :src="$withBase('/assets/img/github2.jpg')">
 
-<img :src="$withBase('/assets/img/github3.jpg')">
+<img class="zoom-custom-imgs" :src="$withBase('/assets/img/github3.jpg')">
 
-<img :src="$withBase('/assets/img/github4.jpg')">
+<img class="zoom-custom-imgs" :src="$withBase('/assets/img/github4.jpg')">

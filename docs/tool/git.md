@@ -82,11 +82,11 @@ git push origin master  //表示推送到所设源地址的主线分支
 
 当你使用`git pull`的时候，会有冲突提示
 
-<img :src="$withBase('/assets/img/git/git冲突1.png')" alt="git冲突1">
+<img class="zoom-custom-imgs" :src="$withBase('/assets/img/git/git冲突1.png')" alt="git冲突1">
 
 这个时候，我们的git会自动把冲突位置显示在相关文件里
 
-<img :src="$withBase('/assets/img/git/git冲突2.png')" alt="git冲突2">
+<img class="zoom-custom-imgs" :src="$withBase('/assets/img/git/git冲突2.png')" alt="git冲突2">
 
 二选一，要么留自己的代码，要么留别人的代码，编辑完成后，再重新四步走。
 
@@ -171,7 +171,7 @@ git push -u origin <分支名>
 ```sh
 git log
 ```
-<img :src="$withBase('/assets/img/git/时光机.png')" alt="时光机">
+<img class="zoom-custom-imgs" :src="$withBase('/assets/img/git/时光机.png')" alt="时光机">
 
 2. 根据ID回退到历史的某一个时间
 ```sh

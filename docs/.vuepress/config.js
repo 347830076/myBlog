@@ -7,7 +7,9 @@ module.exports = {
     base: '/myBlog/',
     title: '阿离王-前端分享',
     description: '阿离王-前端分享笔记',
+    dest: 'dist',
     head: [
+        ['link', { rel: 'icon', type: 'image/png', href: '/logo.jpg' }],
         ['link', { rel: 'stylesheet', href: 'http://at.alicdn.com/t/font_2343212_wc0gkht90m.css' }],
         ['script', { src: 'https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js' }],
         ['script', { src: 'https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js' }],
@@ -15,15 +17,15 @@ module.exports = {
         ['script', { src: 'https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js' }],
     ],
     plugins: {
-        //代码实时展示效果
+        // 代码实时展示效果
         'demo-block': {
             settings: {
             }
         },
         'vuepress-plugin-element-tabs': true,
-        //代码块复制功能
+        // 代码块复制功能
         'vuepress-plugin-code-copy': true,
-        //github留言
+        // github留言
         '@vssue/vuepress-plugin-vssue': {
             // 设置 `platform` 而不是 `api`
             platform: 'github-v4',
@@ -34,6 +36,10 @@ module.exports = {
             clientId: '56139b003e776521ec4f',
             clientSecret: 'd2f0d31963661c1366e388b2c54dde210e70dc86',
             autoCreateIssue: true
+        },
+        // 图片放大
+        '@vuepress/medium-zoom': {
+            selector: 'img.zoom-custom-imgs'
         },
         //最后更新时间
         '@vuepress/last-updated':
