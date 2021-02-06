@@ -4,7 +4,7 @@ moment.locale('zh-cn')
 // 导入路由
 const router = require('./router')
 module.exports = {
-    base: '/myBlog/',
+    base: '/',
     title: '阿离王-前端分享',
     description: '阿离王-前端分享笔记',
     dest: 'dist',
@@ -62,7 +62,7 @@ module.exports = {
     },
     themeConfig: {
         // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
-        repo: 'https://github.com/347830076/myBlog',
+        repo: 'https://github.com/347830076/',
         logo: '/assets/img/logo.jpg',
         head: [
             ['link', { rel: 'icon', href: '/logo.jpg' }],
