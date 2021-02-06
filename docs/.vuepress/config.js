@@ -4,7 +4,7 @@ moment.locale('zh-cn')
 // 导入路由
 const router = require('./router')
 module.exports = {
-    base: '/',
+    base: '/myBlog/',
     title: '阿离王-前端分享',
     description: '阿离王-前端分享笔记',
     dest: 'dist',

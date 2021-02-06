@@ -38,18 +38,18 @@ export default {
     animation: imgAnimation 8s linear infinite;
 
     &:nth-child(1) {
-      background-image: url(/assets/login/bg-1.png);
+      background-image: url(../public/assets/login/bg-1.png);
     }
     &:nth-child(2) {
-      background-image: url(/assets/login/bg-5.jpg);
+      background-image: url(../public/assets/login/bg-5.jpg);
       animation-delay: 2s;
     }
     &:nth-child(3) {
-      background-image: url(/assets/login/bg-2.jpg);
+      background-image: url(../public/assets/login/bg-2.jpg);
       animation-delay: 4s;
     }
     &:nth-child(4) {
-      background-image: url(/assets/login/bj.jpg);
+      background-image: url(../public/assets/login/bj.jpg);
       animation-delay: 6s;
       opacity: 0.5;
     }
