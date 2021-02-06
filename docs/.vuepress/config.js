@@ -77,6 +77,7 @@ module.exports = {
             ['meta', { name: 'msapplication-TileImage', content: '/icons/lufei.jpg' }],
             ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
         ],
+        // 顶部路由
         nav: [
             { text: '首页', link: '/' },
             { text: '关于我', link: '/about' },
@@ -97,6 +98,7 @@ module.exports = {
             // },
             { text: '谷歌搜索', link: 'https://google.com' },
         ],
+        // 侧边栏路由
         sidebar: router,
         lastUpdated: '更新时间', // string | boolean
     }
