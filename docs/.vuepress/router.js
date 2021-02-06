@@ -70,6 +70,7 @@ module.exports = [
             '/tool/sshkey',
             '/tool/githook',
             '/tool/vscode',
+            '/tool/shortcuts',
         ]
     },
     {
