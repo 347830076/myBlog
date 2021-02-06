@@ -41,6 +41,8 @@ module.exports = {
         '@vuepress/medium-zoom': {
             selector: 'img.zoom-custom-imgs'
         },
+        // 返回顶部
+        '@vuepress/back-to-top': {},
         //最后更新时间
         '@vuepress/last-updated':
         {
