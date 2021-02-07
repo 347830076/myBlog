@@ -49,8 +49,7 @@ module.exports = {
             transformer: (timestamp) => {
                 return moment(timestamp).format('LLLL')
             }
-        }
-        ,
+        },
 
         // '@vuepress/pwa': {
         //     serviceWorker: true,

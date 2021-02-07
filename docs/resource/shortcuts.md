@@ -82,3 +82,31 @@
 |  Ctrl Y | 粘贴Ctrl W或Ctrl K删除的内容 |
 |  Ctrl PageUp | 屏幕输出向上翻页 |
 |  Ctrl PageDown | 屏幕输出向下翻页 |
+
+## 谷歌浏览器
+
+#### 截取网页(区域，整个网页)
+
+按F12 打开调试工具，按 Shilt + win(Command) + p，输入 Screenshot, 如下图所示：
+
+<img class="zoom-custom-imgs" :src="$withBase('/assets/img/screenshot.png')">
+
+- Capture area screenshot      (截取自定义区域)
+- Capture full size screenshot (截取整个网页，超出部分都截取)
+- Capture node screenshot      (截取当前可视区域, 但图片长度是整个页面的长度，下面不可见区域为空白)
+- Capture screenshot           (截取当前可视区域)
+
+
+#### 修改控制台主题颜色
+
+按F12 打开调试工具，按 Shilt + win(Command) + p，输入 theme, 如下图所示：
+
+<img class="zoom-custom-imgs" :src="$withBase('/assets/img/theme.png')">
+
+- Switch to dark theme (黑色)
+- Switch to light theme (白色)
+
+选择上面的主题之后，点击按钮重启下控制台即可。
+
+<img class="zoom-custom-imgs" :src="$withBase('/assets/img/theme2.png')">
+
