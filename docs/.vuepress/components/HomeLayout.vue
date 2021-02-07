@@ -25,6 +25,9 @@ html, body,ul{
       opacity: 0.8;
       margin: 40px 0;
     }
+    .btn{
+      font-size: 20px;
+    }
   }
 	#particles-js {
 	  position: absolute;
@@ -44,8 +47,8 @@ html, body,ul{
         <div class="title">欢迎来到我的个人博客</div>
         <div class="desc">热爱前端，热爱分享</div>
         <div>
-          <a href="../about.html">
-            <el-button type="primary">进入博客</el-button>
+          <a href="/myBlog/about.html">
+            <el-button type="primary" size="medium" icon="el-icon-right" class="btn">进入博客</el-button>
           </a>
         </div>
       </div>
