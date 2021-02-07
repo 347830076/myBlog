@@ -51,6 +51,12 @@ module.exports = [
         ]
     },
     {
+        title: 'node技巧',
+        children: [
+            '/node/配置全局命令'
+        ]
+    },
+    {
         title: 'taro',
         path: '/taro/',
         children: [
