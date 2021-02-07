@@ -44,7 +44,7 @@ html, body,ul{
         <div class="title">欢迎来到我的个人博客</div>
         <div class="desc">热爱前端，热爱分享</div>
         <div>
-          <a href="/about">
+          <a href="../about.html">
             <el-button type="primary">进入博客</el-button>
           </a>
         </div>
