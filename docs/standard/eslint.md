@@ -186,9 +186,69 @@ eslint --ext .js --ext .jsx src --fix
 eslint --ext .js --ext .jsx src --no-fix
 ```
 
+#### .eslintignore文件 指定哪些文件或者文件夹不进行检查
+
+```js
+/build/
+/config/
+/dist/
+/test/unit/coverage/
+```
+
+记得在你的项目根目录下添加.eslintignore文件哟
+
+#### 忽略单行检查
+
+`// eslint-disable-line`
+
+```js
+let a = 1
+let b = {} // eslint-disable-line
+let c = true
+```
+
+#### 忽略多行检查
+
+`/* eslint-disable */ 和 /* eslint-enable */ 组合使用`
+
+```js
+/* eslint-disable */
+let myCar = new Object()
+myCar.make = 'Ford'
+myCar.model = 'Mustang'
+myCar.year = 1969
+/* eslint-enable */
+```
+
+`/* eslint-disable */` 写在文件头部或写在需要忽略的代码上方
+
+```js
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+import Vue from 'vue'
+import App from './App'
+import router from './router'
+
+Vue.config.productionTip = false
+
+/* eslint-disable */
+new Vue({
+  el: '#app',
+  router,
+  template: '<App/>',
+  components: { App }
+})
+```
+
+#### 忽略整个文件或者以下代码全部忽略
+
+
+
 参考文章
 
-[从0到1配置eslint (所有人一看就懂)](https://juejin.cn/post/6844903492545429512#heading-1)
+[掘金 从0到1配置eslint (所有人一看就懂)](https://juejin.cn/post/6844903492545429512#heading-1)
+
+[简书 ESLint 使用记录](https://www.jianshu.com/p/fd4bc462220b)
 
 
 
