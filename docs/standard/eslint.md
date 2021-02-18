@@ -4,7 +4,8 @@
 
 1. 通过命令 `npm install eslint --save-dev` 在项目中安装 ESLint，或通过命令 `npm install eslint -g` 在全局安装
 2. 引入公司规范文件中的默认配置 <code-link href="/eslint/eslint-defaults.js">eslint-defaults.js</code-link>，并重命名为 `.eslintrc.js`
-3. 整个项目代码格式化可使用命令 `npx eslint --fix`
+3. 整个项目代码自动修复格式化可使用命令 `npx eslint --fix`
+4. `eslint --no-fix` 检查格式错误，不自动修复
 
 ## 在 Vue 项目中使用
 
@@ -37,7 +38,7 @@
 npm install eslint --save-dev
 ```
 
-### 2. 在项目根目录创建ESlint配置文件.eslintrc.js， 可以使用下面命令创建
+### 2. 在项目根目录创建ESlint配置文件.eslintrc.js， 也可以使用下面命令创建
 
 ```bash
 eslint --init
@@ -136,3 +137,60 @@ module.exports = {
 - `editor.codeActionsOnSave`：用于指定当保存代码时需要编辑器执行的动作，里面的值 `"source.fixAll": true` 表示为包括 ESLint 的所有插件启用自动修复，
 也可以通过 `"source.fixAll.eslint": true` 只开启 ESLint 的自动修复
 - `editor.formatOnSave`：保存文件时自动格式化，当启用了 `editor.codeActionsOnSave` 时建议关掉 `editor.formatOnSave`，如果同时打开会导致保存文件时格式化两次
+
+
+### eslint 教程
+
+- 安装eslint
+
+```
+npm install eslint --save-dev
+```
+
+- 添加eslint的配置文件.eslintrc.js
+
+在项目根目录创建ESlint配置文件.eslintrc.js， 也可以使用下面命令创建
+
+```bash
+eslint --init
+```
+
+以上选项一路回车即可，这些就是使用的eslint规则，后面可以自定义调整；
+
+- 有了eslint之后，我们就能通过它来检查指定的代码文件了。我们在npm scripts加入如下脚本
+
+```
+{
+  ...
+  "scripts": {
+    ...
+    "lint": "eslint --ext .js --ext .jsx src"
+    ...
+  }
+  ...
+}
+```
+
+在命令行中运行 npm run lint 即可， --ext 扩展名，
+
+`eslint --ext .js --ext .jsx src` 这句命令的意思是，在src目录下，检查.js和.jsx文件的格式
+
+- 一键自动格式化文件命令, --fix
+
+```
+eslint --ext .js --ext .jsx src --fix
+```
+
+- 只检查，不自动格式化文件命名
+```
+eslint --ext .js --ext .jsx src --no-fix
+```
+
+参考文章
+
+[从0到1配置eslint (所有人一看就懂)](https://juejin.cn/post/6844903492545429512#heading-1)
+
+
+
+
+
