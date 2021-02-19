@@ -186,6 +186,26 @@ eslint --ext .js --ext .jsx src --fix
 eslint --ext .js --ext .jsx src --no-fix
 ```
 
+#### eslint添加全局变量
+
+在.eslintrc.js文件下添加下面代码，表示eslint知道globals对象的属性它们是全局变量，就不会报错了
+
+```
+//全局变量
+  "globals": {
+    "__DEV__": true,
+    "__WECHAT__": true,
+    "__ALIPAY__": true,
+    "App": true,
+    "Page": true,
+    "Component": true,
+    "Behavior": true,
+    "wx": true,
+    "getApp": true,
+    "getCurrentPages": true,
+  },
+```
+
 #### .eslintignore文件 指定哪些文件或者文件夹不进行检查
 
 ```js
