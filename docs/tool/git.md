@@ -216,3 +216,11 @@ git 保存的用户信息在[普通凭据]列表里
    
 操作完成后，再正常的git clone下来，4步走即可
 
+## SSL certificate problem: Unable to get local issuer certificate
+
+```
+git config --global http.sslVerify false
+```
+
+参考文章 [https://confluence.atlassian.com/bitbucketserverkb/ssl-certificate-problem-unable-to-get-local-issuer-certificate-816521128.html](https://confluence.atlassian.com/bitbucketserverkb/ssl-certificate-problem-unable-to-get-local-issuer-certificate-816521128.html)
+
