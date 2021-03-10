@@ -85,6 +85,7 @@ module.exports = [
           '/standard/js',
           '/standard/eslint',
           '/standard/file',
+          '/standard/ts',
         //   '/standard/git',
         //   '/standard/project-readme',
         //   '/standard/publish',
