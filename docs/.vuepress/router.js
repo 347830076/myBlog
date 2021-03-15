@@ -34,6 +34,7 @@ module.exports = [
             '/javascript/闭包原理',
             '/javascript/this详解',
             '/javascript/事件详解',
+            '/javascript/事件订阅发布',
             '/javascript/定时器',
             '/javascript/模块化使用总结',
             '/javascript/深浅拷贝',
