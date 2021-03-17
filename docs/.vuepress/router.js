@@ -100,5 +100,11 @@ module.exports = [
             '/resource/api',
             '/resource/shortcuts',
         ]
+    },
+    {
+        title: '实用例子',
+        children: [
+            '/demo/拖拽'
+        ]
     }
 ]
