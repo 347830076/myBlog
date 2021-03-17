@@ -135,21 +135,6 @@ no changes added to commit
 上面这种情况，其实是因为你改变了index文件，但并没有有效的add到**暂存区**中，需要检查自己是否有把该文件有效的`git add`。
 > **根据多年经验，其实往往可能是因为我们cd到了子目录，然后再执行`git add ./`，从而导致修改的文件，并没有真正的添加进去)**
 
-## git pull 失败 ,提示：fatal: refusing to merge unrelated histories
-
-在进行git pull 时，添加一个可选项
-```sh
-git pull origin master --allow-unrelated-histories
-```
-
-## fatal:multiple stage entries for merged file
-```
-解决办法如下：
-1.执行rm .git/index，回车
-2.执行git add -A，回车
-3.git commit -m "您的修改说明" 
-```
-
 ### 拉取线上所有分支下来
 
 ```
@@ -204,7 +189,9 @@ git branch --set-upstream-to=origin/master
 ```
 > 其中origin是你的远程库地址的代号名字，可以改任意名字
 
-## win10用户提交代码一直提示fatal: Authentication failed
+## 常见错误和解决方法
+
+### win10用户提交代码一直提示fatal: Authentication failed
 **排除掉用户的设置正确之后，依然不行**
 后来发现这是一个win10的系统，原来有如下操作：   
 
@@ -216,7 +203,7 @@ git 保存的用户信息在[普通凭据]列表里
    
 操作完成后，再正常的git clone下来，4步走即可
 
-## SSL certificate problem: Unable to get local issuer certificate
+### SSL certificate problem: Unable to get local issuer certificate
 
 ```
 git config --global http.sslVerify false
@@ -224,3 +211,24 @@ git config --global http.sslVerify false
 
 参考文章 [https://confluence.atlassian.com/bitbucketserverkb/ssl-certificate-problem-unable-to-get-local-issuer-certificate-816521128.html](https://confluence.atlassian.com/bitbucketserverkb/ssl-certificate-problem-unable-to-get-local-issuer-certificate-816521128.html)
 
+
+### git pull 失败 ,提示：fatal: refusing to merge unrelated histories
+
+在进行git pull 时，添加一个可选项
+```sh
+git pull origin master --allow-unrelated-histories
+```
+
+### fatal:multiple stage entries for merged file
+```
+解决办法如下：
+1.执行rm .git/index，回车
+2.执行git add -A，回车
+3.git commit -m "您的修改说明" 
+```
+
+### fatal: unable to access 'https://github.com/xxx': TCP connection reset by peer
+
+```
+git gc
+```
