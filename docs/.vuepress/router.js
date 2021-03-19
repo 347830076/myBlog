@@ -17,7 +17,8 @@ module.exports = [
             '/css/',
             '/css/resetCss',
             '/css/viewport',
-            '/css/隐藏元素'
+            '/css/常用css',
+            '/css/隐藏元素',
         ]
     },
     {
@@ -76,6 +77,7 @@ module.exports = [
             '/tool/sshkey',
             '/tool/githook',
             '/tool/vscode',
+            '/tool/谷歌插件',
         ]
     },
     {
