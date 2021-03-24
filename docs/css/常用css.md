@@ -10,7 +10,7 @@ white-space: nowrap;
 
 ## 多文本溢出
 
-```
+```css
 overflow: hidden;
 text-overflow: ellipsis;
 display: -webkit-box; /* 作为弹性伸缩盒子模型显示。 */
@@ -35,6 +35,17 @@ word-wrap:break-word;
 ```css
 word-break:break-all;
 ```
+## 字符超出部分换行
+
+```css
+overflow-wrap: break-word;
+```
+## 字符超出位置使用连字符-
+
+```css
+hyphens: auto;
+```
+
 
 ## 右箭头
 
@@ -52,4 +63,52 @@ word-break:break-all;
 }
 ```
 
+## 1px 边框解决方案
+
+### 设置单条底部边框：
+
+```css
+.scale-1px-bottom {
+    position: relative;
+    border:none;
+}
+.scale-1px-bottom::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: #000;
+    width: 100%;
+    height: 1px;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+```
+
+### 同时设置 4 条边框：
+
+```css
+.scale-1px {
+    position: relative;
+    margin-bottom: 20px;
+    border:none;
+}
+.scale-1px::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #000;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 200%;
+    height: 200%;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+}
+```
 
