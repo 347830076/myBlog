@@ -20,7 +20,6 @@
 
 <div class="adout">
     热爱前端代码，喜欢分享。欢迎大家一起讨论，共同学习进步！
-    <el-button type="primary">按钮</el-button>
 </div>
 
 <script>

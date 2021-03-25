@@ -19,6 +19,7 @@ module.exports = [
             '/css/viewport',
             '/css/常用css',
             '/css/隐藏元素',
+            '/css/css变量的使用',
         ]
     },
     {
