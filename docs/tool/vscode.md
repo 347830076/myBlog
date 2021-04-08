@@ -109,6 +109,10 @@ vue语法提示
 
 EditorConfig 有助于为跨越各种编辑器和 IDE 的同一项目的多个开发人员维护一致的编码样式。
 
+### TODO Highlight
+
+突出显示TODO，FIXME和所有关键字，注释...
+
 ### Remote - SSH  本地VSCode编辑远程服务器文件
 
 安装完Remote - SSH插件之后，
