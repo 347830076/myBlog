@@ -119,6 +119,7 @@ module.exports = {
                     '/css/常用css',
                     '/css/隐藏元素',
                     '/css/css变量的使用',
+                    '/css/伪元素表单控件默认样式重置'
                 ]
             },
             {
