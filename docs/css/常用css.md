@@ -112,3 +112,14 @@ hyphens: auto;
 }
 ```
 
+### css渲染图片时放大或缩小图片变模糊处理方式
+
+```css
+img{
+    image-rendering -moz-crisp-edges
+    image-rendering -o-crisp-edges
+    image-rendering -webkit-optimize-contrast
+    image-rendering crisp-edges
+    -ms-interpolation-mode nearest-neighbor
+}
+```
