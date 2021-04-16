@@ -146,6 +146,12 @@ module.exports = {
                 ]
             },
             {
+                title: 'Vue',
+                children: [
+                    '/vue/Vue框架dist目录下各个文件的区别'
+                ]
+            },
+            {
                 title: '组件使用教程',
                 path: '/components/',
                 sidebarDepth: 2,    // 可选的, 默认值是 1
