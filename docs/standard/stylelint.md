@@ -3,7 +3,7 @@
 ### 安装 stylelint 和 Standard 规范
 
 ```
-npm install --save-dev stylelint
+npm install --save-dev stylelint stylelint-config-standard 
 ```
 
 ### 然后再根目录创建 `.stylelintrc.json` 文件, 并写下以下内容
