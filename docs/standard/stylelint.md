@@ -17,7 +17,7 @@ npm install --save-dev stylelint stylelint-config-standard
 ### 在 `package.json` 文件的 `scripts` 加上命令, 规则检查自动修复css
 
 ```
-"style": "stylelint 'src/**/*.(vue|scss|css)' --fix",
+"style": "stylelint "src/**/*.(vue|scss|css)" --fix",
 ```
 
 ### vscode配置
@@ -75,11 +75,22 @@ npm install stylelint-order --save-dev
       "stylelint-order"
     ],
     "rules": {
+      // 颜色指定大写
+      "color-hex-case": "upper",
+      // 颜色6位长度
+      "color-hex-length": "long",
+      // 兼容自定义标签名
+      "selector-type-no-unknown": [true, {
+        "ignoreTypes": [
+            "/^page/",
+            "/^iconfont/",
+            "/^official-account/",
+            "/^ec-canvas/",
+        ]
+      }],
+      // 不验证@未知的名字，为了兼容scss的函数
+      "at-rule-no-unknown": null,
       "order/properties-order": [
-        // 颜色指定大写
-        "color-hex-case": "upper",
-        // 颜色6位长度
-        "color-hex-length": "long",
         "position",
         "top",
         "right",
