@@ -76,6 +76,10 @@ npm install stylelint-order --save-dev
     ],
     "rules": {
       "order/properties-order": [
+        // 颜色指定大写
+        "color-hex-case": "upper",
+        // 颜色6位长度
+        "color-hex-length": "long",
         "position",
         "top",
         "right",
