@@ -38,7 +38,7 @@ npm install --save-dev stylelint stylelint-config-standard
 
 ## 自定义css属性顺序规则
 
-除了使用设定默认的 `standard` 规则外，我们还可以在 `.stylelintrc.json` 内添加自己喜欢的规则
+除了使用设定默认的 `standard` 规则外，我们还可以在 `.stylelintrc.js` 内添加自己喜欢的规则
 
 1. 先安装 `stylelint-order`
 
@@ -46,10 +46,10 @@ npm install --save-dev stylelint stylelint-config-standard
 npm install stylelint-order --save-dev
 ```
 
-2. 在 `.stylelintrc.json` 设置代码如下
+2. 在 `.stylelintrc.js` 设置代码如下
 
-```json
-{
+```js
+module.exports = {
     "plugins": [
         "stylelint-order"
     ],
@@ -64,10 +64,10 @@ npm install stylelint-order --save-dev
 
 先引入 `plugins` 插件， 在 ` order/properties-order ` 里面写css属性的先后顺序，
 
-3. 完整的 `.stylelintrc.json` 如下
+3. 完整的 `.stylelintrc.js` 如下
 
-```json
-{
+```js
+module.exports = {
     "extends": [
       "stylelint-config-standard"
     ],
