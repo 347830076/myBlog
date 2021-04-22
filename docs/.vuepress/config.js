@@ -149,7 +149,8 @@ module.exports = {
                 title: 'Vue',
                 children: [
                     '/vue/Vue框架dist目录下各个文件的区别',
-                    '/vue/eslint-config'
+                    '/vue/eslint-config',
+                    '/vue/ts-vue'
                 ]
             },
             {
