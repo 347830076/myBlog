@@ -1,11 +1,4 @@
 # 常用快捷键
-
-<style>
-    .theme-default-content{
-        max-width: 1000px !important;
-    }
-</style>
-
 ## mac
 
 |图形|	按键|

@@ -216,7 +216,8 @@ module.exports = {
             {
                 title: '实用例子',
                 children: [
-                    '/demo/拖拽'
+                    '/demo/拖拽',
+                    '/demo/原生js导出json为excel的三种方式'
                 ]
             }
         ],

@@ -1,3 +1,8 @@
+<style>
+    .theme-default-content{
+        max-width: 1200px !important;
+    }
+</style>
 <template>
   <div
     class="theme-container"
