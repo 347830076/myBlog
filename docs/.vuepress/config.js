@@ -211,6 +211,7 @@ module.exports = {
                 children: [
                     '/resource/api',
                     '/resource/shortcuts',
+                    '/resource/skills',
                 ]
             },
             {
