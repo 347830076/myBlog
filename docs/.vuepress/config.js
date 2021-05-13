@@ -220,6 +220,12 @@ module.exports = {
                     '/demo/拖拽',
                     '/demo/原生js导出json为excel的三种方式'
                 ]
+            },
+            {
+                title: 'electron',
+                children: [
+                    '/electron/实战经验'
+                ]
             }
         ],
         lastUpdated: '更新时间', // string | boolean
