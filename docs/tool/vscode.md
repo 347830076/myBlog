@@ -1,4 +1,7 @@
-# vscode提高开发插件
+---
+sidebarDepth: 2
+---
+## vscode提高开发插件
 
 下面介绍的vscode, 英文才是插件名称， 中文是解释， 在扩展只需要输入英文名就可以搜索到了，install安装即可
 
@@ -134,6 +137,10 @@ Host 42.192.230.88
 ```
 
 [本地VSCode编辑远程服务器文件 - 鲲逸鹏 - 博客园](https://www.cnblogs.com/dotnetcrazy/p/11254225.html)
+
+### 如何比较文件？如何比较二个文件的异同
+
+[如何比较文件？如何比较二个文件的异同](https://jingyan.baidu.com/article/647f011568f8303f2148a8d3.html)
 
 参考文章
 
