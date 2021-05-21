@@ -8,7 +8,7 @@ npm install --save-dev stylelint stylelint-config-standard
 
 ### 然后再根目录创建 `.stylelintrc.json` 文件, 并写下以下内容
 
-```
+```json
 {
   "extends": "stylelint-config-standard"
 }
@@ -17,14 +17,14 @@ npm install --save-dev stylelint stylelint-config-standard
 ### 在 `package.json` 文件的 `scripts` 加上命令, 规则检查自动修复css
 
 ```
-"style": "stylelint "src/**/*.(vue|scss|css)" --fix",
+"style": "stylelint \"src/**/*.(vue|scss|css)\" --fix",
 ```
 
 ### vscode配置
 
 1. 安裝 StyleLint
 
-2. 在 `settings.json` 文件设置， win + , 快捷键可以快速打开
+2. 在 `settings.json` 文件设置， `win` + `,` 快捷键可以快速打开
 
 ```json
 {
@@ -33,6 +33,7 @@ npm install --save-dev stylelint stylelint-config-standard
   }
 }
 ```
+
 设置完之后，在vscode就可以有提示了，也保存自动修复了
 
 
@@ -82,11 +83,14 @@ module.exports = {
       // 兼容自定义标签名
       "selector-type-no-unknown": [true, {
         "ignoreTypes": [
-            "/^page/",
-            "/^iconfont/",
-            "/^official-account/",
-            "/^ec-canvas/",
+          "/^page/",
         ]
+      }],
+      // 禁止低优先级的选择器出现在高优先级的选择器之后。
+      "no-descending-specificity": null,
+      // 忽略伪类选择器 ::v-deep
+      "selector-pseudo-element-no-unknown": [true, {
+        "ignorePseudoElements": ["v-deep"]
       }],
       // 不验证@未知的名字，为了兼容scss的函数
       "at-rule-no-unknown": null,
@@ -193,7 +197,7 @@ html {}
 /* stylelint-enable */
 ```
 
-2. 忽略一行， 在样式前加入 /* stylelint-disable-next-line */ 以忽略该行
+2. 忽略一行， 在样式前加入 `/* stylelint-disable-next-line */` 以忽略该行
 
 ```css
 #id {
@@ -202,9 +206,9 @@ html {}
 }
 ```
 
-3. 在 .stylelintrc.json 內设定需要忽略的文件
+3. 在 `.stylelintrc.js` 內设定需要忽略的文件
 
-```sh
+```js
 {
   ignoreFiles: ["dist/**/*", "src/assets/scss/abc.scss"]
 }
