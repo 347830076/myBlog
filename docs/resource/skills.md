@@ -13,4 +13,10 @@ sudo vi /etc/hosts
 
 ## 发布npm包
 
-[一分钟教你发布npm包](https://segmentfault.com/a/1190000023075167)
+参考文章 [一分钟教你发布npm包](https://segmentfault.com/a/1190000023075167)
+
+## html2canvas生成图片时文字整体下移
+
+- 字体问题
+
+参考文章 [使用html2canvas开发遇到的字体偏移问题](https://www.cnblogs.com/caofeng11/p/13691270.html)
