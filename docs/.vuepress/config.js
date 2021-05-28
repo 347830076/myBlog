@@ -165,7 +165,8 @@ module.exports = {
             {
                 title: 'node技巧',
                 children: [
-                    '/node/配置全局命令'
+                    '/node/配置全局命令',
+                    '/node/Nginx配置密码访问'
                 ]
             },
             {

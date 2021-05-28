@@ -20,3 +20,7 @@ sudo vi /etc/hosts
 - 字体问题
 
 参考文章 [使用html2canvas开发遇到的字体偏移问题](https://www.cnblogs.com/caofeng11/p/13691270.html)
+
+## Nginx配置密码访问-访问网页需输入用户名密码
+
+参考文章 [Nginx配置密码访问-访问网页需输入用户名密码](https://segmentfault.com/a/1190000023086569)
