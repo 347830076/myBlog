@@ -159,7 +159,8 @@ module.exports = {
                 path: '/components/',
                 sidebarDepth: 2,    // 可选的, 默认值是 1
                 children: [
-                    '/components/pxtorem'
+                    '/components/pxtorem',
+                    '/components/react-pdf',
                 ]
             },
             {
