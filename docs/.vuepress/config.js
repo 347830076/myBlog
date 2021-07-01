@@ -144,6 +144,7 @@ module.exports = {
                     '/javascript/防抖节流',
                     '/javascript/九种跨域方式实现原理',
                     '/javascript/实用API',
+                    '/javascript/点击约束',
                 ]
             },
             {
