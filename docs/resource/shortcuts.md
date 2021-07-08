@@ -1,4 +1,25 @@
 # 常用快捷键
+
+## vscode
+
+|组合键|	功能|
+|  ----  | ----  |
+| alt + shift + A | 多行注释 |
+| shift + alt +up/down | 复制当前行 |
+| shift + win + k | 删除当前行 |
+| ctrl + ~ | 控制台终端显示与隐藏 |
+| win + p | 查找文件/安装vs code 插件地址 |
+| win + shift + n | 新开vscode |
+| win + 1/2/3 | 拆分编辑器 |
+| shift + win + k | 删除当前行 |
+| alt + z | 自动换行 |
+| win + shift + f | 全局搜索 |
+| ctrl + k + 0-9 | 折叠代码(0是完全折叠) |
+| ctrl + k + j | 展开代码 |
+| win + k + t | 切换主题 |
+| win + alt + up/down | 多行同时添加内容（光标） |
+| alt + 鼠标左键 | 添加多个光标 |
+| ctrl + r | 打开最近打开的文件（夹） |
 ## mac
 
 |图形|	按键|
@@ -10,7 +31,7 @@
 |⇪|	Caps Lock|
 |fn|	功能键|
 
-|组合键|	功能|
+|组合键|	功能| 
 |  ----  | ----  |
 | F11 | 回到桌面 |
 | 回车键 | 重命名 |
@@ -33,8 +54,6 @@
 | ctrl + 空格 | 切换中英文 |
 | ctrl + ↑  | 展示设置桌面，把程序拖上去可以形成一个桌面，也可以右上角添加新桌面，再把程序拖到新桌面 |
 | ctrl + ← 或者   ctrl + →   | 切换桌面 |
-
-
 ## window
 
 |描述|	Windows	Mac OS|
@@ -50,7 +69,6 @@
 |剪切文本|	Ctrl + X|	Cmd + X|
 |重做文本|	Ctrl + Y|	Shift + Cmd + Z|
 |撤销文本|	Ctrl + Z|	Cmd + Z|
-
 ## linux
 
 |组合键|	功能|
@@ -75,9 +93,7 @@
 |  Ctrl Y | 粘贴Ctrl W或Ctrl K删除的内容 |
 |  Ctrl PageUp | 屏幕输出向上翻页 |
 |  Ctrl PageDown | 屏幕输出向下翻页 |
-
 ## 谷歌浏览器
-
 #### 截取网页(区域，整个网页)
 
 按F12 打开调试工具，按 Shilt + win(Command) + p，输入 Screenshot, 如下图所示：
@@ -88,8 +104,6 @@
 - Capture full size screenshot (截取整个网页，超出部分都截取)
 - Capture node screenshot      (截取当前可视区域, 但图片长度是整个页面的长度，下面不可见区域为空白)
 - Capture screenshot           (截取当前可视区域)
-
-
 #### 修改控制台主题颜色
 
 按F12 打开调试工具，按 Shilt + win(Command) + p，输入 theme, 如下图所示：
