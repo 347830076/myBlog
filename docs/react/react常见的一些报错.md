@@ -2,11 +2,12 @@
 
 相信大家在刚刚学习，使用react开发的时候，会遇到一些报错。这里我记录下我遇到的报错，和解决办法
 
-## 使用hook时，卸载页面（切换路由）的时候
+## 卸载页面（切换路由）的时候
 
 会出现如下图的报错：
 
 <img class="zoom-custom-imgs" :src="$withBase('/assets/img/react/error.png')">
+
 
 报错提示：无法对未装载的组件执行反应状态更新。这是一个不准的操作，但它表示应用程序内存泄漏。若要修复，请取消useffect清理函数中的所有订阅和异步任务
 
@@ -74,3 +75,5 @@ useEffect(() => {
 class类组件：原理同hook，在 `componentWillUnMount` 中设置一个 值true 、false来判断是否渲染组件
 
 好了，大家又解决了一个bug，完美（成就感）。
+
+参考文献： [解决react hook组件卸载数据处于加载中渲染组件状态](https://www.cnblogs.com/seemoon/p/12744957.html)

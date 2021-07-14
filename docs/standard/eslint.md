@@ -262,8 +262,6 @@ new Vue({
 
 #### 忽略整个文件或者以下代码全部忽略
 
-
-
 参考文章
 
 [掘金 从0到1配置eslint (所有人一看就懂)](https://juejin.cn/post/6844903492545429512#heading-1)
@@ -271,6 +269,200 @@ new Vue({
 [简书 ESLint 使用记录](https://www.jianshu.com/p/fd4bc462220b)
 
 
+## eslint 编译时警告或错误的配置
 
+**背景：** 相信大家在项目引入eslint的时候，都会遇到，当eslint报错时就会直接导致整个页面报错，不能运行
 
+其实解决方法也不难，原理是：eslint使用了 `eslint-loader` 或者 `eslint-webpack-plugin`来检验我们的代码是否符合规范
 
+细心的同学，去[eslint-loader](https://www.npmjs.com/package/eslint-loader) 或者 [eslint-webpack-plugin](https://www.npmjs.com/package/eslint-webpack-plugin)的npm官方看文档就会发现，他们会提供这个配置 `failOnError`
+
+<img class="zoom-custom-imgs" :src="$withBase('/assets/img/fail-on-error.png')" />
+
+**这个配置默认是true，只要我们把它关闭（设置为false），那么就可以在eslint报错的时候也不会导致项目编译失败**
+
+现在我们知道原理了，只需要改一个配置即可。下面我们来实战项目下怎么改
+### vue项目中
+
+在vue项目中，我们只需在 vue.config.js 文件中配置 `lintOnSave` 的值即可
+
+- lintOnSave的值类型有: `boolean` | `warning` | `default` | `error`
+- 默认值是`default`
+
+默认值情况下，eslint 的警告会输出到命令行，不会导致编译失败，eslint 的错误，也会输出到命令行，而且会导致编译失败
+
+设置为 `true` 或 `warning` 时，eslint-loader 会将 eslint 的错误输出为编译警告，且不会使得编译失败。
+
+设置为 `error` 将会使得 eslint-loader 把 eslint 的警告也输出为编译错误，这意味着 eslint 的警告将会导致编译失败。
+
+最终我们只需在 `vue.config.js` 文件，配置如下即可：
+
+```js
+module.exports = {
+  // 生产环境下使用默认值，开发环境使用 ture 
+  lintOnSave: process.env.NODE_ENV === 'production' ? 'default' : true,
+}
+```
+
+参考文章：[vue.config.js文件的lintOnSave配置](https://cli.vuejs.org/zh/config/#lintonsave)
+
+### react项目中
+
+在我们使用`react-create-app`生成项目时，脚手架会帮我们自动配置好了webpack的配置，并且隐藏起来，我们在项目目录文件下看不到配置文件，
+
+想要看到react项目的一些配置文件也很简单，使用下面命令即可
+
+```js
+npm run eject
+```
+
+这里推荐Create React App 中文网给大家看看，[Create React App 中文文档](https://www.html.cn/create-react-app/docs/available-scripts/)
+
+使用 `npm run eject`后生成的配置文件，看到现在的react项目是使用`eslint-webpack-plugin`这个插件依赖包的
+
+<img class="zoom-custom-imgs" :src="$withBase('/assets/img/fail-on-error2.jpg')" />
+
+如果你的项目是使用 `npm run eject` 暴露出配置文件了，那么你直接改`eslint-webpack-plugin`的配置即可
+
+如下：
+
+```js
+    new ESLintPlugin({
+        // Plugin options
+        extensions: ['js', 'mjs', 'jsx', 'ts', 'tsx'],
+        formatter: require.resolve('react-dev-utils/eslintFormatter'),
+        eslintPath: require.resolve('eslint'),
+        failOnError: false, // 重点这个配置
+        context: paths.appSrc,
+        cache: true,
+        // ESLint class options
+        cwd: paths.appPath,
+        resolvePluginsRelativeTo: __dirname,
+        baseConfig: {
+          extends: [require.resolve('eslint-config-react-app/base')],
+          rules: {
+            ...(!hasJsxRuntime && {
+              'react/react-in-jsx-scope': 'error',
+            }),
+          },
+        },
+      })
+```
+
+如果你不想用`npm run eject`暴露配置文件
+
+这里使用 [customize-cra](https://www.npmjs.com/package/customize-cra)依赖包来修改react的相关配置
+
+下面给大家放笔者实战项目的真实配置
+
+```js
+const CopyPlugin = require('copy-webpack-plugin')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
+const path = require('path')
+const {
+  override, // 生成覆写配置
+  addWebpackAlias, // 添加路径别名
+  adjustStyleLoaders, // 修改样式 loader
+  overrideDevServer, // 配置开发环境跨域
+  addWebpackPlugin, // 添加新插件
+} = require('customize-cra') // 更容易地使用 config.overrides
+
+const myPlugis = [
+  new CopyPlugin({
+    patterns: [
+      {
+        from: 'node_modules/pdfjs-dist/cmaps/',
+        to: 'cmaps'
+      }
+    ]
+  }),
+]
+
+// 自定义函数，修改 webpack 的配置，
+const changeWebpackConfig = () => config => {
+  // console.log(config)
+  // process.exit() // 中断
+
+  // 更改ESLintWebpackPlugin配置
+  config.plugins.forEach(item => {
+    if (item.constructor.name === 'ESLintWebpackPlugin') {
+      // 如果有任何错误，将导致模块构建失败，禁用设置为false.
+      item.options.failOnError = false
+    }
+  })
+
+  // 修改 url loader，使其支持「require」语法，
+  const loaders = config.module.rules.find(rule => Array.isArray(rule.oneOf)).oneOf // 获取 loader，oneOf 是优化，不需要每个文件把所有的 loader 都询问一遍，可以提高 loader 的执行效率
+  loaders.forEach(loader => {
+    // console.log(loaders) // 打印所有 loader
+    if (loader.test && loader.test.toString().includes('.png$')) { // 寻找匹配 .png 的 loader：url-loader
+      loader.options.esModule = false
+    }
+  })
+  return config
+}
+
+const webpack = override(
+  // 打包增加进度条提示
+  addWebpackPlugin(new ProgressBarPlugin()),
+  // 修改 url-loader
+  changeWebpackConfig(),
+  // 路径别名
+  addWebpackAlias({
+    '@': path.resolve(__dirname, 'src'),
+    '@pages': path.resolve(__dirname, 'src/pages'),
+    '@img': path.resolve(__dirname, 'src/assets/imgs'),
+    '@commom': path.resolve(__dirname, 'src/common/js'),
+    '@component': path.resolve(__dirname, 'src/base-components')
+  }),
+  // 修改样式配置
+  adjustStyleLoaders(rule => {
+    if (rule.test.toString().includes('scss')) {
+      rule.use.push({
+        loader: require.resolve('sass-resources-loader'),
+        options: {
+          resources: [ // 设置全部 scss 变量
+            './src/common/scss/var.scss',
+            './src/common/scss/mixin.scss'
+          ]
+        }
+      })
+    }
+  }),
+  config => {
+    config.plugins = [...config.plugins, ...myPlugis]
+    return config
+  }
+)
+
+module.exports = {
+  webpack,
+  eslint: {
+    enable: false
+  },
+  // 代理
+  devServer: overrideDevServer(config => {
+    config.proxy = {
+      // '/api': {
+      //   target: 'http://xxx/',
+      //   changeOrigin: true,
+      //   secure: false
+      // },
+    }
+    return config
+  })
+}
+
+```
+
+上面代码中修改`ESLintWebpackPlugin`配置注意是
+
+```js
+// 更改ESLintWebpackPlugin配置
+  config.plugins.forEach(item => {
+    if (item.constructor.name === 'ESLintWebpackPlugin') {
+      // 如果有任何错误，将导致模块构建失败，禁用设置为false.
+      item.options.failOnError = false
+    }
+  })
+```
