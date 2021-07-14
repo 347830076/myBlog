@@ -157,6 +157,12 @@ module.exports = {
                 ]
             },
             {
+                title: 'react',
+                children: [
+                    '/react/react常见的一些报错'
+                ]
+            },
+            {
                 title: '组件使用教程',
                 path: '/components/',
                 sidebarDepth: 2,    // 可选的, 默认值是 1
