@@ -1,0 +1,15 @@
+{
+    "name": "阿离王",
+    "short_name": "前端分享",
+    "theme_color": "#2196f3",
+    "background_color": "#2196f3",
+    "display": "browser",
+    "start_url": "/index.html",
+    "icons": [
+        {
+            "src": "/icons/lufei.jpg",
+            "sizes": "255x255",
+            "type": "image/jpg"
+        }
+    ]
+  }
