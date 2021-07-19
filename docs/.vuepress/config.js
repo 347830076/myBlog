@@ -158,6 +158,7 @@ module.exports = {
             },
             {
                 title: 'react',
+                path: '/react/',
                 children: [
                     '/react/react常见的一些报错'
                 ]
