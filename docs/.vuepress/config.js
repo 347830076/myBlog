@@ -180,14 +180,6 @@ module.exports = {
                 ]
             },
             {
-                title: 'taro',
-                path: '/taro/',
-                children: [
-                    '/taro/实战经验',
-                    '/taro/编译配置'
-                ]
-            },
-            {
                 title: '工具栏',   // 必要的
                 // collapsable: false, // 可选的, 默认值是 true,
                 sidebarDepth: 1,    // 可选的, 默认值是 1
@@ -233,12 +225,6 @@ module.exports = {
                     '/demo/原生js导出json为excel的三种方式'
                 ]
             },
-            {
-                title: 'electron',
-                children: [
-                    '/electron/实战经验'
-                ]
-            }
         ],
         lastUpdated: '更新时间', // string | boolean
     }
