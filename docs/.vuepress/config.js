@@ -94,7 +94,6 @@ module.exports = {
             //         }
             //     ]
             // },
-            { text: '谷歌搜索', link: 'https://google.com' },
         ],
         // 侧边栏路由
         sidebar: [
@@ -103,9 +102,6 @@ module.exports = {
                 path: '/',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
                 // collapsable: false, // 可选的, 默认值是 true,
                 sidebarDepth: 1,    // 可选的, 默认值是 1
-                children: [
-                    '/about'
-                ]
             },
             {
                 title: 'css',   // 必要的
@@ -176,7 +172,8 @@ module.exports = {
                 title: 'node技巧',
                 children: [
                     '/node/配置全局命令',
-                    '/node/Nginx配置密码访问'
+                    '/node/Nginx配置密码访问',
+                    '/node/Nginx反向代理配置',
                 ]
             },
             {
