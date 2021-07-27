@@ -117,6 +117,7 @@ module.exports = {
                     '/css/css变量的使用',
                     '/css/伪元素表单控件默认样式重置',
                     '/css/粘性定位sticky的用途',
+                    '/css/cssModule',
                 ]
             },
             {
@@ -219,7 +220,8 @@ module.exports = {
                 title: '实用例子',
                 children: [
                     '/demo/拖拽',
-                    '/demo/原生js导出json为excel的三种方式'
+                    '/demo/原生js导出json为excel的三种方式',
+                    '/demo/使用原生js来替换title属性的悬浮文字提示',
                 ]
             },
         ],
