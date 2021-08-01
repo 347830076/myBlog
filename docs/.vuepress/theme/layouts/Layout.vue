@@ -1,5 +1,5 @@
 <style>
-    .theme-default-content{
+    .theme-default-content, .page-nav{
         max-width: 1200px !important;
     }
 </style>

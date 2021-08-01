@@ -11,7 +11,6 @@
 | win + p | 查找文件/安装vs code 插件地址 |
 | win + shift + n | 新开vscode |
 | win + 1/2/3 | 拆分编辑器 |
-| shift + win + k | 删除当前行 |
 | alt + z | 自动换行 |
 | win + shift + f | 全局搜索 |
 | ctrl + k + 0-9 | 折叠代码(0是完全折叠) |
