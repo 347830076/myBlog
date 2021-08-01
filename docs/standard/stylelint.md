@@ -22,7 +22,7 @@ npm install --save-dev stylelint stylelint-config-standard
 
 ### vscode配置
 
-1. 安裝 StyleLint
+1. 安裝 styleLint插件
 
 2. 在 `settings.json` 文件设置， `win` + `,` 快捷键可以快速打开
 
