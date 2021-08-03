@@ -142,6 +142,7 @@ module.exports = {
                     '/javascript/九种跨域方式实现原理',
                     '/javascript/实用API',
                     '/javascript/点击约束',
+                    '/javascript/promise使用和实现方法',
                 ]
             },
             {
@@ -151,6 +152,7 @@ module.exports = {
                     '/vue/eslint-config',
                     '/vue/ts-vue',
                     '/vue/常用技巧',
+                    '/vue/路由守卫',
                 ]
             },
             {
