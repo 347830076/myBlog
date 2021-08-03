@@ -2,6 +2,9 @@
     .theme-default-content, .page-nav{
         max-width: 1200px !important;
     }
+    .code-copy{
+      height: 0px;
+    }
 </style>
 <template>
   <div
