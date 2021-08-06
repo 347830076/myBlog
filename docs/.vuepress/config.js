@@ -15,49 +15,103 @@ module.exports = {
         ['script', { src: 'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js' }],
         ['script', { src: 'https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js' }],
     ],
-    plugins: {
+    plugins: [
         // 代码实时展示效果
-        'demo-block': {
-            settings: {
+        [
+            'demo-block',
+            {
+                settings: {
+                }
             }
-        },
-        'vuepress-plugin-element-tabs': true,
+        ],
+        [
+            'vuepress-plugin-element-tabs'
+        ],
         // 代码块复制功能
-        'vuepress-plugin-code-copy': true,
+        [
+            'vuepress-plugin-code-copy'
+        ],
         // github留言
-        '@vssue/vuepress-plugin-vssue': {
-            // 设置 `platform` 而不是 `api`
-            platform: 'github-v4',
-
-            // 其他的 Vssue 配置
-            owner: '347830076',
-            repo: 'myBlog',
-            clientId: '56139b003e776521ec4f',
-            clientSecret: 'd2f0d31963661c1366e388b2c54dde210e70dc86',
-            autoCreateIssue: true
-        },
-        // 图片放大
-        '@vuepress/medium-zoom': {
-            selector: 'img.zoom-custom-imgs'
-        },
-        // 返回顶部
-        '@vuepress/back-to-top': {},
-        //最后更新时间
-        '@vuepress/last-updated':
-        {
-            transformer: (timestamp) => {
-                return moment(timestamp).format('LLLL')
+        [
+            '@vssue/vuepress-plugin-vssue',
+            {
+                // 设置 `platform` 而不是 `api`
+                platform: 'github-v4',
+    
+                // 其他的 Vssue 配置
+                owner: '347830076',
+                repo: 'myBlog',
+                clientId: '56139b003e776521ec4f',
+                clientSecret: 'd2f0d31963661c1366e388b2c54dde210e70dc86',
+                autoCreateIssue: true
             }
-        },
+        ],
+        // 图片放大
+        [
+            '@vuepress/medium-zoom',
+            {
+                selector: 'img.zoom-custom-imgs',
+                 // See: https://github.com/francoischalifour/medium-zoom#options
+                options: {
+                    margin: 16
+                }
+            }
+        ],
+        // 返回顶部
+        require('./src/plugins/back-to-top/plugin.js'),
+        //最后更新时间
+        [
+            '@vuepress/last-updated',
+            {
+                transformer: (timestamp) => {
+                    return moment(timestamp).format('LLLL')
+                }
+            }
+        ]
+    ],
+    // plugins: {
+    //     // 代码实时展示效果
+    //     'demo-block': {
+    //         settings: {
+    //         }
+    //     },
+    //     'vuepress-plugin-element-tabs': true,
+    //     // 代码块复制功能
+    //     'vuepress-plugin-code-copy': true,
+    //     // github留言
+    //     '@vssue/vuepress-plugin-vssue': {
+    //         // 设置 `platform` 而不是 `api`
+    //         platform: 'github-v4',
 
-        // '@vuepress/pwa': {
-        //     serviceWorker: true,
-        //     updatePopup: {
-        //         message: "发现新内容可用",
-        //         buttonText: "刷新"
-        //     }
-        // }
-    },
+    //         // 其他的 Vssue 配置
+    //         owner: '347830076',
+    //         repo: 'myBlog',
+    //         clientId: '56139b003e776521ec4f',
+    //         clientSecret: 'd2f0d31963661c1366e388b2c54dde210e70dc86',
+    //         autoCreateIssue: true
+    //     },
+    //     // 图片放大
+    //     '@vuepress/medium-zoom': {
+    //         selector: 'img.zoom-custom-imgs'
+    //     },
+    //     // 返回顶部
+    //     '@vuepress/back-to-top': require('./src/plugins/back-to-top/plugin.js'),
+    //     //最后更新时间
+    //     '@vuepress/last-updated':
+    //     {
+    //         transformer: (timestamp) => {
+    //             return moment(timestamp).format('LLLL')
+    //         }
+    //     },
+
+    //     // '@vuepress/pwa': {
+    //     //     serviceWorker: true,
+    //     //     updatePopup: {
+    //     //         message: "发现新内容可用",
+    //     //         buttonText: "刷新"
+    //     //     }
+    //     // }
+    // },
     themeConfig: {
         // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
         repo: 'https://github.com/347830076/',
