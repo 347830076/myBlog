@@ -172,6 +172,7 @@ module.exports = {
                     '/css/伪元素表单控件默认样式重置',
                     '/css/粘性定位sticky的用途',
                     '/css/cssModule',
+                    '/css/滚动视觉差',
                 ]
             },
             {
