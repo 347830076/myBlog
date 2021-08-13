@@ -2,6 +2,13 @@
     .theme-default-content, .page-nav{
         max-width: 1200px !important;
     }
+    .code-copy{
+      height: 0;
+      line-height: 0;
+    }
+    .theme-default-content code{
+      color: #ea4335;
+    }
 </style>
 <template>
   <div
