@@ -149,7 +149,7 @@ module.exports = {
   },
 ```
 
-## 最后，执行一波命令
+## 执行一波命令
 
 ```
 npm run build
@@ -165,4 +165,59 @@ npm run build
 
 **看到没，类名全部给你hash值，唯一类名，这样就达到了cssModule的效果了**
 
+## 全局作用域
+
+CSS Modules 允许使用`:global(.className)`的语法，声明一个全局规则。凡是这样声明的class，都不会被编译成哈希字符串。
+
+style.css加入一个全局class。
+
+```css
+/* 新加的css */
+:global(.g-title) {
+    font-size: 20px;
+    font-weight: bold;
+}
+.className{
+    background-color: #ccc;
+}
+.hello {
+    composes: className;
+    color: red;
+}
+```
+
+index.js使用普通的class的写法，就会引用全局class。
+
+```js
+import _ from 'lodash';
+import style from './style.css';
+
+ function component() {
+   const element = document.createElement('div');
+
+   element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+   style.hello.split(' ').forEach(item => element.classList.add(item))
+
+   element.classList.add('g-title') // 新加的js
+
+   return element;
+ }
+
+ document.body.appendChild(component());
+```
+
+再编译打包下 
+
+```
+npm run build
+```
+
+<img class="zoom-custom-imgs" :src="$withBase('/assets/img/css/cssModule2.png')">
+
+
+这里解释下 `style.css` 文件出现的 `composes: className;`,  意思是 继承了 `className`这个类的样式意思，和sass语法的mixin效果一样，只是这个`composes`是cssModule插件识别的
+
+
 完工!!!  以上是小弟的一些小研究， 各位大佬有什么建议，欢迎留言交流
+
+参考文章： [阮一峰 CSS Modules 用法教程](http://www.ruanyifeng.com/blog/2016/06/css_modules.html)

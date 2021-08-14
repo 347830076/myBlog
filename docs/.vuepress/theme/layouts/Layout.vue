@@ -3,7 +3,11 @@
         max-width: 1200px !important;
     }
     .code-copy{
-      height: 0px;
+      height: 0;
+      line-height: 0;
+    }
+    .theme-default-content code{
+      color: #ea4335;
     }
 </style>
 <template>

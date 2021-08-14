@@ -4,42 +4,82 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>视觉差</title>
     <style>
-        *{
+        html {
+            overflow: hidden;
+            height: 100%
+        }
+
+        body{
+            height: 100vh;
+            overflow: auto;
+            perspective: 100px;
+            transform-style: preserve-3d;
             margin: 0;
         }
-        html,body{
-            height: 100%;
-        }
-        .sticky{
-            position: sticky;
-            bottom: 0%;
+        .main{
+            height: 200vh;
             background-color: #ccc;
-            padding: 10px;
+        }
+        .imgBox{
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            background-image: url('https://images.pexels.com/photos/830891/pexels-photo-830891.jpeg');
+            background-size: cover;
+            background-position: center center;
+            margin: 0 auto;
+        }
+        .textBox{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 200px;
+            padding: 20px;
+            background-color: #fff;
+            transform: translateX(-50%) translateY(-50%) translateZ(30px) scale(.7);
+            border: 1px solid #ccc;
+        }
+        #app{
+            width: 100vw;
+            height:200vh;
+            background:skyblue;
+            padding-top:100px;
+        }
+        .one{
+            width:500px;
+            height:200px;
+            background:#409eff;
+            transform: translateZ(0px);
+            margin-bottom: 50px;
+        }
+        .two{
+            width:500px;
+            height:200px;
+            background:#67c23a;
+            transform: translateZ(-20px);
+            margin-bottom: 150px;
+        }
+        .three{
+            width:500px;
+            height:200px;
+            background:#e6a23c;
+            transform: translateZ(-90px);
+            margin-bottom: 150px;
         }
     </style>
 </head>
 <body>
-    <div id="main">1</div>
-    <script>
-        const main = document.getElementById('main');
-        const frg = document.createDocumentFragment();
-
-        const li = document.createElement('li');
-        li.innerHTML = 1;
-        frg.appendChild(li);
-        main.appendChild(frg);
-
-        new Promise((resolve) => {
-        resolve();
-        }).then(() => {
-            console.log('微任务已经执行');
-        });
-
-        setTimeout(() => {
-            console.log('宏任务执行');
-        });
-    </script>
+    <div class="main">
+        <section class="imgBox">
+            <p class="textBox">我是一段文字我是一段文字我是一段文字我是一段文字</p>
+        </section>
+    </div>
+    <div id="app">
+        <div class="one">one</div>
+        <div class="two">two</div>
+        <div class="three">three</div>
+      </div>
 </body>
 </html>
