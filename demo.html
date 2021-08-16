@@ -1,85 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>视觉差</title>
-    <style>
-        html {
-            overflow: hidden;
-            height: 100%
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 先定义三个常量表示状态
+        var PENDING = 'pending';
+        var FULFILLED = 'fulfilled';
+        var REJECTED = 'rejected';
+
+        function MyPromise(fn) {
+            this.status = PENDING;    // 初始状态为pending
+            this.value = null;        // 初始化value
+            this.reason = null;       // 初始化reason
+
+            // 构造函数里面添加两个数组存储成功和失败的回调
+            this.onFulfilledCallbacks = [];
+            this.onRejectedCallbacks = [];
+
+            // 存一下this,以便resolve和reject里面访问
+            var that = this;
+            // resolve方法参数是value
+            function resolve(value) {
+                if (that.status === PENDING) {
+                    that.status = FULFILLED;
+                    that.value = value;
+
+                    // resolve里面将所有成功的回调拿出来执行
+                    that.onFulfilledCallbacks.forEach(callback => {
+                        callback(that.value);
+                    });
+                }
+            }
+
+            // reject方法参数是reason
+            function reject(reason) {
+                if (that.status === PENDING) {
+                    that.status = REJECTED;
+                    that.reason = reason;
+
+                    // resolve里面将所有失败的回调拿出来执行
+                    that.onRejectedCallbacks.forEach(callback => {
+                        callback(that.reason);
+                    });
+                }
+            }
+
+            try {
+                fn(resolve, reject);
+            } catch (error) {
+                reject(error);
+            }
         }
 
-        body{
-            height: 100vh;
-            overflow: auto;
-            perspective: 100px;
-            transform-style: preserve-3d;
-            margin: 0;
+        MyPromise.prototype.then = function (onFulfilled, onRejected) {
+
+            // 如果onFulfilled不是函数，给一个默认函数，返回value
+            var realOnFulfilled = onFulfilled;
+            if (typeof realOnFulfilled !== 'function') {
+                realOnFulfilled = function (value) {
+                    return value;
+                }
+            }
+
+            // 如果onRejected不是函数，给一个默认函数，返回reason的Error
+            var realOnRejected = onRejected;
+            if (typeof realOnRejected !== 'function') {
+                realOnRejected = function (reason) {
+                    throw reason;
+                }
+            }
+
+            if (this.status === FULFILLED) {
+                onFulfilled(this.value)
+            }
+
+            if (this.status === REJECTED) {
+                onRejected(this.reason);
+            }
+
+            // 如果还是PENDING状态，将回调保存下来
+            if (this.status === PENDING) {
+                this.onFulfilledCallbacks.push(realOnFulfilled);
+                this.onRejectedCallbacks.push(realOnRejected);
+            }
         }
-        .main{
-            height: 200vh;
-            background-color: #ccc;
-        }
-        .imgBox{
-            position: relative;
-            height: 100vh;
-            width: 100%;
-            background-image: url('https://images.pexels.com/photos/830891/pexels-photo-830891.jpeg');
-            background-size: cover;
-            background-position: center center;
-            margin: 0 auto;
-        }
-        .textBox{
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 200px;
-            padding: 20px;
-            background-color: #fff;
-            transform: translateX(-50%) translateY(-50%) translateZ(30px) scale(.7);
-            border: 1px solid #ccc;
-        }
-        #app{
-            width: 100vw;
-            height:200vh;
-            background:skyblue;
-            padding-top:100px;
-        }
-        .one{
-            width:500px;
-            height:200px;
-            background:#409eff;
-            transform: translateZ(0px);
-            margin-bottom: 50px;
-        }
-        .two{
-            width:500px;
-            height:200px;
-            background:#67c23a;
-            transform: translateZ(-20px);
-            margin-bottom: 150px;
-        }
-        .three{
-            width:500px;
-            height:200px;
-            background:#e6a23c;
-            transform: translateZ(-90px);
-            margin-bottom: 150px;
-        }
-    </style>
-</head>
-<body>
-    <div class="main">
-        <section class="imgBox">
-            <p class="textBox">我是一段文字我是一段文字我是一段文字我是一段文字</p>
-        </section>
-    </div>
-    <div id="app">
-        <div class="one">one</div>
-        <div class="two">two</div>
-        <div class="three">three</div>
-      </div>
+
+        new MyPromise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('一秒后调用resolve成功')
+            }, 1000);
+        }).then(res => {
+            console.log(res);
+        })
+
+        new MyPromise((resolve, reject) => {
+            setTimeout(() => {
+                reject('一秒后调用reject成功')
+            }, 1000);
+        }).then(res => {
+            console.log(res);
+        }, err => {
+            console.log(err)
+        })
+    </script>
 </body>
+
 </html>
