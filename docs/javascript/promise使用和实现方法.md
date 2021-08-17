@@ -867,6 +867,194 @@ if (this.status === PENDING) {
   return promise2;
 }
 ```
+
+这里主要的核心代码就写好了
+
+### 其他Promise方法
+在ES6的官方Promise还有很多API，比如：
+- Promise.resolve
+- Promise.reject
+- Promise.all
+- Promise.race
+- Promise.prototype.catch
+- Promise.prototype.finally
+- Promise.allSettled
+
+虽然这些都不在Promise/A+里面，但是我们也来实现一下吧，加深理解。其实我们前面实现了Promise/A+再来实现这些已经是小菜一碟了，因为这些API全部是前面的封装而已。
+
+### Promise.resolve
+
+将现有对象转为`Promise对象`，如果 Promise.resolve 方法的参数，不是具有 then 方法的对象（又称 thenable 对象），则返回一个`新的 Promise 对象`，且它的状态为`fulfilled`。
+
+```js
+MyPromise.resolve = function(parameter) {
+  if(parameter instanceof MyPromise) {
+    return parameter;
+  }
+
+  return new MyPromise(function(resolve) {
+    resolve(parameter);
+  });
+}
+```
+
+### Promise.reject
+
+返回一个`新的Promise实例`，该实例的状态为`rejected`。Promise.reject方法的参数reason，会被传递给实例的回调函数。
+
+```js
+MyPromise.reject = function(reason) {
+  return new MyPromise(function(resolve, reject) {
+    reject(reason);
+  });
+}
+```
+
+### Promise.all
+
+该方法用于将多个 Promise 实例，包装成一个新的 Promise 实例。用法如下：
+
+```js
+const p = Promise.all([p1, p2, p3]);
+```
+
+`Promise.all()`方法接受一个数组作为参数，`p1、p2、p3`都是 `Promise 实例`，如果不是，就会先调用`Promise.resolve`方法，将参数转为 Promise 实例，再进一步处理。当p1, p2, p3全部`resolve`，大的`promise`才`resolve`，有任何一个`reject`，大的promise都`reject`。
+
+```js
+MyPromise.all = function(promiseList) {
+  var resPromise = new MyPromise(function(resolve, reject) {
+    var count = 0;
+    var result = [];
+    var length = promiseList.length;
+
+    if(length === 0) {
+      return resolve(result);
+    }
+
+    promiseList.forEach(function(promise, index) {
+      MyPromise.resolve(promise).then(function(value){
+        count++;
+        result[index] = value;
+        if(count === length) {
+          resolve(result);
+        }
+      }, function(reason){
+        reject(reason);
+      });
+    });
+  });
+
+  return resPromise;
+}
+```
+
+### Promise.race
+
+用法：
+
+```js
+const p = Promise.race([p1, p2, p3]);
+```
+
+该方法同样是将多个 `Promise` 实例，包装成一个新的 `Promise` 实例。上面代码中，只要p1、p2、p3之中有一个实例率先改变状态，p的状态就跟着改变。那个率先改变的 `Promise` 实例的返回值，就传递给p的回调函数。
+
+```js
+MyPromise.race = function(promiseList) {
+  var resPromise = new MyPromise(function(resolve, reject) {
+    var length = promiseList.length;
+
+    if(length === 0) {
+      return resolve();
+    } else {
+      for(var i = 0; i < length; i++) {
+        MyPromise.resolve(promiseList[i]).then(function(value) {
+          return resolve(value);
+        }, function(reason) {
+          return reject(reason);
+        });
+      }
+    }
+  });
+
+  return resPromise;
+}
+```
+
+### Promise.prototype.catch
+
+`Promise.prototype.catch`方法是`.then(null, rejection)`或`.then(undefined, rejection)`的别名，用于指定发生错误时的回调函数。
+
+```js
+MyPromise.prototype.catch = function(onRejected) {
+  this.then(null, onRejected);
+}
+```
+
+### Promise.prototype.finally
+
+`finally`方法用于指定不管 Promise 对象最后状态如何，都会执行的操作。该方法是 ES2018 引入标准的。
+
+```js
+MyPromise.prototype.finally = function (fn) {
+  return this.then(function (value) {
+    return MyPromise.resolve(fn()).then(function () {
+      return value;
+    });
+  }, function (error) {
+    return MyPromise.resolve(fn()).then(function () {
+      throw error
+    });
+  });
+}
+```
+
+### Promise.allSettled
+
+- 该方法接受一组 `Promise` 实例作为参数，包装成一个新的 `Promise` 实例。
+- 只有等到所有这些参数实例都返回结果，不管是`fulfilled`还是`rejected`，包装实例才会结束。
+- 该方法由 ES2020 引入。该方法返回的新的 `Promise` 实例，一旦结束，状态总是`fulfilled`，不会变成`rejected`。
+- 状态变成`fulfilled`后，Promise 的监听函数接收到的参数是一个数组，每个成员对应一个传入Promise.allSettled()的 Promise 实例的执行结果。
+
+```js
+MyPromise.allSettled = function(promiseList) {
+  return new MyPromise(function(resolve){
+    var length = promiseList.length;
+    var result = [];
+    var count = 0;
+
+    if(length === 0) {
+      return resolve(result);
+    } else {
+      for(var i = 0; i < length; i++) {
+
+        (function(i){
+          var currentPromise = MyPromise.resolve(promiseList[i]);
+
+          currentPromise.then(function(value){
+            count++;
+            result[i] = {
+              status: 'fulfilled',
+              value: value
+            }
+            if(count === length) {
+              return resolve(result);
+            }
+          }, function(reason){
+            count++;
+            result[i] = {
+              status: 'rejected',
+              reason: reason
+            }
+            if(count === length) {
+              return resolve(result);
+            }
+          });
+        })(i)
+      }
+    }
+  });
+}
+```
 ### 完整代码
 
 ```js
