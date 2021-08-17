@@ -4,10 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>平稳返回顶部</title>
+    <title>全站平稳返回顶部</title>
     <style>
         html{
             scroll-behavior: smooth;
+        }
+        .backTop {
+            position: fixed;
+            right: 5%;
+            bottom: 30px;
+            padding: 4px 8px;
+            background-color: #ccc;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+        .active {
+            opacity: 1;
         }
     </style>
 </head>
@@ -72,6 +84,24 @@
     <div>28</div>
     <div>29</div>
     <div>30</div>
-    <a href="#">返回顶部</a>
+    <div class="backTop">返回顶部</div>
+    <script>
+        let dom = document.querySelector('.backTop')
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+            if (scrollTop > 200) {
+                dom.classList.add('active')
+            } else {
+                dom.classList.remove('active')
+            }
+        })
+
+        dom.addEventListener('click',() => {
+            console.log('dd');
+            // 设置滚动卷起的top为0即可， 平稳的滚动效果使用了 scroll-behavior: smooth;实现了
+            window.pageYOffset = document.body.scrollTop = document.documentElement.scrollTop = 0
+        })
+
+    </script>
 </body>
 </html>

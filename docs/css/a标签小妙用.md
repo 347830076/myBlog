@@ -99,6 +99,16 @@ a标签的href属性的值设置为 # 和 需要跳转到其他标签的id的这
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
 
+### 全站返回顶部
+
+想要做全局的返回顶部通用组件，就使用css + js 结合了，也比较简单， 上代码：
+
+<iframe height="400" style="width: 100%;" scrolling="no" title="" src="https://codepen.io/347830076/embed/abWrGmm?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/347830076/pen/abWrGmm">
+  </a> by cylyiou (<a href="https://codepen.io/347830076">@347830076</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
 ## `download`属性下载文件
 
 `download`的值是下载保存的文件名
