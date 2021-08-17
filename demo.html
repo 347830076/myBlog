@@ -1,115 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>平稳返回顶部</title>
+    <style>
+        html{
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
-
 <body>
-    <script>
-        // 先定义三个常量表示状态
-        var PENDING = 'pending';
-        var FULFILLED = 'fulfilled';
-        var REJECTED = 'rejected';
-
-        function MyPromise(fn) {
-            this.status = PENDING;    // 初始状态为pending
-            this.value = null;        // 初始化value
-            this.reason = null;       // 初始化reason
-
-            // 构造函数里面添加两个数组存储成功和失败的回调
-            this.onFulfilledCallbacks = [];
-            this.onRejectedCallbacks = [];
-
-            // 存一下this,以便resolve和reject里面访问
-            var that = this;
-            // resolve方法参数是value
-            function resolve(value) {
-                if (that.status === PENDING) {
-                    that.status = FULFILLED;
-                    that.value = value;
-
-                    // resolve里面将所有成功的回调拿出来执行
-                    that.onFulfilledCallbacks.forEach(callback => {
-                        callback(that.value);
-                    });
-                }
-            }
-
-            // reject方法参数是reason
-            function reject(reason) {
-                if (that.status === PENDING) {
-                    that.status = REJECTED;
-                    that.reason = reason;
-
-                    // resolve里面将所有失败的回调拿出来执行
-                    that.onRejectedCallbacks.forEach(callback => {
-                        callback(that.reason);
-                    });
-                }
-            }
-
-            try {
-                fn(resolve, reject);
-            } catch (error) {
-                reject(error);
-            }
-        }
-
-        MyPromise.prototype.then = function (onFulfilled, onRejected) {
-
-            // 如果onFulfilled不是函数，给一个默认函数，返回value
-            var realOnFulfilled = onFulfilled;
-            if (typeof realOnFulfilled !== 'function') {
-                realOnFulfilled = function (value) {
-                    return value;
-                }
-            }
-
-            // 如果onRejected不是函数，给一个默认函数，返回reason的Error
-            var realOnRejected = onRejected;
-            if (typeof realOnRejected !== 'function') {
-                realOnRejected = function (reason) {
-                    throw reason;
-                }
-            }
-
-            if (this.status === FULFILLED) {
-                onFulfilled(this.value)
-            }
-
-            if (this.status === REJECTED) {
-                onRejected(this.reason);
-            }
-
-            // 如果还是PENDING状态，将回调保存下来
-            if (this.status === PENDING) {
-                this.onFulfilledCallbacks.push(realOnFulfilled);
-                this.onRejectedCallbacks.push(realOnRejected);
-            }
-        }
-
-        new MyPromise((resolve, reject) => {
-            setTimeout(() => {
-                resolve('一秒后调用resolve成功')
-            }, 1000);
-        }).then(res => {
-            console.log(res);
-        })
-
-        new MyPromise((resolve, reject) => {
-            setTimeout(() => {
-                reject('一秒后调用reject成功')
-            }, 1000);
-        }).then(res => {
-            console.log(res);
-        }, err => {
-            console.log(err)
-        })
-    </script>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+    <div>10</div>
+    <div>11</div>
+    <div>12</div>
+    <div>13</div>
+    <div>14</div>
+    <div>15</div>
+    <div>16</div>
+    <div>17</div>
+    <div>18</div>
+    <div>19</div>
+    <div>20</div>
+    <div>21</div>
+    <div>22</div>
+    <div>23</div>
+    <div>24</div>
+    <div>25</div>
+    <div>26</div>
+    <div>27</div>
+    <div>28</div>
+    <div>29</div>
+    <div>30</div>
+    <div>01</div>
+    <div>02</div>
+    <div>03</div>
+    <div>04</div>
+    <div>05</div>
+    <div>06</div>
+    <div>07</div>
+    <div>08</div>
+    <div>09</div>
+    <div>10</div>
+    <div>11</div>
+    <div>12</div>
+    <div>13</div>
+    <div>14</div>
+    <div>15</div>
+    <div>16</div>
+    <div>17</div>
+    <div>18</div>
+    <div>19</div>
+    <div>20</div>
+    <div>21</div>
+    <div>22</div>
+    <div>23</div>
+    <div>24</div>
+    <div>25</div>
+    <div>26</div>
+    <div>27</div>
+    <div>28</div>
+    <div>29</div>
+    <div>30</div>
+    <a href="#">返回顶部</a>
 </body>
-
 </html>
