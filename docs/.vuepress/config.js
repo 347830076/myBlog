@@ -209,6 +209,7 @@ module.exports = {
                     '/vue/ts-vue',
                     '/vue/常用技巧',
                     '/vue/路由守卫',
+                    '/vue/axios取消请求',
                 ]
             },
             {
