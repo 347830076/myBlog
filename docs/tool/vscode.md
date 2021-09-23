@@ -116,6 +116,10 @@ EditorConfig 有助于为跨越各种编辑器和 IDE 的同一项目的多个�
 
 突出显示TODO，FIXME和所有关键字，注释...
 
+### GitLens — Git supercharged
+
+GitLens 可以增强 VSCode 内置 Git 的功能。例如 commits 搜索，历史记录和显示的代码作者身份
+
 ### Remote - SSH  本地VSCode编辑远程服务器文件
 
 安装完Remote - SSH插件之后，
