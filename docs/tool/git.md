@@ -219,6 +219,17 @@ git config --global http.sslVerify false
 git pull origin master --allow-unrelated-histories
 ```
 
+### git pull 失败
+
+提示：
+
+        error: inflate: data stream error (incorrect header check)
+        error: unable to unpack 6723035d09cf144d37204910229f202a9c45abbe header
+        fatal: loose object 6723035d09cf144d37204910229f202a9c45abbe (stored in .git/objects/67/23035d09cf144d37204910229f202a9c45abbe) is corrupt
+        fatal: the remote end hung up unexpectedly
+
+解决： win+鼠标左键，点击.git/objects/67/23035d09cf144d37204910229f202a9c45abbe，在vscode打开这个文件，直接删除这个文件就可以了，在重新git pull就可以
+
 ### fatal:multiple stage entries for merged file
 ```
 解决办法如下：
