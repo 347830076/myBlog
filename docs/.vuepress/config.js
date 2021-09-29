@@ -199,6 +199,7 @@ module.exports = {
                     '/javascript/实用API',
                     '/javascript/点击约束',
                     '/javascript/promise使用和实现方法',
+                    '/javascript/fetch拦截和封装',
                 ]
             },
             {
