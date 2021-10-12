@@ -68,7 +68,7 @@ module.exports = {
                 }
             }
         ],
-        // 谷歌广告
+        // 谷歌统计
         [
             '@vuepress/google-analytics',
             {
