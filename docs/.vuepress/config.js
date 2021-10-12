@@ -14,6 +14,15 @@ module.exports = {
         ['script', { src: 'https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js' }],
         ['script', { src: 'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js' }],
         ['script', { src: 'https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js' }],
+        // 谷歌广告
+        [
+            "script",
+            {
+              "data-ad-client": "ca-pub-1369465652696969",
+              async: true,
+              src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+            }
+          ]
     ],
     plugins: [
         // 代码实时展示效果
