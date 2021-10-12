@@ -67,7 +67,14 @@ module.exports = {
                     return moment(timestamp).format('LLLL')
                 }
             }
-        ]
+        ],
+        // 谷歌广告
+        [
+            '@vuepress/google-analytics',
+            {
+              'ga': 'G-E76M3WVRT6'
+            }
+          ]
     ],
     // plugins: {
     //     // 代码实时展示效果
