@@ -98,7 +98,16 @@ module.exports = {
             {
               'ga': '289628995'
             }
-          ]
+        ],
+        [
+            '@vuepress/pwa',{
+                serviceWorker: true,
+                updatePopup: {
+                    message: "发现新内容可用",
+                    buttonText: "刷新"
+                }
+            }
+        ]
     ],
     // plugins: {
     //     // 代码实时展示效果
