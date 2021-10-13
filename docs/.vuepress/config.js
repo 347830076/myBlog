@@ -18,17 +18,18 @@ module.exports = {
             // 百度统计
             var _hmt = _hmt || [];
             (function() {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?b867e5073a751b691958d2066964b07b";
-            var s = document.getElementsByTagName("script")[0]; 
-            s.parentNode.insertBefore(hm, s);
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?b867e5073a751b691958d2066964b07b";
+                var s = document.getElementsByTagName("script")[0]; 
+                s.parentNode.insertBefore(hm, s);
             })();
             
             // 引入谷歌,不需要可删除这段
-            var hm1 = document.createElement("script");
-            hm1.src = "https://www.googletagmanager.com/gtag/js?id=G-E76M3WVRT6";
-            var s1 = document.getElementsByTagName("script")[0]; 
-            s1.parentNode.insertBefore(hm1, s1);
+            (function() {
+                var hm1 = document.createElement("script");
+                hm1.src = "https://www.googletagmanager.com/gtag/js?id=G-E76M3WVRT6";
+                var s1 = document.getElementsByTagName("script")[0]; 
+                s1.parentNode.insertBefore(hm1, s1);
             })();
 
             // 谷歌加载,不需要可删除
