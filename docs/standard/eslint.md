@@ -17,14 +17,14 @@
 4. 进入 "Pick a linter / formatter config" 选择 linter 配置的步骤时，选择 "ESLint + Standard config"，下一步
 5. 选择 "Lint on save"，回车
 6. 项目创建后，引入公司规范文件中的默认配置 <code-link href="/eslint/eslint-defaults.js">eslint-defaults.js</code-link>，
-并按照 <code-link href="/eslint/eslint-vue.js">eslint-vue.js</code-link> 这个文件的内容覆盖或修改 `.eslintrc.js`
+并按照 <code-link href="/eslint/eslint-vue.js">eslint-vue.js</code-link> 这个文件的内容覆盖 `.eslintrc.js`
 
 ### 现有项目
 
 1. 如果有代码未提交，先执行 `git commit` 命令提交代码，因为在安装插件过程中现有代码会被插件修改
 2. 首先通过 `vue add eslint` 命令安装 ESLint 插件，安装过程中会提示选择 ESLint 配置，选择 `Standard` 规范安装
 3. 安装完成后，引入公司规范文件中的默认配置 <code-link href="/eslint/eslint-defaults.js">eslint-defaults.js</code-link>，
-并按照 <code-link href="/eslint/eslint-vue.js">eslint-vue.js</code-link> 这个文件的内容覆盖或修改 `.eslintrc.js`
+并按照 <code-link href="/eslint/eslint-vue.js">eslint-vue.js</code-link> 这个文件的内容覆盖 `.eslintrc.js`
 
 ### 整个项目代码格式化
 
