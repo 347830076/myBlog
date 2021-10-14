@@ -24,7 +24,7 @@ module.exports = {
                 s.parentNode.insertBefore(hm, s);
             })();
             
-            // 引入谷歌,不需要可删除这段
+            // 引入谷歌统计,不需要可删除这段
             (function() {
                 var hm1 = document.createElement("script");
                 hm1.src = "https://www.googletagmanager.com/gtag/js?id=G-E76M3WVRT6";

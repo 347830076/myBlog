@@ -54,7 +54,7 @@ module.exports = {
         singleline: 2,
         multiline: {
           max: 1,
-          allowFirstLine: true // allowFirstLine  如果true，它允许与该标记名称在同一行的属性
+          allowFirstLine: false // allowFirstLine  如果true，它允许与该标记名称在同一行的属性
         }
       }
     ],

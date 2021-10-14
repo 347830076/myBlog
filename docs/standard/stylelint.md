@@ -100,7 +100,7 @@ module.exports = {
     "shorthand-property-no-redundant-values": true,
     // 禁止值的浏览器引擎前缀
     "value-no-vendor-prefix": true,
-    // property-no-vendor-prefix
+    // 禁止属性的浏览器引擎前缀
     "property-no-vendor-prefix": true,
     // 禁止小于 1 的小数有一个前导零
     "number-leading-zero": "never",
