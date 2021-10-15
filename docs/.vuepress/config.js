@@ -241,6 +241,7 @@ module.exports = {
                     '/javascript/点击约束',
                     '/javascript/promise使用和实现方法',
                     '/javascript/fetch拦截和封装',
+                    '/javascript/函数柯里化',
                 ]
             },
             {
@@ -291,6 +292,7 @@ module.exports = {
                     '/tool/vscode',
                     '/tool/谷歌插件',
                     '/tool/jest单元测试',
+                    '/tool/docker',
                 ]
             },
             {

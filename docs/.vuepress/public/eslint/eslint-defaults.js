@@ -281,7 +281,12 @@ module.exports = {
       ignoreArrayIndexes: true,
       ignore: [-1, 0, 1, 2, 24, 60, 100, 1000],
     }], // 禁止使用魔术数字，魔术数字是在代码中多次出现的没有明确含义的数字。它最好由命名常量取代。
-    "no-multi-spaces": 2, // 禁止出现多个空格
+    "no-multi-spaces": [
+      2,
+      { 
+        ignoreEOLComments: true //忽略行尾注释前的多个空格
+      }
+    ], // 禁止出现多个空格
     "no-multi-str": 2, // 禁止多行字符串
     "no-new": 2, // 禁止在不保存实例的情况下使用new
     "no-new-func": 2, // 禁用Function构造函数

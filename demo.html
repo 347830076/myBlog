@@ -8,101 +8,80 @@
 </head>
 <body>
     <script>
-        /**
-         * c_fetch
-         * 基于原生fetch封装了拦截器功能，暴露出来的c_fetch跟原生fetch用法一致，只是增加了拦截器功能。拦截器用法参考axios的拦截器用法。
-         * 拦截器: c_fetch.interceptors
-         * 注意: 拦截器不拦截reject类型的response结果
-         */
+ 
 
-        //定义用来存储拦截请求和拦截响应结果的处理函数集合
-        let interceptors_req = [], interceptors_res = [];
+        // // 第一版
+        // var curry = function (fn) {
+        //     // arguments 从下标1开始截取到最后，返回新数组args，不影响原来数组
+        //     var args = [].slice.call(arguments, 1);
+        //     console.log('args', args);
+        //     return function() {
+        //         console.log('arguments', arguments);
+        //         // arguments 不是真正的数组， [].slice.call(arguments) 是为了把arguments 转成数组
+        //         // concat再拼接数组
+        //         var newArgs = args.concat([].slice.call(arguments));
+        //         // fn(...newArgs) 这样写也行
+        //         // fn.apply(this, newArgs) 是为了把 newArags参数铺开传给fn
+        //         return fn.apply(this, newArgs);
+        //     };
+        // };
 
-        const OriginFetch = window.fetch
+        // function add(a, b) {
+        //     return a + b;
+        // }
 
-        function c_fetch (input, init = {}) {
+        // // var addCurry = curry(add, 1, 2);
         
+        // // console.log(addCurry()); // 3
+        // // //或者
+        // // var addCurry = curry(add, 1);
+        // // console.log('addCurry', addCurry);
+        // //  // 3
+        // // console.log(addCurry(2));
+        // //或者
+        // var addCurry = curry(add, 3, 4, 2);
+        // console.log(addCurry);
+        // console.log(addCurry(5));
+        // // console.log(addCurry(1, 2));
 
-        //fetch默认请求方式设为GET
-        if(!init.method){
-            init.method = 'GET'
+        // 第二版
+        function sub_curry(fn) {
+            var args = [].slice.call(arguments, 1);
+            return function() {
+                return fn.apply(this, args.concat([].slice.call(arguments)));
+            };
         }
-        
-        //interceptors_req是拦截请求的拦截处理函数集合
-        interceptors_req.forEach(interceptors => {
-            init = interceptors(init);
-        })
-        
-        //在原生fetch外面封装一个promise，为了在promise里面可以对fetch请求的结果做拦截处理。
-        //同时，保证c_fetch函数返回的结果是个promise对象。
-        return new Promise(function (resolve, reject) {
-            //发起fetch请求，fetch请求的形参是接收上层函数的形参
-            OriginFetch(input, init).then(res => {
-            //interceptors_res是拦截响应结果的拦截处理函数集合
-            interceptors_res.forEach(interceptors => {
-                //拦截器对响应结果做处理，把处理后的结果返回给响应结果。
-                res = interceptors(res);
-            })
-            //将拦截器处理后的响应结果resolve出去
-            resolve(res)
-            }).catch(err => {
-                reject(err);
-            })
-        })
 
-        }
+        function curry(fn, length) {
+            console.log('fn', fn, fn.length);
+            console.log('length', length);
 
-        //在c_fetch函数上面增加拦截器interceptors，拦截器提供request和response两种拦截器功能。
-        //可以通过request和response的use方法来绑定两种拦截器的处理函数。
-        //use方法接收一个参数，参数为一个callback函数，callback函数用来作为拦截器的处理函数；
-        //request.use方法会把callback放在interceptors_req中，等待执行。
-        //response.use方法会把callback放在interceptors_res中，等待执行。
-        //拦截器的处理函数callback接收一个参数。
-        //request拦截器的callback接收的是请求发起前的config；
-        //response拦截器的callback接收的是网络请求的response结果。
-        c_fetch.interceptors = {
-            request: {
-                use: function (callback) {
-                    console.log('request');
-                    interceptors_req.push(callback);
+            // fn.length 代表fn的形参的数量
+            length = length || fn.length;
+
+            var slice = Array.prototype.slice;
+
+            return function() {
+                console.log('arguments', arguments);
+                if (arguments.length < length) {
+                    var combined = [fn].concat(slice.call(arguments));
+                    return curry(sub_curry.apply(this, combined), length - arguments.length);
+                } else {
+                    return fn.apply(this, arguments);
                 }
-            },
-            response: {
-                use: function (callback) {
-                    console.log('response');
-                    interceptors_res.push(callback);
-                }
-            }
+            };
         }
 
-        // 添加一个请求拦截器
-        c_fetch.interceptors.request.use(function (config) {
-            // Do something before request is sent
-            console.log('request', config);
-            return config;
+        const fn = curry(function(a, b, c) {
+            return [a, b, c];
         });
 
-        // 添加一个响应拦截器
-        c_fetch.interceptors.response.use(function (response) {
-            return response.json();
-        });
+        console.log('fn =>', fn);
 
-
-        // export default c_fetch;
-
-        window.fetch = c_fetch
-
-        console.dir(fetch);
-        const res = fetch('https://yapi.comliq.net/mock/31/api/company/bankQuota/list/1')
-        .then(res => {
-            console.log('res', res);
-            // return res.json()
-        })
-        // .then(json => {console.log(json)
-        //     console.log('interceptors_req', interceptors_req);
-        // console.log('interceptors_res', interceptors_res);
-        // })
-
+        // console.log(fn("a", "b", "c")); // ["a", "b", "c"]
+        console.log(fn("a", "b")("c")); // ["a", "b", "c"]
+        // console.log(fn("a")("b")("c")); // ["a", "b", "c"]
+        // console.log(fn("a")("b", "c")); // ["a", "b", "c"]
        
     </script>
 </body>
