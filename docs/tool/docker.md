@@ -4,7 +4,7 @@
 
 ## 安装
 
-MacOS Docker 安装
+### MacOS Docker 安装
 
 [docker 官网下载](https://docs.docker.com/desktop/mac/install/)
 
@@ -20,7 +20,7 @@ MacOS Docker 安装
 docker --version
 ```
 
-## 镜像加速
+### MacOS Docker 镜像加速
 
 我们mac安装 docker 新版 2.2的时候，和菜鸟教程的版本不一样了。
 
@@ -52,6 +52,42 @@ docker info
     https://hub-mirror.c.163.com/
 
 就是成功了
+
+### CentOs Docker 安装
+
+使用官方安装脚本自动安装
+
+```
+curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+```
+
+启动 Docker。
+
+```
+sudo systemctl start docker
+```
+
+### CentOS7 镜像加速
+
+对于使用 systemd 的系统，请在 /etc/docker/daemon.json 中写入如下内容（如果文件不存在请新建该文件）：
+
+```
+{"registry-mirrors":["https://reg-mirror.qiniu.com/"]}
+```
+
+之后重新启动服务：
+
+```
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
+
+`docker info` 命令查看，结果内容中看到以下内容，说明配置成功。
+
+```
+Registry Mirrors:
+    https://reg-mirror.qiniu.com
+```
 
 ## docker 常用命令
 
@@ -89,7 +125,16 @@ docker info
 - `docker exec -it [容器 id] /bin/bash` 进入容器( 要启动状态才能进入 )
 - `docker logs [CONTAINER ID]`  查看容器内的标准输出
 - `docker export [CONTAINER ID] > node.tar`  导出容器
+#### 批量操作
 
+- `docker ps -aq`                  列出所有的容器 ID
+- `docker stop $(docker ps -aq)`   停止所有的容器
+- `docker rm $(docker ps -aq)`     删除所有的容器
+- `docker rmi $(docker images -q)` 删除所有的镜像
+- `docker image prune --force --all`或者`docker image prune -f -a`  删除所有不使用的镜像
+- `docker container prune -f`      删除所有停止的容器
+- `docker logout localhost:8080`   退出登录
+- `docker login --username=xxx --password=xxx registry.cn-shenzhen.aliyuncs.com` 登录
 ## docker 容器的使用
 
 ### 1. 先获取镜像
@@ -276,4 +321,52 @@ docker exec -it node-test /bin/bash
 node -v
 ```
 
-## 
+## Dockerfile
+
+Dockerfile 是一个用来构建镜像的文本文件，文本内容包含了一条条构建镜像所需的指令和说明。
+
+- `FROM：`定制的镜像都是基于 FROM 的镜像，这里的 nginx 就是定制需要的`基础镜像`。后续的操作都是基于 nginx。
+- `RUN：`用于执行后面跟着的命令行命令。有以下俩种格式：
+
+shell 格式：
+
+```
+RUN <命令行命令>
+# <命令行命令> 等同于，在终端操作的 shell 命令。
+```
+
+exec 格式：
+
+```
+RUN ["可执行文件", "参数1", "参数2"]
+# 例如：
+# RUN ["./test.php", "dev", "offline"] 等价于 RUN ./test.php dev offline
+```
+
+注意：Dockerfile 的指令每执行一次都会在 docker 上新建一层。所以过多无意义的层，会造成镜像膨胀过大。例如：
+
+```
+FROM centos
+RUN yum install wget
+RUN wget -O redis.tar.gz "http://download.redis.io/releases/redis-5.0.3.tar.gz"
+RUN tar -xvf redis.tar.gz
+以上执行会创建 3 层镜像。可简化为以下格式：
+FROM centos
+RUN yum install wget \
+    && wget -O redis.tar.gz "http://download.redis.io/releases/redis-5.0.3.tar.gz" \
+    && tar -xvf redis.tar.gz
+```
+
+如上，以 && 符号连接命令，这样执行后，只会创建 1 层镜像。
+
+#### 创建镜像
+-t 是给镜像命名 . 是基于当前目录的Dockerfile来构建镜像
+
+```
+docker build -t vuenginxcontainer .
+```
+
+## 常见错误
+### 上传自己的镜像被拒绝denied: requested access to the resource is denied
+
+信息显示是拒接访问，因为tag的名字斜线前面部分不是本人的用户名，下面把它修改为mydockerapp/xxxxx就push成功。需要注意的是mydockerapp是本人的docker用户名。进入docker hub网站查看，发现多了一个公共的repository。
