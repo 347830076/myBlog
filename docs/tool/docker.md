@@ -439,6 +439,8 @@ server {
 }
 ```
 
+`.dockerignore` 指定在传递给 docker引擎 时需要忽略掉的文件或文件夹。
+
 ## 常见错误
 ### 上传自己的镜像被拒绝denied: requested access to the resource is denied
 
