@@ -9,6 +9,10 @@
     .theme-default-content code{
       color: #ea4335;
     }
+    .sw-update-popup{
+      right: 8em;
+    }
+
 </style>
 <template>
   <div
