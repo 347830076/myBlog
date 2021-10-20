@@ -135,6 +135,7 @@ Registry Mirrors:
 - `docker container prune -f`      删除所有停止的容器
 - `docker logout localhost:8080`   退出登录
 - `docker login --username=xxx --password=xxx registry.cn-shenzhen.aliyuncs.com` 登录
+
 ## docker 容器的使用
 
 ### 1. 先获取镜像

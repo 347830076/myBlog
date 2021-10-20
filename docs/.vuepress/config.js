@@ -293,6 +293,7 @@ module.exports = {
                     '/tool/谷歌插件',
                     '/tool/jest单元测试',
                     '/tool/docker',
+                    '/tool/gitlab-ci',
                 ]
             },
             {
