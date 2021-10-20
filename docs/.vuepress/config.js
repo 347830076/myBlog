@@ -10,7 +10,7 @@ module.exports = {
     head: [
         ['link', { rel: 'icon', type: 'image/png', href: '/logo.jpg' }],
         ['link', { rel: 'manifest', href: '/manifest.json' }],
-        ['link', { rel: 'stylesheet', href: 'http://at.alicdn.com/t/font_2343212_wc0gkht90m.css' }],
+        ['link', { rel: 'stylesheet', href: 'https://at.alicdn.com/t/font_2343212_wc0gkht90m.css' }],
         ['script', { src: 'https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js' }],
         ['script', { src: 'https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js' }],
         ['script', { src: 'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js' }],
