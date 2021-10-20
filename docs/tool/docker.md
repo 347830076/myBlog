@@ -100,6 +100,7 @@ Registry Mirrors:
     - IMAGE ID：  镜像ID
     - CREATED：   镜像创建时间
     - SIZE：      镜像大小
+- `docker build -t [镜像名称] .` .是当前目录，根据当前目录的Dockerfile文件创建一个镜像
 - `docker rmi 镜像ID`  删除镜像
 - `docker ps`     查看每个容器的运行信息
     - CONTAINER ID: 容器 ID。
@@ -117,6 +118,7 @@ Registry Mirrors:
             - PORTS: 容器的端口信息和使用的连接类型（tcp\udp）。
             - NAMES: 自动分配的容器名称。
 - `docker ps -a`      查看每个容器（包括已经暂停的）的运行信息
+- `docker run -itd -p 8080:80  --name vueapp [镜像名称]` 使用某个镜像启动一个容器， -d 后台开启
 - `docker stop [CONTAINER ID]` 停止指定的容器
 - `docker start [CONTAINER ID]` 启动指定的容器
 - `docker restart <容器 ID>`     重启指定的容器
@@ -140,6 +142,9 @@ Registry Mirrors:
 
 ### 1. 先获取镜像
 
+```
+docker pull node
+```
 ### 2. 启动容器
 
 以下命令使用 node 镜像启动一个容器，参数为以命令行模式进入该容器：
@@ -367,7 +372,80 @@ RUN yum install wget \
 docker build -t vuenginxcontainer .
 ```
 
+#### 项目的`Dockerfile`文件
+
+```js
+// Dockerfile
+FROM node:14.15.3 as builder
+COPY . /app
+WORKDIR /app
+RUN npm install --registry=https://registry.npm.taobao.org
+RUN npm run build
+
+FROM nginx
+
+COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /app/nginx/default.conf /etc/nginx/conf.d/default.conf
+CMD ["nginx", "-g", "daemon off;"]
+```
+我们来分析下上的代码：
+
+- `FROM node:14.15.3 as builder`  安装使用node:14.15.3镜像，并给他应该别名 builder
+
+- `COPY . /app` 拷贝当前目录所有文件，放到镜像的`/app`目录下，  `.`就是代表当前目录 ` /app` 代表在镜像上的目录路径
+
+- `WORKDIR /app` 镜像内的工作目录是 `app`， 就是你使用命令进入镜像的时候，终端左边的目录就是`app`
+
+- `RUN npm install --registry=https://registry.npm.taobao.org` `RUN`是执行命令，执行了后面的命令 npm install
+
+- `RUN npm run build` 执行了 npm run build
+
+- `FROM nginx` 安装使用nginx镜像
+
+- `COPY --from=builder /app/dist /usr/share/nginx/html`  --from=builder 是等待上面的安装完成后（也就是等 FROM nginx上面的命令都执行完之后，才执行） 注意，这里为什么要用 `/app/dist`， 因为上面上面设置了 `WORKDIR /app`, 然后我们 --from=builder 等待上面的命令生成，这时的镜像工作目录是`/app`，`/app`目录下已经有了dist文件夹内容，因为我们在镜像内执行了命令`npm run build`，所以我们可以直接从镜像的路径 `/app/dist` 拷贝到 `/usr/share/nginx/html`
+
+- `COPY --from=builder /app/nginx/default.conf /etc/nginx/conf.d/default.conf` 同上原理
+
+- `CMD ["nginx", "-g", "daemon off;"]` 为了防止docker容器执行完命令挂掉（想了解更多，可以自行谷歌，也可以参考[docker运行nginx为什么要使用 daemon off](https://segmentfault.com/a/1190000009583997)）
+
+
+由于我们上面用到了`nginx`，而且用到了 `/app/nginx/default.conf` 路径
+
+所以我们得在项目根目录新建个`nginx文件夹`，`nginx文件夹`里面新建个`default.conf文件`
+
+```js
+// default.conf
+server {
+    listen       80;
+    server_name  localhost;
+
+    #charset koi8-r;
+    access_log  /var/log/nginx/host.access.log  main;
+    error_log  /var/log/nginx/error.log  error;
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+
+    #error_page  404              /404.html;
+
+    # redirect server error pages to the static page /50x.html
+    #
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+}
+```
+
 ## 常见错误
 ### 上传自己的镜像被拒绝denied: requested access to the resource is denied
 
 信息显示是拒接访问，因为tag的名字斜线前面部分不是本人的用户名，下面把它修改为mydockerapp/xxxxx就push成功。需要注意的是mydockerapp是本人的docker用户名。进入docker hub网站查看，发现多了一个公共的repository。
+
+```
+docker login --username=xxx xxx.com
+docker tag [ImageId] xxx/namespace/vueapp:[镜像版本号]
+docker push xxx/namespace/vueapp:[镜像版本号]
+```

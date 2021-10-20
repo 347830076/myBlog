@@ -86,8 +86,9 @@ step-deploy-prod:
     # 这里是查看当前的服务器上有没有正在运行或者存在我们之前运行过的项目容器，如果有删除了
     # - if [ $(docker ps -aq --filter name=vueapp) ]; then docker rm -f vueapp;fi
     # - docker run -d -p 8002:80 --rm  --name vueapp vueapp
-  tags:
-    - docker
+  tags: 
+    - docker # 在哪个runner上面执行，在注册runner可以自定义
+  when: on_success
 ```
 
 上面代码是使用了`docker 注册，登录`，然后通过项目的`Dockerfile`文件生成一个镜像，最后`push`提交到自己的`镜像仓库地址`
@@ -101,3 +102,22 @@ step-deploy-prod:
 | stages| 用来组合 jobs 按步骤工作，jobs 下面对应的 stage 和 stages 的子集对应。|
 | only	| 指定 jobs 的执行场景，相对应的是 except。|
 | script| 执行命令 |
+
+
+**`when`** 可以设置以下值：
+
+- `on_success` - 只有前面stages的所有工作成功时才执行。 这是默认值。
+- `on_failure` - 当前面stages中任意一个jobs失败后执行。
+- `always` - 无论前面stages中jobs状态如何都执行。
+- `manual` - 手动执行(GitLab8.10增加)。
+
+**`only and except`** 两个参数说明了job什么时候将会被创建:
+
+- `only`定义了`job`需要执行的所在分支或者标签
+- `except`定义了`job`不会执行的所在分支或者标签
+- 以下是这两个参数的几条用法规则：
+    - `only`和`except`如果都存在在一个`job`声明中，则所需引用将会被`only`和`except`所定义的分支过滤.
+    - `only`和`except`允许使用正则
+    - `only`和`except`可同时使用。如果`only`和`except`在一个`job`配置中同时存在，则以`only`为准，跳过`except`(从下面示例中得出)。
+    - `only`和`except`允许使用特殊的关键字：`branches`，`tags`和`triggers`。
+    - `only`和`except`允许使用指定仓库地址但不是`forks`的仓库(查看示例3)。
