@@ -243,6 +243,7 @@ module.exports = {
                 sidebarDepth: 1,    // 可选的, 默认值是 1
                 children: [
                     '/tool/nvm',
+                    '/tool/n',
                     '/tool/nrm',
                     '/tool/git',
                     '/tool/sshkey',

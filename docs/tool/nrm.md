@@ -1,4 +1,4 @@
- # nrm 安装使用教程
+ # nrm 管理npm源
 
 <p>1.nrm (npm registry manager )是npm的镜像源管理工具，有时候国外资源太慢，使用这个就可以快速地在 npm 源间切换 </p>
 <p>2.安装nrm 在命令行执行命令，npm install -g nrm，全局安装nrm。 </p>

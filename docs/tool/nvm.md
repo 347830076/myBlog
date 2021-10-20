@@ -1,6 +1,6 @@
-# nvm 安装教程
+# nvm 管理node版本
 
-<h1>一、nvm 说明</h1>
+## nvm 说明
 
 nvm是node版本管理工具
 
@@ -8,28 +8,29 @@ nvm是node版本管理工具
 
 nvm是让你在同一台机器上安装和切换不同版本的node的工具
 
-<h1>二、下载 nvm</h1>
+## window 下载
 
-<b>nvm-noinstall.zip</b>： 绿色免安装版本，使用前需配置
+下载地址 <a href="https://github.com/coreybutler/nvm-windows/releases" target="_brank">https://github.com/coreybutler/nvm-windows/releases</a>
 
-<b>nvm-setup.zip</b>：下载之后安装，不需要配置，直接就可以用。
+- <b>nvm-noinstall.zip</b>： 绿色免安装版本，使用前需配置
+- <b>nvm-setup.zip</b>：下载之后安装，不需要配置，直接就可以用。
+- <b>Source code(zip)</b>：zip压缩的源码
+- <b>Sourc code(tar.gz)</b>：tar.gz的源码，一般用于*nix系统
 
-<b>Source code(zip)</b>：zip压缩的源码
-
-<b>Sourc code(tar.gz)</b>：tar.gz的源码，一般用于*nix系统
-
-
-<b>window 电脑</b> 使用 nvm-setup.zip =>> 解压文件安装， 一直按next 下一步就好了。
-
-<a href="https://github.com/coreybutler/nvm-windows/releases" target="_brank">https://github.com/coreybutler/nvm-windows/releases</a>
+使用 nvm-setup.zip =>> 解压文件安装， 一直按next 下一步就好了。
 
 <img class="zoom-custom-imgs" :src="$withBase('/assets/img/nvm.jpg')" alt="foo">
 
+## mac 苹果电脑下载， 
 
-mac 苹果电脑下载， 打开终端，执行下面代码
+打开终端，执行下面代码，切换安装的路径
 ```js
 cd ~
 ```
+<a href="https://github.com/nvm-sh/nvm/blob/master/README.md" target="_blank">查看最新nvm版本</a>
+
+点击上面网址进去，找到 `Install & Update Script`，在Install & Update Script 下面就有最新版本的安装命令了
+
 在选择执行下面其中一行代码即可
 
 ```js
@@ -78,8 +79,6 @@ touch ～/.bash_profile
 # 2.运行下载/更新脚本
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 ```
-
-### <a href="https://github.com/nvm-sh/nvm/blob/master/README.md" target="_blank">查看最新nvm版本</a>
 
 ### nvm: command not found
 
@@ -141,9 +140,6 @@ nvm version
 ```sh
 vim /etc/hosts
 ```
-
-
-
 
 <Vssue :options="{ locale: 'zh' }"  />
 
