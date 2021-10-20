@@ -1,0 +1,14 @@
+{
+    "name": "myBlog",
+    "short_name": "myBlog",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#fff",
+    "description": "我的博客，热爱前端，热爱分享",
+    "icons": [{
+      "src": "/docs/.vuepress/public/logo.jpg",
+      "sizes": "260x260",
+      "type": "image/png"
+    }]
+  }
+  
