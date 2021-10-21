@@ -1,16 +1,18 @@
 # 一些实用操作技巧
 
+## js强制清除缓存刷新页面
+
+`Location.reload()` 方法用来刷新当前页面。该方法只有一个参数，当值为 true 时，将强制浏览器从服务器加载页面资源，当值为 false 或者未传参时，浏览器则可能从缓存中读取页面。[MDN 官网](https://developer.mozilla.org/zh-CN/docs/Web/API/Location/reload)
+
 ## mac 修改hosts文件
 
-1.终端更改 
 ```js
 sudo vi /etc/hosts 
 ```
 
 ## 安装node-sass 报错
 
-安装node-sass组件时，注意node的版本，node-sass很依赖node的版本
-
+安装node-sass组件时，注意node的版本，node-sass很依赖node的版本 [node-sass npm](https://www.npmjs.com/package/node-sass)
 
 | NodeJS	Supported |	node-sass version | Node Module|
 |  ----  | ----  | ----  |
