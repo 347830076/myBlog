@@ -9,11 +9,9 @@
     .theme-default-content code{
       color: #ea4335;
     }
-    ::v-deep{
-      .global-ui .sw-update-popup{
+    .sw-update-popup{
         right: 8em;
       }
-    }
 </style>
 <template>
   <div
