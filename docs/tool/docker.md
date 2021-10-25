@@ -127,6 +127,9 @@ Registry Mirrors:
 - `docker exec -it [容器 id] /bin/bash` 进入容器( 要启动状态才能进入 )
 - `docker logs [CONTAINER ID]`  查看容器内的标准输出
 - `docker export [CONTAINER ID] > node.tar`  导出容器
+- `docker logout localhost:8080`   退出登录
+- `docker login --username=xxx --password=xxx registry.cn-shenzhen.aliyuncs.com` 登录
+- `docker tag [ImageId] xxx/namespace/vueapp:[镜像版本号]`
 #### 批量操作
 
 - `docker ps -aq`                  列出所有的容器 ID
@@ -135,8 +138,6 @@ Registry Mirrors:
 - `docker rmi $(docker images -q)` 删除所有的镜像
 - `docker image prune --force --all`或者`docker image prune -f -a`  删除所有不使用的镜像
 - `docker container prune -f`      删除所有停止的容器
-- `docker logout localhost:8080`   退出登录
-- `docker login --username=xxx --password=xxx registry.cn-shenzhen.aliyuncs.com` 登录
 
 ## docker 容器的使用
 
