@@ -62,11 +62,76 @@ a标签的href属性的值设置为 # 和 需要跳转到其他标签的id的这
 <a href="#h2">跳转到热爱分享</a>
 ```
 
-<iframe height="400" style="width: 100%;" scrolling="no" title="" src="https://codepen.io/347830076/embed/KKmLorr?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href="https://codepen.io/347830076/pen/KKmLorr">
-  </a> by cylyiou (<a href="https://codepen.io/347830076">@347830076</a>)
-  on <a href="https://codepen.io">CodePen</a>.
-</iframe>
+::: demo [vanilla]
+```html
+<html>
+    <h1 id="h1">热爱前端</h1>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+    <div>10</div>
+    <div>11</div>
+    <div>12</div>
+    <div>13</div>
+    <div>14</div>
+    <div>15</div>
+    <div>16</div>
+    <div>17</div>
+    <div>18</div>
+    <div>19</div>
+    <div>20</div>
+    <div>21</div>
+    <div>22</div>
+    <div>23</div>
+    <div>24</div>
+    <div>25</div>
+    <div>26</div>
+    <div>27</div>
+    <div>28</div>
+    <div>29</div>
+    <div>30</div>
+    <a href="#h1">跳转到热爱前端</a>
+    <a href="#h2">跳转到热爱分享</a>
+    <div>01</div>
+    <div>02</div>
+    <div>03</div>
+    <div>04</div>
+    <div>05</div>
+    <div>06</div>
+    <div>07</div>
+    <div>08</div>
+    <div>09</div>
+    <div>10</div>
+    <h2 id="h2">热爱分享</h2>
+    <div>11</div>
+    <div>12</div>
+    <div>13</div>
+    <div>14</div>
+    <div>15</div>
+    <div>16</div>
+    <div>17</div>
+    <div>18</div>
+    <div>19</div>
+    <div>20</div>
+    <div>21</div>
+    <div>22</div>
+    <div>23</div>
+    <div>24</div>
+    <div>25</div>
+    <div>26</div>
+    <div>27</div>
+    <div>28</div>
+    <div>29</div>
+    <div>30</div>
+</html>
+` ` `
+:::
 
 ### 返回顶部
 

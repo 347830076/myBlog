@@ -1062,6 +1062,5 @@
   display: table-cell;
 }
 ```
-<iframe width="100%" height="300" src="//jsrun.net/fPwKp/embedded/all/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 <Vssue :options="{ locale: 'zh' }"  />

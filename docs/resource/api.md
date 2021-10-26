@@ -62,7 +62,9 @@
 
 [高效、易用、功能强大的API管理平台 旨在为开发、产品、测试人员提供更优雅的接口管理服务](https://yapi.baidu.com/)
 
-[github开发文档](https://docs.github.com/cn)                                                      
+[github开发文档](https://docs.github.com/cn)       
+
+[Demo Block 用于帮助你在编写文档时增加 vue ,react, 原生js 示例](https://d0whc3r.github.io/vuepress-plugin-demo-block/zh/)
 
 ### 实用插件、功能api
 
