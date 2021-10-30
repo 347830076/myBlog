@@ -132,6 +132,7 @@ module.exports = {
         nav: [
             { text: '首页', link: '/' },
             { text: '关于我', link: '/about' },
+            { text: '前端基础电子书', link: 'http://ebook.wanggege.cn/' },
             // {
             //     text: '更多功能',
             //     items: [
