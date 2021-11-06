@@ -174,6 +174,8 @@ module.exports = {
                     '/css/cssModule',
                     '/css/滚动视觉差',
                     '/css/a标签小妙用',
+                    '/css/css使用小技巧',
+                    '/css/sass'
                 ]
             },
             {

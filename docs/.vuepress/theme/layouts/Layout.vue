@@ -6,7 +6,7 @@
       height: 0;
       line-height: 0;
     }
-    .theme-default-content code{
+    .theme-default-content code, .red{
       color: #ea4335;
     }
     .sw-update-popup{
