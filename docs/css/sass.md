@@ -214,9 +214,15 @@ mixin的强大之处，在于可以指定参数和缺省值。
 }
 
 div {
+　　 @include left;
+}
+
+p {
 　　@include left(20px);
 }
 ```
+
+**`$value: 10px`是给这个`$value`变量默认值**
 
 下面是一个mixin的实例，用来生成浏览器前缀。
 
@@ -363,6 +369,80 @@ $i: 6;
 
 #sidebar {
 　　width: double(5px);
+}
+```
+
+## 对象写法
+
+sass 的对象语法
+
+```
+(key: value)
+```
+
+```scss
+$obj: (
+    left: 0px,
+    top: 0px
+);
+
+div {
+    left: map-get($obj, "left");
+    top: map-get($obj, "top");
+}
+```
+
+### 遍历对象
+
+```scss 
+$flex: (
+    justify-content: center,
+    align-item: center
+);
+
+.flex {
+    display: flex;
+    @each $key, $value in $flex {
+        #{$key}: $value;
+     } 
+}
+```
+
+$obj 用 (key: value) 写就是一个对象，然后想要获取$obj的键值，就得用map-get函数 [Sass Map(映射)函数](https://www.runoob.com/sass/sass-map-func.html)
+
+大家可以感觉这样不是挺麻烦的？ 大家感受下结合`@mixin`写法
+
+```scss
+// flex 布局
+@mixin flex($obj) {
+  display: flex;
+
+  @if (map-get($obj, "justify")) {
+    justify-content: map-get($obj, "justify");
+  }
+
+  @if (map-get($obj, "align")) {
+    align-items: map-get($obj, "align");
+  }
+}
+// flex 水平居中
+@mixin flex-c {
+  @include flex((justify: center));
+}
+
+// flex 水平两端对齐
+@mixin flex-sb {
+  @include flex((justify: space-between));
+}
+
+// flex 水平垂直居中
+@mixin flex-cc {
+  @include flex((justify: center, align: center));
+}
+
+// flex 水平两端对齐，垂直居中
+@mixin flex-sbc {
+  @include flex((justify: space-between, align: center));
 }
 ```
 
