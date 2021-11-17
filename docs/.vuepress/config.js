@@ -203,6 +203,7 @@ module.exports = {
                     '/javascript/promise使用和实现方法',
                     '/javascript/fetch拦截和封装',
                     '/javascript/函数柯里化',
+                    '/javascript/正则',
                 ]
             },
             {
@@ -214,6 +215,8 @@ module.exports = {
                     '/vue/常用技巧',
                     '/vue/路由守卫',
                     '/vue/axios取消请求',
+                    // '/vue/自动生成面包屑',
+                    '/vue/动态热更新设置',
                 ]
             },
             {
