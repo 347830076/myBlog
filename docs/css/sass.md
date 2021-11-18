@@ -350,7 +350,9 @@ $i: 6;
 }
 ```
 
-## each命令，作用与for类似：
+## each命令
+
+作用与for类似：
 
 ```scss
 @each $member in a, b, c, d {
