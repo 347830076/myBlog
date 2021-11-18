@@ -278,6 +278,7 @@ module.exports = {
                     '/resource/api',
                     '/resource/shortcuts',
                     '/resource/skills',
+                    '/resource/interview',
                 ]
             },
             {
