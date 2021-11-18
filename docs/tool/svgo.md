@@ -42,6 +42,7 @@ svgo -s 'data:image/svg+xml;base64,...' -o test.min.svg
 
 `./svg`呢，是你保存svg图片的文件夹，如果你的项目保持svg图片路径不一样，修改这个路径即可
 
+**疑惑：** 这里我没有想到怎么把不同文件夹下面的svg 统一 压缩， 路径使用 **/*.svg 也不行，会报错。 有兴趣的大佬，可以研究研究如何把不同文件夹下面的svg 统一压缩，成功了感谢留言分享下。
 
 #### 3. 最后执行命令
 
@@ -64,7 +65,7 @@ Done in 289 ms!
 84.13 KiB - 0% = 84.13 KiB
 ```
 
-是不是很简单，😎
+是不是很简单的。酷 😎
 
 参考文章：
 [SVG精简压缩工具svgo简介和初体验](https://www.zhangxinxu.com/wordpress/2016/02/svg-compress-tool-svgo-experience/)
