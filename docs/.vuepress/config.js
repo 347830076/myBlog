@@ -259,6 +259,7 @@ module.exports = {
                     '/tool/jest单元测试',
                     '/tool/docker',
                     '/tool/gitlab-ci',
+                    '/tool/svgo',
                 ]
             },
             {
