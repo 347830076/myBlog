@@ -90,6 +90,7 @@
 
 [高质量图片压缩网站](https://tinypng.com/)                                                                  
 
+[svg 压缩库](https://github.com/svg/svgo)
 ### 学习网站
 
 [慕课网   --   程序员的梦工厂](https://www.imooc.com/)       
