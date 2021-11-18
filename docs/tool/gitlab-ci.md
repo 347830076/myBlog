@@ -121,3 +121,61 @@ step-deploy-prod:
     - `only`和`except`可同时使用。如果`only`和`except`在一个`job`配置中同时存在，则以`only`为准，跳过`except`(从下面示例中得出)。
     - `only`和`except`允许使用特殊的关键字：`branches`，`tags`和`triggers`。
     - `only`和`except`允许使用指定仓库地址但不是`forks`的仓库(查看示例3)。
+
+
+例子
+
+```sh
+stages:
+  - deploy
+
+# 变量参数
+# $REFRESH_NPM  			是否刷新 npm 依赖包，默认不刷新，值为 TRUE 时刷新
+# $TAG_NAME 			    容器标签名，生产环境更新时，必须人为填写
+# $CI_COMMIT_BRANCH 	git 分支名：dev，qa，qa2，qa3，prod
+# $DOCKER_USERNAME  	阿里云镜像容器账号
+# $DOCKER_PASSWORD 	  阿里云镜像容器密码
+
+# 运行发布命令
+step-deploy:
+  stage: deploy
+
+  # 使用的 gitlab runner
+  tags:
+    - projectName
+
+  # 监听以下分支变化，自动更新对应环境
+  only:
+    - dev
+    - qa
+    - qa2
+    - prod
+
+  variables:
+    TAG_NAME: "default"
+
+  script:
+    # 打印所有参数
+    - echo $REFRESH_NPM
+    - echo $CI_COMMIT_BRANCH
+    - echo $TAG_NAME
+
+    # 多行条件判断：https://www.cnblogs.com/sanduzxcvbnm/p/14962298.html
+    # 如果分支为生产环境，则不能使用默认 tag，必须人为输入
+    - if [ "$CI_COMMIT_BRANCH" == "prod" ] && [ "$TAG_NAME" == "default" ]; then exit 1; fi
+
+    # 通过 docker file 打包镜像
+    - sudo docker build -t shendu-$CI_COMMIT_BRANCH:$TAG_NAME .  --build-arg PROJECT_ENV="${CI_COMMIT_BRANCH}"
+
+    # 重命名镜像
+    - sudo docker tag $(sudo docker images -q shendu-$CI_COMMIT_BRANCH:$TAG_NAME) registry.cn-shenzhen.aliyuncs.com/bihupiaodian/shendu-web-$CI_COMMIT_BRANCH:$TAG_NAME
+
+    # 登出
+    - sudo docker logout registry.cn-shenzhen.aliyuncs.com
+
+    # 登录 docker ali 仓库
+    - sudo docker login --username=$DOCKER_USERNAME --password="$DOCKER_PASSWORD" registry.cn-shenzhen.aliyuncs.com
+
+    # 推送镜像到仓库
+    - sudo docker push registry.cn-shenzhen.aliyuncs.com/bihupiaodian/shendu-web-$CI_COMMIT_BRANCH:$TAG_NAME
+```
