@@ -1,20 +1,7 @@
-# 关于我
-
-<!-- 
-:::: tabs
-
-::: tab 热爱
-    前端
-:::
-
-
-::: tab 分享
-    交流
-:::
-
-:::: -->
-
-<style lang="scss">
+<style lang="scss" spcode>
+  .page .theme-default-content {
+    max-width: 100% !important;
+  }
   .about{
     .row{
       padding: 10px 0;
@@ -47,7 +34,7 @@
         <label>我的B站</label> <a href='https://space.bilibili.com/666922383' target="_blank">https://space.bilibili.com/666922383</a>
       </div>
       <div class="row">
-       阿离王带你零基础学习前端：<a href='http://ebook.wanggege.cn/' target="_blank">http://ebook.wanggege.cn/</a>
+       阿离王带你零基础学习前端(电子书)：<a href='http://ebook.wanggege.cn/' target="_blank">http://ebook.wanggege.cn/</a>
       </div>
   </div>
 </template>

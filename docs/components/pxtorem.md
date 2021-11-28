@@ -100,6 +100,12 @@ module.exports = {
 
 #### 如果你的项目是 vue-cli2 构建的
 
+安装依赖 `postcss-pxtorem`
+
+```
+npm i -D postcss-pxtorem
+```
+
 找到根目录下.postcssrc.js文件，在里面添加以下代码：
 
 ```js
@@ -107,7 +113,6 @@ module.exports = {
   plugins: {
     'postcss-import': {},
     'postcss-url': {},
-    // to edit target browsers: use "browserslist" field in package.json
     autoprefixer: {
       browsers: ['Android >= 4.0', 'iOS >= 7']
     },
@@ -161,6 +166,41 @@ propList 表示匹配的属性 *(表示匹配所有属性) 可以在里面用 !b
 
 以上只是一个例子， 移动端你就可以不用设置了，  pc端，你想在什么范围，根据你的项目页面调就好了
 
+### vite 打包的项目配置
+
+新建个 `postcss.config.js` 文件， 下如下代码
+
+
+安装依赖 `postcss-pxtorem`
+
+```
+npm i -D postcss-pxtorem
+```
+
+```js
+module.exports = {
+  plugins: {
+    autoprefixer: {
+      overrideBrowserslist: ['Android >= 4.0', 'iOS >= 7']
+    },
+    'postcss-pxtorem': {
+      rootValue: 192,
+      propList: ['*', '!border*']
+    }
+  }
+}
+```
+
+根目录创建 `.browserslistrc` 文件
+
+```js
+last 2 versions
+> 1%
+iOS 7
+last 3 iOS versions
+```
+
+<b class="red">记得先写前面三步!!!</b>
 
 ### 踩坑以及解决
 
@@ -188,3 +228,5 @@ propList 表示匹配的属性 *(表示匹配所有属性) 可以在里面用 !b
 参考文章
 
 [前端中使用amfe-flexible和postcss-pxtorem](https://www.jianshu.com/p/f4093192e8d8)
+
+[vite中配置postcss与postcss-plugin-px2rem](https://juejin.cn/post/6901943749916491783)
