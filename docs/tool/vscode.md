@@ -120,6 +120,26 @@ EditorConfig 有助于为跨越各种编辑器和 IDE 的同一项目的多个�
 
 GitLens 可以增强 VSCode 内置 Git 的功能。例如 commits 搜索，历史记录和显示的代码作者身份
 
+### Power Mode
+
+打字特效插件
+
+在 `settings.json` 文件配置
+
+```
+"powermode.enabled": true,
+"powermode.enableShake": false,    //是否抖动
+"powermode.presets": "particles"   //动画效果
+```
+### 会了吧
+
+你没看错，插件名称就是叫，`会了吧`
+
+打开源码可以自动分析所有包含的英语单词，并显示解释结果，先学单词再看代码。用了会了吧，统统都会啦！
+
+### Code Spell Checker
+
+检查你代码的英文单词有没有拼错
 ### Remote - SSH  本地VSCode编辑远程服务器文件
 
 安装完Remote - SSH插件之后，
