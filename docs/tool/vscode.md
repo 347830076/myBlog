@@ -131,6 +131,10 @@ GitLens 可以增强 VSCode 内置 Git 的功能。例如 commits 搜索，历�
 "powermode.enableShake": false,    //是否抖动
 "powermode.presets": "particles"   //动画效果
 ```
+
+### Version Shuttle
+
+项目git多分支同时开发
 ### 会了吧
 
 你没看错，插件名称就是叫，`会了吧`
