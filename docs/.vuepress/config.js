@@ -213,6 +213,7 @@ module.exports = {
                     '/vue/eslint-config',
                     '/vue/ts-vue',
                     '/vue/常用技巧',
+                    '/vue/vue组件通讯方式',
                     '/vue/路由守卫',
                     '/vue/axios取消请求',
                     '/vue/自动生成面包屑',

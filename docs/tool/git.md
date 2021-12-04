@@ -151,6 +151,16 @@ git push
 ```
 这样就可以了！
 
+## 设置全局 .gitignore
+
+1. vim ~/.gitignore_global
+2. 写入内容
+3. 生效配置文件
+
+```
+git config --global core.excludesfile ~/.gitignore_global
+```
+
 ## 如果git远程地址更改了，怎么办
 
 ```sh
