@@ -1,4 +1,4 @@
-# vue组件间通信方式
+# 超详细vue组件间通信的12种方式
 
 ## 前言
 
@@ -56,7 +56,13 @@ export default {
 </script>
 ```
 
-**总结: prop 只可以从上一级组件传递到下一级组件（父子组件），即所谓的单向数据流。而且 prop 只读，不可被修改，所有修改都会失效并警告。**
+注意：
+
+**prop 只可以从上一级组件传递到下一级组件（父子组件），即所谓的单向数据流。而且 prop 只读，不可被修改，所有修改都会失效并警告。**
+
+- 第一，不应该在一个子组件内部改变 prop，这样会破坏单向的数据绑定，导致数据流难以理解。如果有这样的需要，可以通过 data 属性接收或使用 `computed` 属性进行转换。
+- 第二，如果 `props` 传递的是`引用类型(对象或者数组)`，在子组件中改变这个对象或数组，父组件的状态会也会做相应的更新，利用这一点就能够实现父子组件数据的`“双向绑定”`，虽然这样实现能够节省代码，但会`牺牲数据流向的简洁性`，令人难以理解，最好不要这样去做。
+- 想要实现父子组件的数据“双向绑定”，可以使用 `v-model` 或 `.sync`。
 
 2. 子组件向父组件传值
 
@@ -112,6 +118,92 @@ export default {
 </script>
 ```
 
+## v-model 指令
+
+`v-model` 是用来在`表单控件`或者`组件`上创建`双向绑定`的，他的本质是 `v-bind` 和 `v-on` 的`语法糖`，在一个组件上使用 `v-model`，默认会为组件绑定名为 `value 的 prop` 和名为 `input` 的事件。
+
+当我们组件中的某一个 `prop` 需要实现上面所说的”双向绑定“时，`v-model` 就能大显身手了。有了它，就不需要自己手动在组件上绑定监听当前实例上的自定义事件，会使`代码更简洁`。
+
+下面以一个 input 组件实现的核心代码，介绍下 `v-model` 的应用。
+
+```vue
+<!--父组件-->
+<template>
+    <base-input v-model="inputValue"></base-input>
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                input: ''
+            }
+        },
+    }
+</script>
+```
+
+```vue
+<!--子组件-->
+<template>
+    <input type="text" :value="currentValue"  @input="handleInput">
+</template>
+<script>
+    export default {
+        data() {
+            return {
+                currentValue: this.value === undefined || this.value === null ? ''
+            }
+        },
+        props: {
+            value: [String, Number], // 关键1
+        },
+        methods: {
+            handleInput(event) {
+                const value = event.target.value;
+                this.$emit('input', value); // 关键2
+            },
+        },
+}
+</script>
+```
+
+上面例子看到，`v-model="inputValue"` 他的本质就是 `v-bind 和 v-on 的语法糖`，默认为父组件绑定名为 `:value="inputValue"`的属性，和`@input="(v) => { this.inputValue = v }"`事件，子组件通过 `this.$emit('input', value)` 通知父组件
+
+所以他原理也是利用了我们上面讲的父子组件传参 `props / $emit` 方式来实现双向绑定
+
+有时，在某些特定的控件中名为 value 的属性会有特殊的含义，这时可以通过 `v-model` 选项来回避这种冲突。
+
+## .sync 修饰符
+
+- `.sync` 修饰符在 vue 1.x 的版本中就已经提供，1.x 版本中，当子组件改变了一个带有 `.sync` 的 `prop` 的值时，会将这个值同步到父组件中的值。这样使用起来十分方便，但问题也十分明显，这样破坏了单向数据流，当应用复杂时，debug 的成本会非常高。
+- 于是乎，在vue 2.0中移除了 `.sync`。但是在实际的应用中，`.sync` 是有它的应用场景的，所以在 `vue 2.3` 版本中，又迎来了`全新的 .sync`。
+- 新的 `.sync` 修饰符所实现的已经不再是真正的双向绑定，它的本质和 `v-model` 类似，只是一种缩写。
+
+正常封装组件例子：
+
+```js
+<text-document v-bind:title="doc.title" v-on:update:title="doc.title = $event" />
+```
+上面的代码，使用 `.sync` 就可以写成
+
+```js
+<text-document v-bind:title.sync="doc.title" />
+```
+
+这样，在子组件中，就可以通过下面代码来实现对这个 prop 重新赋值了。
+
+```js
+this.$emit('update:title', newTitle)
+```
+看到这里，是不是发现 `.sync` 修饰符 和 `v-model` 很相似，也是语法糖， `v-bind:title.sync` 也就是 等效于 `v-bind:title="doc.title" v-on:update:title="doc.title = $event"`
+
+### v-model 和 .sync 对比
+
+`.sync` 从功能上看和 `v-model` 十分相似，都是为了实现数据的`“双向绑定”`，本质上，也都不是真正的双向绑定，而是`语法糖`。
+
+相比较之下，`.sync` 更加灵活，它可以给多个 `prop` 使用，而 `v-model` 在一个组件中只能有一个。
+
+从语义上来看，`v-model` 绑定的值是指这个组件的绑定值，比如 `input 组件`，`select 组件`，`日期时间选择组件`，`颜色选择器组件`，这些组件所绑定的值使用 `v-model` 比较合适。其他情况，没有这种语义，个人认为使用 `.sync` 更好。
 ## $parent / $children
 
 通过`$parent`和`$children`就可以访问组件的实例，拿到实例代表什么？代表可以访问此组件的`所有方法`和`data`。列子如下：
@@ -786,6 +878,74 @@ this.$store.commit('user/updateUser', {})
 
 **注意用`JSON.parse()` / `JSON.stringify()` 做数据格式转换， localStorage / sessionStorage可以结合vuex, 实现`数据的持久保存`,同时使用vuex解决数据和状态混乱问题.**
 
+## 自己实现简单的 Store 模式
+
+对于小型的项目，通信十分简单，这时使用 Vuex 反而会显得冗余和繁琐，这种情况最好不要使用 Vuex，可以自己在项目中实现简单的 Store。
+
+```js
+// store.js
+const store = {
+  debug: true,
+  state: {
+    author: 'yushihu!'
+  },
+  setAuthorAction (newValue) {
+    if (this.debug) console.log('setAuthorAction triggered with', newValue)
+    this.state.author = newValue
+  },
+  deleteAuthorAction () {
+    if (this.debug) console.log('deleteAuthorAction triggered')
+    this.state.author = ''
+  }
+}
+export default store
+```
+
+上面代码原理就是，`store.js文件`暴露出一个`对象 store`，通过引入 `store.js 文件` 各个页面来共同维护这个`store对象`
+
+和 Vuex 一样，store 中 state 的改变都由 store 内部的 action 来触发，并且能够通过 `console.log()` 打印触发的痕迹。这种方式十分适合在不需要使用 Vuex 的小项目中应用。
+
+与 `$root` 访问根实例的方法相比，这种`集中式状态管理的方式`能够在调试过程中，通过 `console.log()` 记录来确定当前变化是如何触发的，更容易定位问题。
+
+## 通过 $root 访问根实例
+
+通过 `$root`，任何组件都可以获取当前`组件树的根 Vue 实例`，通过维护根实例上的 data，就可以实现组件间的`数据共享`。
+
+```js
+//main.js 根实例
+new Vue({
+    el: '#app',
+    store,
+    router,
+    // 根实例的 data 属性，维护通用的数据
+    data: function () {
+        return {
+            author: ''
+        }
+    },
+    components: { App },
+    template: '<App/>',
+});
+
+
+<!--组件A-->
+<script>
+export default {
+    created() {
+        this.$root.author = '于是乎'
+    }
+}
+</script>
+
+
+<!--组件B-->
+<template>
+    <div><span>本文作者</span>{{ $root.author }}</div>
+</template>
+```
+
+<b class="red">注意：通过这种方式，虽然可以实现通信，但在应用的任何部分，任何时间发生的任何数据变化，都不会留下变更的记录，这对于稍复杂的应用来说，调试是致命的，不建议在实际应用中使用。</b>
+
 ## $attrs与 $listeners
 
 现在我们来讨论一种情况， 我们一开始给出的组件关系图中A组件与D组件是隔代关系， 那它们之前进行通信有哪些方式呢？
@@ -912,8 +1072,8 @@ grandSon.vue 组件
 常见使用场景可以分为三类:
 
 - 父子组件通信: `props`、`$parent / $children`、` provide / inject` 、 `ref \ $refs` 、` $attrs / $listeners`
-- 兄弟组件通信: `eventBus` 、 `vuex`
-- 跨级通信: `eventBus`、`Vuex`；`provide / inject` 、`$attrs / $listeners`
+- 兄弟组件通信: `eventBus` 、 `vuex`、 `自己实现简单的 Store 模式`
+- 跨级通信: `eventBus`、 `Vuex`、 `自己实现简单的 Store 模式`、 `provide / inject` 、 `$attrs / $listeners`
 
 参考文章 
 
@@ -922,3 +1082,5 @@ grandSon.vue 组件
 [你可能不知道的provide / inject 用法](https://segmentfault.com/a/1190000020954324)
 
 [vue中的$attrs和$listeners](https://segmentfault.com/a/1190000022708579)
+
+[vue 组件通信看这篇就够了(12种通信方式)](https://zhuanlan.zhihu.com/p/109700915)
