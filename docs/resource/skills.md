@@ -39,3 +39,15 @@ sudo vi /etc/hosts
 ## Nginx配置密码访问-访问网页需输入用户名密码
 
 参考文章 [Nginx配置密码访问-访问网页需输入用户名密码](https://segmentfault.com/a/1190000023086569)
+
+## 谷歌浏览器控制台打印dom元素详细信息
+
+在`console.log()`时在获取到的`dom元素`外面套个`[]`,控制台在打印数组内的对象是会显示数组内对象的详细信息;
+
+```js
+console.log(document.querySelector(".node1"));
+
+console.log([document.querySelector(".node1")]);
+```
+
+当然也可以直接使用 `console.dir(dom)`, 不过`console.log()`的好处是，可以添加点击打印的dom跳转到对应的element元素，还可以同时打印多个参数，`console.log('打印dom =>', [dom])`
