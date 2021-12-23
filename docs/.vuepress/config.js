@@ -218,6 +218,7 @@ module.exports = {
                     '/vue/axios取消请求',
                     '/vue/自动生成面包屑',
                     '/vue/动态热更新设置',
+                    '/vue/vue2与vue3生命周期对比',
                 ]
             },
             {
