@@ -1,4 +1,4 @@
-# 超详细vue组件间通信的12种方式
+# 超详细Vue3的7种和Vue2的12种组件间通信方式
 
 ## 前言
 
@@ -11,11 +11,318 @@ vue是数据驱动视图更新的框架, 我们平时开发，都会把页面不
 - 父子组件之间通信
 - 非父子组件之间通信(兄弟组件、隔代关系组件等)
 
+## Vue3 组件通信方式
+
+## props / emit
+
+父组件通过`props`的方式向子组件传递数据，而通过`emit` 子组件可以向父组件通信。
+
+#### 1. 父组件向子组件传值 props
+
+**方法一，混合写法**
+
+```vue
+<!-- 父组件 -->
+<template>
+  <Child :msg1="msg1" :msg2="msg2" />
+</template>
+
+<script>
+import Child from "./child.vue"
+import { ref, reactive } from "vue"
+export default {
+    data(){
+        return {
+            msg1:"这是传级子组件的信息1"
+        }
+    },
+    setup(){
+        // 创建一个响应式数据
+        // 写法一 适用于基础类型  ref 还有其他用处，
+        const msg1 = ref("这是传级子组件的信息1")
+        // 写法二 适用于复杂类型，如数组、对象
+        const msg2 = reactive(["这是传级子组件的信息2"])
+
+        return {
+            msg1,
+            msg2
+        }
+    }
+}
+</script>
+
+<!-- 子组件 接收 -->
+<template>
+  <div>
+    {{ msg1 }} + {{ msg2 }}
+  </div>
+</template>
+<script>
+export default {
+  props: ["msg1", "msg2"],// 如果这行不写，下面就接收不到
+  setup(props) {
+    console.log(props) // { msg1:"这是传给子组件的信息1", msg2:"这是传给子组件的信息2" }
+  },
+}
+</script>
+```
+
+**方法二，纯 Vue3 写法**
+
+```vue
+<!-- 父组件 -->
+<template>
+  <Child :msg1="msg1" :msg2="msg2" />
+</template>
+<script setup>
+    import Child from "./child.vue"
+    import { ref, reactive } from "vue"
+    const msg1 = ref("这是传给子组件的信息1")
+    const msg2 = reactive(["这是传级子组件的信息2"])
+</script>
+
+<!-- 子组件 -->
+<script setup>
+    import { defineProps } from "vue"
+    const props = defineProps({
+        // 写法一
+        msg2: String,
+        // 写法二
+        msg2: {
+            type: Array,
+            default: []
+        }
+    })
+    console.log(props) // { msg1: '这是传给子组件的信息1', msg2:[这是传级子组件的信息2] }
+</script>
+```
+
+#### 子组件通知父组件 emit
+
+```vue
+<!-- 子组件 Child.vue 派发 -->
+<template>
+    <!-- 写法一 -->
+    <button @click="emit('myClick')">按钮</button>
+    <!-- 写法二 -->
+    <button @click="handleClick">按钮</button>
+</template>
+<script setup>
+    
+    // 方法一 适用于Vue3.2版本
+    import { defineEmits } from "vue"
+    // 对应写法一
+    const emit = defineEmits(["myClick"])
+    // 对应写法二
+    const handleClick = ()=>{
+        emit("myClick", "这是发送给父组件的信息")
+    }
+    
+    // 方法二 不适用于 Vue3.2版本，该版本 useContext()已废弃
+    import { useContext } from "vue"
+    const { emit } = useContext()
+    const handleClick = ()=>{
+        emit("myClick", "这是发送给父组件的信息")
+    }
+</script>
+
+<!-- 父组件 Parent.vue 响应 -->
+<template>
+    <Child @myClick="onMyClick" />
+</template>
+<script setup>
+    import Child from "./child.vue"
+    const onMyClick = (msg) => {
+        console.log(msg) // 这是父组件收到的信息
+    }
+</script>
+```
+
+## expose / ref
+
+父组件获取子组件的属性或者调用子组件方法
+
+```vue
+<!-- 子组件 Child.vue -->
+<script setup>
+    // 方法一 不适用于Vue3.2版本，该版本 useContext()已废弃
+    import { useContext } from "vue"
+    const ctx = useContext()
+    // 对外暴露属性方法等都可以
+    ctx.expose({
+        childName: "这是子组件的属性",
+        someMethod(){
+            console.log("这是子组件的方法")
+        }
+    })
+    
+    // 方法二 适用于Vue3.2版本
+    import { defineExpose } from "vue"
+    defineExpose({
+        childName: "这是子组件的属性",
+        someMethod(){
+            console.log("这是子组件的方法")
+        }
+    })
+</script>
+
+<!-- 父组件 Parent.vue  注意 ref="comp" -->
+<template>
+    <Child ref="comp" />
+    <button @click="handlerClick">按钮</button>
+</template>
+<script setup>
+    import Child from "./child.vue"
+    import { ref } from "vue"
+    const comp = ref(null)
+    const handlerClick = () => {
+        console.log(comp.value.childName) // 获取子组件对外暴露的属性
+        comp.value.someMethod() // 调用子组件对外暴露的方法
+    }
+</script>
+```
+
+## attrs
+
+包含父作用域里除 class 和 style 除外的非 props 属性集合
+
+```vue
+<!-- 父组件 Parent.vue 传送 -->
+<Child :msg1="msg1" :msg2="msg2" title="3333" />
+<script setup>
+    import Child from "./child.vue"
+    import { ref, reactive } from "vue"
+    const msg1 = ref("1111")
+    const msg2 = ref("2222")
+</script>
+
+<!-- 子组件 Child.vue 接收 -->
+<script setup>
+    import { defineProps, useContext, useAttrs } from "vue"
+    const props = defineProps({
+        msg1: String
+    })
+    console.log(props)  // { msg1:"1111"}
+    // 方法一 不适用于 Vue3.2版本，该版本 useContext()已废弃
+    const ctx = useContext()
+    // 如果没有用 props 接收 msg1 的话就是 { msg1: "1111", msg2:"2222", title: "3333" }
+    console.log(ctx.attrs) // { msg2:"2222", title: "3333" }
+    
+    // 方法二 适用于 Vue3.2版本
+    const attrs = useAttrs()
+     // 如果没有用 props 接收 msg1 的话就是 { msg1: "1111", msg2:"2222", title: "3333" }
+    console.log(attrs) // { msg2:"2222", title: "3333" }
+</script>
+```
+
+## v-model
+
+可以支持多个数据双向绑定
+
+```vue
+<!-- 父组件 Parent.vue -->
+<template>
+  <Child v-model:msg1="msg1" v-model:msg2="msg2" />
+</template>
+
+<script setup>
+    import Child from "./child.vue"
+    import { ref, reactive } from "vue"
+    const msg1 = ref("1111")
+    const msg2 = ref("2222")
+</script>
+
+<!-- 子组件 Child.vue -->
+<template>
+  <button @click="handlerClick">按钮</button>
+</template>
+
+<script setup>
+    import { defineEmits, useContext } from "vue"
+    
+    // 方法一  不适用于 Vue3.2版本，该版本 useContext()已废弃
+    const { emit } = useContext()
+    
+    // 方法二 适用于 Vue3.2版本
+    const emit = defineEmits(["msg1", "msg2"])
+    
+    // 用法
+    const handlerClick = () => {
+        emit("update:msg1", "新的msg1")
+        emit("update:msg2", "新的msg2")
+    }
+</script>
+```
+## provide / inject
+
+provide / inject 为依赖注入
+
+`provide`：可以让我们指定想要提供给后代组件的数据
+
+`inject`：在任何后代组件中接收想要添加在这个组件上的数据，不管组件嵌套多深都可以直接拿来用
+
+```vue
+<!-- 父组件 Parent.vue -->
+<script setup>
+    import { provide } from "vue"
+    provide('msg', '阿离王带你学前端')
+</script>
+
+<!-- 子组件 Child.vue -->
+<script setup>
+    import { inject } from "vue"
+    const msg = inject("msg")
+    console.log(msg) // 阿离王带你学前端
+</script>
+```
+
+## Vuex
+
+```js
+//  store/index.js
+import { createStore } from "vuex"
+export default createStore({
+    state:{ count: 1 },
+    getters:{
+        getCount: state => state.count
+    },
+    mutations:{
+        add(state){
+            state.count++
+        }
+    }
+})
+
+// main.js 
+import { createApp } from "vue"
+import App from "./App.vue"
+import store from "./store"
+createApp(App).use(store).mount("#app")
+
+// Page.vue
+// 方法一 直接使用
+<template>
+    <div>{{ $store.state.count }}</div>
+    <button @click="$store.commit('add')">按钮</button>
+</template>
+
+// 方法二 获取
+<script setup>
+    import { useStore, computed } from "vuex"
+    const $store = useStore()
+    console.log($store.state.count) // 1
+
+    const count = computed(() => $store.state.count) // 响应式，会随着vuex数据改变而改变
+    console.log(count) // 1 
+</script>
+```
+
+## Vue2 组件通信方式
 ## props / $emit
 
 父组件通过`props`的方式向子组件传递数据，而通过`$emit` 子组件可以向父组件通信。
 
-1. 父组件向子组件传值
+1. 父组件向子组件传值 props
 
 ```vue
 <!-- 父组件 -->
@@ -64,7 +371,7 @@ export default {
 - 第二，如果 `props` 传递的是`引用类型(对象或者数组)`，在子组件中改变这个对象或数组，父组件的状态会也会做相应的更新，利用这一点就能够实现父子组件数据的`“双向绑定”`，虽然这样实现能够节省代码，但会`牺牲数据流向的简洁性`，令人难以理解，最好不要这样去做。
 - 想要实现父子组件的数据“双向绑定”，可以使用 `v-model` 或 `.sync`。
 
-2. 子组件向父组件传值
+2. 子组件向父组件传值 $emit
 
 使用 `$emit` 向父组件传数据，原理这样的: 父组件在子组件通过`v-on`监听函数并接收参数，vue框架就在子组件监听了你`v-on="fn"`的fn事件函数，在子组件使用`$emit`就能触发了，下面写个例子。
 
@@ -1084,3 +1391,5 @@ grandSon.vue 组件
 [vue中的$attrs和$listeners](https://segmentfault.com/a/1190000022708579)
 
 [vue 组件通信看这篇就够了(12种通信方式)](https://zhuanlan.zhihu.com/p/109700915)
+
+[Vue3的7种和Vue2的12种组件通信，值得收藏](https://blog.51cto.com/u_15320542/3622530)
