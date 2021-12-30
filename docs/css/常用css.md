@@ -123,3 +123,42 @@ img{
     -ms-interpolation-mode: nearest-neighbor;
 }
 ```
+
+### 边框hover动画效果
+```scss
+// 边框hover动画效果
+.border-hover {
+  &::before,
+  &::after {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    z-index: 1;
+    transition: all .35s ease 0s;
+    content: "";
+  }
+
+  &::before {
+    border-right: 1px solid $color-FF5A5F;
+    border-left: 1px solid $color-FF5A5F;
+    transform: scale(1, 0);
+  }
+
+  &::after {
+    border-top: 1px solid $color-FF5A5F;
+    border-bottom: 1px solid $color-FF5A5F;
+    transform: scale(0, 1);
+  }
+
+  &:hover {
+    &::after,
+    &::before {
+      opacity: 1;
+      transition: all .35s ease 0s;
+      transform: scale(1);
+    }
+  }
+}
+```
