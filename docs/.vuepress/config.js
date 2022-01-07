@@ -235,6 +235,7 @@ module.exports = {
                 children: [
                     '/components/pxtorem',
                     '/components/react-pdf',
+                    '/components/http-server',
                 ]
             },
             {
