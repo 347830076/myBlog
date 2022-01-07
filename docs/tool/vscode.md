@@ -66,6 +66,17 @@ JavaScript（ES6）代码段，以及快速输入
 
 vue语法提示
 
+### Vue 3 Snippets
+这个插件基于最新的 Vue 2 及 Vue 3 的 API 添加了 Code Snippets。
+
+### Vue Language Features (Volar)
+
+vue3开发提示
+
+###  any-rule
+
+正则大全
+
 ### Debugger for Chrome
 
 让 vscode 映射 chrome 的 debug 功能，静态页面都可以用 vscode 来打断点调试。
