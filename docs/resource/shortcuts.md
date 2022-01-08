@@ -19,6 +19,7 @@
 | ctrl + r | 打开最近打开的文件（夹） |
 | win + alt + up/down | 多行同时添加内容（光标） |
 | alt + 鼠标左键 | 添加多个光标 |
+| win + d | 选中的字符，进行多选 |
 | win+ alt + i | 多行选择后，插入递增数字 |
 ## mac
 
@@ -116,4 +117,5 @@
 选择上面的主题之后，点击按钮重启下控制台即可。
 
 <img class="zoom-custom-imgs" :src="$withBase('/assets/img/theme2.png')">
+
 

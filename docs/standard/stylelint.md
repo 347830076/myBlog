@@ -30,9 +30,24 @@ npm install --save-dev stylelint stylelint-config-standard
 {
   "editor.codeActionsOnSave": {
     "source.fixAll.stylelint": true
-  }
+  },
+  "stylelint.snippet": [
+        "css",
+        "less",
+        "postcss",
+        "vue",
+        "sass"
+    ],
+    "stylelint.validate": [
+        "css",
+        "less",
+        "postcss",
+        "vue",
+        "sass"
+    ],
 }
 ```
+3. 
 
 设置完之后，在vscode就可以有提示了，也保存自动修复了
 
