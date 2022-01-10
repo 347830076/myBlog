@@ -46,6 +46,8 @@ import、require npm 模块是自动补全
 
 这是一个为静态和动态页面启动具有实时重新加载功能的开发本地服务器。
 
+### bundle-size 为你显示 npm 包大小
+
 ### vscode-icons
 
 可以为你的 VSCode 的文件类型提供相应的图标
