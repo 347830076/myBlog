@@ -247,6 +247,15 @@ module.exports = {
                 ]
             },
             {
+                title: 'npm',
+                path: '/npm/',
+                sidebarDepth: 1,
+                children: [
+                    '/npm/nrm',
+                    '/npm/link',
+                ]
+            },
+            {
                 title: '工具栏',   // 必要的
                 // collapsable: false, // 可选的, 默认值是 true,
                 sidebarDepth: 1,    // 可选的, 默认值是 1
