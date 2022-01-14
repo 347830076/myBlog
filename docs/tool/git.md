@@ -29,10 +29,11 @@ git merge 分支名称                       将分支合并到当前分支
 git push origin branchName              将代码推送到远程仓库的指定分支
 git push -d origin branchName           删除远程分支
 
-git stash                               暂存代码
+git stash                               暂存代码(直接保存当前修改的文件代码)
 git stash list                          查看暂存代码列表
-git stash apply
-git stash pop                           弹出暂存代码
+git stash apply                         命令时可以通过名字指定使用哪个stash，默认使用最近的stash（即stash@{0}）
+git stash pop                           弹出暂存代码（出栈，删除list的这行记录）
+git stash drop                          删除指定的stash记录
 ```
 
 ## 安装
