@@ -30,6 +30,8 @@ git push origin branchName              将代码推送到远程仓库的指定�
 git push -d origin branchName           删除远程分支
 
 git stash                               暂存代码
+git stash list                          查看暂存代码列表
+git stash apply
 git stash pop                           弹出暂存代码
 ```
 

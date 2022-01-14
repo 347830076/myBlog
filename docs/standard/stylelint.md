@@ -4,6 +4,14 @@
 
 ```
 npm install --save-dev stylelint stylelint-config-standard 
+
+ "postcss": "^8.4.5",
+  "postcss-html": "^1.3.0",
+  "postcss-sass": "^0.5.0",
+  "stylelint": "^14.2.0",
+  "stylelint-config-html": "^1.0.0",
+  "stylelint-config-standard": "^24.0.0",
+  "stylelint-config-standard-scss": "^3.0.0",
 ```
 
 ### 然后再根目录创建 `.stylelintrc.js` 文件, 并写下以下内容
@@ -86,6 +94,9 @@ module.exports = {
 module.exports = {
   "extends": [
     "stylelint-config-standard"
+    "stylelint-config-standard-scss",
+    "stylelint-config-html/html",
+    "stylelint-config-html/vue",
   ],
   "plugins": [
     "stylelint-order"
