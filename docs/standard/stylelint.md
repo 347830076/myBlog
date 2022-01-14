@@ -3,22 +3,19 @@
 ### 安装 stylelint 和 Standard 规范
 
 ```
-npm install --save-dev stylelint stylelint-config-standard 
-
- "postcss": "^8.4.5",
-  "postcss-html": "^1.3.0",
-  "postcss-sass": "^0.5.0",
-  "stylelint": "^14.2.0",
-  "stylelint-config-html": "^1.0.0",
-  "stylelint-config-standard": "^24.0.0",
-  "stylelint-config-standard-scss": "^3.0.0",
+npm install --save-dev stylelint stylelint-config-standard stylelint-config-standard-scss postcss postcss-html postcss-sass stylelint-config-html
 ```
 
 ### 然后再根目录创建 `.stylelintrc.js` 文件, 并写下以下内容
 
 ```json
 {
-  "extends": "stylelint-config-standard"
+ "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-standard-scss",
+    "stylelint-config-html/html",
+    "stylelint-config-html/vue",
+  ],
 }
 ```
 
@@ -93,7 +90,7 @@ module.exports = {
 ```js
 module.exports = {
   "extends": [
-    "stylelint-config-standard"
+    "stylelint-config-standard",
     "stylelint-config-standard-scss",
     "stylelint-config-html/html",
     "stylelint-config-html/vue",
@@ -102,6 +99,14 @@ module.exports = {
     "stylelint-order"
   ],
   "rules": {
+    // scss 变量名忽略警告
+    "scss/dollar-variable-pattern": [/./, {"ignore": "global"}],
+    // mixin变量名支持全部字符
+    "scss/at-mixin-pattern": /.+/,
+    // 类选择器的命名规则
+    "selector-class-pattern": ".",
+    // 指定字符串使用单引号或双引号 "single"|"double"
+    "string-quotes": "single",
     // 颜色指定大写
     "color-hex-case": "upper",
     // 禁止空块
@@ -114,7 +119,7 @@ module.exports = {
     }],
     // 忽略伪类选择器 ::v-deep
     "selector-pseudo-element-no-unknown": [true, {
-      "ignorePseudoElements": ["v-deep"]
+      "ignorePseudoElements": ["/./","v-deep", '-webkit-']
     }],
     // 禁止低优先级的选择器出现在高优先级的选择器之后。
     "no-descending-specificity": null,
@@ -124,10 +129,21 @@ module.exports = {
     "comment-no-empty": true,
     // 禁止简写属性的冗余值
     "shorthand-property-no-redundant-values": true,
+    "selector-pseudo-class-no-unknown": [true, {
+      "ignorePseudoClasses": ['/./', '-webkit-']
+    }],
     // 禁止值的浏览器引擎前缀
-    "value-no-vendor-prefix": true,
+    "value-no-vendor-prefix": [true,
+    {
+      "ignoreValues": "box"
+    }],
     // 禁止属性的浏览器引擎前缀
-    "property-no-vendor-prefix": true,
+    "property-no-vendor-prefix": [
+      true,
+      {
+        "ignoreProperties": [ /./]
+      }
+    ],
     // 禁止小于 1 的小数有一个前导零
     "number-leading-zero": "never",
     // 禁止空第一行
@@ -257,3 +273,7 @@ html {}
 [stylelint 官网](https://stylelint.io/)
 
 [stylelint 中文文档](https://stylelint.docschina.org/)
+
+[stylelint-scss 规则文档](https://github.com/stylelint-scss/stylelint-scss)
+
+[stylelint-config-standard-scss 的规则](https://github.com/stylelint-scss/stylelint-config-standard-scss/blob/main/index.js)
