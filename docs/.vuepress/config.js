@@ -272,6 +272,7 @@ module.exports = {
                     '/tool/docker',
                     '/tool/gitlab-ci',
                     '/tool/svgo',
+                    '/tool/vscode-plugin',
                 ]
             },
             {
