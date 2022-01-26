@@ -273,6 +273,7 @@ module.exports = {
                     '/tool/gitlab-ci',
                     '/tool/svgo',
                     '/tool/vscode-plugin',
+                    '/tool/badge',
                 ]
             },
             {
