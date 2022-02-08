@@ -63,6 +63,21 @@ hyphens: auto;
 }
 ```
 
+## 三角形
+```css
+.triangle{
+  display:inline-block;
+  width:0;
+  height:0;
+  overflow:hidden;
+  line-height:0;
+  font-size:0;
+  vertical-align:middle;
+  border: 7px solid #ccc;
+  border-color: #ccc transparent transparent transparent;
+}
+```
+
 ## 1px 边框解决方案
 
 ### 设置单条底部边框：

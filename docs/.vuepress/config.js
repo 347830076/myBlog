@@ -309,6 +309,12 @@ module.exports = {
                     '/demo/使用原生js来替换title属性的悬浮文字提示',
                 ]
             },
+            // {
+            //     title: '个人总结',
+            //     children: [
+            //         '/summary/2021年总结',
+            //     ]
+            // },
         ],
         lastUpdated: '更新时间', // string | boolean
     }
