@@ -11,6 +11,7 @@ git log                                  查看日志
 git log -p                               查看详细历史
 git log --stat                           查看简要统计
 git log --oneline --graph 		 查看简单历史，显示树
+git reflog                               查看操作记录
 
 git branch 名称                          创建分支
 git checkout 名称                        切换分支
@@ -118,15 +119,16 @@ git reset HEAD filename	//放弃某个文件的缓存
 git reset HEAD .	//放弃所有的缓存
 ```
 
-#### 已经用 git commit  提交了代码
+#### 已经用 git commit 提交了代码
 
 ```sh
-git reset HEAD^ 		// 与git reset --mixed HEAD^ 效果是一样的, 不删除工作空间改动代码，撤销commit，并且撤销git add . 操作
-git reset --hard HEAD^      	// 退到上一次commit的状态
-git reset --hard HEAD~2	        // 退到上上一次commit的状态， 数字以此类推，往上撤回
-git reset --hard HEAD	        // 退到当前commit的状态
-git reset --hard commit	        // 回退到任意版本
+git reset  HEAD^ 		// 与git reset --mixed HEAD^ 效果是一样的, 不删除工作空间改动代码，撤销commit，并且撤销git add . 操作
+git reset  HEAD^      	        // 退到上一次commit的状态
+git reset  HEAD~2	        // 退到上上一次commit的状态， 数字以此类推，往上撤回
+git reset  HEAD	                // 退到当前commit的状态
+git reset  commit	        // 回退到任意版本
 git reset --mixed HEAD^ 	// 退到上一次commit的状态，将上次commit的改动显示到工作空间
+git reset 123987                // 回退到指定的commit id
 ```
 
 ##### 参数的意思
