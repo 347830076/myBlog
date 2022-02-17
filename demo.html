@@ -7,82 +7,16 @@
     <title>Document</title>
 </head>
 <body>
+    <div>- DOM 发生中断的条件</div>
+    <ul>
+        <li> 子树修改</li>
+        <li> 属性修改</li>
+        <li> 移除节点</li>
+    </ul>
     <script>
- 
-
-        // // 第一版
-        // var curry = function (fn) {
-        //     // arguments 从下标1开始截取到最后，返回新数组args，不影响原来数组
-        //     var args = [].slice.call(arguments, 1);
-        //     console.log('args', args);
-        //     return function() {
-        //         console.log('arguments', arguments);
-        //         // arguments 不是真正的数组， [].slice.call(arguments) 是为了把arguments 转成数组
-        //         // concat再拼接数组
-        //         var newArgs = args.concat([].slice.call(arguments));
-        //         // fn(...newArgs) 这样写也行
-        //         // fn.apply(this, newArgs) 是为了把 newArags参数铺开传给fn
-        //         return fn.apply(this, newArgs);
-        //     };
-        // };
-
-        // function add(a, b) {
-        //     return a + b;
-        // }
-
-        // // var addCurry = curry(add, 1, 2);
-        
-        // // console.log(addCurry()); // 3
-        // // //或者
-        // // var addCurry = curry(add, 1);
-        // // console.log('addCurry', addCurry);
-        // //  // 3
-        // // console.log(addCurry(2));
-        // //或者
-        // var addCurry = curry(add, 3, 4, 2);
-        // console.log(addCurry);
-        // console.log(addCurry(5));
-        // // console.log(addCurry(1, 2));
-
-        // 第二版
-        function sub_curry(fn) {
-            var args = [].slice.call(arguments, 1);
-            return function() {
-                return fn.apply(this, args.concat([].slice.call(arguments)));
-            };
-        }
-
-        function curry(fn, length) {
-            console.log('fn', fn, fn.length);
-            console.log('length', length);
-
-            // fn.length 代表fn的形参的数量
-            length = length || fn.length;
-
-            var slice = Array.prototype.slice;
-
-            return function() {
-                console.log('arguments', arguments);
-                if (arguments.length < length) {
-                    var combined = [fn].concat(slice.call(arguments));
-                    return curry(sub_curry.apply(this, combined), length - arguments.length);
-                } else {
-                    return fn.apply(this, arguments);
-                }
-            };
-        }
-
-        const fn = curry(function(a, b, c) {
-            return [a, b, c];
-        });
-
-        console.log('fn =>', fn);
-
-        // console.log(fn("a", "b", "c")); // ["a", "b", "c"]
-        console.log(fn("a", "b")("c")); // ["a", "b", "c"]
-        // console.log(fn("a")("b")("c")); // ["a", "b", "c"]
-        // console.log(fn("a")("b", "c")); // ["a", "b", "c"]
-       
+        let a = 1;
+        let b = 2;
+        const result = a + b;
     </script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 
 ```js
 export default {
-    name: 'throttle',
+    name: 'debounce',
     abstract: true,
     props: {
         time: {

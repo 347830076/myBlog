@@ -204,6 +204,7 @@ module.exports = {
                     '/javascript/fetch拦截和封装',
                     '/javascript/函数柯里化',
                     '/javascript/正则',
+                    '/javascript/js打断点的方式',
                 ]
             },
             {
