@@ -13,10 +13,32 @@
         <li> 属性修改</li>
         <li> 移除节点</li>
     </ul>
+    <button id="add">添加</button>
     <script>
         let a = 1;
         let b = 2;
         const result = a + b;
+        // document.getElementById('add').onclick = () => {
+        //     console.log('onclick');
+        // }
+
+        // document.getElementById('add').onclick = () => {
+        //     console.log('onclick2');
+        // }
+        document.getElementById('add').addEventListener('click', (e) => {
+            console.log('addEventListener3');
+            e.stopPropagation()
+        }, true)
+
+        document.getElementById('add').addEventListener('click', () => {
+            console.log('addEventListener');
+        })
+
+        document.getElementById('add').addEventListener('click', () => {
+            console.log('addEventListener2');
+        })
+
+      
     </script>
 </body>
 </html>
