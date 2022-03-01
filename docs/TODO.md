@@ -16,6 +16,8 @@
 - typescript 深入学习                 运用到项目上
 - 看完vue深入浅出电子书                收获笔记
 - 看完JavaScript 高级程序设计 第四版    收获笔记
+- 看完vue深入浅出
+- 看完设计思想
 - [x] 看完洛克菲勒留个儿子的38封信       读后感悟
 - [x] 开发vscode插件（css 常用class大全）
 
@@ -32,3 +34,4 @@
 - 编写 项目上使用微标
 - 编写 vscode plugin 开发， 开发vscode插件（css 常用class大全）
 - 编写 stylelint 升级 14
+- 编写 grid网格布局

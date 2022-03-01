@@ -318,5 +318,11 @@ module.exports = {
             // },
         ],
         lastUpdated: '更新时间', // string | boolean
+    },
+    markdown: {
+        extendMarkdown: md => {
+            // markdown 插件，支持定义勾选列表
+            md.use(require('markdown-it-task-lists'))
+        }
     }
 }
