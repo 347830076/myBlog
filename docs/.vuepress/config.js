@@ -266,6 +266,7 @@ module.exports = {
                     '/tool/nrm',
                     '/tool/git',
                     '/tool/sshkey',
+                    '/tool/mtp',
                     '/tool/githook',
                     '/tool/vscode',
                     '/tool/谷歌插件',
