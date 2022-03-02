@@ -246,6 +246,7 @@ module.exports = {
                     '/node/配置全局命令',
                     '/node/Nginx配置密码访问',
                     '/node/Nginx反向代理配置',
+                    '/node/linux-expect',
                 ]
             },
             {
