@@ -12,7 +12,7 @@ sudo curl --output /usr/local/bin/gitlab-runner "https://gitlab-runner-downloads
 sudo chmod +x /usr/local/bin/gitlab-runner
 ```
 
-在火狐浏览器点击域名左边的小锁，  安全连接 -> 更多信息 -> 查看证书 
+网站的证书可以使用火狐浏览器来下载，点击域名左边的小锁，  安全连接 -> 更多信息 -> 查看证书 
 
 最后点击 `下载PEM（证书）`
 
@@ -32,9 +32,9 @@ gitlab-runner register --tls-ca-file ca.crt
 
 **安装提示输入 url ,  token,  描述， tag， 选择shell**
 
-url, token 的信息，在自己的gitlab网站上，项目的setting -> CI/CD -> runner (Expand) -> 左边信息栏中
+`url, token` 的信息，在自己的gitlab网站上，项目的 `setting -> CI/CD -> runner (Expand) -> 左边信息栏中`
 
-Register the runner with this URL:
+Register the runner with this URL: 
 
 And this registration token:
 
@@ -42,14 +42,21 @@ And this registration token:
 
 然后执行 `gitlab-runner start` `gitlab-runner run`
 
-如果出现你注册的 runner 左边有感叹号，就执行 `gitlab-runner verify` `gitlab-runner stop` `gitlab-runner start` `gitlab-runner run`
+如果出现你注册的 runner 左边有感叹号，就执行 `gitlab-runner verify` `gitlab-runner stop` `gitlab-runner start` `gitlab-runner run`，先验证看看有没有失败的， 停止掉，重新开启，最后再run跑起来
 
-`gitlab-runner register`
-`gitlab-runner status`
-`gitlab-runner start`
-`gitlab-runner stop`
-`gitlab-runner run`
-`gitlab-runner verify`
+<img class="zoom-custom-imgs" :src="$withBase('/assets/img/tool/gitlab-ci/gitlab-ci.png')" />
+
+`gitlab-runner register` 注册跑步在
+
+`gitlab-runner status` 检查状态
+
+`gitlab-runner start` 开始
+
+`gitlab-runner stop` 停止
+
+`gitlab-runner run` 运行
+
+`gitlab-runner verify` 验证
 
 `gitlab-runner list`    列出所有跑步者
 
@@ -168,14 +175,14 @@ step-deploy:
     - sudo docker build -t shendu-$CI_COMMIT_BRANCH:$TAG_NAME .  --build-arg PROJECT_ENV="${CI_COMMIT_BRANCH}"
 
     # 重命名镜像
-    - sudo docker tag $(sudo docker images -q shendu-$CI_COMMIT_BRANCH:$TAG_NAME) registry.cn-shenzhen.aliyuncs.com/bihupiaodian/shendu-web-$CI_COMMIT_BRANCH:$TAG_NAME
+    - sudo docker tag $(sudo docker images -q shendu-$CI_COMMIT_BRANCH:$TAG_NAME) registry.cn-xxx.aliyuncs.com/namespace/web-$CI_COMMIT_BRANCH:$TAG_NAME
 
-    # 登出
-    - sudo docker logout registry.cn-shenzhen.aliyuncs.com
+    # 登出 阿里云镜像仓库
+    - sudo docker logout registry.cn-xxx.aliyuncs.com
 
-    # 登录 docker ali 仓库
-    - sudo docker login --username=$DOCKER_USERNAME --password="$DOCKER_PASSWORD" registry.cn-shenzhen.aliyuncs.com
+    # 登录 docker 阿里云镜像仓库
+    - sudo docker login --username=$DOCKER_USERNAME --password="$DOCKER_PASSWORD" registry.cn-xxx.aliyuncs.com
 
     # 推送镜像到仓库
-    - sudo docker push registry.cn-shenzhen.aliyuncs.com/bihupiaodian/shendu-web-$CI_COMMIT_BRANCH:$TAG_NAME
+    - sudo docker push registry.cn-xxx.aliyuncs.com/namespace/web-$CI_COMMIT_BRANCH:$TAG_NAME
 ```
