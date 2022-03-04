@@ -238,6 +238,7 @@ module.exports = {
                     '/components/pxtorem',
                     '/components/react-pdf',
                     '/components/http-server',
+                    '/components/menu-list',
                 ]
             },
             {

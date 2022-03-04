@@ -1,4 +1,4 @@
-# vue3+element无限嵌套菜单组件
+# vue3+element递归生成无限菜单组件
 
 直接上代码
 
