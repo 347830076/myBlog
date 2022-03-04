@@ -270,6 +270,7 @@ module.exports = {
                     '/tool/sshkey',
                     '/tool/mtp',
                     '/tool/githook',
+                    '/tool/husky-githook',
                     '/tool/vscode',
                     '/tool/谷歌插件',
                     '/tool/jest单元测试',
