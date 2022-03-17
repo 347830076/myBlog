@@ -1,4 +1,4 @@
-# 项目中使用husky统一管理git-hooks
+# 项目中使用husky统一管理git-hooks,实现git commit之前校验eslint
 
 git hooks是一些自定义的脚本，用于控制git工作的流程，分为客户端钩子和服务端钩子。完整钩子说明，请参考[官网链接](https://git-scm.com/docs/githooks)
 
