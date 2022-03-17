@@ -38,7 +38,7 @@
         <a href='https://juejin.cn/user/1072724804906152' target="_blank">https://juejin.cn/user/1072724804906152</a>
       </div>
       <div class="row">
-       阿离王带你零基础学习前端(电子书)：<a href='http://ebook.wanggege.cn/' target="_blank">http://ebook.wanggege.cn/</a>
+       阿离王带你零基础学习前端(电子书)：<a href='https://showhtml5.gitee.io/myebook/' target="_blank">https://showhtml5.gitee.io/myebook/</a>
       </div>
   </div>
 </template>
