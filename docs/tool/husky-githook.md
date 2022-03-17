@@ -10,11 +10,10 @@ npm install husky --save-dev
 
 ## 初始化husky
 
+方法一
 ```
 npx husky install
 ```
-
-## 要在安装后自动启用Git钩子
 
 在 `package.json` 文件 添加下面命令
 
@@ -25,12 +24,16 @@ npx husky install
     }
 }
 ```
+方法二
+```
+npm run prepare
+```
 
 执行完上述安装命令后，将会发生如下几个变化：
 
-- 在.git同级目录生成.husky文件夹，文件夹下有一个可以编辑的示例pre-commit钩子
-- 在package.json中的scripts中添加了"prepare": "husky install"
-- 更改.git文件下面的config文件，配置项 core.hooksPath 为 .husky
+- 在.git同级目录生成`.husky文件夹`，文件夹下有一个可以编辑的示例pre-commit钩子
+- 在package.json中的scripts中添加了`"prepare": "husky install"`
+- 更改.git文件下面的config文件，配置项 core.`hooksPath` 为 `.husky`
 
 ## 创建一个hook
 
@@ -74,8 +77,10 @@ npm install lint-staged --save-dev
 ```
 // package.json
 {
- 
-  "lint-staged": {
+    scripts: {
+        lint-staged: "lint-staged"
+    },
+    "lint-staged": {
     "*.{js,vue}": [
       "eslint --max-warnings 0"
     ]
@@ -89,7 +94,7 @@ npm install lint-staged --save-dev
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-lint-staged
+npm run lint-staged
 ```
 
 总结写流程： 我们提交 commit 的时候，触发了 `pre-push`的gitHook, 就执行了里面的脚本 `lint-staged`, 然后执行了 `eslint --max-warnings 0`, 最终eslint 0 警告 0 错误就可以commit成功，反之不行。
