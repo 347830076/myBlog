@@ -1,20 +1,31 @@
 # vscode 扩展开发
 
-## 项目初始化
+## 安装依赖
 
 官方为了方便开发人员进行vscode插件的开发，提供了对yo应的脚手架来生成对应的项目。[vscode 扩展开发官方文档](https://code.visualstudio.com/api/get-started/your-first-extension)
 
 ```js
-// 安装需要的包
+// 全局安装需要的包
 npm install -g yo generator-code
-// 运行
-yo code
+
+```
+在 mac 安装失败，报错没有权限 `permission denied` 字眼的时候，可以加 `sudo` 来授权
+
+```js
+// 全局安装需要的包
+sudo npm install -g yo generator-code
 ```
 
-> 上述命令其实安装了两个包（yo和generator-code)，这两个包用途如下：
+> 上述命令其实安装了两个包（`yo` 和 `generator-code`)，这两个包用途如下：
 
     yo模块全局安装后就安装了Yeoman，Yeoman是通用型项目脚手架工具，可以根据一套模板，生成一个对应的项目结构
     generator-code模块是VS Code扩展生成器，与yo配合使用才能构建项目。
+## 项目初始化
+
+```js
+// 运行
+yo code
+```
 
 执行 yo code之后，会有下面几个选项：
 
@@ -26,8 +37,8 @@ yo code
 - ? What's the description of your extension（什么是您的扩展的描述）? `learn vscode plugin`
 - ? Enable JavaScript type checking in 'jsconfig.json'（在'jsconfig.json'中启用JavaScript类型检查）? `Yes`
 - ? Initialize a git repository（初始化一个git仓库）? `Yes`
+- ? bundel the source code with webpack (是否用webpack打包源码)？ `Yes`
 - ? Which package manager to use（使用哪个包管理器）? `npm`
-
 
 上面标红的是我的选择
 

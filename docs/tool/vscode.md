@@ -157,6 +157,10 @@ GitLens 可以增强 VSCode 内置 Git 的功能。例如 commits 搜索，历�
 ### Code Spell Checker
 
 检查你代码的英文单词有没有拼错
+
+### Marp for VS Code
+
+markdown 写 PPT
 ### Remote - SSH  本地VSCode编辑远程服务器文件
 
 安装完Remote - SSH插件之后，
