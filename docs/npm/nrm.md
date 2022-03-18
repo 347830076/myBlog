@@ -78,13 +78,13 @@ npm config get registry
 ## npm 修改registry源地址
 
 ```
-npm set registry https://registry.npm.taobao.org/
+npm set registry https://registry.npmmirror.com/
 ```
 
 ## 安装包使用特定源
 
-- 全部使用特定源安装：`npm install --registry=https://registry.npm.taobao.org`
-- 安装一个包使用特定源：`npm i logo --registry=https://registry.npm.taobao.org`
+- 全部使用特定源安装：`npm install --registry=https://registry.npmmirror.com/`
+- 安装一个包使用特定源：`npm i logo --registry=https://registry.npmmirror.com/`
 
 参考文章： [npm源管理器nrm使用教程](https://segmentfault.com/a/1190000017419993)
 

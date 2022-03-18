@@ -1,4 +1,4 @@
-<style lang="scss" spcode>
+<style lang="scss" scoped>
   .page .theme-default-content {
     max-width: 100% !important;
   }
