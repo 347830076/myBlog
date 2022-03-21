@@ -52,9 +52,7 @@ npm install --save-dev stylelint stylelint-config-standard stylelint-config-stan
     ],
 }
 ```
-3. 
-
-设置完之后，在vscode就可以有提示了，也保存自动修复了
+3. 设置完之后，在vscode就可以有提示了，也保存自动修复了
 
 
 ## 自定义css属性顺序规则

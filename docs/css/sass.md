@@ -177,7 +177,7 @@ SASS共有两种注释风格。
 
 SASS允许一个选择器，继承另一个选择器
 
-```css
+```scss
 .class1 {
 　　border: 1px solid #ddd;
 }
@@ -186,6 +186,20 @@ SASS允许一个选择器，继承另一个选择器
     font-size: 14px;
 }
 ```
+
+占位符继承
+
+```scss
+%class1 {
+　　border: 1px solid #ddd;
+}
+.class2{
+    @extend %class1;
+    font-size: 14px;
+}
+```
+
+.class1 与 %class1 对比，使用%的好处是，不用生成一个.class1类
 
 ## Mixin
 

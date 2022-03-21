@@ -257,6 +257,7 @@ module.exports = {
                 children: [
                     '/npm/nrm',
                     '/npm/link',
+                    '/npm/package.json与package-lock.json',
                 ]
             },
             {
