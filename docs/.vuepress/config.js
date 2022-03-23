@@ -258,6 +258,7 @@ module.exports = {
                     '/npm/nrm',
                     '/npm/link',
                     '/npm/package.json与package-lock.json',
+                    '/npm/publish',
                 ]
             },
             {

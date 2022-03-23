@@ -6,7 +6,7 @@
 
 - 柯里化函数
 - 如何实现拖拽上传、进度条和取消上传？ (微信收藏了一篇文章)
-- 如何发布代码到npm
+- [x] 如何发布代码到npm
 - [x] vue组件通信方式
 
 ### 学习
@@ -36,3 +36,7 @@
 - 编写 JS的 6 种打断点调试方式
 - 编写 grid网格布局
 - 编写 vue3的JSX写法
+- 编写 Linux expect 介绍和用法
+- 编写 项目中使用husky统一管理git-hooks,实现git commit之前校验eslint
+- 编写 package.json 与 package-lock.json 的关系
+- 编写 如何发布一个自己的npm包
