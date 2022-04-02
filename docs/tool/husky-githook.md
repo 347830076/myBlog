@@ -55,6 +55,14 @@ npm uninstall husky
 rm -rf .husky && git config --unset core.hooksPath
 ```
 
+## 跳过hooks
+
+有时候我们因为一些原因，想绕过hooks检查，可通过下方命令实现：
+
+```js
+git commit -m 'xxx' --no-verify
+```
+
 ## 实战
 
 ### 项目中commit的时候，校验eslint, 警告和错误都不可以commit
