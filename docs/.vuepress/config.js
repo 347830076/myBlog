@@ -220,7 +220,8 @@ module.exports = {
                     '/vue/自动生成面包屑',
                     '/vue/动态热更新设置',
                     '/vue/vue2与vue3生命周期对比',
-                    '/vue/vue3的JSX写法'
+                    '/vue/vue3的JSX写法',
+                    '/vue/Vue项目中出现Loading chunk {n} failed问题的解决方法'
                 ]
             },
             {
