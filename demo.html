@@ -1,44 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .main {
+            width: 200px;
+            margin: 20px auto;
+        }
+
+        .input-box {
+            width: 100%;
+            height: 30px;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            width: 100%;
+            height: 30px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
+
 <body>
-    <div>- DOM 发生中断的条件</div>
-    <ul>
-        <li> 子树修改</li>
-        <li> 属性修改</li>
-        <li> 移除节点</li>
-    </ul>
-    <button id="add">添加</button>
+    <div class="main">
+        <input class="input-box" type="text" placeholder="请输入账号">
+        <input class="input-box" type="text" placeholder="请输入密码">
+        <button class="btn" onclick="login()">登录</button>
+        <button class="btn">领取</button>
+    </div>
+
     <script>
-        let a = 1;
-        let b = 2;
-        const result = a + b;
-        // document.getElementById('add').onclick = () => {
-        //     console.log('onclick');
-        // }
+        window.onload = function () {
+            
+        }
 
-        // document.getElementById('add').onclick = () => {
-        //     console.log('onclick2');
-        // }
-        document.getElementById('add').addEventListener('click', (e) => {
-            console.log('addEventListener3');
-            e.stopPropagation()
-        }, true)
+        // 自动领取
+        function autoReceive (){
+            let centerX = document.body.clientWidth / 2 // 屏幕中心坐标 x轴 
+            // 跟进x y坐标，获取元素
+            function getElement(x, y) {
+                return document.elementFromPoint(x, y)
+            }
 
-        document.getElementById('add').addEventListener('click', () => {
-            console.log('addEventListener');
-        })
+            // 设置账户
+            function setAccount(str) {
+                let y = 30
+                let objInput = getElement(centerX, y)
+                objInput.value = str
+            }
 
-        document.getElementById('add').addEventListener('click', () => {
-            console.log('addEventListener2');
-        })
+            // 设置密码
+            function setPassword(str) {
+                let y = 70
+                let objInput = getElement(centerX, y)
+                objInput.value = str
+            }
 
-      
+            // 点击登录
+            function clickLogin() {
+                let y = 110
+                let objInput = getElement(centerX, y)
+                objInput.click()
+            }
+
+            // 领取
+            function receive() {
+                let y = 150
+                let objInput = getElement(centerX, y)
+                console.log('objInput', objInput);
+            }
+
+            // 延迟多少毫秒
+            function timeout(time){
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        resolve()
+                    }, time);
+                })
+            }
+
+            // 执行设置输入账户密码登录
+            async function execute(obj){
+                setAccount(obj.account)
+                setPassword(obj.password)
+                clickLogin()
+                // 登录完，两秒后在操作
+                await timeout(2000)
+                receive()
+            }
+
+            // 账号组
+            let accountArr = [{
+                account: 111111,
+                password: 'aaaaa'
+            },{
+                account: 2222222,
+                password: 'bbbbbb'
+            }]
+
+            let index = 0
+            run()
+            // 按顺序执行
+            function run(){
+                setTimeout(async () => {
+                    if(accountArr.length > index){
+                        await execute(accountArr[index])
+                        index++
+                        await timeout(2000)
+                        run()
+                    }
+                }, 1000);
+            }
+        }
+
+        function login() {
+            console.log('登录');
+        }
     </script>
 </body>
+
 </html>
