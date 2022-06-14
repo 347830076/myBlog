@@ -35,75 +35,100 @@
     <div class="main">
         <input class="input-box" type="text" placeholder="请输入账号">
         <input class="input-box" type="text" placeholder="请输入密码">
-        <button class="btn" onclick="login()">登录</button>
+        <button class="btn">登录</button>
         <button class="btn">领取</button>
     </div>
 
     <script>
         window.onload = function () {
-            
+            // cycle()
+        }
+
+        // 延迟多少毫秒
+        function timeout(time) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve()
+                }, time);
+            })
         }
 
         // 自动领取
-        function autoReceive (){
-            let centerX = document.body.clientWidth / 2 // 屏幕中心坐标 x轴 
+        function autoReceive() {
             // 跟进x y坐标，获取元素
             function getElement(x, y) {
                 return document.elementFromPoint(x, y)
             }
 
+            let centerX = document.body.clientWidth / 2 // 屏幕中心坐标 x轴 
+            
             // 设置账户
             function setAccount(str) {
-                let y = 30
-                let objInput = getElement(centerX, y)
+                let y = 172
+                let objInput = document.querySelector('.inputstyle')
+                console.log('设置账户 =》', objInput);
                 objInput.value = str
             }
 
             // 设置密码
             function setPassword(str) {
-                let y = 70
-                let objInput = getElement(centerX, y)
+                let y = 172 + 60
+                let objInput = document.getElementById('p')
+                console.log('设置密码 =》', objInput);
                 objInput.value = str
             }
 
             // 点击登录
             function clickLogin() {
-                let y = 110
-                let objInput = getElement(centerX, y)
+                let y = 172 + 60 + 60 + 36
+                let objInput = document.getElementById('go')
+                console.log('点击登录 =》', objInput);
                 objInput.click()
             }
 
             // 领取
             function receive() {
                 let y = 150
-                let objInput = getElement(centerX, y)
-                console.log('objInput', objInput);
+                let objInput = document.querySelector('.btn-sign-in')
+                console.log('领取 =》', objInput);
+                objInput.click()
             }
 
-            // 延迟多少毫秒
-            function timeout(time){
-                return new Promise((resolve, reject) => {
-                    setTimeout(() => {
-                        resolve()
-                    }, time);
-                })
+            // 点击注销
+            function logout(){
+                let y = 150
+                let objInput = document.getElementById('ptLogoutBtn')
+                console.log('点击注销 =》', objInput);
+                objInput.click()
             }
 
-            // 执行设置输入账户密码登录
-            async function execute(obj){
-                setAccount(obj.account)
-                setPassword(obj.password)
-                clickLogin()
-                // 登录完，两秒后在操作
-                await timeout(2000)
-                receive()
+           // 点击登录跳转到登录页面
+            function ptLoginBtn(){
+                let objInput = document.getElementById('ptLoginBtn')
+                console.log('点击登录跳转到登录页面 =》', objInput);
+                objInput.click()
+            }
+
+            // 执行设置输入账户密码登录领取注销
+            async function execute(obj) {
+                setAccount(obj.account) // 设置账号
+                await timeout(1000) // 两秒后在操作
+                setPassword(obj.password) // 设置密码
+                await timeout(1000) // 两秒后在操作
+                clickLogin() // 点击登录
+                await timeout(2000) // 两秒后在操作
+                receive() // 点击领取
+                await timeout(2000) // 两秒后在操作
+                logout() // 点击注销
+                await timeout(2000) // 两秒后在操作
+                ptLoginBtn()  // 点击登录跳转到登录页面
             }
 
             // 账号组
             let accountArr = [{
                 account: 111111,
                 password: 'aaaaa'
-            },{
+            }, {
                 account: 2222222,
                 password: 'bbbbbb'
             }]
@@ -111,9 +136,9 @@
             let index = 0
             run()
             // 按顺序执行
-            function run(){
+            function run() {
                 setTimeout(async () => {
-                    if(accountArr.length > index){
+                    if (accountArr.length > index) {
                         await execute(accountArr[index])
                         index++
                         await timeout(2000)
@@ -123,9 +148,17 @@
             }
         }
 
-        function login() {
-            console.log('登录');
+
+        // 24小时执行一次
+        function cycle(){
+            setTimeout(async () => {
+                autoReceive()
+                await timeout(1000 * 20) // 等待24小时后
+                cycle()
+            }, 1000)
         }
+
+        cycle()
     </script>
 </body>
 
