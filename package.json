@@ -11,7 +11,8 @@
     "build": "npm run compress && vuepress build docs",
     "deploy": "npm run compress && bash deploy.sh",
     "compress": "node ./mtp.js",
-    "svgo": "svgo -f ./svg --config node_modules/svgo-config/config.json"
+    "svgo": "svgo -f ./svg --config node_modules/svgo-config/config.json",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "^1.8.0",
