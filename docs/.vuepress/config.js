@@ -174,8 +174,9 @@ module.exports = {
                     '/css/cssModule',
                     '/css/滚动视觉差',
                     '/css/a标签小妙用',
+                    '/css/sass',
                     '/css/css使用小技巧',
-                    '/css/sass'
+                    '/css/实战经验',
                 ]
             },
             {
@@ -294,6 +295,7 @@ module.exports = {
                   '/standard/js',
                   '/standard/eslint',
                   '/standard/stylelint',
+                  '/standard/stylelint14',
                   '/standard/file',
                   '/standard/ts',
                 //   '/standard/git',
