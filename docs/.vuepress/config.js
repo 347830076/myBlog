@@ -210,6 +210,16 @@ module.exports = {
                 ]
             },
             {
+                title: 'typescript',
+                sidebarDepth: 1,    // 可选的, 默认值是 1
+                children: [
+                    'typescript/1-简介',
+                    'typescript/2-安装',
+                    'typescript/3-基础语法',
+                    'typescript/4-基础类型',
+                ]
+            },
+            {
                 title: 'Vue',
                 children: [
                     '/vue/Vue框架dist目录下各个文件的区别',

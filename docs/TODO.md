@@ -40,3 +40,4 @@
 - 编写 项目中使用husky统一管理git-hooks,实现git commit之前校验eslint
 - 编写 package.json 与 package-lock.json 的关系
 - 编写 如何发布一个自己的npm包
+- 编写 柯里化函数
