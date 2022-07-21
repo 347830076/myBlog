@@ -13,7 +13,7 @@
     .sw-update-popup{
       right: 8em;
     }
-    // 代码块
+    /* 代码块 */
     .theme-default-content pre, .theme-default-content pre[class*="language-"]{
       padding: .5rem 1rem;
     }
