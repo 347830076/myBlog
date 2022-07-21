@@ -5,13 +5,18 @@
     .code-copy{
       height: 0;
       line-height: 0;
+      overflow: hidden;
     }
     .theme-default-content code, .red{
       color: #ea4335;
     }
     .sw-update-popup{
-        right: 8em;
-      }
+      right: 8em;
+    }
+    // 代码块
+    .theme-default-content pre, .theme-default-content pre[class*="language-"]{
+      padding: .5rem 1rem;
+    }
 </style>
 <template>
   <div
