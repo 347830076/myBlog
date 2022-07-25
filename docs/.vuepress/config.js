@@ -220,6 +220,8 @@ module.exports = {
                     'typescript/5-变量声明',
                     'typescript/6-接口',
                     'typescript/7-数组的类型',
+                    'typescript/8-函数的类型',
+                    'typescript/9-类型断言',
                 ]
             },
             {
