@@ -222,6 +222,7 @@ module.exports = {
                     'typescript/7-数组的类型',
                     'typescript/8-函数的类型',
                     'typescript/9-类型断言',
+                    'typescript/10-声明文件',
                 ]
             },
             {
