@@ -227,6 +227,7 @@ module.exports = {
                     'typescript/12-type用法',
                     'typescript/13-类',
                     'typescript/14-泛型',
+                    'typescript/15-声明合并',
                 ]
             },
             {
