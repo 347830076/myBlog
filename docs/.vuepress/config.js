@@ -223,6 +223,8 @@ module.exports = {
                     'typescript/8-函数的类型',
                     'typescript/9-类型断言',
                     'typescript/10-声明文件',
+                    'typescript/11-内置对象',
+                    'typescript/12-type用法',
                 ]
             },
             {
