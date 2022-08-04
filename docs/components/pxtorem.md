@@ -230,3 +230,7 @@ last 3 iOS versions
 [前端中使用amfe-flexible和postcss-pxtorem](https://www.jianshu.com/p/f4093192e8d8)
 
 [vite中配置postcss与postcss-plugin-px2rem](https://juejin.cn/post/6901943749916491783)
+
+[移动端布局之postcss-px-to-viewport（兼容vant）](https://www.cnblogs.com/zhangnan35/p/12682925.html)
+
+[create-react-app使用craco.config.js完成rem适配 postcss-pxtorem](https://blog.csdn.net/m0_59093266/article/details/123656569)
