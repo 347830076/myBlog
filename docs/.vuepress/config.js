@@ -251,7 +251,8 @@ module.exports = {
                 title: 'react',
                 path: '/react/',
                 children: [
-                    '/react/react常见的一些报错'
+                    '/react/react常见的一些报错',
+                    '/react/react组件暴露自身API的方法'
                 ]
             },
             {
