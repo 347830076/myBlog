@@ -252,7 +252,8 @@ module.exports = {
                 path: '/react/',
                 children: [
                     '/react/react常见的一些报错',
-                    '/react/react组件暴露自身API的方法'
+                    '/react/react组件暴露自身API的方法',
+                    '/react/按需加载路由'
                 ]
             },
             {
