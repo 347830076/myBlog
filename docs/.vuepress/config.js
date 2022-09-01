@@ -228,6 +228,7 @@ module.exports = {
                     'typescript/13-类',
                     'typescript/14-泛型',
                     'typescript/15-声明合并',
+                    'typescript/从对象中的值或键创建联合类型',
                 ]
             },
             {
