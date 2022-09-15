@@ -207,6 +207,7 @@ module.exports = {
                     '/javascript/正则',
                     '/javascript/js打断点的方式',
                     '/javascript/获取网页宽度',
+                    '/javascript/bignumber',
                 ]
             },
             {
@@ -272,6 +273,7 @@ module.exports = {
                 title: 'node技巧',
                 children: [
                     '/node/配置全局命令',
+                    '/node/Nginx配置',
                     '/node/Nginx配置密码访问',
                     '/node/Nginx反向代理配置',
                     '/node/linux-expect',
