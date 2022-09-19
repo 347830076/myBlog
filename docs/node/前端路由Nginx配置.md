@@ -1,12 +1,10 @@
-# Nginx 配置
+# 前端路由 Nginx 配置
 
 ```js
 server {
         listen       80;
-        server_name  "carry-qa.piaodian.net";
+        server_name  "xxx.xxx.net";
         root     /home/bihu/qa-assets/carry/;
-        # ssl_certificate     /etc/letsencrypt/live/piaodian.net/fullchain.pem;
-        # ssl_certificate_key /etc/letsencrypt/live/piaodian.net/privkey.pem;
         add_header Cache-Control no-cache;
 
         location / {
@@ -16,8 +14,8 @@ server {
                         return 302 /$1$args;
                 }
                 # 没有.html后缀的也可以访问
-                try_files $uri $uri.html $uri/ @router /404.html;
-                index carry.html index.html;
+                try_files $uri $uri.html $uri/ @router /404.html index.html;
+                index index.html;
         }
 
         # 动态路由
@@ -26,7 +24,7 @@ server {
         }
 
         location @router {
-                rewrite ^.*$ /carry.html last;
+                rewrite ^.*$ /index.html last;
         }
 
         location ~ .*\.(js|css|gif|jpg|jpeg|png|bmp|swf|woff|ttf)$ {
@@ -41,7 +39,7 @@ server {
 
 server {
         listen     443 ssl;
-        server_name  "carry-qa.piaodian.net";
+        server_name  "xxx.xxx.net";
         root     /home/bihu/qa-assets/carry/;
         ssl_certificate     /etc/letsencrypt/live/piaodian.net/fullchain.pem;
         ssl_certificate_key /etc/letsencrypt/live/piaodian.net/privkey.pem;
@@ -52,8 +50,8 @@ server {
                 if ($request_uri ~ ^/(.*)\.html$) {
                         return 302 /$1$args;
                 }
-                try_files $uri $uri.html $uri/ @router /404.html;
-                index carry.html index.html;
+                try_files $uri $uri.html $uri/ @router /404.html index.html;
+                index index.html;
         }
 
         # 动态路由
@@ -62,7 +60,7 @@ server {
         }
 
         location @router {
-                rewrite ^.*$ /carry.html last;
+                rewrite ^.*$ /index.html last;
         }
 
         location ~ .*\.(js|css|gif|jpg|jpeg|png|bmp|swf|woff|ttf)$ {

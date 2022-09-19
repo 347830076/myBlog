@@ -273,9 +273,10 @@ module.exports = {
                 title: 'node技巧',
                 children: [
                     '/node/配置全局命令',
-                    '/node/Nginx配置',
+                    '/node/前端路由Nginx配置',
                     '/node/Nginx配置密码访问',
                     '/node/Nginx反向代理配置',
+                    'node/centos添加用户并设置免密登录',
                     '/node/linux-expect',
                 ]
             },
