@@ -48,6 +48,10 @@
         <div class="row">
         阿离王带你零基础学习前端(电子书)：<a href='https://showhtml5.gitee.io/myebook/' target="_blank">https://showhtml5.gitee.io/myebook/</a>
         </div>
+        <div class="row">
+        vscode插件（常用css代码段大全）：
+        <a href='https://marketplace.visualstudio.com/items?itemName=aliwang.css-code-block' target="_blank">https://marketplace.visualstudio.com/items?itemName=aliwang.css-code-block</a>
+        </div>
      </div>
   </div>
 </template>
