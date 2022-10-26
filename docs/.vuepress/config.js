@@ -340,6 +340,7 @@ module.exports = {
                     '/resource/shortcuts',
                     '/resource/skills',
                     '/resource/interview',
+                    '/resource/actual-combat-experience'
                 ]
             },
             {
