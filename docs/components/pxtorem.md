@@ -202,7 +202,10 @@ last 3 iOS versions
 
 <b class="red">记得先写前面三步!!!</b>
 
-### 踩坑以及解决
+## 使用postcss-px-to-viewport
+
+[postcss-px-to-viewport](https://github.com/evrone/postcss-px-to-viewport/blob/HEAD/README_CN.md)
+## 踩坑以及解决
 
 当你使用webpack打包的时候，如果你在样式里写了 `/*no*/`, 就是不想px转换成rem的时候， 例如上面说过的代码
 
