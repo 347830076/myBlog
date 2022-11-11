@@ -138,6 +138,35 @@ module.exports = {
 也可以通过 `"source.fixAll.eslint": true` 只开启 ESLint 的自动修复
 - `editor.formatOnSave`：保存文件时自动格式化，当启用了 `editor.codeActionsOnSave` 时建议关掉 `editor.formatOnSave`，如果同时打开会导致保存文件时格式化两次
 
+## vscode的eslint的配置和自己项目的eslint冲突
+
+上面的配置好之后，我发现我的vscode出现了如下的报错：
+
+`ESLint: Cannot read properties of undefined (reading 'loc') Occurred while linting E:\bihu\yuanxin-admin\src\pages\data-report-manage\data-screening\data-screening.tsx:1 Rule: "indent". Please see the 'ESLint' output channel for details.`
+
+<img class="zoom-custom-imgs" :src="$withBase('/assets/img/eslint.jpg')" />
+
+一直在网上找各种解决方案，一直没找到解决办法，折磨了我几个月（闹心），一直以为是项目的eslint配置问题，
+
+后来才想到会不会是vscode配置文件`settings.json`问题，我就把我的vscode 的配置文件`settings.json`发给同事，他的vscode没报这个错误，用了我的配置后就复现报错了。
+
+经过注释对比之后，发现，我的vscode配置文件`settings.json`，多了如下配置：
+
+```js
+"eslint.validate": [ // eslint校验的文件格式
+  "javascript",
+  "javascriptreact",
+  "typescript",
+  "typescriptreact",
+  "vue",
+  "html"
+]
+```
+
+把上面这个 删除之后，就不报错了。 终于找到问题所在了
+
+我就觉得这个是vscode eslint插件本身自己的检验文件格式，然后和我项目的eslint配置的 缩进 indent 规则有冲突了吧，才会报上面的错误。 所以这里就把他这个校验去掉，只使用项目本身的eslint规则就好了
+
 
 ### eslint 教程
 
