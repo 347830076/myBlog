@@ -280,6 +280,7 @@ module.exports = {
                     '/node/Nginx反向代理配置',
                     'node/centos添加用户并设置免密登录',
                     '/node/linux-expect',
+                    '/node/centos安装软件问题'
                 ]
             },
             {
