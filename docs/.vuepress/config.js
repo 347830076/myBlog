@@ -208,6 +208,7 @@ module.exports = {
                     '/javascript/js打断点的方式',
                     '/javascript/获取网页宽度',
                     '/javascript/bignumber',
+                    '/javascript/worker'
                 ]
             },
             {
