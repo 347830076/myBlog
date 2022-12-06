@@ -64,7 +64,7 @@ if (window.Worker) {
 
 Worker()构造函数的参数是一个脚本文件，该文件就是 Worker 线程所要执行的任务。由于 Worker 不能读取本地文件，所以这个脚本必须来自网络。如果下载没有成功（比如404错误），Worker 就会默默地失败。
 
-后面我们介绍一个 [worker-loader](https://www.npmjs.com/package/worker-loader) 的npm包，结合我们vue或react框架来进行本地写worker.js开发
+我们也可以使用 [worker-loader](https://www.npmjs.com/package/worker-loader) 的npm包，结合我们vue或react框架来进行本地写worker.js开发
 
 ```js
 const myWorker = new Worker('worker.js');
