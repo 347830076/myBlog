@@ -40,3 +40,15 @@ export default {}
 </style>
 ```
 :::
+
+## CSS - H5 页面禁止页面上拉下拉及滚动
+
+```css
+body{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+```
