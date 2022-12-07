@@ -50,6 +50,68 @@ export default Child
 
 当单击父组件按钮（获取子组件值）时，就会调用子组件实例使用 `useImperativeHandle Hook` 暴露出来的 `childGet()`，从而在控制台输出子组件实例的 `state.index` 值。
 
+
+### useRef 的 typescript写法
+
+下面是一个已 antd-mobile框架的modal组件，进行二次封装的完整代码
+
+```tsx
+// 重置弹窗样式组件
+import React, { useImperativeHandle, useRef } from 'react'
+import styles from './reset-modal.module.scss'
+import { Modal } from 'antd-mobile'
+import { ModalProps } from 'antd-mobile/es/components/modal/modal'
+import { ModalShowHandler } from 'antd-mobile/es/components/modal/show'
+import Icon from '@/components/icon/icon'
+
+// 外部使用useRef的时候可以使用 例如：const ResetModalRef = useRef<ResetModalProps>(null)
+export interface ResetModalProps extends ModalProps{
+  show: () => void,
+  close: () => void,
+}
+
+interface Props{
+  children: React.ReactNode,
+}
+const resetModal = React.forwardRef<ResetModalProps, Props>((props, ref) => {
+
+  const modalRef = useRef<ModalShowHandler>()
+
+  // 显示
+  const show = () => {
+    modalRef.current = Modal.show({
+      ...props,
+      bodyClassName: styles.ModalBodyClassName,
+      content: <div className={styles.modalBox}>
+        <div className={styles.content}>
+          {props.children}
+        </div>
+        <div className={styles.closeBox}>
+          <Icon type="close" className={styles.close} onClick={() => modalRef.current?.close()} />
+        </div>
+      </div>
+    })
+  }
+
+  // 关闭
+  const close = () => {
+    modalRef.current?.close()
+  }
+
+  useImperativeHandle(ref, () => (
+    {
+      children: props.children,
+      show,
+      close
+    }
+  ))
+
+  return <></>
+})
+
+export default resetModal
+
+```
 ## 传递 props
 
 ```tsx
@@ -145,3 +207,6 @@ class ClassChild extends Component {
 }
 export default ClassChild
 ```
+
+
+##
