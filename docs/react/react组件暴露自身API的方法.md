@@ -53,7 +53,7 @@ export default Child
 
 ### useRef 的 typescript写法
 
-下面是一个已 antd-mobile框架的modal组件，进行二次封装的完整代码
+下面是一个对 [Ant-Design-Mobile](https://mobile.ant.design/zh/components/modal) 框架的modal组件进行二次封装的完整代码
 
 ```tsx
 // 重置弹窗样式组件
