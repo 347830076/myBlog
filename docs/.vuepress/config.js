@@ -282,7 +282,8 @@ module.exports = {
                     'node/centos添加用户并设置免密登录',
                     '/node/linux-expect',
                     '/node/centos安装软件问题',
-                    '/node/forever'
+                    '/node/forever',
+                    '/node/pm2',
                 ]
             },
             {
