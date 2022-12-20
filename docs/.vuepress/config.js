@@ -274,6 +274,7 @@ module.exports = {
             },
             {
                 title: 'node技巧',
+                sidebarDepth: 2,    // 可选的, 默认值是 1
                 children: [
                     '/node/配置全局命令',
                     '/node/前端路由Nginx配置',
@@ -284,6 +285,7 @@ module.exports = {
                     '/node/centos安装软件问题',
                     '/node/forever',
                     '/node/pm2',
+                    '/node/puppeteer'
                 ]
             },
             {

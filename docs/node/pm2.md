@@ -68,34 +68,34 @@ pm2 start app.js -i max - -z 10 // 在 – 之后给 app.js 传递参数（-z 10
 
 ## 查看与监视进程
 
-`pm2 list`：显示所有进程信息；
-`pm2 show 11`，`pm2 info 11`：查看进程id为 11 的详细信息；
-`pm2 monit`：进入监视页面，监视每个node进程的CPU和内存的使用情况。
-`pm2 plus`  监控和诊断 Web 界面 基于 Web 的仪表板，具有诊断系统的跨服务器：
+- `pm2 list`：显示所有进程信息；
+- `pm2 show 11`，`pm2 info 11`：查看进程id为 11 的详细信息；
+- `pm2 monit`：进入监视页面，监视每个node进程的CPU和内存的使用情况。
+- `pm2 plus`  监控和诊断 Web 界面 基于 Web 的仪表板，具有诊断系统的跨服务器：
 
 ## 重载、重启
 
-`pm2 restart 11`：重启id为 11 的进程；
-`pm2 restart all`：重启所有进程；
-`pm2 reload 11`：0秒停机重载id为 11 进程（用于 NETWORKED 进程）；
-`pm2 reload all`：重载所有进程；
+- `pm2 restart 11`：重启id为 11 的进程；
+- `pm2 restart all`：重启所有进程；
+- `pm2 reload 11`：0秒停机重载id为 11 进程（用于 NETWORKED 进程）；
+- `pm2 reload all`：重载所有进程；
 
 ## 停止、删除进程
 
-`pm2 stop/delete 11`：停止/删除id为 11 的进程；
-`pm2 stop/delete all`：停止/删除所有进程；
+- `pm2 stop/delete 11`：停止/删除id为 11 的进程；
+- `pm2 stop/delete all`：停止/删除所有进程；
 
 ## 日志操作
 
-`pm2 logs`：显示所有进程的日志；
-`pm2 logs 11`：显示进程id为 11 的日志；
-`pm2 flush`：清空所有日志文件；
-`pm2 reloadLogs`：重载所有日志；
-`pm2 startup`：产生 init 脚本，保持进程活着；
+- `pm2 logs`：显示所有进程的日志；
+- `pm2 logs 11`：显示进程id为 11 的日志；
+- `pm2 flush`：清空所有日志文件；
+- `pm2 reloadLogs`：重载所有日志；
+- `pm2 startup`：产生 init 脚本，保持进程活着；
 
 ## 杀进程
 
-`pm2 kill`：杀死pm2进程 ;
+- `pm2 kill`：杀死pm2进程 ;
 
 ## 开机自动启动
 
