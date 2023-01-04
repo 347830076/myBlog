@@ -73,3 +73,39 @@ server {
         }
 }
 ```
+
+参考文章
+
+[Nginx 配置移动端和电脑端自动双向跳转](https://learnku.com/articles/33563)
+
+pc 配置
+
+```
+server {
+    listen       80;
+    server_name  www.phpblog.com.cn;
+    if ($http_user_agent ~* (mobile|nokia|iphone|ipad|android|samsung|htc|blackberry|miuibrowser)) {
+            rewrite  ^(.*)    http://m.phpblog.com.cn$1 permanent;
+        }
+    location / {
+        root   www;
+        index  index.html index.htm;
+    }
+}
+```
+
+移动端配置
+
+```
+server {
+    listen       80;
+    server_name  m.phpblog.com.cn;
+    if ($http_user_agent !~* (mobile|nokia|iphone|ipad|android|samsung|htc|blackberry|miuibrowser)) {
+            rewrite  ^(.*)    http://www.phpblog.com.cn$1 permanent;
+        }
+    location / {
+        root   m;
+        index  index.html index.htm;
+    }
+}
+```
