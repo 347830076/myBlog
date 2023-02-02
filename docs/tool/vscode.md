@@ -187,6 +187,12 @@ Host 42.192.230.88
 
 [如何比较文件？如何比较二个文件的异同](https://jingyan.baidu.com/article/647f011568f8303f2148a8d3.html)
 
+### [LocatorJS](https://www.locatorjs.com/)
+
+LocatorJS 是一个 Chrome 扩展，它让我可以点击我在本地运行的应用程序上看到的组件，并在我的 VSCode 中打开它的代码。只需轻轻一按。
+
+[提效工具-locatorjs](https://mp.weixin.qq.com/s/xAdudL437QEPaj08bpxwIQ)
+
 参考文章
 
 [用了这22个功能最强大的插件，前端工作效率提高了一倍！](https://mp.weixin.qq.com/s/HsBEyzDDmptI7WaZhm58wQ)
