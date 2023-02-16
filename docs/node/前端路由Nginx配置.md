@@ -109,3 +109,71 @@ server {
     }
 }
 ```
+
+## nextjs 生成静态文件配置
+
+```js
+server {
+        listen       80;
+        server_name xxx; 
+        root     /home/xxx/;
+        add_header Cache-Control no-cache;
+
+        location / {
+                add_header Cache-Control  max-age=1;
+
+                if ($request_uri ~ ^/(.*)\.html$) {
+                    return 302 /$1$args;
+                }
+                index index.html;
+                try_files $uri $uri.html $uri/ /404.html;
+        }
+
+        # 动态路由
+        location ~ /(.*)?/[^.]*$ {
+                # 上面的正则也会匹配到 /api/xxx，所以要在这里面做判断
+                # 2022.8.17 更新：以下这个正则和判断会导致 $1 的值永远为空，项目中接口直接通过 https://carry.so 来调用，所以不需要这个判断
+                # if ($uri ~ ^/api/) {
+                #         proxy_pass http://127.0.0.1:8080;
+                # }
+                try_files $uri $uri.html /$1/[id].html $uri/ @router /404.html;
+        }
+
+        # location /api {
+        #         proxy_pass http://carry.so;
+        # }
+}
+
+server {
+        listen       443;
+        server_name xxx; 
+        root     /home/xxx;
+        add_header Cache-Control no-cache;
+        ssl_certificate /etc/nginx/cert/xxx.pem;
+        ssl_certificate_key /etc/nginx/cert/xxx.key;
+
+        location / {
+                add_header Cache-Control  max-age=1;
+
+                if ($request_uri ~ ^/(.*)\.html$) {
+                    return 302 /$1$args;
+                }
+                index index.html;
+                try_files $uri $uri.html $uri/ /404.html;
+        }
+
+        # 动态路由
+        location ~ /(.*)?/[^.]*$ {
+                # 上面的正则也会匹配到 /api/xxx，所以要在这里面做判断
+                # 2022.8.17 更新：以下这个正则和判断会导致 $1 的值永远为空，项目中接口直接通过 https://carry.so 来调用，所以不需要这个判断
+                # if ($uri ~ ^/api/) {
+                #         proxy_pass http://127.0.0.1:8080;
+                # }
+                try_files $uri $uri.html /$1/[id].html $uri/ @router /404.html;
+        }
+
+        # location /api {
+        #         proxy_pass http://carry.so;
+        # }
+}
+```

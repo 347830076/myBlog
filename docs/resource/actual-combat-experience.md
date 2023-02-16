@@ -26,7 +26,7 @@
 
 环境变量允许您在本地开发、测试、用户验收测试 (UAT)、生产和作为项目工作流程一部分的任何其他环境之间切换。
 
-使用 [env-cmd](https://www.npmjs.com/package/env-cmd)包来配置process.env环境很方便
+使用 [env-cmd](https://www.npmjs.com/package/env-cmd)包来配置process.env环境变量很方便
 
 下面有详细的文章教程了，可以看看
 
