@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>stylelint 配置使用 | 阿离王-前端分享</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" type="image/png" href="/myBlog/logo.jpg">
+    <link rel="manifest" href="/myBlog/manifest.json">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_2343212_wc0gkht90m.css">
+    <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+    <script>
+            // 百度统计
+            var _hmt = _hmt || [];
+            (function() {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?b867e5073a751b691958d2066964b07b";
+                var s = document.getElementsByTagName("script")[0]; 
+                s.parentNode.insertBefore(hm, s);
+            })();
+            
+            // 引入谷歌统计,不需要可删除这段
+            (function() {
+                var hm1 = document.createElement("script");
+                hm1.src = "https://www.googletagmanager.com/gtag/js?id=G-E76M3WVRT6";
+                var s1 = document.getElementsByTagName("script")[0]; 
+                s1.parentNode.insertBefore(hm1, s1);
+            })();
+
+            // 谷歌加载,不需要可删除
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          
+            gtag('config', 'G-E76M3WVRT6');
+        </script>
+    <meta name="description" content="阿离王-前端分享笔记">
+    
+    <link rel="preload" href="/myBlog/assets/css/0.styles.a0db8047.css" as="style"><link rel="preload" href="/myBlog/assets/js/app.4ba5bfaa.js" as="script"><link rel="preload" href="/myBlog/assets/js/3.553f6c3a.js" as="script"><link rel="preload" href="/myBlog/assets/js/2.383a70a7.js" as="script"><link rel="preload" href="/myBlog/assets/js/107.74bd4e70.js" as="script"><link rel="preload" href="/myBlog/assets/js/9.8651d337.js" as="script"><link rel="prefetch" href="/myBlog/assets/js/10.5667e96b.js"><link rel="prefetch" href="/myBlog/assets/js/100.026930ed.js"><link rel="prefetch" href="/myBlog/assets/js/101.5ed5da40.js"><link rel="prefetch" href="/myBlog/assets/js/102.a25fb263.js"><link rel="prefetch" href="/myBlog/assets/js/103.a37f7513.js"><link rel="prefetch" href="/myBlog/assets/js/104.219b2d0a.js"><link rel="prefetch" href="/myBlog/assets/js/105.29ed6eb0.js"><link rel="prefetch" href="/myBlog/assets/js/106.e65195bc.js"><link rel="prefetch" href="/myBlog/assets/js/108.bd9f41e6.js"><link rel="prefetch" href="/myBlog/assets/js/109.7020b196.js"><link rel="prefetch" href="/myBlog/assets/js/11.df2b365d.js"><link rel="prefetch" href="/myBlog/assets/js/110.b9b7891c.js"><link rel="prefetch" href="/myBlog/assets/js/111.10b9ede6.js"><link rel="prefetch" href="/myBlog/assets/js/112.0aa4be25.js"><link rel="prefetch" href="/myBlog/assets/js/113.504ade56.js"><link rel="prefetch" href="/myBlog/assets/js/114.67f6162c.js"><link rel="prefetch" href="/myBlog/assets/js/115.850eec11.js"><link rel="prefetch" href="/myBlog/assets/js/116.36ac05e1.js"><link rel="prefetch" href="/myBlog/assets/js/117.fe4b3847.js"><link rel="prefetch" href="/myBlog/assets/js/118.675af308.js"><link rel="prefetch" href="/myBlog/assets/js/119.091af631.js"><link rel="prefetch" href="/myBlog/assets/js/12.35990129.js"><link rel="prefetch" href="/myBlog/assets/js/120.786c198b.js"><link rel="prefetch" href="/myBlog/assets/js/121.f2bb35d4.js"><link rel="prefetch" href="/myBlog/assets/js/122.87a7f677.js"><link rel="prefetch" href="/myBlog/assets/js/123.c9c06d07.js"><link rel="prefetch" href="/myBlog/assets/js/124.ff8e36c9.js"><link rel="prefetch" href="/myBlog/assets/js/125.ade7d3b7.js"><link rel="prefetch" href="/myBlog/assets/js/126.28d9534e.js"><link rel="prefetch" href="/myBlog/assets/js/127.ec629aca.js"><link rel="prefetch" href="/myBlog/assets/js/128.54cbbb8d.js"><link rel="prefetch" href="/myBlog/assets/js/129.21b547da.js"><link rel="prefetch" href="/myBlog/assets/js/13.9d3248c2.js"><link rel="prefetch" href="/myBlog/assets/js/130.7493e162.js"><link rel="prefetch" href="/myBlog/assets/js/131.0b4819b9.js"><link rel="prefetch" href="/myBlog/assets/js/132.0e549cb5.js"><link rel="prefetch" href="/myBlog/assets/js/133.2f026438.js"><link rel="prefetch" href="/myBlog/assets/js/134.60f1b954.js"><link rel="prefetch" href="/myBlog/assets/js/135.ff2c35ec.js"><link rel="prefetch" href="/myBlog/assets/js/136.8c9cb988.js"><link rel="prefetch" href="/myBlog/assets/js/137.07a05e63.js"><link rel="prefetch" href="/myBlog/assets/js/138.cceee184.js"><link rel="prefetch" href="/myBlog/assets/js/139.9a7abcbc.js"><link rel="prefetch" href="/myBlog/assets/js/14.4672de5a.js"><link rel="prefetch" href="/myBlog/assets/js/140.0c420b5c.js"><link rel="prefetch" href="/myBlog/assets/js/141.773aac34.js"><link rel="prefetch" href="/myBlog/assets/js/142.ed70a961.js"><link rel="prefetch" href="/myBlog/assets/js/143.69e7f266.js"><link rel="prefetch" href="/myBlog/assets/js/144.6116ad52.js"><link rel="prefetch" href="/myBlog/assets/js/145.54b4c5d8.js"><link rel="prefetch" href="/myBlog/assets/js/146.d6b1ae16.js"><link rel="prefetch" href="/myBlog/assets/js/147.bfb7c815.js"><link rel="prefetch" href="/myBlog/assets/js/148.2467f5d2.js"><link rel="prefetch" href="/myBlog/assets/js/149.2a2a9bea.js"><link rel="prefetch" href="/myBlog/assets/js/15.c2538456.js"><link rel="prefetch" href="/myBlog/assets/js/150.bd0a44e6.js"><link rel="prefetch" href="/myBlog/assets/js/151.13fcb84d.js"><link rel="prefetch" href="/myBlog/assets/js/152.c5db66b0.js"><link rel="prefetch" href="/myBlog/assets/js/153.67626aff.js"><link rel="prefetch" href="/myBlog/assets/js/154.10b005b0.js"><link rel="prefetch" href="/myBlog/assets/js/155.7117978f.js"><link rel="prefetch" href="/myBlog/assets/js/156.0a66abbb.js"><link rel="prefetch" href="/myBlog/assets/js/157.f5e8dcd0.js"><link rel="prefetch" href="/myBlog/assets/js/158.f8bb2419.js"><link rel="prefetch" href="/myBlog/assets/js/159.15dfd559.js"><link rel="prefetch" href="/myBlog/assets/js/16.385c15b0.js"><link rel="prefetch" href="/myBlog/assets/js/160.20ab73fd.js"><link rel="prefetch" href="/myBlog/assets/js/17.509ad3af.js"><link rel="prefetch" href="/myBlog/assets/js/18.639170c9.js"><link rel="prefetch" href="/myBlog/assets/js/19.543102fe.js"><link rel="prefetch" href="/myBlog/assets/js/20.788bf6ff.js"><link rel="prefetch" href="/myBlog/assets/js/21.1b85b0e7.js"><link rel="prefetch" href="/myBlog/assets/js/22.dd82c6e4.js"><link rel="prefetch" href="/myBlog/assets/js/23.3257f308.js"><link rel="prefetch" href="/myBlog/assets/js/24.ff9c6dfc.js"><link rel="prefetch" href="/myBlog/assets/js/25.3d86ff9a.js"><link rel="prefetch" href="/myBlog/assets/js/26.fae4404f.js"><link rel="prefetch" href="/myBlog/assets/js/27.3e0c0eb0.js"><link rel="prefetch" href="/myBlog/assets/js/28.0d4cebfa.js"><link rel="prefetch" href="/myBlog/assets/js/29.78cb064f.js"><link rel="prefetch" href="/myBlog/assets/js/30.d705b76f.js"><link rel="prefetch" href="/myBlog/assets/js/31.2f82f12c.js"><link rel="prefetch" href="/myBlog/assets/js/32.74e35dfd.js"><link rel="prefetch" href="/myBlog/assets/js/33.dc9957cd.js"><link rel="prefetch" href="/myBlog/assets/js/34.a985534d.js"><link rel="prefetch" href="/myBlog/assets/js/35.35dd4d5a.js"><link rel="prefetch" href="/myBlog/assets/js/36.fa73c5b6.js"><link rel="prefetch" href="/myBlog/assets/js/37.7090639e.js"><link rel="prefetch" href="/myBlog/assets/js/38.b203cf72.js"><link rel="prefetch" href="/myBlog/assets/js/39.2a24ce59.js"><link rel="prefetch" href="/myBlog/assets/js/4.530d0f40.js"><link rel="prefetch" href="/myBlog/assets/js/40.48cb1685.js"><link rel="prefetch" href="/myBlog/assets/js/41.4e029f77.js"><link rel="prefetch" href="/myBlog/assets/js/42.faee5282.js"><link rel="prefetch" href="/myBlog/assets/js/43.3c22a644.js"><link rel="prefetch" href="/myBlog/assets/js/44.2c9eda87.js"><link rel="prefetch" href="/myBlog/assets/js/45.bd41351d.js"><link rel="prefetch" href="/myBlog/assets/js/46.6bbdd594.js"><link rel="prefetch" href="/myBlog/assets/js/47.11045cf9.js"><link rel="prefetch" href="/myBlog/assets/js/48.4c8082c3.js"><link rel="prefetch" href="/myBlog/assets/js/49.a3485775.js"><link rel="prefetch" href="/myBlog/assets/js/5.f156d2f9.js"><link rel="prefetch" href="/myBlog/assets/js/50.314b76f2.js"><link rel="prefetch" href="/myBlog/assets/js/51.6e15a4a1.js"><link rel="prefetch" href="/myBlog/assets/js/52.7eb9a211.js"><link rel="prefetch" href="/myBlog/assets/js/53.045eaf88.js"><link rel="prefetch" href="/myBlog/assets/js/54.6ac61812.js"><link rel="prefetch" href="/myBlog/assets/js/55.e0c4b4a3.js"><link rel="prefetch" href="/myBlog/assets/js/56.86f0472b.js"><link rel="prefetch" href="/myBlog/assets/js/57.9a314f24.js"><link rel="prefetch" href="/myBlog/assets/js/58.6137cb5a.js"><link rel="prefetch" href="/myBlog/assets/js/59.4199a1cf.js"><link rel="prefetch" href="/myBlog/assets/js/6.adba8f37.js"><link rel="prefetch" href="/myBlog/assets/js/60.f7e365c9.js"><link rel="prefetch" href="/myBlog/assets/js/61.5d431bb9.js"><link rel="prefetch" href="/myBlog/assets/js/62.78679706.js"><link rel="prefetch" href="/myBlog/assets/js/63.58209586.js"><link rel="prefetch" href="/myBlog/assets/js/64.cecf37d3.js"><link rel="prefetch" href="/myBlog/assets/js/65.9bb63e23.js"><link rel="prefetch" href="/myBlog/assets/js/66.5001470c.js"><link rel="prefetch" href="/myBlog/assets/js/67.502be0ae.js"><link rel="prefetch" href="/myBlog/assets/js/68.850b0d7d.js"><link rel="prefetch" href="/myBlog/assets/js/69.a125fcb7.js"><link rel="prefetch" href="/myBlog/assets/js/7.381ca64b.js"><link rel="prefetch" href="/myBlog/assets/js/70.84b8a555.js"><link rel="prefetch" href="/myBlog/assets/js/71.ef39a00e.js"><link rel="prefetch" href="/myBlog/assets/js/72.de23d741.js"><link rel="prefetch" href="/myBlog/assets/js/73.7952e9da.js"><link rel="prefetch" href="/myBlog/assets/js/74.ebbc77e1.js"><link rel="prefetch" href="/myBlog/assets/js/75.046c75a5.js"><link rel="prefetch" href="/myBlog/assets/js/76.0aeca334.js"><link rel="prefetch" href="/myBlog/assets/js/77.0d440ed9.js"><link rel="prefetch" href="/myBlog/assets/js/78.2434dedb.js"><link rel="prefetch" href="/myBlog/assets/js/79.29f4f329.js"><link rel="prefetch" href="/myBlog/assets/js/8.c5336147.js"><link rel="prefetch" href="/myBlog/assets/js/80.c5e95066.js"><link rel="prefetch" href="/myBlog/assets/js/81.75fc2091.js"><link rel="prefetch" href="/myBlog/assets/js/82.e82c92fb.js"><link rel="prefetch" href="/myBlog/assets/js/83.4c52114d.js"><link rel="prefetch" href="/myBlog/assets/js/84.1726c5eb.js"><link rel="prefetch" href="/myBlog/assets/js/85.f2010794.js"><link rel="prefetch" href="/myBlog/assets/js/86.51c645b1.js"><link rel="prefetch" href="/myBlog/assets/js/87.255b1853.js"><link rel="prefetch" href="/myBlog/assets/js/88.5eb49ebc.js"><link rel="prefetch" href="/myBlog/assets/js/89.823afe40.js"><link rel="prefetch" href="/myBlog/assets/js/90.97e08560.js"><link rel="prefetch" href="/myBlog/assets/js/91.6d85d206.js"><link rel="prefetch" href="/myBlog/assets/js/92.3e9327c8.js"><link rel="prefetch" href="/myBlog/assets/js/93.aa1520cd.js"><link rel="prefetch" href="/myBlog/assets/js/94.75b55830.js"><link rel="prefetch" href="/myBlog/assets/js/95.84080a60.js"><link rel="prefetch" href="/myBlog/assets/js/96.3c8eaa6f.js"><link rel="prefetch" href="/myBlog/assets/js/97.ac859fc6.js"><link rel="prefetch" href="/myBlog/assets/js/98.7694e2bb.js"><link rel="prefetch" href="/myBlog/assets/js/99.83760907.js">
+    <link rel="stylesheet" href="/myBlog/assets/css/0.styles.a0db8047.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myBlog/" class="home-link router-link-active"><img src="/myBlog/assets/img/logo.jpg" alt="阿离王-前端分享" class="logo"> <span class="site-name can-hide">阿离王-前端分享</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/myBlog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/myBlog/about.html" class="nav-link">
+  关于我
+</a></div><div class="nav-item"><a href="http://ebook.wanggege.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端基础电子书
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/347830076/" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/myBlog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/myBlog/about.html" class="nav-link">
+  关于我
+</a></div><div class="nav-item"><a href="http://ebook.wanggege.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端基础电子书
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/347830076/" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/myBlog/" aria-current="page" class="sidebar-link">首页</a></li><li><section class="sidebar-group collapsable depth-0"><a href="/myBlog/css/" class="sidebar-heading clickable"><span>css</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/myBlog/javascript/" class="sidebar-heading clickable"><span>javascript</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>typescript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Vue</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/myBlog/react/" class="sidebar-heading clickable"><span>react</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/myBlog/components/" class="sidebar-heading clickable"><span>组件使用教程</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>node技巧</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/myBlog/npm/" class="sidebar-heading clickable"><span>npm</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>工具栏</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>规范</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/myBlog/standard/html.html" class="sidebar-link">html 规范</a></li><li><a href="/myBlog/standard/css.html" class="sidebar-link">CSS 规范</a></li><li><a href="/myBlog/standard/js.html" class="sidebar-link">JS 规范</a></li><li><a href="/myBlog/standard/eslint.html" class="sidebar-link">ESLint 规范</a></li><li><a href="/myBlog/standard/stylelint.html" aria-current="page" class="active sidebar-link">stylelint 配置使用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myBlog/standard/stylelint.html#自定义css属性顺序规则" class="sidebar-link">自定义css属性顺序规则</a></li><li class="sidebar-sub-header"><a href="/myBlog/standard/stylelint.html#忽略stylelint对css的检验" class="sidebar-link">忽略stylelint对css的检验</a></li></ul></li><li><a href="/myBlog/standard/stylelint14.html" class="sidebar-link">stylelint 升级到14+版本</a></li><li><a href="/myBlog/standard/file.html" class="sidebar-link">命名规范</a></li><li><a href="/myBlog/standard/ts.html" class="sidebar-link">Typescript错误忽略</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>资源分享</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>实用例子</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="stylelint-配置使用"><a href="#stylelint-配置使用" class="header-anchor">#</a> stylelint 配置使用</h1> <h3 id="安装-stylelint-和-standard-规范"><a href="#安装-stylelint-和-standard-规范" class="header-anchor">#</a> 安装 stylelint 和 Standard 规范</h3> <div class="language- extra-class"><pre class="language-text"><code>npm install --save-dev stylelint stylelint-config-standard stylelint-config-standard-scss postcss postcss-html postcss-sass stylelint-config-html
+</code></pre></div><h3 id="然后再根目录创建-stylelintrc-js-文件-并写下以下内容"><a href="#然后再根目录创建-stylelintrc-js-文件-并写下以下内容" class="header-anchor">#</a> 然后再根目录创建 <code>.stylelintrc.js</code> 文件, 并写下以下内容</h3> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+ <span class="token property">&quot;extends&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">&quot;stylelint-config-standard&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;stylelint-config-standard-scss&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;stylelint-config-html/html&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;stylelint-config-html/vue&quot;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="在-package-json-文件的-scripts-加上命令-规则检查自动修复css"><a href="#在-package-json-文件的-scripts-加上命令-规则检查自动修复css" class="header-anchor">#</a> 在 <code>package.json</code> 文件的 <code>scripts</code> 加上命令, 规则检查自动修复css</h3> <div class="language- extra-class"><pre class="language-text"><code>&quot;style&quot;: &quot;stylelint \&quot;src/**/*.(vue|scss|css)\&quot; --fix&quot;,
+</code></pre></div><h3 id="vscode配置"><a href="#vscode配置" class="header-anchor">#</a> vscode配置</h3> <ol><li><p>安裝 styleLint插件</p></li> <li><p>在 <code>settings.json</code> 文件设置， <code>win</code> + <code>,</code> 快捷键可以快速打开</p></li></ol> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;editor.codeActionsOnSave&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;source.fixAll.stylelint&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;stylelint.snippet&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">&quot;css&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;less&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;postcss&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;vue&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;sass&quot;</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;stylelint.validate&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">&quot;css&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;less&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;postcss&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;vue&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;sass&quot;</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ol start="3"><li>设置完之后，在vscode就可以有提示了，也保存自动修复了</li></ol> <h2 id="自定义css属性顺序规则"><a href="#自定义css属性顺序规则" class="header-anchor">#</a> 自定义css属性顺序规则</h2> <p>除了使用设定默认的 <code>standard</code> 规则外，我们还可以在 <code>.stylelintrc.js</code> 内添加自己喜欢的规则</p> <ol><li>先安装 <code>stylelint-order</code></li></ol> <div class="language- extra-class"><pre class="language-text"><code>npm install stylelint-order --save-dev
+</code></pre></div><ol start="2"><li>在 <code>.stylelintrc.js</code> 设置代码如下</li></ol> <div class="language-js extra-class"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">&quot;plugins&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">&quot;stylelint-order&quot;</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string-property property">&quot;rules&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string-property property">&quot;order/properties-order&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">&quot;width&quot;</span><span class="token punctuation">,</span>
+            <span class="token string">&quot;height&quot;</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>先引入 <code>plugins</code> 插件， 在 <code>order/properties-order</code> 里面写css属性的先后顺序，</p> <ol start="3"><li>完整的 <code>.stylelintrc.js</code> 如下</li></ol> <div class="language-js extra-class"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token string-property property">&quot;extends&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">&quot;stylelint-config-standard&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;stylelint-config-standard-scss&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;stylelint-config-html/html&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;stylelint-config-html/vue&quot;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token string-property property">&quot;plugins&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">&quot;stylelint-order&quot;</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token string-property property">&quot;rules&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// scss 变量名忽略警告</span>
+    <span class="token string-property property">&quot;scss/dollar-variable-pattern&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">.</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string-property property">&quot;ignore&quot;</span><span class="token operator">:</span> <span class="token string">&quot;global&quot;</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token comment">// mixin变量名支持全部字符</span>
+    <span class="token string-property property">&quot;scss/at-mixin-pattern&quot;</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">.+</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+    <span class="token comment">// 类选择器的命名规则</span>
+    <span class="token string-property property">&quot;selector-class-pattern&quot;</span><span class="token operator">:</span> <span class="token string">&quot;.&quot;</span><span class="token punctuation">,</span>
+    <span class="token comment">// 指定字符串使用单引号或双引号 &quot;single&quot;|&quot;double&quot;</span>
+    <span class="token string-property property">&quot;string-quotes&quot;</span><span class="token operator">:</span> <span class="token string">&quot;single&quot;</span><span class="token punctuation">,</span>
+    <span class="token comment">// 颜色指定大写</span>
+    <span class="token string-property property">&quot;color-hex-case&quot;</span><span class="token operator">:</span> <span class="token string">&quot;upper&quot;</span><span class="token punctuation">,</span>
+    <span class="token comment">// 禁止空块</span>
+    <span class="token string-property property">'block-no-empty'</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token comment">// 颜色6位长度</span>
+    <span class="token string-property property">&quot;color-hex-length&quot;</span><span class="token operator">:</span> <span class="token string">&quot;long&quot;</span><span class="token punctuation">,</span>
+    <span class="token comment">// 兼容自定义标签名</span>
+    <span class="token string-property property">&quot;selector-type-no-unknown&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token string-property property">&quot;ignoreTypes&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token comment">// 忽略伪类选择器 ::v-deep</span>
+    <span class="token string-property property">&quot;selector-pseudo-element-no-unknown&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token string-property property">&quot;ignorePseudoElements&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;/./&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;v-deep&quot;</span><span class="token punctuation">,</span> <span class="token string">'-webkit-'</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token comment">// 禁止低优先级的选择器出现在高优先级的选择器之后。</span>
+    <span class="token string-property property">&quot;no-descending-specificity&quot;</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    <span class="token comment">// 不验证@未知的名字，为了兼容scss的函数</span>
+    <span class="token string-property property">&quot;at-rule-no-unknown&quot;</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    <span class="token comment">// 禁止空注释</span>
+    <span class="token string-property property">&quot;comment-no-empty&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token comment">// 禁止简写属性的冗余值</span>
+    <span class="token string-property property">&quot;shorthand-property-no-redundant-values&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token string-property property">&quot;selector-pseudo-class-no-unknown&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token string-property property">&quot;ignorePseudoClasses&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'/./'</span><span class="token punctuation">,</span> <span class="token string">'-webkit-'</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token comment">// 禁止值的浏览器引擎前缀</span>
+    <span class="token string-property property">&quot;value-no-vendor-prefix&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token string-property property">&quot;ignoreValues&quot;</span><span class="token operator">:</span> <span class="token string">&quot;box&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token comment">// 禁止属性的浏览器引擎前缀</span>
+    <span class="token string-property property">&quot;property-no-vendor-prefix&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        <span class="token string-property property">&quot;ignoreProperties&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">.</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token comment">// 禁止小于 1 的小数有一个前导零</span>
+    <span class="token string-property property">&quot;number-leading-zero&quot;</span><span class="token operator">:</span> <span class="token string">&quot;never&quot;</span><span class="token punctuation">,</span>
+    <span class="token comment">// 禁止空第一行</span>
+    <span class="token string-property property">&quot;no-empty-first-line&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token comment">// 属性的排序</span>
+    <span class="token string-property property">&quot;order/properties-order&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">&quot;position&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;top&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;right&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;bottom&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;left&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;z-index&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;display&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;justify-content&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;align-items&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;float&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;clear&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;overflow&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;overflow-x&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;overflow-y&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;margin&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;margin-top&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;margin-right&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;margin-bottom&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;margin-left&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;border&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;border-style&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;border-width&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;border-color&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;border-top&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;border-top-style&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;border-top-width&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;border-top-color&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;border-right&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;border-right-style&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;border-right-width&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;border-right-color&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;border-bottom&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;border-bottom-style&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;border-bottom-width&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;border-bottom-color&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;border-left&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;border-left-style&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;border-left-width&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;border-left-color&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;border-radius&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;padding&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;padding-top&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;padding-right&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;padding-bottom&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;padding-left&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;width&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;min-width&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;max-width&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;height&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;min-height&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;max-height&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;font-size&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;font-family&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;font-weight&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;text-align&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;text-justify&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;text-indent&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;text-overflow&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;text-decoration&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;white-space&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;color&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;background&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;background-position&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;background-repeat&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;background-size&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;background-color&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;background-clip&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;opacity&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;filter&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;list-style&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;outline&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;visibility&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;box-shadow&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;text-shadow&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;resize&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;transition&quot;</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="忽略stylelint对css的检验"><a href="#忽略stylelint对css的检验" class="header-anchor">#</a> 忽略stylelint对css的检验</h2> <ol><li>忽略整个文件，在首行加入 <code>/* stylelint-disable */</code></li></ol> <div class="language-css extra-class"><pre class="language-css"><code><span class="token comment">/* stylelint-disable */</span>
+<span class="token selector">html</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre></div><ol start="2"><li>忽略多行</li></ol> <div class="language-css extra-class"><pre class="language-css"><code><span class="token comment">/* stylelint-disable */</span>
+<span class="token selector">html</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token selector">.div</span> <span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/* stylelint-enable */</span>
+</code></pre></div><ol start="2"><li>忽略一行， 在样式前加入 <code>/* stylelint-disable-next-line */</code> 以忽略该行</li></ol> <div class="language-css extra-class"><pre class="language-css"><code><span class="token selector">#id</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* stylelint-disable-next-line */</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> pink <span class="token important">!important</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ol start="3"><li>在 <code>.stylelintrc.js</code> 內设定需要忽略的文件</li></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+  <span class="token literal-property property">ignoreFiles</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;dist/**/*&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;src/assets/scss/abc.scss&quot;</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><a href="https://stylelint.io/" target="_blank" rel="noopener noreferrer">stylelint 官网<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="https://stylelint.docschina.org/" target="_blank" rel="noopener noreferrer">stylelint 中文文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="https://github.com/stylelint-scss/stylelint-scss" target="_blank" rel="noopener noreferrer">stylelint-scss 规则文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="https://github.com/stylelint-scss/stylelint-config-standard-scss/blob/main/index.js" target="_blank" rel="noopener noreferrer">stylelint-config-standard-scss 的规则<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">更新时间:</span> <span class="time">2022年3月21日星期一下午3点42分</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/myBlog/standard/eslint.html" class="prev">
+        ESLint 规范
+      </a></span> <span class="next"><a href="/myBlog/standard/stylelint14.html">
+        stylelint 升级到14+版本
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><div class="back-to-top" style="display:none;" data-v-994ac33a data-v-994ac33a><div class="back-top-container top" data-v-994ac33a><img src="/myBlog/assets/img/lufei.5fe3de8f.png" alt="路飞" title="点我返回顶部" class="diglett top" data-v-994ac33a></div></div><!----></div></div>
+    <script src="/myBlog/assets/js/app.4ba5bfaa.js" defer></script><script src="/myBlog/assets/js/3.553f6c3a.js" defer></script><script src="/myBlog/assets/js/2.383a70a7.js" defer></script><script src="/myBlog/assets/js/107.74bd4e70.js" defer></script><script src="/myBlog/assets/js/9.8651d337.js" defer></script>
+  </body>
+</html>

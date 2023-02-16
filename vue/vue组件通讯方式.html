@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>超详细Vue3的7种和Vue2的12种组件间通信方式 | 阿离王-前端分享</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" type="image/png" href="/myBlog/logo.jpg">
+    <link rel="manifest" href="/myBlog/manifest.json">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_2343212_wc0gkht90m.css">
+    <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+    <script>
+            // 百度统计
+            var _hmt = _hmt || [];
+            (function() {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?b867e5073a751b691958d2066964b07b";
+                var s = document.getElementsByTagName("script")[0]; 
+                s.parentNode.insertBefore(hm, s);
+            })();
+            
+            // 引入谷歌统计,不需要可删除这段
+            (function() {
+                var hm1 = document.createElement("script");
+                hm1.src = "https://www.googletagmanager.com/gtag/js?id=G-E76M3WVRT6";
+                var s1 = document.getElementsByTagName("script")[0]; 
+                s1.parentNode.insertBefore(hm1, s1);
+            })();
+
+            // 谷歌加载,不需要可删除
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          
+            gtag('config', 'G-E76M3WVRT6');
+        </script>
+    <meta name="description" content="阿离王-前端分享笔记">
+    
+    <link rel="preload" href="/myBlog/assets/css/0.styles.a0db8047.css" as="style"><link rel="preload" href="/myBlog/assets/js/app.4ba5bfaa.js" as="script"><link rel="preload" href="/myBlog/assets/js/3.553f6c3a.js" as="script"><link rel="preload" href="/myBlog/assets/js/2.383a70a7.js" as="script"><link rel="preload" href="/myBlog/assets/js/156.0a66abbb.js" as="script"><link rel="preload" href="/myBlog/assets/js/9.8651d337.js" as="script"><link rel="prefetch" href="/myBlog/assets/js/10.5667e96b.js"><link rel="prefetch" href="/myBlog/assets/js/100.026930ed.js"><link rel="prefetch" href="/myBlog/assets/js/101.5ed5da40.js"><link rel="prefetch" href="/myBlog/assets/js/102.a25fb263.js"><link rel="prefetch" href="/myBlog/assets/js/103.a37f7513.js"><link rel="prefetch" href="/myBlog/assets/js/104.219b2d0a.js"><link rel="prefetch" href="/myBlog/assets/js/105.29ed6eb0.js"><link rel="prefetch" href="/myBlog/assets/js/106.e65195bc.js"><link rel="prefetch" href="/myBlog/assets/js/107.74bd4e70.js"><link rel="prefetch" href="/myBlog/assets/js/108.bd9f41e6.js"><link rel="prefetch" href="/myBlog/assets/js/109.7020b196.js"><link rel="prefetch" href="/myBlog/assets/js/11.df2b365d.js"><link rel="prefetch" href="/myBlog/assets/js/110.b9b7891c.js"><link rel="prefetch" href="/myBlog/assets/js/111.10b9ede6.js"><link rel="prefetch" href="/myBlog/assets/js/112.0aa4be25.js"><link rel="prefetch" href="/myBlog/assets/js/113.504ade56.js"><link rel="prefetch" href="/myBlog/assets/js/114.67f6162c.js"><link rel="prefetch" href="/myBlog/assets/js/115.850eec11.js"><link rel="prefetch" href="/myBlog/assets/js/116.36ac05e1.js"><link rel="prefetch" href="/myBlog/assets/js/117.fe4b3847.js"><link rel="prefetch" href="/myBlog/assets/js/118.675af308.js"><link rel="prefetch" href="/myBlog/assets/js/119.091af631.js"><link rel="prefetch" href="/myBlog/assets/js/12.35990129.js"><link rel="prefetch" href="/myBlog/assets/js/120.786c198b.js"><link rel="prefetch" href="/myBlog/assets/js/121.f2bb35d4.js"><link rel="prefetch" href="/myBlog/assets/js/122.87a7f677.js"><link rel="prefetch" href="/myBlog/assets/js/123.c9c06d07.js"><link rel="prefetch" href="/myBlog/assets/js/124.ff8e36c9.js"><link rel="prefetch" href="/myBlog/assets/js/125.ade7d3b7.js"><link rel="prefetch" href="/myBlog/assets/js/126.28d9534e.js"><link rel="prefetch" href="/myBlog/assets/js/127.ec629aca.js"><link rel="prefetch" href="/myBlog/assets/js/128.54cbbb8d.js"><link rel="prefetch" href="/myBlog/assets/js/129.21b547da.js"><link rel="prefetch" href="/myBlog/assets/js/13.9d3248c2.js"><link rel="prefetch" href="/myBlog/assets/js/130.7493e162.js"><link rel="prefetch" href="/myBlog/assets/js/131.0b4819b9.js"><link rel="prefetch" href="/myBlog/assets/js/132.0e549cb5.js"><link rel="prefetch" href="/myBlog/assets/js/133.2f026438.js"><link rel="prefetch" href="/myBlog/assets/js/134.60f1b954.js"><link rel="prefetch" href="/myBlog/assets/js/135.ff2c35ec.js"><link rel="prefetch" href="/myBlog/assets/js/136.8c9cb988.js"><link rel="prefetch" href="/myBlog/assets/js/137.07a05e63.js"><link rel="prefetch" href="/myBlog/assets/js/138.cceee184.js"><link rel="prefetch" href="/myBlog/assets/js/139.9a7abcbc.js"><link rel="prefetch" href="/myBlog/assets/js/14.4672de5a.js"><link rel="prefetch" href="/myBlog/assets/js/140.0c420b5c.js"><link rel="prefetch" href="/myBlog/assets/js/141.773aac34.js"><link rel="prefetch" href="/myBlog/assets/js/142.ed70a961.js"><link rel="prefetch" href="/myBlog/assets/js/143.69e7f266.js"><link rel="prefetch" href="/myBlog/assets/js/144.6116ad52.js"><link rel="prefetch" href="/myBlog/assets/js/145.54b4c5d8.js"><link rel="prefetch" href="/myBlog/assets/js/146.d6b1ae16.js"><link rel="prefetch" href="/myBlog/assets/js/147.bfb7c815.js"><link rel="prefetch" href="/myBlog/assets/js/148.2467f5d2.js"><link rel="prefetch" href="/myBlog/assets/js/149.2a2a9bea.js"><link rel="prefetch" href="/myBlog/assets/js/15.c2538456.js"><link rel="prefetch" href="/myBlog/assets/js/150.bd0a44e6.js"><link rel="prefetch" href="/myBlog/assets/js/151.13fcb84d.js"><link rel="prefetch" href="/myBlog/assets/js/152.c5db66b0.js"><link rel="prefetch" href="/myBlog/assets/js/153.67626aff.js"><link rel="prefetch" href="/myBlog/assets/js/154.10b005b0.js"><link rel="prefetch" href="/myBlog/assets/js/155.7117978f.js"><link rel="prefetch" href="/myBlog/assets/js/157.f5e8dcd0.js"><link rel="prefetch" href="/myBlog/assets/js/158.f8bb2419.js"><link rel="prefetch" href="/myBlog/assets/js/159.15dfd559.js"><link rel="prefetch" href="/myBlog/assets/js/16.385c15b0.js"><link rel="prefetch" href="/myBlog/assets/js/160.20ab73fd.js"><link rel="prefetch" href="/myBlog/assets/js/17.509ad3af.js"><link rel="prefetch" href="/myBlog/assets/js/18.639170c9.js"><link rel="prefetch" href="/myBlog/assets/js/19.543102fe.js"><link rel="prefetch" href="/myBlog/assets/js/20.788bf6ff.js"><link rel="prefetch" href="/myBlog/assets/js/21.1b85b0e7.js"><link rel="prefetch" href="/myBlog/assets/js/22.dd82c6e4.js"><link rel="prefetch" href="/myBlog/assets/js/23.3257f308.js"><link rel="prefetch" href="/myBlog/assets/js/24.ff9c6dfc.js"><link rel="prefetch" href="/myBlog/assets/js/25.3d86ff9a.js"><link rel="prefetch" href="/myBlog/assets/js/26.fae4404f.js"><link rel="prefetch" href="/myBlog/assets/js/27.3e0c0eb0.js"><link rel="prefetch" href="/myBlog/assets/js/28.0d4cebfa.js"><link rel="prefetch" href="/myBlog/assets/js/29.78cb064f.js"><link rel="prefetch" href="/myBlog/assets/js/30.d705b76f.js"><link rel="prefetch" href="/myBlog/assets/js/31.2f82f12c.js"><link rel="prefetch" href="/myBlog/assets/js/32.74e35dfd.js"><link rel="prefetch" href="/myBlog/assets/js/33.dc9957cd.js"><link rel="prefetch" href="/myBlog/assets/js/34.a985534d.js"><link rel="prefetch" href="/myBlog/assets/js/35.35dd4d5a.js"><link rel="prefetch" href="/myBlog/assets/js/36.fa73c5b6.js"><link rel="prefetch" href="/myBlog/assets/js/37.7090639e.js"><link rel="prefetch" href="/myBlog/assets/js/38.b203cf72.js"><link rel="prefetch" href="/myBlog/assets/js/39.2a24ce59.js"><link rel="prefetch" href="/myBlog/assets/js/4.530d0f40.js"><link rel="prefetch" href="/myBlog/assets/js/40.48cb1685.js"><link rel="prefetch" href="/myBlog/assets/js/41.4e029f77.js"><link rel="prefetch" href="/myBlog/assets/js/42.faee5282.js"><link rel="prefetch" href="/myBlog/assets/js/43.3c22a644.js"><link rel="prefetch" href="/myBlog/assets/js/44.2c9eda87.js"><link rel="prefetch" href="/myBlog/assets/js/45.bd41351d.js"><link rel="prefetch" href="/myBlog/assets/js/46.6bbdd594.js"><link rel="prefetch" href="/myBlog/assets/js/47.11045cf9.js"><link rel="prefetch" href="/myBlog/assets/js/48.4c8082c3.js"><link rel="prefetch" href="/myBlog/assets/js/49.a3485775.js"><link rel="prefetch" href="/myBlog/assets/js/5.f156d2f9.js"><link rel="prefetch" href="/myBlog/assets/js/50.314b76f2.js"><link rel="prefetch" href="/myBlog/assets/js/51.6e15a4a1.js"><link rel="prefetch" href="/myBlog/assets/js/52.7eb9a211.js"><link rel="prefetch" href="/myBlog/assets/js/53.045eaf88.js"><link rel="prefetch" href="/myBlog/assets/js/54.6ac61812.js"><link rel="prefetch" href="/myBlog/assets/js/55.e0c4b4a3.js"><link rel="prefetch" href="/myBlog/assets/js/56.86f0472b.js"><link rel="prefetch" href="/myBlog/assets/js/57.9a314f24.js"><link rel="prefetch" href="/myBlog/assets/js/58.6137cb5a.js"><link rel="prefetch" href="/myBlog/assets/js/59.4199a1cf.js"><link rel="prefetch" href="/myBlog/assets/js/6.adba8f37.js"><link rel="prefetch" href="/myBlog/assets/js/60.f7e365c9.js"><link rel="prefetch" href="/myBlog/assets/js/61.5d431bb9.js"><link rel="prefetch" href="/myBlog/assets/js/62.78679706.js"><link rel="prefetch" href="/myBlog/assets/js/63.58209586.js"><link rel="prefetch" href="/myBlog/assets/js/64.cecf37d3.js"><link rel="prefetch" href="/myBlog/assets/js/65.9bb63e23.js"><link rel="prefetch" href="/myBlog/assets/js/66.5001470c.js"><link rel="prefetch" href="/myBlog/assets/js/67.502be0ae.js"><link rel="prefetch" href="/myBlog/assets/js/68.850b0d7d.js"><link rel="prefetch" href="/myBlog/assets/js/69.a125fcb7.js"><link rel="prefetch" href="/myBlog/assets/js/7.381ca64b.js"><link rel="prefetch" href="/myBlog/assets/js/70.84b8a555.js"><link rel="prefetch" href="/myBlog/assets/js/71.ef39a00e.js"><link rel="prefetch" href="/myBlog/assets/js/72.de23d741.js"><link rel="prefetch" href="/myBlog/assets/js/73.7952e9da.js"><link rel="prefetch" href="/myBlog/assets/js/74.ebbc77e1.js"><link rel="prefetch" href="/myBlog/assets/js/75.046c75a5.js"><link rel="prefetch" href="/myBlog/assets/js/76.0aeca334.js"><link rel="prefetch" href="/myBlog/assets/js/77.0d440ed9.js"><link rel="prefetch" href="/myBlog/assets/js/78.2434dedb.js"><link rel="prefetch" href="/myBlog/assets/js/79.29f4f329.js"><link rel="prefetch" href="/myBlog/assets/js/8.c5336147.js"><link rel="prefetch" href="/myBlog/assets/js/80.c5e95066.js"><link rel="prefetch" href="/myBlog/assets/js/81.75fc2091.js"><link rel="prefetch" href="/myBlog/assets/js/82.e82c92fb.js"><link rel="prefetch" href="/myBlog/assets/js/83.4c52114d.js"><link rel="prefetch" href="/myBlog/assets/js/84.1726c5eb.js"><link rel="prefetch" href="/myBlog/assets/js/85.f2010794.js"><link rel="prefetch" href="/myBlog/assets/js/86.51c645b1.js"><link rel="prefetch" href="/myBlog/assets/js/87.255b1853.js"><link rel="prefetch" href="/myBlog/assets/js/88.5eb49ebc.js"><link rel="prefetch" href="/myBlog/assets/js/89.823afe40.js"><link rel="prefetch" href="/myBlog/assets/js/90.97e08560.js"><link rel="prefetch" href="/myBlog/assets/js/91.6d85d206.js"><link rel="prefetch" href="/myBlog/assets/js/92.3e9327c8.js"><link rel="prefetch" href="/myBlog/assets/js/93.aa1520cd.js"><link rel="prefetch" href="/myBlog/assets/js/94.75b55830.js"><link rel="prefetch" href="/myBlog/assets/js/95.84080a60.js"><link rel="prefetch" href="/myBlog/assets/js/96.3c8eaa6f.js"><link rel="prefetch" href="/myBlog/assets/js/97.ac859fc6.js"><link rel="prefetch" href="/myBlog/assets/js/98.7694e2bb.js"><link rel="prefetch" href="/myBlog/assets/js/99.83760907.js">
+    <link rel="stylesheet" href="/myBlog/assets/css/0.styles.a0db8047.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/myBlog/" class="home-link router-link-active"><img src="/myBlog/assets/img/logo.jpg" alt="阿离王-前端分享" class="logo"> <span class="site-name can-hide">阿离王-前端分享</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/myBlog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/myBlog/about.html" class="nav-link">
+  关于我
+</a></div><div class="nav-item"><a href="http://ebook.wanggege.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端基础电子书
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/347830076/" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/myBlog/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/myBlog/about.html" class="nav-link">
+  关于我
+</a></div><div class="nav-item"><a href="http://ebook.wanggege.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端基础电子书
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/347830076/" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/myBlog/" aria-current="page" class="sidebar-link">首页</a></li><li><section class="sidebar-group collapsable depth-0"><a href="/myBlog/css/" class="sidebar-heading clickable"><span>css</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/myBlog/javascript/" class="sidebar-heading clickable"><span>javascript</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>typescript</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Vue</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/myBlog/vue/Vue框架dist目录下各个文件的区别.html" class="sidebar-link">Vue框架 dist 目录下各个文件的区别</a></li><li><a href="/myBlog/vue/eslint-config.html" class="sidebar-link">eslint 编译时警告或错误配置</a></li><li><a href="/myBlog/vue/ts-vue.html" class="sidebar-link">ts vue的写法</a></li><li><a href="/myBlog/vue/常用技巧.html" class="sidebar-link">Vue 常用技巧</a></li><li><a href="/myBlog/vue/vue组件通讯方式.html" class="active sidebar-link">超详细Vue3的7种和Vue2的12种组件间通信方式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/myBlog/vue/vue组件通讯方式.html#前言" class="sidebar-link">前言</a></li><li class="sidebar-sub-header"><a href="/myBlog/vue/vue组件通讯方式.html#vue3-组件通信方式" class="sidebar-link">Vue3 组件通信方式</a></li><li class="sidebar-sub-header"><a href="/myBlog/vue/vue组件通讯方式.html#props-emit" class="sidebar-link">props / emit</a></li><li class="sidebar-sub-header"><a href="/myBlog/vue/vue组件通讯方式.html#expose-ref" class="sidebar-link">expose / ref</a></li><li class="sidebar-sub-header"><a href="/myBlog/vue/vue组件通讯方式.html#attrs" class="sidebar-link">attrs</a></li><li class="sidebar-sub-header"><a href="/myBlog/vue/vue组件通讯方式.html#v-model" class="sidebar-link">v-model</a></li><li class="sidebar-sub-header"><a href="/myBlog/vue/vue组件通讯方式.html#provide-inject" class="sidebar-link">provide / inject</a></li><li class="sidebar-sub-header"><a href="/myBlog/vue/vue组件通讯方式.html#vuex" class="sidebar-link">Vuex</a></li><li class="sidebar-sub-header"><a href="/myBlog/vue/vue组件通讯方式.html#vue2-组件通信方式" class="sidebar-link">Vue2 组件通信方式</a></li><li class="sidebar-sub-header"><a href="/myBlog/vue/vue组件通讯方式.html#props-emit-2" class="sidebar-link">props / $emit</a></li><li class="sidebar-sub-header"><a href="/myBlog/vue/vue组件通讯方式.html#v-model-指令" class="sidebar-link">v-model 指令</a></li><li class="sidebar-sub-header"><a href="/myBlog/vue/vue组件通讯方式.html#sync-修饰符" class="sidebar-link">.sync 修饰符</a></li><li class="sidebar-sub-header"><a href="/myBlog/vue/vue组件通讯方式.html#parent-children" class="sidebar-link">$parent / $children</a></li><li class="sidebar-sub-header"><a href="/myBlog/vue/vue组件通讯方式.html#provide-inject-2" class="sidebar-link">provide / inject</a></li><li class="sidebar-sub-header"><a href="/myBlog/vue/vue组件通讯方式.html#ref-refs" class="sidebar-link">ref / $refs</a></li><li class="sidebar-sub-header"><a href="/myBlog/vue/vue组件通讯方式.html#eventbus" class="sidebar-link">eventBus</a></li><li class="sidebar-sub-header"><a href="/myBlog/vue/vue组件通讯方式.html#vuex-2" class="sidebar-link">Vuex</a></li><li class="sidebar-sub-header"><a href="/myBlog/vue/vue组件通讯方式.html#localstorage-sessionstorage" class="sidebar-link">localStorage / sessionStorage</a></li><li class="sidebar-sub-header"><a href="/myBlog/vue/vue组件通讯方式.html#自己实现简单的-store-模式" class="sidebar-link">自己实现简单的 Store 模式</a></li><li class="sidebar-sub-header"><a href="/myBlog/vue/vue组件通讯方式.html#通过-root-访问根实例" class="sidebar-link">通过 $root 访问根实例</a></li><li class="sidebar-sub-header"><a href="/myBlog/vue/vue组件通讯方式.html#attrs与-listeners" class="sidebar-link">$attrs与 $listeners</a></li><li class="sidebar-sub-header"><a href="/myBlog/vue/vue组件通讯方式.html#总结" class="sidebar-link">总结</a></li></ul></li><li><a href="/myBlog/vue/路由守卫.html" class="sidebar-link">路由守卫</a></li><li><a href="/myBlog/vue/axios取消请求.html" class="sidebar-link">Vue中封装axios的取消请求事情</a></li><li><a href="/myBlog/vue/自动生成面包屑.html" class="sidebar-link">自动生成面包屑VUE组件</a></li><li><a href="/myBlog/vue/动态热更新设置.html" class="sidebar-link">动态热更新设置</a></li><li><a href="/myBlog/vue/vue2与vue3生命周期对比.html" class="sidebar-link">vue 2.0 生命周期对比 3.0 生命周期</a></li><li><a href="/myBlog/vue/vue3的JSX写法.html" class="sidebar-link">vue3的JSX写法</a></li><li><a href="/myBlog/vue/Vue项目中出现Loading chunk {n} failed问题的解决方法.html" class="sidebar-link">Vue项目中出现Loading chunk {n} failed问题的解决方法</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/myBlog/react/" class="sidebar-heading clickable"><span>react</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/myBlog/components/" class="sidebar-heading clickable"><span>组件使用教程</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>node技巧</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/myBlog/npm/" class="sidebar-heading clickable"><span>npm</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>工具栏</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>规范</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>资源分享</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>实用例子</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="超详细vue3的7种和vue2的12种组件间通信方式"><a href="#超详细vue3的7种和vue2的12种组件间通信方式" class="header-anchor">#</a> 超详细Vue3的7种和Vue2的12种组件间通信方式</h1> <h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <p>vue是数据驱动视图更新的框架, 我们平时开发，都会把页面不同模块拆分成一个一个vue组件， 所以对于vue来说组件间的数据通信非常重要，那么组件之间如何进行数据通信的呢？</p> <p>首先我们需要知道在vue中组件之间存在什么样的关系, 才更容易理解他们的通信方式。</p> <p>一般我们分为如下关系：</p> <ul><li>父子组件之间通信</li> <li>非父子组件之间通信(兄弟组件、隔代关系组件等)</li></ul> <h2 id="vue3-组件通信方式"><a href="#vue3-组件通信方式" class="header-anchor">#</a> Vue3 组件通信方式</h2> <h2 id="props-emit"><a href="#props-emit" class="header-anchor">#</a> props / emit</h2> <p>父组件通过<code>props</code>的方式向子组件传递数据，而通过<code>emit</code> 子组件可以向父组件通信。</p> <h4 id="_1-父组件向子组件传值-props"><a href="#_1-父组件向子组件传值-props" class="header-anchor">#</a> 1. 父组件向子组件传值 props</h4> <p><strong>方法一，混合写法</strong></p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token comment">&lt;!-- 父组件 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Child</span> <span class="token attr-name">:msg1</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>msg1<span class="token punctuation">&quot;</span></span> <span class="token attr-name">:msg2</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>msg2<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">import</span> Child <span class="token keyword">from</span> <span class="token string">&quot;./child.vue&quot;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> ref<span class="token punctuation">,</span> reactive <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vue&quot;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">msg1</span><span class="token operator">:</span><span class="token string">&quot;这是传级子组件的信息1&quot;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">// 创建一个响应式数据</span>
+        <span class="token comment">// 写法一 适用于基础类型  ref 还有其他用处，</span>
+        <span class="token keyword">const</span> msg1 <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">&quot;这是传级子组件的信息1&quot;</span><span class="token punctuation">)</span>
+        <span class="token comment">// 写法二 适用于复杂类型，如数组、对象</span>
+        <span class="token keyword">const</span> msg2 <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">&quot;这是传级子组件的信息2&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">return</span> <span class="token punctuation">{</span>
+            msg1<span class="token punctuation">,</span>
+            msg2
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token comment">&lt;!-- 子组件 接收 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+    {{ msg1 }} + {{ msg2 }}
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;msg1&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;msg2&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token comment">// 如果这行不写，下面就接收不到</span>
+  <span class="token function">setup</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token comment">// { msg1:&quot;这是传给子组件的信息1&quot;, msg2:&quot;这是传给子组件的信息2&quot; }</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p><strong>方法二，纯 Vue3 写法</strong></p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token comment">&lt;!-- 父组件 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Child</span> <span class="token attr-name">:msg1</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>msg1<span class="token punctuation">&quot;</span></span> <span class="token attr-name">:msg2</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>msg2<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">import</span> Child <span class="token keyword">from</span> <span class="token string">&quot;./child.vue&quot;</span>
+    <span class="token keyword">import</span> <span class="token punctuation">{</span> ref<span class="token punctuation">,</span> reactive <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vue&quot;</span>
+    <span class="token keyword">const</span> msg1 <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">&quot;这是传给子组件的信息1&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> msg2 <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">&quot;这是传级子组件的信息2&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token comment">&lt;!-- 子组件 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">import</span> <span class="token punctuation">{</span> defineProps <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vue&quot;</span>
+    <span class="token keyword">const</span> props <span class="token operator">=</span> <span class="token function">defineProps</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token comment">// 写法一</span>
+        <span class="token literal-property property">msg2</span><span class="token operator">:</span> String<span class="token punctuation">,</span>
+        <span class="token comment">// 写法二</span>
+        <span class="token literal-property property">msg2</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">type</span><span class="token operator">:</span> Array<span class="token punctuation">,</span>
+            <span class="token keyword">default</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token comment">// { msg1: '这是传给子组件的信息1', msg2:[这是传级子组件的信息2] }</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h4 id="子组件通知父组件-emit"><a href="#子组件通知父组件-emit" class="header-anchor">#</a> 子组件通知父组件 emit</h4> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token comment">&lt;!-- 子组件 Child.vue 派发 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- 写法一 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>emit(<span class="token punctuation">'</span>myClick<span class="token punctuation">'</span>)<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>按钮<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- 写法二 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>handleClick<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>按钮<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    
+    <span class="token comment">// 方法一 适用于Vue3.2版本</span>
+    <span class="token keyword">import</span> <span class="token punctuation">{</span> defineEmits <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vue&quot;</span>
+    <span class="token comment">// 对应写法一</span>
+    <span class="token keyword">const</span> emit <span class="token operator">=</span> <span class="token function">defineEmits</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">&quot;myClick&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token comment">// 对应写法二</span>
+    <span class="token keyword">const</span> <span class="token function-variable function">handleClick</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+        <span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">&quot;myClick&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;这是发送给父组件的信息&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">// 方法二 不适用于 Vue3.2版本，该版本 useContext()已废弃</span>
+    <span class="token keyword">import</span> <span class="token punctuation">{</span> useContext <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vue&quot;</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> emit <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> <span class="token function-variable function">handleClick</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+        <span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">&quot;myClick&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;这是发送给父组件的信息&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token comment">&lt;!-- 父组件 Parent.vue 响应 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Child</span> <span class="token attr-name">@myClick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>onMyClick<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">import</span> Child <span class="token keyword">from</span> <span class="token string">&quot;./child.vue&quot;</span>
+    <span class="token keyword">const</span> <span class="token function-variable function">onMyClick</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span> <span class="token comment">// 这是父组件收到的信息</span>
+    <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2 id="expose-ref"><a href="#expose-ref" class="header-anchor">#</a> expose / ref</h2> <p>父组件获取子组件的属性或者调用子组件方法</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token comment">&lt;!-- 子组件 Child.vue --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token comment">// 方法一 不适用于Vue3.2版本，该版本 useContext()已废弃</span>
+    <span class="token keyword">import</span> <span class="token punctuation">{</span> useContext <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vue&quot;</span>
+    <span class="token keyword">const</span> ctx <span class="token operator">=</span> <span class="token function">useContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">// 对外暴露属性方法等都可以</span>
+    ctx<span class="token punctuation">.</span><span class="token function">expose</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">childName</span><span class="token operator">:</span> <span class="token string">&quot;这是子组件的属性&quot;</span><span class="token punctuation">,</span>
+        <span class="token function">someMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;这是子组件的方法&quot;</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    
+    <span class="token comment">// 方法二 适用于Vue3.2版本</span>
+    <span class="token keyword">import</span> <span class="token punctuation">{</span> defineExpose <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vue&quot;</span>
+    <span class="token function">defineExpose</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">childName</span><span class="token operator">:</span> <span class="token string">&quot;这是子组件的属性&quot;</span><span class="token punctuation">,</span>
+        <span class="token function">someMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;这是子组件的方法&quot;</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token comment">&lt;!-- 父组件 Parent.vue  注意 ref=&quot;comp&quot; --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Child</span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>comp<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>handlerClick<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>按钮<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">import</span> Child <span class="token keyword">from</span> <span class="token string">&quot;./child.vue&quot;</span>
+    <span class="token keyword">import</span> <span class="token punctuation">{</span> ref <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vue&quot;</span>
+    <span class="token keyword">const</span> comp <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> <span class="token function-variable function">handlerClick</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>comp<span class="token punctuation">.</span>value<span class="token punctuation">.</span>childName<span class="token punctuation">)</span> <span class="token comment">// 获取子组件对外暴露的属性</span>
+        comp<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">someMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 调用子组件对外暴露的方法</span>
+    <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2 id="attrs"><a href="#attrs" class="header-anchor">#</a> attrs</h2> <p>包含父作用域里除 class 和 style 除外的非 props 属性集合</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token comment">&lt;!-- 父组件 Parent.vue 传送 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Child</span> <span class="token attr-name">:msg1</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>msg1<span class="token punctuation">&quot;</span></span> <span class="token attr-name">:msg2</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>msg2<span class="token punctuation">&quot;</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>3333<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">import</span> Child <span class="token keyword">from</span> <span class="token string">&quot;./child.vue&quot;</span>
+    <span class="token keyword">import</span> <span class="token punctuation">{</span> ref<span class="token punctuation">,</span> reactive <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vue&quot;</span>
+    <span class="token keyword">const</span> msg1 <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">&quot;1111&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> msg2 <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">&quot;2222&quot;</span><span class="token punctuation">)</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token comment">&lt;!-- 子组件 Child.vue 接收 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">import</span> <span class="token punctuation">{</span> defineProps<span class="token punctuation">,</span> useContext<span class="token punctuation">,</span> useAttrs <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vue&quot;</span>
+    <span class="token keyword">const</span> props <span class="token operator">=</span> <span class="token function">defineProps</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">msg1</span><span class="token operator">:</span> String
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span>  <span class="token comment">// { msg1:&quot;1111&quot;}</span>
+    <span class="token comment">// 方法一 不适用于 Vue3.2版本，该版本 useContext()已废弃</span>
+    <span class="token keyword">const</span> ctx <span class="token operator">=</span> <span class="token function">useContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">// 如果没有用 props 接收 msg1 的话就是 { msg1: &quot;1111&quot;, msg2:&quot;2222&quot;, title: &quot;3333&quot; }</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ctx<span class="token punctuation">.</span>attrs<span class="token punctuation">)</span> <span class="token comment">// { msg2:&quot;2222&quot;, title: &quot;3333&quot; }</span>
+    
+    <span class="token comment">// 方法二 适用于 Vue3.2版本</span>
+    <span class="token keyword">const</span> attrs <span class="token operator">=</span> <span class="token function">useAttrs</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+     <span class="token comment">// 如果没有用 props 接收 msg1 的话就是 { msg1: &quot;1111&quot;, msg2:&quot;2222&quot;, title: &quot;3333&quot; }</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>attrs<span class="token punctuation">)</span> <span class="token comment">// { msg2:&quot;2222&quot;, title: &quot;3333&quot; }</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2 id="v-model"><a href="#v-model" class="header-anchor">#</a> v-model</h2> <p>可以支持多个数据双向绑定</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token comment">&lt;!-- 父组件 Parent.vue --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Child</span> <span class="token attr-name"><span class="token namespace">v-model:</span>msg1</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>msg1<span class="token punctuation">&quot;</span></span> <span class="token attr-name"><span class="token namespace">v-model:</span>msg2</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>msg2<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">import</span> Child <span class="token keyword">from</span> <span class="token string">&quot;./child.vue&quot;</span>
+    <span class="token keyword">import</span> <span class="token punctuation">{</span> ref<span class="token punctuation">,</span> reactive <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vue&quot;</span>
+    <span class="token keyword">const</span> msg1 <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">&quot;1111&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> msg2 <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">&quot;2222&quot;</span><span class="token punctuation">)</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token comment">&lt;!-- 子组件 Child.vue --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>handlerClick<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>按钮<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">import</span> <span class="token punctuation">{</span> defineEmits<span class="token punctuation">,</span> useContext <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vue&quot;</span>
+    
+    <span class="token comment">// 方法一  不适用于 Vue3.2版本，该版本 useContext()已废弃</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> emit <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+    <span class="token comment">// 方法二 适用于 Vue3.2版本</span>
+    <span class="token keyword">const</span> emit <span class="token operator">=</span> <span class="token function">defineEmits</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">&quot;msg1&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;msg2&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    
+    <span class="token comment">// 用法</span>
+    <span class="token keyword">const</span> <span class="token function-variable function">handlerClick</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">&quot;update:msg1&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;新的msg1&quot;</span><span class="token punctuation">)</span>
+        <span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">&quot;update:msg2&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;新的msg2&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2 id="provide-inject"><a href="#provide-inject" class="header-anchor">#</a> provide / inject</h2> <p>provide / inject 为依赖注入</p> <p><code>provide</code>：可以让我们指定想要提供给后代组件的数据</p> <p><code>inject</code>：在任何后代组件中接收想要添加在这个组件上的数据，不管组件嵌套多深都可以直接拿来用</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token comment">&lt;!-- 父组件 Parent.vue --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">import</span> <span class="token punctuation">{</span> provide <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vue&quot;</span>
+    <span class="token function">provide</span><span class="token punctuation">(</span><span class="token string">'msg'</span><span class="token punctuation">,</span> <span class="token string">'阿离王带你学前端'</span><span class="token punctuation">)</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token comment">&lt;!-- 子组件 Child.vue --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">import</span> <span class="token punctuation">{</span> inject <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vue&quot;</span>
+    <span class="token keyword">const</span> msg <span class="token operator">=</span> <span class="token function">inject</span><span class="token punctuation">(</span><span class="token string">&quot;msg&quot;</span><span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span> <span class="token comment">// 阿离王带你学前端</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2 id="vuex"><a href="#vuex" class="header-anchor">#</a> Vuex</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//  store/index.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> createStore <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vuex&quot;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">createStore</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">state</span><span class="token operator">:</span><span class="token punctuation">{</span> <span class="token literal-property property">count</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">getters</span><span class="token operator">:</span><span class="token punctuation">{</span>
+        <span class="token function-variable function">getCount</span><span class="token operator">:</span> <span class="token parameter">state</span> <span class="token operator">=&gt;</span> state<span class="token punctuation">.</span>count
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">mutations</span><span class="token operator">:</span><span class="token punctuation">{</span>
+        <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            state<span class="token punctuation">.</span>count<span class="token operator">++</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// main.js </span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> createApp <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vue&quot;</span>
+<span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">&quot;./App.vue&quot;</span>
+<span class="token keyword">import</span> store <span class="token keyword">from</span> <span class="token string">&quot;./store&quot;</span>
+<span class="token function">createApp</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>store<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">mount</span><span class="token punctuation">(</span><span class="token string">&quot;#app&quot;</span><span class="token punctuation">)</span>
+
+<span class="token comment">// Page.vue</span>
+<span class="token comment">// 方法一 直接使用</span>
+<span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token punctuation">{</span> $store<span class="token punctuation">.</span>state<span class="token punctuation">.</span>count <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>button @click<span class="token operator">=</span><span class="token string">&quot;$store.commit('add')&quot;</span><span class="token operator">&gt;</span>按钮<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+
+<span class="token comment">// 方法二 获取</span>
+<span class="token operator">&lt;</span>script setup<span class="token operator">&gt;</span>
+    <span class="token keyword">import</span> <span class="token punctuation">{</span> useStore<span class="token punctuation">,</span> computed <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vuex&quot;</span>
+    <span class="token keyword">const</span> $store <span class="token operator">=</span> <span class="token function">useStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>$store<span class="token punctuation">.</span>state<span class="token punctuation">.</span>count<span class="token punctuation">)</span> <span class="token comment">// 1</span>
+
+    <span class="token keyword">const</span> count <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> $store<span class="token punctuation">.</span>state<span class="token punctuation">.</span>count<span class="token punctuation">)</span> <span class="token comment">// 响应式，会随着vuex数据改变而改变</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span> <span class="token comment">// 1 </span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre></div><h2 id="vue2-组件通信方式"><a href="#vue2-组件通信方式" class="header-anchor">#</a> Vue2 组件通信方式</h2> <h2 id="props-emit-2"><a href="#props-emit-2" class="header-anchor">#</a> props / $emit</h2> <p>父组件通过<code>props</code>的方式向子组件传递数据，而通过<code>$emit</code> 子组件可以向父组件通信。</p> <ol><li>父组件向子组件传值 props</li></ol> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token comment">&lt;!-- 父组件 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>section<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>child</span> <span class="token attr-name">:msg</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>articleList<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>child</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">import</span> child <span class="token keyword">from</span> <span class="token string">'./child.vue'</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'HelloWorld'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">components</span><span class="token operator">:</span> <span class="token punctuation">{</span> comArticle <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">msg</span><span class="token operator">:</span> <span class="token string">'阿离王'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><div class="language-vue extra-class"><pre class="language-vue"><code><span class="token comment">&lt;!-- 子组件 child.vue --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+    {{ msg }}
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">msg</span><span class="token operator">:</span> String
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>注意：</p> <p><strong>prop 只可以从上一级组件传递到下一级组件（父子组件），即所谓的单向数据流。而且 prop 只读，不可被修改，所有修改都会失效并警告。</strong></p> <ul><li>第一，不应该在一个子组件内部改变 prop，这样会破坏单向的数据绑定，导致数据流难以理解。如果有这样的需要，可以通过 data 属性接收或使用 <code>computed</code> 属性进行转换。</li> <li>第二，如果 <code>props</code> 传递的是<code>引用类型(对象或者数组)</code>，在子组件中改变这个对象或数组，父组件的状态会也会做相应的更新，利用这一点就能够实现父子组件数据的<code>“双向绑定”</code>，虽然这样实现能够节省代码，但会<code>牺牲数据流向的简洁性</code>，令人难以理解，最好不要这样去做。</li> <li>想要实现父子组件的数据“双向绑定”，可以使用 <code>v-model</code> 或 <code>.sync</code>。</li></ul> <ol start="2"><li>子组件向父组件传值 $emit</li></ol> <p>使用 <code>$emit</code> 向父组件传数据，原理这样的: 父组件在子组件通过<code>v-on</code>监听函数并接收参数，vue框架就在子组件监听了你<code>v-on=&quot;fn&quot;</code>的fn事件函数，在子组件使用<code>$emit</code>就能触发了，下面写个例子。</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token comment">&lt;!-- 父组件 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>section<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>child</span> <span class="token attr-name">:msg</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>articleList<span class="token punctuation">&quot;</span></span> <span class="token attr-name">@changMsg</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>changMsg<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>child</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">import</span> child <span class="token keyword">from</span> <span class="token string">'./child.vue'</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'HelloWorld'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">components</span><span class="token operator">:</span> <span class="token punctuation">{</span> comArticle <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">msg</span><span class="token operator">:</span> <span class="token string">'阿离王'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">methods</span><span class="token operator">:</span><span class="token punctuation">{</span>
+      <span class="token function">changMsg</span><span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>msg <span class="token operator">=</span> msg
+      <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><div class="language-vue extra-class"><pre class="language-vue"><code><span class="token comment">&lt;!-- 子组件 child.vue --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+    {{ msg }}
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>change<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>改变字符串<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">msg</span><span class="token operator">:</span> String
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token function">change</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">'changMsg'</span><span class="token punctuation">,</span> <span class="token string">'阿离王带你学习前端'</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2 id="v-model-指令"><a href="#v-model-指令" class="header-anchor">#</a> v-model 指令</h2> <p><code>v-model</code> 是用来在<code>表单控件</code>或者<code>组件</code>上创建<code>双向绑定</code>的，他的本质是 <code>v-bind</code> 和 <code>v-on</code> 的<code>语法糖</code>，在一个组件上使用 <code>v-model</code>，默认会为组件绑定名为 <code>value 的 prop</code> 和名为 <code>input</code> 的事件。</p> <p>当我们组件中的某一个 <code>prop</code> 需要实现上面所说的”双向绑定“时，<code>v-model</code> 就能大显身手了。有了它，就不需要自己手动在组件上绑定监听当前实例上的自定义事件，会使<code>代码更简洁</code>。</p> <p>下面以一个 input 组件实现的核心代码，介绍下 <code>v-model</code> 的应用。</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token comment">&lt;!--父组件--&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>base-input</span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>inputValue<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>base-input</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+        <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token punctuation">{</span>
+                <span class="token literal-property property">input</span><span class="token operator">:</span> <span class="token string">''</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><div class="language-vue extra-class"><pre class="language-vue"><code><span class="token comment">&lt;!--子组件--&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>text<span class="token punctuation">&quot;</span></span> <span class="token attr-name">:value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>currentValue<span class="token punctuation">&quot;</span></span>  <span class="token attr-name">@input</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>handleInput<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+        <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token punctuation">{</span>
+                <span class="token literal-property property">currentValue</span><span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">===</span> <span class="token keyword">undefined</span> <span class="token operator">||</span> <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">===</span> <span class="token keyword">null</span> <span class="token operator">?</span> <span class="token string">''</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token punctuation">[</span>String<span class="token punctuation">,</span> Number<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 关键1</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token function">handleInput</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">const</span> value <span class="token operator">=</span> event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">'input'</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 关键2</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>上面例子看到，<code>v-model=&quot;inputValue&quot;</code> 他的本质就是 <code>v-bind 和 v-on 的语法糖</code>，默认为父组件绑定名为 <code>:value=&quot;inputValue&quot;</code>的属性，和<code>@input=&quot;(v) =&gt; { this.inputValue = v }&quot;</code>事件，子组件通过 <code>this.$emit('input', value)</code> 通知父组件</p> <p>所以他原理也是利用了我们上面讲的父子组件传参 <code>props / $emit</code> 方式来实现双向绑定</p> <p>有时，在某些特定的控件中名为 value 的属性会有特殊的含义，这时可以通过 <code>v-model</code> 选项来回避这种冲突。</p> <h2 id="sync-修饰符"><a href="#sync-修饰符" class="header-anchor">#</a> .sync 修饰符</h2> <ul><li><code>.sync</code> 修饰符在 vue 1.x 的版本中就已经提供，1.x 版本中，当子组件改变了一个带有 <code>.sync</code> 的 <code>prop</code> 的值时，会将这个值同步到父组件中的值。这样使用起来十分方便，但问题也十分明显，这样破坏了单向数据流，当应用复杂时，debug 的成本会非常高。</li> <li>于是乎，在vue 2.0中移除了 <code>.sync</code>。但是在实际的应用中，<code>.sync</code> 是有它的应用场景的，所以在 <code>vue 2.3</code> 版本中，又迎来了<code>全新的 .sync</code>。</li> <li>新的 <code>.sync</code> 修饰符所实现的已经不再是真正的双向绑定，它的本质和 <code>v-model</code> 类似，只是一种缩写。</li></ul> <p>正常封装组件例子：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>text<span class="token operator">-</span>document v<span class="token operator">-</span>bind<span class="token operator">:</span>title<span class="token operator">=</span><span class="token string">&quot;doc.title&quot;</span> v<span class="token operator">-</span>on<span class="token operator">:</span>update<span class="token operator">:</span>title<span class="token operator">=</span><span class="token string">&quot;doc.title = $event&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+</code></pre></div><p>上面的代码，使用 <code>.sync</code> 就可以写成</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>text<span class="token operator">-</span>document v<span class="token operator">-</span>bind<span class="token operator">:</span>title<span class="token punctuation">.</span>sync<span class="token operator">=</span><span class="token string">&quot;doc.title&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+</code></pre></div><p>这样，在子组件中，就可以通过下面代码来实现对这个 prop 重新赋值了。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">'update:title'</span><span class="token punctuation">,</span> newTitle<span class="token punctuation">)</span>
+</code></pre></div><p>看到这里，是不是发现 <code>.sync</code> 修饰符 和 <code>v-model</code> 很相似，也是语法糖， <code>v-bind:title.sync</code> 也就是 等效于 <code>v-bind:title=&quot;doc.title&quot; v-on:update:title=&quot;doc.title = $event&quot;</code></p> <h3 id="v-model-和-sync-对比"><a href="#v-model-和-sync-对比" class="header-anchor">#</a> v-model 和 .sync 对比</h3> <p><code>.sync</code> 从功能上看和 <code>v-model</code> 十分相似，都是为了实现数据的<code>“双向绑定”</code>，本质上，也都不是真正的双向绑定，而是<code>语法糖</code>。</p> <p>相比较之下，<code>.sync</code> 更加灵活，它可以给多个 <code>prop</code> 使用，而 <code>v-model</code> 在一个组件中只能有一个。</p> <p>从语义上来看，<code>v-model</code> 绑定的值是指这个组件的绑定值，比如 <code>input 组件</code>，<code>select 组件</code>，<code>日期时间选择组件</code>，<code>颜色选择器组件</code>，这些组件所绑定的值使用 <code>v-model</code> 比较合适。其他情况，没有这种语义，个人认为使用 <code>.sync</code> 更好。</p> <h2 id="parent-children"><a href="#parent-children" class="header-anchor">#</a> $parent / $children</h2> <p>通过<code>$parent</code>和<code>$children</code>就可以访问组件的实例，拿到实例代表什么？代表可以访问此组件的<code>所有方法</code>和<code>data</code>。列子如下：</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token comment">&lt;!-- 父组件 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>hello_world<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>{{msg}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>com-a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>com-a</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>changeA<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>点击改变子组件值<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">import</span> ComA <span class="token keyword">from</span> <span class="token string">'./test/comA.vue'</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'HelloWorld'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">components</span><span class="token operator">:</span> <span class="token punctuation">{</span> ComA <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">msg</span><span class="token operator">:</span> <span class="token string">'Welcome'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">changeA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 获取到子组件A</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>$children<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>messageA <span class="token operator">=</span> <span class="token string">'this is new value'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+</code></pre></div><div class="language-vue extra-class"><pre class="language-vue"><code><span class="token comment">&lt;!-- 子组件 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>com_a<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span>{{messageA}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>获取父组件的值为:  {{parentVal}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">messageA</span><span class="token operator">:</span> <span class="token string">'this is old'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">computed</span><span class="token operator">:</span><span class="token punctuation">{</span>
+    <span class="token function">parentVal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>$parent<span class="token punctuation">.</span>msg<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+</code></pre></div><p>要注意边界情况，如在<code>#app</code>上拿<code>$parent</code>得到的是<code>new Vue()</code>的实例，在这实例上再拿<code>$parent</code>得到的是<code>undefined</code>，而在最底层的子组件拿<code>$children</code>是个<code>空数组</code>。也要注意得到$parent和$children的值不一样，<code>$children 的值是数组</code>，而<code>$parent是个对象</code></p> <p><code>props $emit</code> 、 <code>$parent $children</code>两种方式用于父子组件之间的通信， 而使用<strong>props进行父子组件通信更加普遍</strong>，二者皆不能用于非父子组件之间的通信。</p> <h2 id="provide-inject-2"><a href="#provide-inject-2" class="header-anchor">#</a> provide / inject</h2> <p><code>provide / inject</code> 是vue2.2.0新增的api, 简单来说就是父组件中通过<code>provide来提供变量</code>, 然后再子组件中通过<code>inject来注入变量</code>。</p> <p><a href="https://cn.vuejs.org/v2/api/?#provide-inject" target="_blank" rel="noopener noreferrer">官方描述<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>： 这对选项需要一起使用，以允许一个祖先组件向其所有子孙后代注入一个依赖，不论组件层次有多深，并在其上下游关系成立的时间里始终生效</p> <p><code>provide</code> 选项应该是</p> <ul><li>一个对象或返回一个对象的函数。该对象包含可注入其子孙的属性。在该对象中你可以使用 ES2015 Symbols 作为 key，但是只在原生支持 Symbol 和 Reflect.ownKeys 的环境下可工作。</li></ul> <p><code>inject</code> 选项应该是：</p> <ul><li>一个字符串数组</li> <li>一个对象(详情点击<a href="https://cn.vuejs.org/v2/api/?#provide-inject" target="_blank" rel="noopener noreferrer">这里<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>)</li></ul> <h3 id="基本用法"><a href="#基本用法" class="header-anchor">#</a> 基本用法</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 祖先组件 提供foo</span>
+<span class="token comment">//第一种</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">&quot;father&quot;</span><span class="token punctuation">,</span>
+  <span class="token function">provide</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">foo</span><span class="token operator">:</span> <span class="token string">'hello'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//第二种</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">&quot;father&quot;</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">provide</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">foo</span><span class="token operator">:</span><span class="token string">'hello~~~~'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//后代组件 注入foo, 直接当做this.foo来用</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">inject</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">'foo'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>上面的两种用法有什么区别吗？</p> <ul><li>如果你只是传一个字符串，像上面的<code>hello</code>，那么是没有区别的，后代都能读到。</li> <li>如果你需要<code>this</code>对象属性的值（如下所示代码），那么第二种是传不了的，后代组件拿不到数据。所以建议只写第一种</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//当你传递对象给后代时</span>
+<span class="token function">provide</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>msg
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre></div><p>注意：一旦注入了某个数据，比如上面示例中的 foo，那这个组件中就不能再声明 foo 这个数据了，因为它已经被父级占有。</p> <h3 id="provide-和-inject-绑定并不是可响应的。"><a href="#provide-和-inject-绑定并不是可响应的。" class="header-anchor">#</a> provide 和 inject 绑定并不是可响应的。</h3> <p>这是刻意为之的。然而，如果你传入了一个可监听的<code>对象</code>，那么其对象的属性还是可响应的。因为对象是引用类型。</p> <p>先来个值类型的数据（也就是字符串）例子，不会响应</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">provide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">return</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">test</span><span class="token operator">:</span><span class="token keyword">this</span><span class="token punctuation">.</span>msg
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">msg</span><span class="token operator">:</span> <span class="token string">&quot;Welcome to Your Vue.js App&quot;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token function">mounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>msg <span class="token operator">=</span> <span class="token string">&quot;halo world&quot;</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>_provided<span class="token punctuation">.</span>msg<span class="token punctuation">)</span>
+    <span class="token comment">//log：Welcome to Your Vue.js App</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token number">3000</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre></div><p>如上所示，这样做是不行的，打印出来的 <code>_provided</code> 中的数据并没有改，子组件取得值也没变。</p> <p>你甚至可以直接给 <code>this._provided.msg</code> 赋值，但是即使是_provided.msg 里面的值改变了，子组件的取值，依然没有变。</p> <p>当你的参数是对象的时候，就可以响应了，如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">provide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">return</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">test</span><span class="token operator">:</span><span class="token keyword">this</span><span class="token punctuation">.</span>activeData
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">activeData</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token literal-property property">name</span><span class="token operator">:</span><span class="token string">'halo'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token function">mounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>activeData<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'world'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token number">3000</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>这就是vue官方中写道的对象的属性是可以响应的</p> <h3 id="provide-inject-实现全局变量"><a href="#provide-inject-实现全局变量" class="header-anchor">#</a> provide/inject 实现全局变量</h3> <p>provide/inject不是只能从祖先传递给后代吗？是的，但是，如果我们绑定到最顶层的组件app.vue，是不是所有后代都接收到了，就是当做全局变量来用了。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//app.vue</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'App'</span><span class="token punctuation">,</span>
+  <span class="token function">provide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span><span class="token punctuation">{</span>
+      <span class="token literal-property property">app</span><span class="token operator">:</span><span class="token keyword">this</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span><span class="token punctuation">{</span>
+      <span class="token literal-property property">text</span><span class="token operator">:</span><span class="token string">&quot;it's hard to tell the night time from the day&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">methods</span><span class="token operator">:</span><span class="token punctuation">{</span>
+    <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Desperado, why don't you come to your senses?&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//其他所有子组件，需要全局变量的，只需要按需注入app即可</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">inject</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">'foo'</span><span class="token punctuation">,</span><span class="token string">'app'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token function">mounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>app<span class="token punctuation">.</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 获取app中的变量</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>app<span class="token punctuation">.</span><span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 可以执行app中的方法，变身为全局方法！</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="provide-inject-实现页面刷新-不闪烁"><a href="#provide-inject-实现页面刷新-不闪烁" class="header-anchor">#</a> provide/inject 实现页面刷新，不闪烁</h3> <ol><li>用<code>vue-router</code>重新路由到当前页面，页面是不进行刷新的</li> <li>采用<code>window.reload()</code>，或者<code>router.go(0)</code>刷新时，整个浏览器进行了重新加载，闪烁，体验不好</li></ol> <p><strong>那我们怎么做呢？</strong></p> <p>跟上面的原理差不多，我们只在控制路由的组件中写一个函数（使用v-if控制router-view的显示隐藏,这里的原理不作赘述），然后把这个函数传递给后代，然后在后代组件中调用这个方法即可刷新路由啦。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//app.vue</span>
+<span class="token operator">&lt;</span>router<span class="token operator">-</span>view v<span class="token operator">-</span><span class="token keyword">if</span><span class="token operator">=</span><span class="token string">&quot;isShowRouter&quot;</span><span class="token operator">/</span><span class="token operator">&gt;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'App'</span><span class="token punctuation">,</span>
+  <span class="token function">provide</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">reload</span><span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>reload
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">isShowRouter</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">methods</span><span class="token operator">:</span><span class="token punctuation">{</span>
+    <span class="token function">reload</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>isShowRouter <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$nextTick</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+        <span class="token keyword">this</span><span class="token punctuation">.</span>isShowRouter <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//后代组件</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">inject</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'reload'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>  
+<span class="token punctuation">}</span>
+</code></pre></div><p>这里 provide 使用了函数传递给后代，然后后代调用这个函数，这种思路，也是可以做子后代向父组件传参通讯的思路了。这里的原理，和 event 事件订阅发布就很像了</p> <h2 id="ref-refs"><a href="#ref-refs" class="header-anchor">#</a> ref / $refs</h2> <p><code>ref</code>：如果在普通的 DOM 元素上使用，引用指向的就是 <code>DOM 元素</code>；如果用在<code>子组件</code>上，引用就指向<code>组件实例</code>，可以通过实例直接调用组件的方法或访问数据， 我们看一个ref 来访问组件的例子:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 子组件 A.vue</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token function">data</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Vue.js'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">sayHello</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 父组件 app.vue</span>
+
+<span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>component<span class="token operator">-</span>a ref<span class="token operator">=</span><span class="token string">&quot;comA&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>component<span class="token operator">-</span>a<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    <span class="token function">mounted</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> comA <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>$refs<span class="token punctuation">.</span>comA<span class="token punctuation">;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>comA<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Vue.js</span>
+      comA<span class="token punctuation">.</span><span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// hello</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+
+</code></pre></div><p>ref 这种方式，就是获取子组件的实例，然后可以直接子组件的方法和访问操作data的数据，就是父组件控制子组件的一种方式，子组件想向父组件传参或操作，只能通过其他的方式了</p> <h2 id="eventbus"><a href="#eventbus" class="header-anchor">#</a> eventBus</h2> <p><code>eventBus</code>呢，其实原理就是 事件订阅发布，<code>eventBus</code> 又称为事件总线，在vue中可以使用它来作为沟通桥梁的概念, 就像是所有组件共用相同的事件中心，可以向该中心注册发送事件或接收事件， 所以组件都可以通知其他组件。</p> <p>这里我们可以直接使用 vue 自带的事件监听，也就是 $emit $on，我们来简单封装下：</p> <ol><li>首先需要创建一个事件总线并将其导出, 以便其他模块可以使用或者监听它.</li></ol> <p>新建一个 <code>event-bus.js</code> 文件</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// event-bus.js</span>
+
+<span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> EventBus <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+</code></pre></div><ol start="2"><li>发生事件</li></ol> <p>假设你有两个组件: additionNum 和 showNum, 这两个组件可以是兄弟组件也可以是父子组件；这里我们以兄弟组件为例:</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>show-num-com</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>show-num-com</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>addition-num-com</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>addition-num-com</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">import</span> showNumCom <span class="token keyword">from</span> <span class="token string">'./showNum.vue'</span>
+<span class="token keyword">import</span> additionNumCom <span class="token keyword">from</span> <span class="token string">'./additionNum.vue'</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">components</span><span class="token operator">:</span> <span class="token punctuation">{</span> showNumCom<span class="token punctuation">,</span> additionNumCom <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><div class="language-vue extra-class"><pre class="language-vue"><code>// addtionNum.vue 中发送事件
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>additionHandle<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>+加法器<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>    
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">import</span> <span class="token punctuation">{</span> EventBus <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./event-bus.js'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>EventBus<span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">num</span><span class="token operator">:</span> <span class="token number">1</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">additionHandle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      EventBus<span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">'addition'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">num</span><span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>num<span class="token operator">++</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><ol start="3"><li>接收事件</li></ol> <div class="language-vue extra-class"><pre class="language-vue"><code>// showNum.vue 中接收事件
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>计算和: {{count}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">import</span> <span class="token punctuation">{</span> EventBus <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./event-bus.js'</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">count</span><span class="token operator">:</span> <span class="token number">0</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token function">mounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    EventBus<span class="token punctuation">.</span><span class="token function">$on</span><span class="token punctuation">(</span><span class="token string">'addition'</span><span class="token punctuation">,</span> <span class="token parameter">param</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>count <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>count <span class="token operator">+</span> param<span class="token punctuation">.</span>num<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>这样就实现了在组件<code>addtionNum.vue</code>中点击相加按钮, 在showNum.vue中利用传递来的 num 展示求和的结果.</p> <ol start="4"><li>移除事件监听者</li></ol> <p>如果想移除事件的监听, 可以像下面这样操作:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> eventBus <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'event-bus.js'</span>
+EventBus<span class="token punctuation">.</span><span class="token function">$off</span><span class="token punctuation">(</span><span class="token string">'addition'</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="自己封装一套-eventbus"><a href="#自己封装一套-eventbus" class="header-anchor">#</a> 自己封装一套 eventBus</h3> <p>这里使用自己封装一套eventBus也行，方便自己想干啥就干啥， 下面贴封装好的一套给大家</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">/* eslint-disable no-console */</span>
+<span class="token comment">// 事件映射表</span>
+<span class="token keyword">let</span> eventMap <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * 监听事件
+ * @param {string}    eventName 事件名
+ * @param {function}  listener 回调函数
+ * @param {object}    instance 注册事件的实例
+ */</span>
+<span class="token keyword">function</span> <span class="token function">on</span><span class="token punctuation">(</span><span class="token parameter">eventName<span class="token punctuation">,</span> listener<span class="token punctuation">,</span> instance</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  eventMap<span class="token punctuation">[</span>eventName<span class="token punctuation">]</span> <span class="token operator">=</span> eventMap<span class="token punctuation">[</span>eventName<span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  eventMap<span class="token punctuation">[</span>eventName<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    listener<span class="token punctuation">,</span>
+    instance<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 监听事件，只执行一次</span>
+<span class="token keyword">function</span> <span class="token function">once</span><span class="token punctuation">(</span><span class="token parameter">eventName<span class="token punctuation">,</span> listener<span class="token punctuation">,</span> instance</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  eventMap<span class="token punctuation">[</span>eventName<span class="token punctuation">]</span> <span class="token operator">=</span> eventMap<span class="token punctuation">[</span>eventName<span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  eventMap<span class="token punctuation">[</span>eventName<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    listener<span class="token punctuation">,</span>
+    instance<span class="token punctuation">,</span>
+    <span class="token literal-property property">once</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 解除事件监听</span>
+<span class="token keyword">function</span> <span class="token function">off</span><span class="token punctuation">(</span><span class="token parameter">eventName<span class="token punctuation">,</span> listener</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 解除所有事件监听</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>eventName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    eventMap <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token keyword">return</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 没有对应事件</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>eventMap<span class="token punctuation">[</span>eventName<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 解除某事件监听</span>
+  eventMap<span class="token punctuation">[</span>eventName<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">currentEvent<span class="token punctuation">,</span> index</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>currentEvent<span class="token punctuation">.</span>listener <span class="token operator">===</span> listener<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      eventMap<span class="token punctuation">[</span>eventName<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 发送事件，执行对应响应函数</span>
+<span class="token keyword">function</span> <span class="token function">emit</span><span class="token punctuation">(</span><span class="token parameter">eventName<span class="token punctuation">,</span> <span class="token operator">...</span>args</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>eventMap<span class="token punctuation">[</span>eventName<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span>
+  <span class="token punctuation">}</span>
+
+  eventMap<span class="token punctuation">[</span>eventName<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">currentEvent<span class="token punctuation">,</span> index</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    currentEvent<span class="token punctuation">.</span><span class="token function">listener</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>currentEvent<span class="token punctuation">.</span>once<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      eventMap<span class="token punctuation">[</span>eventName<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 显示当前注册的事件，代码优化时使用</span>
+<span class="token keyword">function</span> <span class="token function">showEventMap</span><span class="token punctuation">(</span><span class="token parameter">targetEventName</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>targetEventName<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 查看具体某个事件的监听情况</span>
+    eventMap<span class="token punctuation">[</span>targetEventName<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">eventItem</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>targetEventName<span class="token punctuation">,</span> eventItem<span class="token punctuation">.</span>instance<span class="token punctuation">,</span> eventItem<span class="token punctuation">.</span>listener<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span> <span class="token comment">// 查看所以事件的监听情况</span>
+    Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>eventMap<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">eventName</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      eventMap<span class="token punctuation">[</span>eventName<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">eventItem</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>eventName<span class="token punctuation">,</span> eventItem<span class="token punctuation">.</span>instance<span class="token punctuation">,</span> eventItem<span class="token punctuation">.</span>listener<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 提供 vue mixin 方法，在 beforeDestroy 自动注销事件监听</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> mixin <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 重载 on 函数，收集本组件监听的事件，待消除时，销毁事件监听</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>$eventListenerList <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>$event <span class="token operator">=</span> <span class="token punctuation">{</span> off<span class="token punctuation">,</span> once<span class="token punctuation">,</span> emit<span class="token punctuation">,</span> showEventMap <span class="token punctuation">}</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>$event<span class="token punctuation">.</span><span class="token function-variable function">on</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">eventName<span class="token punctuation">,</span> listener</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>$eventListenerList<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span> eventName<span class="token punctuation">,</span> listener <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token function">on</span><span class="token punctuation">(</span>eventName<span class="token punctuation">,</span> listener<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// 消除组件时，自动销毁事件监听</span>
+  <span class="token function">beforeDestroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>$eventListenerList<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">currentEvent</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token function">off</span><span class="token punctuation">(</span>currentEvent<span class="token punctuation">.</span>eventName<span class="token punctuation">,</span> currentEvent<span class="token punctuation">.</span>listener<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span> on<span class="token punctuation">,</span> off<span class="token punctuation">,</span> once<span class="token punctuation">,</span> emit<span class="token punctuation">,</span> showEventMap <span class="token punctuation">}</span>
+</code></pre></div><p>如何使用呢，只需在 项目的 <code>main.js</code>, 引入 ，然后 Vue.mixin 即可，如下:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// main.js</span>
+<span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> mixin <span class="token keyword">as</span> eventMixin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@/event/index'</span>
+
+Vue<span class="token punctuation">.</span><span class="token function">mixin</span><span class="token punctuation">(</span>eventMixin<span class="token punctuation">)</span>
+</code></pre></div><p>在vue项目其他文件，就可以直接 <code>this.$event.on</code> <code>this.$event.$emit</code>  如下：</p> <div class="language- extra-class"><pre class="language-text"><code>this.$event.on('test', (v) =&gt; { console.log(v) })   this.$event.$emit('test', 1)
+</code></pre></div><p>还顺便封装了个mixin, 好处呢，就是在vue页面监听事件后，页面销毁后，也自动销毁了事件监听</p> <h2 id="vuex-2"><a href="#vuex-2" class="header-anchor">#</a> Vuex</h2> <h3 id="vuex介绍"><a href="#vuex介绍" class="header-anchor">#</a> Vuex介绍</h3> <ul><li><p><code>Vuex</code> 是一个专为 Vue.js 应用程序开发的<code>状态管理模式</code>。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化.</p></li> <li><p><code>Vuex</code> 解决了多个视图依赖于同一状态和来自不同视图的行为需要变更同一状态的问题，将开发者的精力聚焦于数据的更新而不是数据在组件之间的传递上</p></li></ul> <h3 id="vuex各个模块"><a href="#vuex各个模块" class="header-anchor">#</a> Vuex各个模块</h3> <ul><li><code>state</code>：用于数据的存储，是store中的<code>唯一数据源</code></li> <li><code>getters</code>：如vue中的计算属性一样，基于state数据的二次包装，常用于数据的筛选和多个数据的相关性计算</li> <li><code>mutations</code>：类似函数，改变state数据的唯一途径，且不能用于处理异步事件</li> <li><code>actions</code>：类似于mutation，用于提交mutation来改变状态，而不直接变更状态，可以包含任意异步操作</li> <li><code>modules</code>：类似于命名空间，用于项目中将各个模块的状态分开定义和操作，便于维护</li></ul> <h3 id="vuex实例应用"><a href="#vuex实例应用" class="header-anchor">#</a> Vuex实例应用</h3> <p>这里我们先新建 <code>store文件夹</code>， 对Vuex进行一些封装处理</p> <p>在 store 文件夹下添加 <code>index.js</code> 文件</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// index.js</span>
+
+<span class="token comment">// 自动挂载指定目录下的store</span>
+<span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> Vuex <span class="token keyword">from</span> <span class="token string">'vuex'</span>
+
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Vuex<span class="token punctuation">)</span>
+
+<span class="token keyword">let</span> modules <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment">// @/store/module 目录下的文件自动挂载为 store 模块</span>
+<span class="token keyword">const</span> subModuleList <span class="token operator">=</span> require<span class="token punctuation">.</span><span class="token function">context</span><span class="token punctuation">(</span><span class="token string">'@/store/modules'</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">.js$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span>
+subModuleList<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">subRouter</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> moduleName <span class="token operator">=</span> subRouter<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> subRouter<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">3</span><span class="token punctuation">)</span>
+  modules<span class="token punctuation">[</span>moduleName<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">subModuleList</span><span class="token punctuation">(</span>subRouter<span class="token punctuation">)</span><span class="token punctuation">.</span>default
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">new</span> <span class="token class-name">Vuex<span class="token punctuation">.</span>Store</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">state</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">mutations</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">actions</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  modules
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+</code></pre></div><p>在 store 文件夹下添加 <code>module</code> 文件夹，在module文件夹再新建 <code>user.js</code> 文件</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// user.js</span>
+
+<span class="token keyword">import</span> user <span class="token keyword">from</span> <span class="token string">'@/utils/user.js'</span>
+<span class="token keyword">import</span> userApi <span class="token keyword">from</span> <span class="token string">'@/apis/user'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token constant">OPEN_ACCOUNT_STAGE</span><span class="token punctuation">,</span> <span class="token constant">STAGE_STATUS</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@/constant'</span>
+
+<span class="token keyword">let</span> getUserPromise <span class="token operator">=</span> <span class="token keyword">null</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">namespaced</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token function">state</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">userInfo</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token comment">// 用户信息</span>
+      <span class="token literal-property property">isLogined</span><span class="token operator">:</span> <span class="token operator">!</span><span class="token operator">!</span>user<span class="token punctuation">.</span><span class="token function">getToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// 是否已经登录</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">mutations</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 更新用户信息</span>
+    <span class="token function">updateUser</span><span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> payload</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      state<span class="token punctuation">.</span>isLogined <span class="token operator">=</span> <span class="token operator">!</span><span class="token operator">!</span>payload
+      state<span class="token punctuation">.</span>userInfo <span class="token operator">=</span> payload
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">actions</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 获取当前用户信息</span>
+    <span class="token keyword">async</span> <span class="token function">getUserInfo</span><span class="token punctuation">(</span><span class="token parameter">context<span class="token punctuation">,</span> payload</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// forceUpdate 表示是否强制更新</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>context<span class="token punctuation">.</span>state<span class="token punctuation">.</span>userInfo <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>payload<span class="token operator">?.</span>forceUpdate<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> context<span class="token punctuation">.</span>state<span class="token punctuation">.</span>userInfo
+      <span class="token punctuation">}</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>getUserPromise <span class="token operator">||</span> payload<span class="token operator">?.</span>forceUpdate<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        getUserPromise <span class="token operator">=</span> userApi<span class="token punctuation">.</span><span class="token function">getUserInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+      <span class="token comment">// 获取用户信息</span>
+      <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> userInfo <span class="token operator">=</span> <span class="token keyword">await</span> getUserPromise
+        context<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token string">'updateUser'</span><span class="token punctuation">,</span> userInfo<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+        getUserPromise <span class="token operator">=</span> <span class="token keyword">null</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> context<span class="token punctuation">.</span>state<span class="token punctuation">.</span>userInfo
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// 登出</span>
+    <span class="token keyword">async</span> <span class="token function">logout</span><span class="token punctuation">(</span><span class="token parameter">context<span class="token punctuation">,</span> payload <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 是否手动退出</span>
+      <span class="token keyword">const</span> <span class="token punctuation">{</span> manual <span class="token punctuation">}</span> <span class="token operator">=</span> payload
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>manual<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">await</span> userApi<span class="token punctuation">.</span><span class="token function">postLogout</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+      user<span class="token punctuation">.</span><span class="token function">clearToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      context<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token string">'updateUser'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>然后在项目的 <code>main.js</code> 文件中引入</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'@/app.vue'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> router <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@/router'</span>
+<span class="token keyword">import</span> store <span class="token keyword">from</span> <span class="token string">'@/store/index'</span>
+
+<span class="token keyword">const</span> vue <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'root'</span><span class="token punctuation">,</span>
+  router<span class="token punctuation">,</span>
+  store<span class="token punctuation">,</span>
+  <span class="token function-variable function">render</span><span class="token operator">:</span> <span class="token parameter">h</span> <span class="token operator">=&gt;</span> <span class="token function">h</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>封装的很愉快了，然后就正常操作即可。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">this</span><span class="token punctuation">.</span>$store<span class="token punctuation">.</span>state<span class="token punctuation">.</span>user<span class="token punctuation">.</span>isLogined
+<span class="token keyword">this</span><span class="token punctuation">.</span>$store<span class="token punctuation">.</span>state<span class="token punctuation">.</span>user<span class="token punctuation">.</span>userInfo
+<span class="token keyword">this</span><span class="token punctuation">.</span>$store<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token string">'user/updateUser'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+ <span class="token keyword">await</span> <span class="token keyword">this</span><span class="token punctuation">.</span>$store<span class="token punctuation">.</span><span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token string">'user/logout'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">manual</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="localstorage-sessionstorage"><a href="#localstorage-sessionstorage" class="header-anchor">#</a> localStorage / sessionStorage</h2> <p>这种通信比较简单,缺点是数据和状态比较混乱,不太容易维护。</p> <ul><li>通过<code>window.localStorage.getItem(key)</code>获取数据</li> <li>通过<code>window.localStorage.setItem(key,value)</code>存储数据</li></ul> <p><strong>注意用<code>JSON.parse()</code> / <code>JSON.stringify()</code> 做数据格式转换， localStorage / sessionStorage可以结合vuex, 实现<code>数据的持久保存</code>,同时使用vuex解决数据和状态混乱问题.</strong></p> <h2 id="自己实现简单的-store-模式"><a href="#自己实现简单的-store-模式" class="header-anchor">#</a> 自己实现简单的 Store 模式</h2> <p>对于小型的项目，通信十分简单，这时使用 Vuex 反而会显得冗余和繁琐，这种情况最好不要使用 Vuex，可以自己在项目中实现简单的 Store。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// store.js</span>
+<span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">debug</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">state</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">author</span><span class="token operator">:</span> <span class="token string">'yushihu!'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">setAuthorAction</span> <span class="token punctuation">(</span><span class="token parameter">newValue</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>debug<span class="token punctuation">)</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'setAuthorAction triggered with'</span><span class="token punctuation">,</span> newValue<span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>author <span class="token operator">=</span> newValue
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">deleteAuthorAction</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>debug<span class="token punctuation">)</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'deleteAuthorAction triggered'</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>author <span class="token operator">=</span> <span class="token string">''</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> store
+</code></pre></div><p>上面代码原理就是，<code>store.js文件</code>暴露出一个<code>对象 store</code>，通过引入 <code>store.js 文件</code> 各个页面来共同维护这个<code>store对象</code></p> <p>和 Vuex 一样，store 中 state 的改变都由 store 内部的 action 来触发，并且能够通过 <code>console.log()</code> 打印触发的痕迹。这种方式十分适合在不需要使用 Vuex 的小项目中应用。</p> <p>与 <code>$root</code> 访问根实例的方法相比，这种<code>集中式状态管理的方式</code>能够在调试过程中，通过 <code>console.log()</code> 记录来确定当前变化是如何触发的，更容易定位问题。</p> <h2 id="通过-root-访问根实例"><a href="#通过-root-访问根实例" class="header-anchor">#</a> 通过 $root 访问根实例</h2> <p>通过 <code>$root</code>，任何组件都可以获取当前<code>组件树的根 Vue 实例</code>，通过维护根实例上的 data，就可以实现组件间的<code>数据共享</code>。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//main.js 根实例</span>
+<span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
+    store<span class="token punctuation">,</span>
+    router<span class="token punctuation">,</span>
+    <span class="token comment">// 根实例的 data 属性，维护通用的数据</span>
+    <span class="token function-variable function">data</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">author</span><span class="token operator">:</span> <span class="token string">''</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">components</span><span class="token operator">:</span> <span class="token punctuation">{</span> App <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">'&lt;App/&gt;'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>组件<span class="token constant">A</span><span class="token operator">--</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    <span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>$root<span class="token punctuation">.</span>author <span class="token operator">=</span> <span class="token string">'于是乎'</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+
+
+<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>组件<span class="token constant">B</span><span class="token operator">--</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span><span class="token operator">&lt;</span>span<span class="token operator">&gt;</span>本文作者<span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token punctuation">{</span> $root<span class="token punctuation">.</span>author <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+</code></pre></div><p><b class="red">注意：通过这种方式，虽然可以实现通信，但在应用的任何部分，任何时间发生的任何数据变化，都不会留下变更的记录，这对于稍复杂的应用来说，调试是致命的，不建议在实际应用中使用。</b></p> <h2 id="attrs与-listeners"><a href="#attrs与-listeners" class="header-anchor">#</a> $attrs与 $listeners</h2> <p>现在我们来讨论一种情况， 我们一开始给出的组件关系图中A组件与D组件是隔代关系， 那它们之前进行通信有哪些方式呢？</p> <ol><li>使用<code>props</code>绑定来进行一级一级的信息传递, 如果D组件中状态改变需要传递数据给A, 使用事件系统一级级往上传递</li> <li>使用<code>eventBus</code>,这种情况下还是比较适合使用, 但是碰到多人合作开发时, <code>代码维护性较低, 可读性也低</code></li> <li>使用<code>Vuex</code>来进行数据管理, 但是如果<code>仅仅是传递数据</code>, 而不做中间处理,使用Vuex处理感觉有点<code>大材小用</code>了.</li></ol> <p>所以就有了 <code>$attrs</code> / <code>$listeners</code> ，通常配合 <code>inheritAttrs</code> 一起使用。</p> <p><a href="https://cn.vuejs.org/v2/api/#inheritAttrs" target="_blank" rel="noopener noreferrer">inheritAttrs<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>默认情况下父作用域的不被认作 <code>props</code> 的 <code>attribute</code> 绑定 (attribute bindings) 将会“回退”且作为普通的 HTML attribute 应用在子组件的根元素上。当撰写包裹一个目标元素或另一个组件的组件时，这可能不会总是符合预期行为。</p> <p>通过设置 <code>inheritAttrs</code> 到 <code>false</code>，这些默认行为将会被去掉。而通过 (同样是 2.4 新增的) 实例 property $attrs 可以让这些 attribute 生效，且可以通过 v-bind 显性的绑定到非根元素上。</p> <p>注意：这个选项不影响 <code>class</code> 和 <code>style</code> 绑定。</p> <p>上面是官方描述：还是很难懂。</p> <p>简单的说就是</p> <ul><li><code>inheritAttrs：true</code> 时继承除props之外的所有属性</li> <li><code>inheritAttrs：false</code> 只继承class 和 style属性</li></ul> <p><code>$attrs</code>：包含了父作用域中不被认为 (且不预期为) props 的特性绑定 (<code>class 和 style 除外</code>)，并且可以通过 <code>v-bind=&quot;$attrs&quot;</code> 传入内部组件。当一个组件没有声明任何 <code>props</code> 时，它包含所有父作用域的绑定 (class 和 style 除外)。</p> <p><code>$listeners</code>：包含了父作用域中的 (<code>不含 .native 修饰符</code>) v-on 事件监听器。它可以通过 <code>v-on=&quot;$listeners&quot;</code> 传入内部组件。它是一个对象，里面包含了作用在这个组件上的所有事件监听器，相当于<code>子组件继承了父组件的事件</code>。</p> <p>讲了这么多文字概念，我们还是来看代码例子吧：</p> <p>新建一个 father.vue 组件</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+　　 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>child</span> <span class="token attr-name">:name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>name<span class="token punctuation">&quot;</span></span> <span class="token attr-name">:age</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>age<span class="token punctuation">&quot;</span></span> <span class="token attr-name">:infoObj</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>infoObj<span class="token punctuation">&quot;</span></span> <span class="token attr-name">@updateInfo</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>updateInfo<span class="token punctuation">&quot;</span></span> <span class="token attr-name">@delInfo</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>delInfo<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">import</span> Child <span class="token keyword">from</span> <span class="token string">'../components/child.vue'</span>
+
+    <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'father'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">components</span><span class="token operator">:</span> <span class="token punctuation">{</span> Child <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function">data</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token punctuation">{</span>
+                <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'阿离王'</span><span class="token punctuation">,</span>
+                <span class="token literal-property property">age</span><span class="token operator">:</span> <span class="token number">22</span><span class="token punctuation">,</span>
+                <span class="token literal-property property">infoObj</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                    <span class="token literal-property property">from</span><span class="token operator">:</span> <span class="token string">'广东'</span><span class="token punctuation">,</span>
+                    <span class="token literal-property property">job</span><span class="token operator">:</span> <span class="token string">'policeman'</span><span class="token punctuation">,</span>
+                    <span class="token literal-property property">hobby</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'reading'</span><span class="token punctuation">,</span> <span class="token string">'writing'</span><span class="token punctuation">,</span> <span class="token string">'skating'</span><span class="token punctuation">]</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token function">updateInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'update info'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token function">delInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'delete info'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>child.vue 组件：</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- 通过 $listeners 将父作用域中的事件，传入 grandSon 组件，使其可以获取到 father 中的事件 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>grand-son</span> <span class="token attr-name">:height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>height<span class="token punctuation">&quot;</span></span> <span class="token attr-name">:weight</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>weight<span class="token punctuation">&quot;</span></span> <span class="token attr-name">@addInfo</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>addInfo<span class="token punctuation">&quot;</span></span> <span class="token attr-name">v-bind</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>$attrs<span class="token punctuation">&quot;</span></span> <span class="token attr-name">v-on</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>$listeners<span class="token punctuation">&quot;</span></span>  <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">import</span> GrandSon <span class="token keyword">from</span> <span class="token string">'../components/grandSon.vue'</span>
+    <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'child'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">components</span><span class="token operator">:</span> <span class="token punctuation">{</span> GrandSon <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">return</span> <span class="token punctuation">{</span>
+              <span class="token literal-property property">height</span><span class="token operator">:</span> <span class="token string">'180cm'</span><span class="token punctuation">,</span>
+              <span class="token literal-property property">weight</span><span class="token operator">:</span> <span class="token string">'70kg'</span>
+          <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$attrs<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+　　　　　　　<span class="token comment">// 结果：age, infoObj, 因为父组件共传来name, age, infoObj三个值，由于name被 props接收了，所以只有age, infoObj属性</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$listeners<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// updateInfo: f, delInfo: f</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token function">addInfo</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'add info'</span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>grandSon.vue 组件</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+        {{ $attrs }} --- {{ $listeners }}
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'weight'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$attrs<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// age, infoObj, height </span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$listeners<span class="token punctuation">)</span> <span class="token comment">// updateInfo: f, delInfo: f, addInfo: f</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">'updateInfo'</span><span class="token punctuation">)</span> <span class="token comment">// 可以触发 father 组件中的updateInfo函数</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>这种方式的传值虽然说不常用，感觉可读性不是很好。但其对于组件层级嵌套比较深，使用props会很繁琐，或者项目比较小，不太适合使用 Vuex 的时候，可以考虑用它</p> <h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <p>常见使用场景可以分为三类:</p> <ul><li>父子组件通信: <code>props</code>、<code>$parent / $children</code>、<code>provide / inject</code> 、 <code>ref \ $refs</code> 、<code>$attrs / $listeners</code></li> <li>兄弟组件通信: <code>eventBus</code> 、 <code>vuex</code>、 <code>自己实现简单的 Store 模式</code></li> <li>跨级通信: <code>eventBus</code>、 <code>Vuex</code>、 <code>自己实现简单的 Store 模式</code>、 <code>provide / inject</code> 、 <code>$attrs / $listeners</code></li></ul> <p>参考文章</p> <p><a href="https://juejin.cn/post/6844903887162310669" target="_blank" rel="noopener noreferrer">vue中8种组件通信方式, 值得收藏!<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="https://segmentfault.com/a/1190000020954324" target="_blank" rel="noopener noreferrer">你可能不知道的provide / inject 用法<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="https://segmentfault.com/a/1190000022708579" target="_blank" rel="noopener noreferrer">vue中的$attrs和$listeners<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="https://zhuanlan.zhihu.com/p/109700915" target="_blank" rel="noopener noreferrer">vue 组件通信看这篇就够了(12种通信方式)<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="https://blog.51cto.com/u_15320542/3622530" target="_blank" rel="noopener noreferrer">Vue3的7种和Vue2的12种组件通信，值得收藏<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">更新时间:</span> <span class="time">2021年12月26日星期日晚上7点44分</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/myBlog/vue/常用技巧.html" class="prev">
+        Vue 常用技巧
+      </a></span> <span class="next"><a href="/myBlog/vue/路由守卫.html">
+        路由守卫
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><div class="back-to-top" style="display:none;" data-v-994ac33a data-v-994ac33a><div class="back-top-container top" data-v-994ac33a><img src="/myBlog/assets/img/lufei.5fe3de8f.png" alt="路飞" title="点我返回顶部" class="diglett top" data-v-994ac33a></div></div><!----></div></div>
+    <script src="/myBlog/assets/js/app.4ba5bfaa.js" defer></script><script src="/myBlog/assets/js/3.553f6c3a.js" defer></script><script src="/myBlog/assets/js/2.383a70a7.js" defer></script><script src="/myBlog/assets/js/156.0a66abbb.js" defer></script><script src="/myBlog/assets/js/9.8651d337.js" defer></script>
+  </body>
+</html>
