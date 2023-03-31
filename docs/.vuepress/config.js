@@ -320,6 +320,7 @@ module.exports = {
                     '/tool/svgo',
                     '/tool/vscode-plugin',
                     '/tool/badge',
+                    '/tool/cursor',
                 ]
             },
             {
