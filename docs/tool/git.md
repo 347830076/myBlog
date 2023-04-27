@@ -265,3 +265,14 @@ git pull origin master --allow-unrelated-histories
 ```
 git gc
 ```
+### ssh_exchange_identification: Connection closed by remote host under Git bash [closed]
+
+拒绝链接的时候，可以设置下面的config
+
+```
+vim ~/.ssh/config
+
+Host github.com
+ Hostname ssh.github.com
+ Port 443
+```
