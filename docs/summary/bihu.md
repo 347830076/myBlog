@@ -375,3 +375,163 @@ component: {
 ### 2022.01.17 - 2022.01.27
 
 - 编写[vscode 扩展开发教程](https://347830076.github.io/myBlog/tool/vscode-plugin.html)
+
+### 2022.02.14 - 2022.02.18
+
+- 在做深度后台项目时，需要寻找定位bug所在，看到了朝润使用了DOM 断点，引起了好奇心，还有这种断点方式，通过朝润介绍的js 6种打断点调试方式， 自己又亲自操作一遍，编写[JS的 6 种打断点调试方式](https://347830076.github.io/myBlog/javascript/js%E6%89%93%E6%96%AD%E7%82%B9%E7%9A%84%E6%96%B9%E5%BC%8F.html)， 设置断点后，可以通过调用堆栈，看断点处经历了哪些函数调用。朝润给我讲解了如何分析了调用堆栈，一些属于vue框架的可以不用管，看哪些是自己写的代码。从而分析代码的执行顺序，理清逻辑，找到问题所在。
+
+- 例如：在深度后台项目做按钮点击约束的时候，点击约束的原理是通过 `dom.vnodeForWaiting.ref.i.props.loading = true`, 给按钮添加了loading效果，按钮就会变宽，导致了按钮位置换行。这时出现的bug现状是，按钮添加了is-loading 类(class)之后，又立马删除了is-loading 类(class)，就看不到了按钮点击约束效果了。  朝润通过在按钮的dom设置了dom属性修改断点，然后分析调用堆栈，看到了element-plus框架触发了个 resize事件，函数里面执行了表格高度变化，该变量使用了vue3的ref, 所以会导致vue3会重新渲染， 这时就能猜测到了，是给按钮设置`dom.vnodeForWaiting.ref.i.props.loading = true`添加loading样式后，导致按钮宽度变宽，从而导致换行，换行触发了element-plus的布局resize监听，就重新赋值了ref变量，vue3重新渲染了Vnode， 因此 `dom.vnodeForWaiting.ref.i.props.loading`的值又会重置为false，所以就会出现这中bug现象
+
+### 2022.02.21 - 2022.02.25
+
+- 编写[grid网格布局文章](http://ebook.wanggege.cn/css/18-grid%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80.html) 
+
+### 2022.02.28 - 2022.03.04
+
+- 编写[vue3的JSX写法](https://347830076.github.io/myBlog/vue/vue3%E7%9A%84JSX%E5%86%99%E6%B3%95.html)，加深熟系vue3的JSX写法
+- 前端站提交代码自动部署，使用 gitlab-ci 结合 [expect](https://347830076.github.io/myBlog/node/linux-expect.html), expect 是终端自动化交互软件
+- [vue3+element递归生成无限菜单组件](https://347830076.github.io/myBlog/components/menu-list.html)
+- [项目中使用husky统一管理git-hooks](https://347830076.github.io/myBlog/tool/husky-githook.html), 在深度项目中使用husky + pre-commit 的 gitHooks, 实现了在提交commit时候，先校验eslint 0 警告 0 错误，才能commit成功，也在我个人博客项目，用husky + pre-push 实现了，我push代码之前，利用[gitHooK自动部署](https://347830076.github.io/myBlog/tool/githook.html)项目到github静态服务
+
+### 2022.03.14 - 2022.03.21
+
+- 搞清楚 [package.json 与 package-lock.json 的关系](https://347830076.github.io/myBlog/npm/package.json%E4%B8%8Epackage-lock.json.html)
+
+### 2022.04.18 - 2022.04.22
+
+- 了解到在火狐浏览器，使用window.open 或者 通过js,创建a标签，模拟点击跳转新页面，在异步的时候，都会给火狐浏览器当做弹窗来拦截了，解决方法就是把异步改成同步化。 思路是，使用window.open的时候，先window.open(''),一个空白页，通过异步请求回来，再修改url。具体代码如下：
+
+```js
+/**
+ * 打开新窗口
+ * @param {any} val 传入的是url字符串，或者是异步函数(返回 url)
+ */
+export async function openWindow(val) {
+  const win = window.open('', '_blank')
+  let url = ''
+
+  if (typeof val === 'string') { // 传入字符串
+    url = val
+    win.location.href = url
+  } else if (Object.prototype.toString.call(val) === '[object Function]') { // 传入函数
+    try {
+      url = val()
+      if (url && typeof url.then === 'function') {
+        url = await url
+      }
+      win.location.href = url
+    } catch (error) {
+      win.close()
+    }
+  }
+}
+```
+
+- 在设计师提的要求下，要求`el-message`的消息提示，要跟弹窗的中间显示，没有弹窗就根据页面居中显示，一开始我是想的把弹窗做居中，消息提示也做居中，这样相对来说就是消息提示在弹窗中间了，这样也会存在一个问题，当浏览器高度小的时候，弹窗大于浏览器高度时，弹窗居中显示就会显示不全。
+后来朝润提出一个方案，可以先获取最顶弹窗的位置和高度大小，重写`el-message`方法，使得根据弹窗中间位置来显示。 
+  - 思路就是：
+    - 获取弹窗dom`document.querySelectorAll('.el-dialog__wrapper')`
+    - 遍历看哪个 display 不等于 node, 而且 z-index 最高,
+    - 获取这个弹窗dom的位置，和高度 / 2，计算message偏移量，
+    - 没有弹窗，就获取浏览器高度 / 2
+
+### 2022.05.30
+
+- 360浏览器下，video标签会默认有个小窗口播放按钮，点击后，他会弹出一个小窗口放video标签，会使用以下样式进行覆盖
+```css
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: 9999;
+    background-color: rgb(0, 0, 0);
+    text-indent: 0;
+    opacity: 1;
+```
+我本来的样式是：
+```css
+position: absolute;
+top: 50%;
+left: 50%;
+width: 1080px;
+height: 612px;
+transform: translateX(-50%) translateY(-50%);
+```
+所以就会导致视频只显示一半，因为使用了`transform: translateX(-50%) translateY(-50%)`
+
+### 2022.07.14
+
+在看农产品官网时，发现小图标好像不是正方形，有点变形，然后打开调试查看样式，发现图片设置了宽度百分比，然后高度设置了auto
+```css
+width: 25%;
+height: auto;
+```
+当浏览器宽度变大的时候，发现实际展示的高宽比不一致了，就导致了，图片变形了
+
+后面调试发现height有个属性可以设置很好的解决
+
+```css
+width: 25%:
+height: max-content;
+```
+设置 `max-content` 之后，图片的比例，就很好的根据宽度的大小来展示了
+
+### 2022.08.01 - 2022.08.16
+
+系统学习了typescript，并且运用到鹰信后台项目实战中，也编写了[typescript 基础教程](https://347830076.github.io/myBlog/typescript/1-%E7%AE%80%E4%BB%8B.html)
+
+### 2022.08.17
+
+编写nodejs脚本，来遍历整个项目的svg文件，用svgo进行压缩，并且整理成一篇技术分享文章 [svgo 压缩](https://347830076.github.io/myBlog/tool/svgo.html)
+
+### 2022.12.01
+
+[centos安装软件问题](https://347830076.github.io/myBlog/node/centos%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E9%97%AE%E9%A2%98.html)
+
+### 2022.12.06
+
+[Web Worker 的使用](https://347830076.github.io/myBlog/javascript/worker.html)
+
+### 2022.12.08 - 2022.12.09
+
+通过对 [Ant-Design-Mobile](https://mobile.ant.design/zh/components/modal) 框架的modal组件进行二次封装（风格样式组件），学会了 useRef 的typescript的写法, 和学会如何引入框架的typescript 声明类型 （引入框架组件的时候，查看组件的引用类型，然后点击进入框架的声明文件，看有什么其他类型export 找到自己需要的声明）
+
+了解学习到了， [如何监听浏览器回退事件，和阻止浏览器回退的方法](https://347830076.github.io/myBlog/react/)
+
+### 2022.12.14 - 2022.12.16
+
+朝润介绍了[vConsole](https://github.com/Tencent/vConsole/blob/dev/README_CN.md) 一个轻量、可拓展、针对手机网页的前端开发者调试面板。这是移动端网页开发调试的福音
+
+```js
+if (process.env.REACT_APP_API_ENV !== 'production') {
+  // qa 环境打包后使用 vconsole 来调试
+  const loadVConsole = async() => {
+    const VConsole = await import('vconsole')
+    // eslint-disable-next-line no-new, new-cap
+    new VConsole.default()
+  }
+  loadVConsole()
+}
+```
+
+学习了解 [Node 服务管理模块 forever](https://347830076.github.io/myBlog/node/forever.html) [PM2 命令使用方法](https://347830076.github.io/myBlog/node/pm2.html)
+
+forever 和 pm2 都是cli命令工具，推荐使用pm2，比较主流，用的人多，功能多，有性能监控（可视化）
+
+### 2022.12.20
+
+整理编写 [获取页面高宽和元素的位置](https://347830076.github.io/myBlog/javascript/%E8%8E%B7%E5%8F%96%E7%BD%91%E9%A1%B5%E5%AE%BD%E5%BA%A6.html)
+
+
+### 2023.2.3
+
+了解使用 [env-cmd](https://www.npmjs.com/package/env-cmd)包来配置process.env环境变量
